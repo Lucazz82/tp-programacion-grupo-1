@@ -1,18 +1,18 @@
 package modelos;
 
 public abstract class Usuario {
-	private String nombre;
+	private String nombreUsuario;
 	private String contrasena;
 	private int puntaje;
 	
-	public Usuario(String nombre, String contrasena) {
-		this.nombre = nombre;
+	public Usuario(String nombreUsuario, String contrasena) {
+		this.nombreUsuario = nombreUsuario;
 		this.contrasena = contrasena;
 		this.puntaje = 0;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getnombreUsuario() {
+		return nombreUsuario;
 	}
 
 	public String getContrasena() {
