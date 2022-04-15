@@ -1,6 +1,6 @@
 package enums;
 
-public enum TiposPuestoLaboral {
+public enum PuestosLaborales {
 	JUNIOR,
 	SENIOR,
 	SEMI_SENIOR
