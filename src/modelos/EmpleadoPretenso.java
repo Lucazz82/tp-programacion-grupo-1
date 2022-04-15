@@ -8,6 +8,10 @@ public class EmpleadoPretenso extends Usuario {
 	private String telefono;
 	private Date fechaNacimiento;
 	
+	public EmpleadoPretenso(String nombreUsuario, String contrasena) {
+		super(nombreUsuario, contrasena);
+	}
+
 	public EmpleadoPretenso(String nombreUsuario, String contrasena, String nombre, String apellido, String telefono,
 			Date fechaNacimiento) {
 		super(nombreUsuario, contrasena);

@@ -13,7 +13,11 @@ public abstract class Usuario {
 		this.puntaje = 0;
 	}
 	
-	public abstract void login(String contrasena) throws ContrasenaIncorrectaException; 
+	public void login(String contrasena) throws ContrasenaIncorrectaException {
+		if(!this.contrasena.equals(contrasena)) {
+			throw new ContrasenaIncorrectaException("Contrasena incorrecta");
+		}
+	}
 
 	public String getnombreUsuario() {
 		return nombreUsuario;

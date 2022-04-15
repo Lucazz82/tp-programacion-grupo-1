@@ -1,5 +1,9 @@
 package modelos;
 
+/**
+ * Ticket de busqueda de empleado
+ *
+ */
 public class TicketEmpleado extends Ticket {
 
 	private int cantidadEmpleadosSolicitados;
