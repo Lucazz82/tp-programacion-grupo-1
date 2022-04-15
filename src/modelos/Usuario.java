@@ -22,4 +22,9 @@ public abstract class Usuario {
 	public int getPuntaje() {
 		return puntaje;
 	}
+
+	@Override
+	public String toString() {
+		return "nombreUsuario=" + nombreUsuario + ", contrasena=" + contrasena + ", puntaje=" + puntaje;
+	}
 }
