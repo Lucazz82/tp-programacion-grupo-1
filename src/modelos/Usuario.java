@@ -1,5 +1,7 @@
 package modelos;
 
+import excepciones.ContrasenaIncorrectaException;
+
 public abstract class Usuario {
 	private String nombreUsuario;
 	private String contrasena;
@@ -10,6 +12,8 @@ public abstract class Usuario {
 		this.contrasena = contrasena;
 		this.puntaje = 0;
 	}
+	
+	public abstract void login(String contrasena) throws ContrasenaIncorrectaException; 
 
 	public String getnombreUsuario() {
 		return nombreUsuario;
