@@ -23,6 +23,12 @@ public class TicketEmpleado extends Ticket {
 	public int getCantidadEmpleadosObtenidos() {
 		return cantidadEmpleadosObtenidos;
 	}
+
+	@Override
+	public double calcularPuntaje() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 	
 }

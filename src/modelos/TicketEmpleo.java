@@ -15,5 +15,17 @@ public class TicketEmpleo extends Ticket{
 	public boolean isResultado() {
 		return resultado;
 	}
+
+	@Override
+	public double calcularPuntaje() {
+//		peso * f(empleador, empleado);
+		double[] pesos = new double[7];
+		
+		for(double peso : pesos) {
+			
+		}
+		
+		return 0;
+	}
 	
 }
