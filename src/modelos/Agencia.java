@@ -5,8 +5,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import javax.print.attribute.standard.DateTimeAtCompleted;
-
 import excepciones.UsuarioInexistenteException;
 
 public class Agencia {
@@ -14,7 +12,7 @@ public class Agencia {
 	private ArrayList<EmpleadoPretenso> empleados = new ArrayList<EmpleadoPretenso>();
 	private ArrayList<Empleador> empleadores = new ArrayList<Empleador>();
 	
-	private HashMap<Empleador, HashMap<EmpleadoPretenso, Double>> listasAsignaciones;
+	private HashMap<TicketEmpleo, HashMap<TicketEmpleado, Double>> listasAsignaciones;
 	private Date fechaLista;
 	
 	private Agencia() {
@@ -58,20 +56,43 @@ public class Agencia {
 		throw new UsuarioInexistenteException(nombreUsuario + " no existe");
 	}
 	
-	public void generarListaAsignacion() {
-		for(Empleador empleador : this.empleadores) {
+//	public void generarListaAsignacion() {
+//		for(Empleador empleador : this.empleadores) {
+//			for(EmpleadoPretenso empleado : this.empleados) {
+//				
+//				if(!listasAsignaciones.containsKey(empleador)) {
+//					listasAsignaciones.put(empleador, new HashMap<EmpleadoPretenso, Double>());
+//				}
+//				
+//				listasAsignaciones.get(empleador).put(empleado, 1.0);// Puntaje
+//				
+//			}
+//		}
+//		
+//		this.fechaLista = new Date();
+//	}
+	
+	public void generarListaEmpleador(Empleador empleador) {
+		Iterator<Ticket> ticketsEmpleador = empleador.getTickets();
+		while(ticketsEmpleador.hasNext()) {
+			Ticket ticketEmpleador= ticketsEmpleador.next();
+			
 			for(EmpleadoPretenso empleado : this.empleados) {
-				
-				if(!listasAsignaciones.containsKey(empleador)) {
-					listasAsignaciones.put(empleador, new HashMap<EmpleadoPretenso, Double>());
+				Iterator<Ticket> ticketsEmpleado = empleado.getTickets();
+				while(ticketsEmpleado.hasNext()) {
+					Ticket ticketEmpleado = ticketsEmpleado.next();
+					double puntaje = ticketEmpleador.enfrentar(ticketEmpleado);
 				}
-				
-				listasAsignaciones.get(empleador).put(empleado, 1.0);// Puntaje
-				
 			}
 		}
-		
-		this.fechaLista = new Date();
+	}
+	
+	public void agregarEmpleado(EmpleadoPretenso empleado) {
+		this.empleados.add(empleado);
+	}
+	
+	public void agregarEmpleador(Empleador empleador) {
+		this.empleadores.add(empleador);
 	}
 
 	public Iterator<EmpleadoPretenso> getEmpleados() {

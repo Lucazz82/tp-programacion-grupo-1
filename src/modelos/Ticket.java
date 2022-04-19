@@ -21,5 +21,5 @@ public abstract class Ticket{
 		this.estado = estado;
 	}
 	
-	public abstract double calcularPuntaje();
+	public abstract double enfrentar(Ticket o);
 }

@@ -17,15 +17,10 @@ public class TicketEmpleo extends Ticket{
 	}
 
 	@Override
-	public double calcularPuntaje() {
-//		peso * f(empleador, empleado);
-		double[] pesos = new double[7];
-		
-		for(double peso : pesos) {
-			
-		}
-		
+	public double enfrentar(Ticket o) {
+		// TODO Auto-generated method stub
 		return 0;
 	}
+
 	
 }
