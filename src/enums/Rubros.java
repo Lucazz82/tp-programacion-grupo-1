@@ -1,6 +1,6 @@
 package enums;
 
-public enum TipoDeComercioEmpleador {
+public enum Rubros {
 	SALUD,
 	COMECIOLOCAL,
 	COMERCIOINTERNACIONAL
