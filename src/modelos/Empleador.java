@@ -1,12 +1,14 @@
 package modelos;
 
+import enums.Rubros;
+
 public class Empleador extends Usuario {
 
 	private String nombre;
 	private String tipoPersona;
-	private String rubro;
+	private Rubros rubro;
 	
-	public Empleador(String nombreUsuario, String contrasena,String nombre,String tipoPersona,String rubro) {
+	public Empleador(String nombreUsuario, String contrasena,String nombre,String tipoPersona,Rubros rubro) {
 		super(nombreUsuario, contrasena);
 		this.nombre = nombre;
 		this.tipoPersona = tipoPersona;
@@ -21,7 +23,7 @@ public class Empleador extends Usuario {
 		return tipoPersona;
 	}
 	
-	public String getRubro() {
+	public Rubros getRubro() {
 		return rubro;
 	}
 

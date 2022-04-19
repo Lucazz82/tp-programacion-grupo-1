@@ -42,7 +42,7 @@ public class Formulario {
 		
 		if(remuneracion == Remuneraciones.HASTA_V1)
 			this.v1 = v;
-		else
+		else if(remuneracion == Remuneraciones.MAS_DE_V2)
 			this.v2 = v;
 		
 		this.cargaHoraria = cargaHoraria;
