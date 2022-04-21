@@ -5,7 +5,10 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.SortedMap;
+import java.util.TreeSet;
 
+import enums.EstadosTicket;
 import excepciones.UsuarioInexistenteException;
 
 public class Agencia {
@@ -18,6 +21,7 @@ public class Agencia {
 	 * Tiene indice con significado.
 	 */
 	private HashMap<TicketBusquedaEmpleado, HashMap<TicketBusquedaEmpleo, Double>> listasAsignaciones;
+//	private HashMap<Empleador, HashMap<EmpleadoPretenso, Double>> listasAsignaciones;
 	private GregorianCalendar fechaLista;
 	
 	private Agencia() {
@@ -61,22 +65,6 @@ public class Agencia {
 		throw new UsuarioInexistenteException(nombreUsuario + " no existe");
 	}
 	
-//	public void generarListaAsignacion() {
-//		for(Empleador empleador : this.empleadores) {
-//			for(EmpleadoPretenso empleado : this.empleados) {
-//				
-//				if(!listasAsignaciones.containsKey(empleador)) {
-//					listasAsignaciones.put(empleador, new HashMap<EmpleadoPretenso, Double>());
-//				}
-//				
-//				listasAsignaciones.get(empleador).put(empleado, 1.0);// Puntaje
-//				
-//			}
-//		}
-//		
-//		this.fechaLista = new Date();
-//	}
-	
 	public void generarListaAsignacion() {
 		for(Empleador empleador : this.empleadores) {
 			this.generarListaEmpleador(empleador);
@@ -88,27 +76,72 @@ public class Agencia {
 	 * Genera todos los puntajes de los tickets de un empleador. <br>
 	 * @param empleador: empleador cuyos tickets van a ser enfrentados.
 	 */
+//	public void _generarListaEmpleador(Empleador empleador) {
+//		Iterator<Ticket> ticketsEmpleador = empleador.getTickets();
+//		while(ticketsEmpleador.hasNext()) {
+//			
+//			TicketBusquedaEmpleado ticketEmpleador= (TicketBusquedaEmpleado) ticketsEmpleador.next();
+//			listasAsignaciones.put(ticketEmpleador, new HashMap<TicketBusquedaEmpleo, Double>());
+//			
+//			for(EmpleadoPretenso empleado : this.empleados) {
+//				Iterator<Ticket> ticketsEmpleado = empleado.getTickets();
+//				while(ticketsEmpleado.hasNext()) {
+//					TicketBusquedaEmpleo ticketEmpleado = (TicketBusquedaEmpleo) ticketsEmpleado.next();
+//					Double puntaje = null;
+//					if(ticketEmpleador.getFormulario().getRubro() == ticketEmpleado.getFormulario().getRubro()) 
+//						puntaje = ticketEmpleador.enfrentar(ticketEmpleado);
+//					listasAsignaciones.get(ticketEmpleador).put(ticketEmpleado, puntaje);
+//				}
+//			}
+//		}
+//	}
+	
 	public void generarListaEmpleador(Empleador empleador) {
-		Iterator<Ticket> ticketsEmpleador = empleador.getTickets();
+		Iterator<TicketBusquedaEmpleado> ticketsEmpleador = empleador.getTickets();
 		while(ticketsEmpleador.hasNext()) {
-			
-			TicketBusquedaEmpleado ticketEmpleador= (TicketBusquedaEmpleado) ticketsEmpleador.next();
-			listasAsignaciones.put(ticketEmpleador, new HashMap<TicketBusquedaEmpleo, Double>());
-			
-			for(EmpleadoPretenso empleado : this.empleados) {
-				Iterator<Ticket> ticketsEmpleado = empleado.getTickets();
-				while(ticketsEmpleado.hasNext()) {
-					TicketBusquedaEmpleo ticketEmpleado = (TicketBusquedaEmpleo) ticketsEmpleado.next();
-					if(ticketEmpleador.getFormulario().getRu)
-					Double puntaje = ticketEmpleador.enfrentar(ticketEmpleado);
-					listasAsignaciones.get(ticketEmpleador).put(ticketEmpleado, puntaje);
+			TicketBusquedaEmpleado ticketEmpleador = ticketsEmpleador.next();
+			if(ticketEmpleador.getEstado() == EstadosTicket.ACTIVO) {
+				listasAsignaciones.put(ticketEmpleador, new HashMap<TicketBusquedaEmpleo, Double>());
+				
+				for(EmpleadoPretenso empleado : this.empleados) {				
+					TicketBusquedaEmpleo ticketEmpleado = empleado.getTicket();
+					
+					if(ticketEmpleador.getFormulario().getRubro() == ticketEmpleado.getFormulario().getRubro() && ticketEmpleado.getEstado() == EstadosTicket.ACTIVO) { 
+						double puntaje = ticketEmpleador.enfrentar(ticketEmpleado);
+						listasAsignaciones.get(ticketEmpleador).put(ticketEmpleado, puntaje);
+					}
 				}
 			}
 		}
 	}
 	
-	public Iterator<EmpleadoPretenso> getListaAsignacion(TicketBusquedaEmpleado ticketEmpleador) {
-		return null;
+	public Iterator<UsuarioOrdenable> getListaAsignacion(TicketBusquedaEmpleado ticketEmpleador) {
+		ArrayList<UsuarioOrdenable> empleados = new ArrayList<UsuarioOrdenable>();
+		HashMap<TicketBusquedaEmpleo, Double> puntajesTicket = listasAsignaciones.get(ticketEmpleador);
+		
+		for(TicketBusquedaEmpleo ticket : puntajesTicket.keySet()) {
+			UsuarioOrdenable usuario = new UsuarioOrdenable(ticket.getCreador(), puntajesTicket.get(ticket));
+			empleados.add(usuario);
+		}
+		empleados.sort(null);
+		return empleados.iterator();
+	}
+	
+	public Iterator<UsuarioOrdenable> getListaAsignacion(TicketBusquedaEmpleo ticketEmpleado) {
+		ArrayList<UsuarioOrdenable> empleadores = new ArrayList<UsuarioOrdenable>();
+		HashMap<TicketBusquedaEmpleado, Double> puntajesTicket = new HashMap<TicketBusquedaEmpleado, Double>();
+		
+		for(TicketBusquedaEmpleado ticket : listasAsignaciones.keySet()) {
+			double puntaje = listasAsignaciones.get(ticket).get(ticketEmpleado);
+			puntajesTicket.put(ticket, puntaje);
+		}
+		
+		for(TicketBusquedaEmpleado ticket : puntajesTicket.keySet()) {
+			UsuarioOrdenable usuario = new UsuarioOrdenable(ticket.getCreador(), puntajesTicket.get(ticket));
+			empleadores.add(usuario);
+		}
+		empleadores.sort(null);
+		return empleadores.iterator();
 	}
 	
 	public void agregarEmpleado(EmpleadoPretenso empleado) {

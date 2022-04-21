@@ -7,6 +7,10 @@ public class EmpleadoPretenso extends Usuario {
 	private String apellido;
 	private String telefono;
 	private Date fechaNacimiento;
+	/**
+	 * Cada empleado tiene un unico ticket. Es inconsistente que tenga 2 al mismo tiempo.
+	 */
+	private TicketBusquedaEmpleo ticket;
 	
 	public EmpleadoPretenso(String nombreUsuario, String contrasena) {
 		super(nombreUsuario, contrasena);
@@ -32,6 +36,10 @@ public class EmpleadoPretenso extends Usuario {
 	}
 	public Date getFechaNacimiento() {
 		return fechaNacimiento;
+	}
+
+	public TicketBusquedaEmpleo getTicket() {
+		return ticket;
 	}
 
 	@Override

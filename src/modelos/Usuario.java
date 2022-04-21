@@ -9,7 +9,7 @@ public abstract class Usuario {
 	private String nombreUsuario;
 	private String contrasena;
 	private int puntaje;
-	private ArrayList<Ticket> tickets = new ArrayList<Ticket>();
+
 	
 
 	public Usuario(String nombreUsuario, String contrasena) {
@@ -24,9 +24,6 @@ public abstract class Usuario {
 		}
 	}
 	
-	public void agregarTicket(Ticket ticket) {
-		this.tickets.add(ticket);
-	}
 	
 	public String getnombreUsuario() {
 		return nombreUsuario;
@@ -40,10 +37,6 @@ public abstract class Usuario {
 		return puntaje;
 	}
 
-	public Iterator<Ticket> getTickets() {
-		return tickets.iterator();
-	}
-	
 	@Override
 	public String toString() {
 		return "nombreUsuario=" + nombreUsuario + ", contrasena=" + contrasena + ", puntaje=" + puntaje;
