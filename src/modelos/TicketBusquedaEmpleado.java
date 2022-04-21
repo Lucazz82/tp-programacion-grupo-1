@@ -12,24 +12,11 @@ import modelos.aspectos.Remuneracion;
  */
 public class TicketBusquedaEmpleado extends Ticket {
 
-	private int cantidadEmpleadosSolicitados;
-	private int cantidadEmpleadosObtenidos;
 	private double[] pesos;
 	
-	public TicketBusquedaEmpleado(Usuario creador, Formulario formulario, int cantidadEmpleadosSolicitados,
-			int cantidadEmpleadosObtenidos, double[] pesos) {
+	public TicketBusquedaEmpleado(Usuario creador, Formulario formulario, double[] pesos) {
 		super(creador, formulario);
-		this.cantidadEmpleadosSolicitados = cantidadEmpleadosSolicitados;
-		this.cantidadEmpleadosObtenidos = cantidadEmpleadosObtenidos;
 		this.pesos = pesos;
-	}
-
-	public int getCantidadEmpleadosSolicitados() {
-		return cantidadEmpleadosSolicitados;
-	}
-	
-	public int getCantidadEmpleadosObtenidos() {
-		return cantidadEmpleadosObtenidos;
 	}
 
 	

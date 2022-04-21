@@ -21,7 +21,7 @@ public class Agencia {
 	 * Matriz de puntajes para cada par TicketBusquedaEmpleado y TicketBusquedaEmpleo.<br>
 	 * Tiene indice con significado.
 	 */
-	private HashMap<TicketBusquedaEmpleado, HashMap<TicketBusquedaEmpleo, Double>> listasAsignaciones;
+	private HashMap<TicketBusquedaEmpleado, HashMap<TicketBusquedaEmpleo, Double>> listasAsignaciones=new HashMap<TicketBusquedaEmpleado, HashMap<TicketBusquedaEmpleo, Double>>();
 //	private HashMap<Empleador, HashMap<EmpleadoPretenso, Double>> listasAsignaciones;
 	private GregorianCalendar fechaLista;
 	
@@ -140,7 +140,20 @@ public class Agencia {
 		empleadores.sort(null);
 		return empleadores.iterator();
 	}
-	
+	/*
+	public void rondaEncuentrosLaborales() {
+		for (int i=0;i<this.empleados.size();i++) {
+			for (int j=0;j<this.empleadores.size();j++) {
+				Empleador empleador=this.empleadores.get(j);
+				Iterator<TicketBusquedaEmpleado> iteradorTickets=empleador.getTickets();
+				while (iteradorTickets.hasNext()) {
+					TicketBusquedaEmpleado ticketBE=iteradorTickets.next();
+					this.listasAsignaciones.(ticketBE, empleados.get(i).getTicket(),empleados.get(i).getTicket().enfrentar(ticketBE));
+				}
+			}
+		}
+	}
+	*/
 	public void agregarEmpleado(EmpleadoPretenso empleado) {
 		this.empleados.add(empleado);
 	}

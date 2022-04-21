@@ -23,6 +23,7 @@ public class EmpleadoPretenso extends Usuario {
 		this.apellido = apellido;
 		this.telefono = telefono;
 		this.fechaNacimiento = fechaNacimiento;
+		Agencia.getInstancia().agregarEmpleado(this);
 	}
 	
 	public String getNombre() {
@@ -36,6 +37,11 @@ public class EmpleadoPretenso extends Usuario {
 	}
 	public Date getFechaNacimiento() {
 		return fechaNacimiento;
+	}
+	
+	
+	public void setTicket(TicketBusquedaEmpleo ticket) {
+		this.ticket = ticket;
 	}
 
 	public TicketBusquedaEmpleo getTicket() {

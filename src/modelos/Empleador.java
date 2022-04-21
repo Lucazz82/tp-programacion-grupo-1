@@ -20,10 +20,14 @@ public class Empleador extends Usuario {
 		this.nombre = nombre;
 		this.tipoPersona = tipoPersona;
 		this.rubro = rubro;
+		Agencia.getInstancia().agregarEmpleador(this);
 	}
 	
 	public HashMap<String, Double> getPesos() {
 		return pesos;
+	}
+	public void agregarTicket(TicketBusquedaEmpleado ticket) {
+		this.tickets.add(ticket);
 	}
 	
 	public Iterator<TicketBusquedaEmpleado> getTickets() {
