@@ -18,7 +18,7 @@ public class Formulario {
 	private RangosEtarios rangoEtario;
 	private Experiencias experiencia;
 	private Estudios estudio;
-	
+
 	public Formulario(Locaciones locacion, Remuneraciones remuneracion, double v1, double v2,
 			CargaHoraria cargaHoraria, PuestosLaborales puesto, RangosEtarios rangoEtario, Experiencias experiencia,
 			Estudios estudio) {
