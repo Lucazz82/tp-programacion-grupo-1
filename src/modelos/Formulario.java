@@ -34,24 +34,6 @@ public class Formulario {
 		this.estudio = estudio;
 	}
 
-	public Formulario(Locacion locacion, int remuneracion, double v, CargaHoraria cargaHoraria,
-			int puesto, int rangoEtario, int experiencia, int estudio) {
-		super();
-		this.locacion = locacion;
-		this.remuneracion = remuneracion;
-		
-		if(remuneracion == Remuneraciones.HASTA_V1.getPosicion())
-			this.v1 = v;
-		else if(remuneracion == Remuneraciones.MAS_DE_V2.getPosicion())
-			this.v2 = v;
-		
-		this.cargaHoraria = cargaHoraria;
-		this.puesto = puesto;
-		this.rangoEtario = rangoEtario;
-		this.experiencia = experiencia;
-		this.estudio = estudio;
-	}
-
 	public Locacion getLocacion() {
 		return locacion;
 	}
