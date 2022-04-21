@@ -3,8 +3,8 @@ package modelos;
 public class TicketBusquedaEmpleo extends Ticket{
 	private boolean resultado;
 	
-	public TicketBusquedaEmpleo(Formulario formulario, boolean resultado) {
-		super(formulario);
+	public TicketBusquedaEmpleo(Usuario creador, Formulario formulario, boolean resultado) {
+		super(creador, formulario);
 		this.resultado = resultado;
 	}
 

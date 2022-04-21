@@ -16,13 +16,13 @@ public class TicketBusquedaEmpleado extends Ticket {
 	private int cantidadEmpleadosObtenidos;
 	private double[] pesos;
 	
-	public TicketBusquedaEmpleado(Formulario formulario, int cantidadEmpleadosSolicitados, int cantidadEmpleadosObtenidos, double[] pesos) {
-		super(formulario);
+	public TicketBusquedaEmpleado(Usuario creador, Formulario formulario, int cantidadEmpleadosSolicitados,
+			int cantidadEmpleadosObtenidos, double[] pesos) {
+		super(creador, formulario);
 		this.cantidadEmpleadosSolicitados = cantidadEmpleadosSolicitados;
 		this.cantidadEmpleadosObtenidos = cantidadEmpleadosObtenidos;
 		this.pesos = pesos;
 	}
-	
 
 	public int getCantidadEmpleadosSolicitados() {
 		return cantidadEmpleadosSolicitados;
