@@ -23,5 +23,10 @@ public abstract class Ticket{
 		this.estado = estado;
 	}
 	
+	/**
+	 * Enfrenta 2 tickets de distinto tipo
+	 * <b>Pre: el ticket recibido es de otro tipo.
+	 * @return: el puntaje del ticket. 
+	 */
 	public abstract double enfrentar(Ticket o);
 }
