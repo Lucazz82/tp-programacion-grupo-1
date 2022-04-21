@@ -9,20 +9,19 @@ import enums.Remuneraciones;
 import modelos.aspectos.CargaHoraria;
 
 public class Formulario {
-	private Locaciones locacion;
-	private Remuneraciones remuneracion;
+	private int locacion;
+	private int remuneracion;
 	private double v1;
 	private double v2;
 	private CargaHoraria cargaHoraria;
-	private PuestosLaborales puesto;
-	private RangosEtarios rangoEtario;
-	private Experiencias experiencia;
-	private Estudios estudio;
+	private int puesto;
+	private int rangoEtario;
+	private int experiencia;
+	private int estudio;
 	
-	public Formulario(Locaciones locacion, Remuneraciones remuneracion, double v1, double v2,
-			CargaHoraria cargaHoraria, PuestosLaborales puesto, RangosEtarios rangoEtario, Experiencias experiencia,
-			Estudios estudio) {
-		super();
+	public Formulario(int locacion, int remuneracion, double v1, double v2,
+			CargaHoraria cargaHoraria, int puesto, int rangoEtario, int experiencia,
+			int estudio) {
 		this.locacion = locacion;
 		this.remuneracion = remuneracion;
 		this.v1 = v1;
@@ -34,15 +33,15 @@ public class Formulario {
 		this.estudio = estudio;
 	}
 
-	public Formulario(Locaciones locacion, Remuneraciones remuneracion, double v, CargaHoraria cargaHoraria,
-			PuestosLaborales puesto, RangosEtarios rangoEtario, Experiencias experiencia, Estudios estudio) {
+	public Formulario(int locacion, int remuneracion, double v, CargaHoraria cargaHoraria,
+			int puesto, int rangoEtario, int experiencia, int estudio) {
 		super();
 		this.locacion = locacion;
 		this.remuneracion = remuneracion;
 		
-		if(remuneracion == Remuneraciones.HASTA_V1)
+		if(remuneracion == Remuneraciones.HASTA_V1.getPosicion())
 			this.v1 = v;
-		else if(remuneracion == Remuneraciones.MAS_DE_V2)
+		else if(remuneracion == Remuneraciones.MAS_DE_V2.getPosicion())
 			this.v2 = v;
 		
 		this.cargaHoraria = cargaHoraria;
@@ -52,11 +51,11 @@ public class Formulario {
 		this.estudio = estudio;
 	}
 
-	public Locaciones getLocacion() {
+	public int getLocacion() {
 		return locacion;
 	}
 
-	public Remuneraciones getRemuneracion() {
+	public int getRemuneracion() {
 		return remuneracion;
 	}
 
@@ -72,19 +71,19 @@ public class Formulario {
 		return cargaHoraria;
 	}
 
-	public PuestosLaborales getPuesto() {
+	public int getPuesto() {
 		return puesto;
 	}
 
-	public RangosEtarios getRangoEtario() {
+	public int getRangoEtario() {
 		return rangoEtario;
 	}
 
-	public Experiencias getExperiencia() {
+	public int getExperiencia() {
 		return experiencia;
 	}
 
-	public Estudios getEstudio() {
+	public int getEstudio() {
 		return estudio;
 	}
 	
