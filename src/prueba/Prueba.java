@@ -11,7 +11,7 @@ public class Prueba {
 		Agencia agencia = Agencia.getInstancia();
 		
 		Usuario u1 = new EmpleadoPretenso("Teo", "Puto");
-		Usuario u2 = new Empleador("Lucas", "Peron");
+//		Usuario u2 = new Empleador("Lucas", "Peron");
 	}
 
 }

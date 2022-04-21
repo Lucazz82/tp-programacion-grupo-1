@@ -1,26 +1,26 @@
 package modelos;
 
-import enums.CargasHorarias;
 import enums.Estudios;
 import enums.Experiencias;
 import enums.Locaciones;
 import enums.PuestosLaborales;
 import enums.RangosEtarios;
 import enums.Remuneraciones;
+import modelos.aspectos.CargaHoraria;
 
 public class Formulario {
 	private Locaciones locacion;
 	private Remuneraciones remuneracion;
 	private double v1;
 	private double v2;
-	private CargasHorarias cargaHoraria;
+	private CargaHoraria cargaHoraria;
 	private PuestosLaborales puesto;
 	private RangosEtarios rangoEtario;
 	private Experiencias experiencia;
 	private Estudios estudio;
 	
 	public Formulario(Locaciones locacion, Remuneraciones remuneracion, double v1, double v2,
-			CargasHorarias cargaHoraria, PuestosLaborales puesto, RangosEtarios rangoEtario, Experiencias experiencia,
+			CargaHoraria cargaHoraria, PuestosLaborales puesto, RangosEtarios rangoEtario, Experiencias experiencia,
 			Estudios estudio) {
 		super();
 		this.locacion = locacion;
@@ -34,7 +34,7 @@ public class Formulario {
 		this.estudio = estudio;
 	}
 
-	public Formulario(Locaciones locacion, Remuneraciones remuneracion, double v, CargasHorarias cargaHoraria,
+	public Formulario(Locaciones locacion, Remuneraciones remuneracion, double v, CargaHoraria cargaHoraria,
 			PuestosLaborales puesto, RangosEtarios rangoEtario, Experiencias experiencia, Estudios estudio) {
 		super();
 		this.locacion = locacion;
@@ -68,7 +68,7 @@ public class Formulario {
 		return v2;
 	}
 
-	public CargasHorarias getCargaHoraria() {
+	public CargaHoraria getCargaHoraria() {
 		return cargaHoraria;
 	}
 

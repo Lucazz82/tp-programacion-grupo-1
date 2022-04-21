@@ -1,5 +1,7 @@
 package modelos;
 
+import java.util.HashMap;
+
 import enums.Rubros;
 
 public class Empleador extends Usuario {
@@ -7,6 +9,7 @@ public class Empleador extends Usuario {
 	private String nombre;
 	private String tipoPersona;
 	private Rubros rubro;
+	private HashMap<String, Double> pesos;
 	
 	public Empleador(String nombreUsuario, String contrasena,String nombre,String tipoPersona,Rubros rubro) {
 		super(nombreUsuario, contrasena);
