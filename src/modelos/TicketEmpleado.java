@@ -1,4 +1,6 @@
-package modelos;
+_package modelos;
+
+import modelos.aspectos.Estudios;
 
 /**
  * Ticket de busqueda de empleado
@@ -26,8 +28,10 @@ public class TicketEmpleado extends Ticket {
 
 	@Override
 	public double enfrentar(Ticket o) {
-		// TODO Auto-generated method stub
-		return 0;
+		double puntaje = 0;
+		puntaje += this.formulario.getCargaHoraria().enfrentar(o.formulario.getCargaHoraria());
+		puntaje += Estudios.enfrentar(this.formulario.getEstudio(), o.formulario.getEstudio());
+		return puntaje;
 	}
 	
 	
