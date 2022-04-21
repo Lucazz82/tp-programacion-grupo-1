@@ -23,6 +23,14 @@ public abstract class Ticket{
 		this.estado = estado;
 	}
 	
+	public Date getFechaAlta() {
+		return fechaAlta;
+	}
+
+	public Formulario getFormulario() {
+		return formulario;
+	}
+
 	/**
 	 * Enfrenta 2 tickets de distinto tipo
 	 * <b>Pre: el ticket recibido es de otro tipo.

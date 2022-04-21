@@ -6,6 +6,7 @@ import enums.Locaciones;
 import enums.PuestosLaborales;
 import enums.RangosEtarios;
 import enums.Remuneraciones;
+import enums.Rubros;
 import modelos.aspectos.CargaHoraria;
 import modelos.aspectos.Locacion;
 
@@ -19,10 +20,11 @@ public class Formulario {
 	private int rangoEtario;
 	private int experiencia;
 	private int estudio;
+	private Rubros rubro;
 	
 	public Formulario(Locacion locacion, int remuneracion, double v1, double v2,
 			CargaHoraria cargaHoraria, int puesto, int rangoEtario, int experiencia,
-			int estudio) {
+			int estudio, Rubros rubro) {
 		this.locacion = locacion;
 		this.remuneracion = remuneracion;
 		this.v1 = v1;
@@ -32,24 +34,7 @@ public class Formulario {
 		this.rangoEtario = rangoEtario;
 		this.experiencia = experiencia;
 		this.estudio = estudio;
-	}
-
-	public Formulario(Locacion locacion, int remuneracion, double v, CargaHoraria cargaHoraria,
-			int puesto, int rangoEtario, int experiencia, int estudio) {
-		super();
-		this.locacion = locacion;
-		this.remuneracion = remuneracion;
-		
-		if(remuneracion == Remuneraciones.HASTA_V1.getPosicion())
-			this.v1 = v;
-		else if(remuneracion == Remuneraciones.MAS_DE_V2.getPosicion())
-			this.v2 = v;
-		
-		this.cargaHoraria = cargaHoraria;
-		this.puesto = puesto;
-		this.rangoEtario = rangoEtario;
-		this.experiencia = experiencia;
-		this.estudio = estudio;
+		this.rubro = rubro;
 	}
 
 	public Locacion getLocacion() {
