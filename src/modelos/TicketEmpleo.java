@@ -1,5 +1,6 @@
 package modelos;
 
+
 public class TicketEmpleo extends Ticket{
 
 	private boolean resultado;
@@ -17,9 +18,9 @@ public class TicketEmpleo extends Ticket{
 	}
 
 	@Override
-	public double enfrentar(Ticket o) {
-		// TODO Auto-generated method stub
+	public double enfrentar(Ticket o) {		
 		return 0;
+		
 	}
 
 	
