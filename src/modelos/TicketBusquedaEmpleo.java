@@ -1,14 +1,13 @@
 package modelos;
 
-
-public class TicketEmpleo extends Ticket{
-
+public class TicketBusquedaEmpleo extends Ticket{
 	private boolean resultado;
-
-	public TicketEmpleo() {
-		super();
-	}
 	
+	public TicketBusquedaEmpleo(Formulario formulario, boolean resultado) {
+		super(formulario);
+		this.resultado = resultado;
+	}
+
 	public void setResultado(boolean resultado) {
 		this.resultado = resultado;
 	}
@@ -19,9 +18,6 @@ public class TicketEmpleo extends Ticket{
 
 	@Override
 	public double enfrentar(Ticket o) {		
-		return 0;
-		
+		return o.enfrentar(this);
 	}
-
-	
 }
