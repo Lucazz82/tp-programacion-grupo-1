@@ -73,6 +73,8 @@ public class Formulario {
 		return estudio;
 	}
 	
-	
+	public Rubros getRubro() {
+		return rubro;
+	}
 	
 }
