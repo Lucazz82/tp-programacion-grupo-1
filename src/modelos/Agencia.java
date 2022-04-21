@@ -9,6 +9,7 @@ import java.util.SortedMap;
 import java.util.TreeSet;
 
 import enums.EstadosTicket;
+import excepciones.TicketInexistenteException;
 import excepciones.UsuarioInexistenteException;
 
 public class Agencia {
@@ -74,28 +75,8 @@ public class Agencia {
 	
 	/**
 	 * Genera todos los puntajes de los tickets de un empleador. <br>
-	 * @param empleador: empleador cuyos tickets van a ser enfrentados.
+	 * @param empleador empleador cuyos tickets van a ser enfrentados.
 	 */
-//	public void _generarListaEmpleador(Empleador empleador) {
-//		Iterator<Ticket> ticketsEmpleador = empleador.getTickets();
-//		while(ticketsEmpleador.hasNext()) {
-//			
-//			TicketBusquedaEmpleado ticketEmpleador= (TicketBusquedaEmpleado) ticketsEmpleador.next();
-//			listasAsignaciones.put(ticketEmpleador, new HashMap<TicketBusquedaEmpleo, Double>());
-//			
-//			for(EmpleadoPretenso empleado : this.empleados) {
-//				Iterator<Ticket> ticketsEmpleado = empleado.getTickets();
-//				while(ticketsEmpleado.hasNext()) {
-//					TicketBusquedaEmpleo ticketEmpleado = (TicketBusquedaEmpleo) ticketsEmpleado.next();
-//					Double puntaje = null;
-//					if(ticketEmpleador.getFormulario().getRubro() == ticketEmpleado.getFormulario().getRubro()) 
-//						puntaje = ticketEmpleador.enfrentar(ticketEmpleado);
-//					listasAsignaciones.get(ticketEmpleador).put(ticketEmpleado, puntaje);
-//				}
-//			}
-//		}
-//	}
-	
 	public void generarListaEmpleador(Empleador empleador) {
 		Iterator<TicketBusquedaEmpleado> ticketsEmpleador = empleador.getTickets();
 		while(ticketsEmpleador.hasNext()) {
@@ -115,9 +96,20 @@ public class Agencia {
 		}
 	}
 	
-	public Iterator<UsuarioOrdenable> getListaAsignacion(TicketBusquedaEmpleado ticketEmpleador) {
+	/**
+	 * <b>Pre: </b> El ticket no es null. <br>
+	 * 
+	 * @param ticketEmpleador el ticket del que se desea obtener su lista de asignacion. <br>
+	 * @throws TicketInexistenteException cuando el ticket no posee una lista de asignacion. <br>
+	 * @return un iterator de los empleados ordenados por su puntaje de forma descendente.
+	 */
+	public Iterator<UsuarioOrdenable> getListaAsignacion(TicketBusquedaEmpleado ticketEmpleador) throws TicketInexistenteException {
 		ArrayList<UsuarioOrdenable> empleados = new ArrayList<UsuarioOrdenable>();
 		HashMap<TicketBusquedaEmpleo, Double> puntajesTicket = listasAsignaciones.get(ticketEmpleador);
+		
+		if(puntajesTicket == null) {
+			throw new TicketInexistenteException("Este ticket no posee una lista de asignacion");
+		}
 		
 		for(TicketBusquedaEmpleo ticket : puntajesTicket.keySet()) {
 			UsuarioOrdenable usuario = new UsuarioOrdenable(ticket.getCreador(), puntajesTicket.get(ticket));
@@ -127,14 +119,19 @@ public class Agencia {
 		return empleados.iterator();
 	}
 	
-	public Iterator<UsuarioOrdenable> getListaAsignacion(TicketBusquedaEmpleo ticketEmpleado) {
+	public Iterator<UsuarioOrdenable> getListaAsignacion(TicketBusquedaEmpleo ticketEmpleado) throws TicketInexistenteException {
 		ArrayList<UsuarioOrdenable> empleadores = new ArrayList<UsuarioOrdenable>();
 		HashMap<TicketBusquedaEmpleado, Double> puntajesTicket = new HashMap<TicketBusquedaEmpleado, Double>();
 		
-		for(TicketBusquedaEmpleado ticket : listasAsignaciones.keySet()) {
-			double puntaje = listasAsignaciones.get(ticket).get(ticketEmpleado);
-			puntajesTicket.put(ticket, puntaje);
+		try {
+			for(TicketBusquedaEmpleado ticket : listasAsignaciones.keySet()) {
+				double puntaje = listasAsignaciones.get(ticket).get(ticketEmpleado);
+				puntajesTicket.put(ticket, puntaje);
+			}			
+		} catch(NullPointerException e) {
+			throw new TicketInexistenteException("Este ticket no posee una lista de asignacion");
 		}
+		
 		
 		for(TicketBusquedaEmpleado ticket : puntajesTicket.keySet()) {
 			UsuarioOrdenable usuario = new UsuarioOrdenable(ticket.getCreador(), puntajesTicket.get(ticket));
