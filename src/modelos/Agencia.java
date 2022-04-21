@@ -2,6 +2,7 @@ package modelos;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -12,8 +13,12 @@ public class Agencia {
 	private ArrayList<EmpleadoPretenso> empleados = new ArrayList<EmpleadoPretenso>();
 	private ArrayList<Empleador> empleadores = new ArrayList<Empleador>();
 	
-	private HashMap<TicketEmpleo, HashMap<TicketEmpleado, Double>> listasAsignaciones;
-	private Date fechaLista;
+	/**
+	 * Matriz de puntajes para cada par TicketBusquedaEmpleado y TicketBusquedaEmpleo.<br>
+	 * Tiene indice con significado.
+	 */
+	private HashMap<TicketBusquedaEmpleado, HashMap<TicketBusquedaEmpleo, Double>> listasAsignaciones;
+	private GregorianCalendar fechaLista;
 	
 	private Agencia() {
 		
@@ -72,19 +77,38 @@ public class Agencia {
 //		this.fechaLista = new Date();
 //	}
 	
+	public void generarListaAsignacion() {
+		for(Empleador empleador : this.empleadores) {
+			this.generarListaEmpleador(empleador);
+		}
+		this.fechaLista = new GregorianCalendar();
+	}
+	
+	/**
+	 * Genera todos los puntajes de los tickets de un empleador. <br>
+	 * @param empleador: empleador cuyos tickets van a ser enfrentados.
+	 */
 	public void generarListaEmpleador(Empleador empleador) {
 		Iterator<Ticket> ticketsEmpleador = empleador.getTickets();
 		while(ticketsEmpleador.hasNext()) {
-			Ticket ticketEmpleador= ticketsEmpleador.next();
+			
+			TicketBusquedaEmpleado ticketEmpleador= (TicketBusquedaEmpleado) ticketsEmpleador.next();
+			listasAsignaciones.put(ticketEmpleador, new HashMap<TicketBusquedaEmpleo, Double>());
 			
 			for(EmpleadoPretenso empleado : this.empleados) {
 				Iterator<Ticket> ticketsEmpleado = empleado.getTickets();
 				while(ticketsEmpleado.hasNext()) {
-					Ticket ticketEmpleado = ticketsEmpleado.next();
-					double puntaje = ticketEmpleador.enfrentar(ticketEmpleado);
+					TicketBusquedaEmpleo ticketEmpleado = (TicketBusquedaEmpleo) ticketsEmpleado.next();
+					if(ticketEmpleador.getFormulario().getRu)
+					Double puntaje = ticketEmpleador.enfrentar(ticketEmpleado);
+					listasAsignaciones.get(ticketEmpleador).put(ticketEmpleado, puntaje);
 				}
 			}
 		}
+	}
+	
+	public Iterator<EmpleadoPretenso> getListaAsignacion(TicketBusquedaEmpleado ticketEmpleador) {
+		return null;
 	}
 	
 	public void agregarEmpleado(EmpleadoPretenso empleado) {
