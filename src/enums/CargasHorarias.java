@@ -1,6 +1,6 @@
 package enums;
 
-public enum CargaHoraria {
+public enum CargasHorarias {
 	MEDIA,
 	COMPLETA,
 	EXTENDIDA;
