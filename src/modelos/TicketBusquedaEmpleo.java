@@ -19,4 +19,11 @@ public class TicketBusquedaEmpleo extends Ticket{
 	public double enfrentar(Ticket o) {		
 		return o.enfrentar(this);
 	}
+
+	@Override
+	public String toString() {
+		return "TicketBusquedaEmpleo ["+ super.toString() +" resultado=" + resultado + "]";
+	}
+	
+	
 }

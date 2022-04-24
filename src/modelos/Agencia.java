@@ -87,7 +87,7 @@ public class Agencia {
 				for(EmpleadoPretenso empleado : this.empleados) {				
 					TicketBusquedaEmpleo ticketEmpleado = empleado.getTicket();
 					
-					if(ticketEmpleador.getFormulario().getRubro() == ticketEmpleado.getFormulario().getRubro() && ticketEmpleado.getEstado() == EstadosTicket.ACTIVO) { 
+					if(ticketEmpleado.getEstado() == EstadosTicket.ACTIVO && ticketEmpleador.getFormulario().getRubro() == ticketEmpleado.getFormulario().getRubro()) { 
 						double puntaje = ticketEmpleador.enfrentar(ticketEmpleado);
 						listasAsignaciones.get(ticketEmpleador).put(ticketEmpleado, puntaje);
 					}
@@ -102,63 +102,50 @@ public class Agencia {
 	 * @param ticketEmpleador el ticket del que se desea obtener su lista de asignacion. <br>
 	 * @throws TicketInexistenteException cuando el ticket no posee una lista de asignacion. <br>
 	 * @return un iterator de los empleados ordenados por su puntaje de forma descendente.
-	 */
-	public Iterator<UsuarioOrdenable> getListaAsignacion(TicketBusquedaEmpleado ticketEmpleador) throws TicketInexistenteException {
-		ArrayList<UsuarioOrdenable> empleados = new ArrayList<UsuarioOrdenable>();
+	 */	
+	public Iterator<TicketOrdenable> getListaAsignacion(TicketBusquedaEmpleado ticketEmpleador) throws TicketInexistenteException {
+		ArrayList<TicketOrdenable> cvs = new ArrayList<TicketOrdenable>();
+		if(!listasAsignaciones.containsKey(ticketEmpleador))
+			throw new TicketInexistenteException("El ticket no tiene una lista de asignacion", ticketEmpleador);
+		
 		HashMap<TicketBusquedaEmpleo, Double> puntajesTicket = listasAsignaciones.get(ticketEmpleador);
 		
-		if(puntajesTicket == null) {
-			throw new TicketInexistenteException("Este ticket no posee una lista de asignacion");
+		for(Ticket cv : puntajesTicket.keySet()) {
+			TicketOrdenable cvOrdenable = new TicketOrdenable(cv, puntajesTicket.get(cv));
+			cvs.add(cvOrdenable);
 		}
 		
-		for(TicketBusquedaEmpleo ticket : puntajesTicket.keySet()) {
-			UsuarioOrdenable usuario = new UsuarioOrdenable(ticket.getCreador(), puntajesTicket.get(ticket));
-			empleados.add(usuario);
-		}
-		empleados.sort(null);
-		return empleados.iterator();
+		cvs.sort(null);
+		
+		return cvs.iterator();
 	}
 	
-	public Iterator<UsuarioOrdenable> getListaAsignacion(TicketBusquedaEmpleo ticketEmpleado) throws TicketInexistenteException {
-		ArrayList<UsuarioOrdenable> empleadores = new ArrayList<UsuarioOrdenable>();
-		HashMap<TicketBusquedaEmpleado, Double> puntajesTicket = new HashMap<TicketBusquedaEmpleado, Double>();
+	public Iterator<TicketOrdenable> getListaAsignacion(TicketBusquedaEmpleo ticketEmpleado) throws TicketInexistenteException {
+		ArrayList<TicketOrdenable> puestosLaborales = new ArrayList<TicketOrdenable>();
 		
-		try {
-			for(TicketBusquedaEmpleado ticket : listasAsignaciones.keySet()) {
-				double puntaje = listasAsignaciones.get(ticket).get(ticketEmpleado);
-				puntajesTicket.put(ticket, puntaje);
-			}			
-		} catch(NullPointerException e) {
-			throw new TicketInexistenteException("Este ticket no posee una lista de asignacion");
-		}
-		
-		
-		for(TicketBusquedaEmpleado ticket : puntajesTicket.keySet()) {
-			UsuarioOrdenable usuario = new UsuarioOrdenable(ticket.getCreador(), puntajesTicket.get(ticket));
-			empleadores.add(usuario);
-		}
-		empleadores.sort(null);
-		return empleadores.iterator();
-	}
-	/*
-	public void rondaEncuentrosLaborales() {
-		for (int i=0;i<this.empleados.size();i++) {
-			for (int j=0;j<this.empleadores.size();j++) {
-				Empleador empleador=this.empleadores.get(j);
-				Iterator<TicketBusquedaEmpleado> iteradorTickets=empleador.getTickets();
-				while (iteradorTickets.hasNext()) {
-					TicketBusquedaEmpleado ticketBE=iteradorTickets.next();
-					this.listasAsignaciones.(ticketBE, empleados.get(i).getTicket(),empleados.get(i).getTicket().enfrentar(ticketBE));
-				}
+		for(Ticket puestoLaboral : listasAsignaciones.keySet()) {
+			HashMap<TicketBusquedaEmpleo, Double> puntajesTicket = listasAsignaciones.get(puestoLaboral);
+			
+			if(puntajesTicket.containsKey(ticketEmpleado)) {
+				TicketOrdenable puestoOrdenable = new TicketOrdenable(puestoLaboral, puntajesTicket.get(ticketEmpleado));
+				puestosLaborales.add(puestoOrdenable);
 			}
 		}
+		
+		if(puestosLaborales.isEmpty()) {
+			throw new TicketInexistenteException("El ticket no tiene una lista de asignacion", ticketEmpleado);
+		}
+		
+		puestosLaborales.sort(null);
+		
+		return puestosLaborales.iterator();
 	}
-	*/
-	public void agregarEmpleado(EmpleadoPretenso empleado) {
+		
+	public void registrarUsuario(EmpleadoPretenso empleado) {
 		this.empleados.add(empleado);
 	}
 	
-	public void agregarEmpleador(Empleador empleador) {
+	public void registrarUsuario(Empleador empleador) {
 		this.empleadores.add(empleador);
 	}
 

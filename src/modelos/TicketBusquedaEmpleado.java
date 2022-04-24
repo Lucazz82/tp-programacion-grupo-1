@@ -1,5 +1,7 @@
 package modelos;
 
+import java.util.Arrays;
+
 import modelos.aspectos.Estudios;
 import modelos.aspectos.Experiencia;
 import modelos.aspectos.PuestoLaboral;
@@ -32,6 +34,12 @@ public class TicketBusquedaEmpleado extends Ticket {
 		puntaje += this.pesos[6] * Estudios.enfrentar(this.formulario.getEstudio(), o.formulario.getEstudio());
 		
 		return puntaje;
+	}
+
+
+	@Override
+	public String toString() {
+		return "TicketBusquedaEmpleado [" + super.toString() + " pesos=" + Arrays.toString(pesos) + "]";
 	}
 
 	

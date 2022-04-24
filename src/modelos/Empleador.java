@@ -11,7 +11,6 @@ public class Empleador extends Usuario {
 	private String nombre;
 	private String tipoPersona;
 	private Rubros rubro;
-	private HashMap<String, Double> pesos;
 	private ArrayList<TicketBusquedaEmpleado> tickets = new ArrayList<TicketBusquedaEmpleado>();
 	
 
@@ -20,12 +19,8 @@ public class Empleador extends Usuario {
 		this.nombre = nombre;
 		this.tipoPersona = tipoPersona;
 		this.rubro = rubro;
-		Agencia.getInstancia().agregarEmpleador(this);
 	}
 	
-	public HashMap<String, Double> getPesos() {
-		return pesos;
-	}
 	public void agregarTicket(TicketBusquedaEmpleado ticket) {
 		this.tickets.add(ticket);
 	}
@@ -46,5 +41,11 @@ public class Empleador extends Usuario {
 		return rubro;
 	}
 
+	@Override
+	public String toString() {
+		return "Empleador [" + super.toString() + " nombre=" + nombre + ", tipoPersona=" + tipoPersona + ", rubro=" + rubro + ", tickets=" + tickets + "]";
+	}
+
+	
 	
 }

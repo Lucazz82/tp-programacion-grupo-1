@@ -23,7 +23,6 @@ public class EmpleadoPretenso extends Usuario {
 		this.apellido = apellido;
 		this.telefono = telefono;
 		this.fechaNacimiento = fechaNacimiento;
-		Agencia.getInstancia().agregarEmpleado(this);
 	}
 	
 	public String getNombre() {

@@ -43,4 +43,12 @@ public abstract class Ticket{
 	 * @return: el puntaje del ticket. 
 	 */
 	public abstract double enfrentar(Ticket o);
+
+	@Override
+	public String toString() {
+		return "fechaAlta=" + fechaAlta + ", formulario=" + formulario + ", estado=" + estado + ", creador="
+				+ creador;
+	}
+	
+	
 }
