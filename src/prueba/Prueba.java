@@ -20,7 +20,7 @@ import modelos.Ticket;
 import modelos.TicketBusquedaEmpleado;
 import modelos.TicketBusquedaEmpleo;
 import modelos.Usuario;
-import modelos.UsuarioOrdenable;
+import modelos.TicketOrdenable;
 
 public class Prueba {
 
@@ -32,34 +32,40 @@ public class Prueba {
 		double pesos2[]= {1,8,4,5,6,-1,5};
 		
 
-		EmpleadoPretenso u1 = new EmpleadoPretenso("Teo", "Puto");
+		EmpleadoPretenso empleado1 = new EmpleadoPretenso("Teo", "Puto");
 //		Usuario u2 = new Empleador("Lucas", "Peron");
-		Usuario u2 = new EmpleadoPretenso("Cami", "nazi");
-		Usuario u3 = new EmpleadoPretenso("Raul", "Dametteis");
-		Empleador u4 = new Empleador("Franco", "Demaio", "Matias", "Fisica", Rubros.COMERCIO_INTERNACIONAL);
-		Empleador u5 = new Empleador("Lucas", "DeLellis", "Lucas", "Juridica", Rubros.SALUD);
+		Usuario empleado2 = new EmpleadoPretenso("Cami", "nazi");
+		Usuario empleado3 = new EmpleadoPretenso("Raul", "Dametteis");
+		Empleador empleador1 = new Empleador("Franco", "Demaio", "Matias", "Fisica", Rubros.COMERCIO_INTERNACIONAL);
+		Empleador empleador2 = new Empleador("Lucas", "DeLellis", "Lucas", "Juridica", Rubros.SALUD);
 		
 		Formulario f1 = fabrica.getFormulario(Locaciones.CUALQUIERA, Remuneraciones.ENTRE_V1_V2, 500, 600, CargasHorarias.COMPLETA,
-				PuestosLaborales.SEMI_SENIOR, RangosEtarios.ENTRE_40_50, Experiencias.MUCHA, Estudios.PRIMARIO,
+				PuestosLaborales.GERENCIAL, RangosEtarios.ENTRE_40_50, Experiencias.MUCHA, Estudios.PRIMARIO,
 				Rubros.SALUD);
 		Formulario f2= fabrica.getFormulario(Locaciones.HOME_OFFICE, Remuneraciones.MAS_DE_V2, 50, 1000, CargasHorarias.MEDIA,
 				PuestosLaborales.JUNIOR, RangosEtarios.MENOS_DE_40, Experiencias.MUCHA, Estudios.PRIMARIO,
 				Rubros.SALUD);
 		Formulario f3 = fabrica.getFormulario(Locaciones.CUALQUIERA, Remuneraciones.HASTA_V1, 500, 600, CargasHorarias.COMPLETA,
-				PuestosLaborales.SEMI_SENIOR, RangosEtarios.MENOS_DE_40, Experiencias.MUCHA, Estudios.PRIMARIO,
+				PuestosLaborales.GERENCIAL, RangosEtarios.MENOS_DE_40, Experiencias.MUCHA, Estudios.PRIMARIO,
 				Rubros.SALUD);
 		
-		Ticket t1 = new TicketBusquedaEmpleo(u1, f1);
-		Ticket t2 = new TicketBusquedaEmpleado(u5,f2,pesos1);
-		Ticket t3 = new TicketBusquedaEmpleado(u4,f3,pesos2);
+		Ticket t1 = new TicketBusquedaEmpleo(empleado1, f1);
+		Ticket t2 = new TicketBusquedaEmpleado(empleador2,f2,pesos1);
+		Ticket t3 = new TicketBusquedaEmpleado(empleador1,f3,pesos2);
 		
-		u1.setTicket((TicketBusquedaEmpleo)t1);
-		u4.agregarTicket((TicketBusquedaEmpleado) t3);
-		u5.agregarTicket((TicketBusquedaEmpleado) t2);
+		empleado1.setTicket((TicketBusquedaEmpleo)t1);
+		empleador1.agregarTicket((TicketBusquedaEmpleado) t3);
+		empleador2.agregarTicket((TicketBusquedaEmpleado) t2);
+		
+		agencia.agregarEmpleado(empleado1);
+//		agencia.agregarEmpleado((EmpleadoPretenso) u2);
+//		agencia.agregarEmpleado((EmpleadoPretenso) u3);
+		agencia.agregarEmpleador(empleador1);
+		agencia.agregarEmpleador(empleador2);
 		
 
 		agencia.generarListaAsignacion();
-		Iterator<UsuarioOrdenable> iterador=agencia.getListaAsignacion((TicketBusquedaEmpleo)t1);
+		Iterator<TicketOrdenable> iterador=agencia.getListaAsignacion((TicketBusquedaEmpleo)t1);
 		
 		while (iterador.hasNext()) {
 			System.out.println(iterador.next());

@@ -12,19 +12,19 @@ import modelos.aspectos.Locacion;
 
 public class Formulario {
 	private Locacion locacion;
-	private int remuneracion;
+	private Remuneraciones remuneracion;
 	private double v1;
 	private double v2;
 	private CargaHoraria cargaHoraria;
-	private int puesto;
-	private int rangoEtario;
-	private int experiencia;
-	private int estudio;
+	private PuestosLaborales puesto;
+	private RangosEtarios rangoEtario;
+	private Experiencias experiencia;
+	private Estudios estudio;
 	private Rubros rubro;
 	
-	public Formulario(Locacion locacion, int remuneracion, double v1, double v2,
-			CargaHoraria cargaHoraria, int puesto, int rangoEtario, int experiencia,
-			int estudio, Rubros rubro) {
+	public Formulario(Locacion locacion, Remuneraciones remuneracion, double v1, double v2,
+			CargaHoraria cargaHoraria, PuestosLaborales puesto, RangosEtarios rangoEtario, Experiencias experiencia,
+			Estudios estudio, Rubros rubro) {
 		this.locacion = locacion;
 		this.remuneracion = remuneracion;
 		this.v1 = v1;
@@ -41,7 +41,7 @@ public class Formulario {
 		return locacion;
 	}
 
-	public int getRemuneracion() {
+	public Remuneraciones getRemuneracion() {
 		return remuneracion;
 	}
 
@@ -57,19 +57,19 @@ public class Formulario {
 		return cargaHoraria;
 	}
 
-	public int getPuesto() {
+	public PuestosLaborales getPuesto() {
 		return puesto;
 	}
 
-	public int getRangoEtario() {
+	public RangosEtarios getRangoEtario() {
 		return rangoEtario;
 	}
 
-	public int getExperiencia() {
+	public Experiencias getExperiencia() {
 		return experiencia;
 	}
 
-	public int getEstudio() {
+	public Estudios getEstudio() {
 		return estudio;
 	}
 	

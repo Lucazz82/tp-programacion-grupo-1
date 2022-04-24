@@ -8,11 +8,11 @@ public abstract class Ticket{
 	protected Date fechaAlta;
 	protected Formulario formulario;
 	protected EstadosTicket estado;
-	protected final Usuario creador;
+	protected Usuario creador;
 	
 	public Ticket(Usuario creador, Formulario formulario) {
-		this.fechaAlta=new Date();
-		this.estado=EstadosTicket.ACTIVO;
+		this.fechaAlta = new Date();
+		this.estado = EstadosTicket.ACTIVO;
 		this.formulario = formulario;
 		this.creador = creador;
 	}
@@ -22,7 +22,18 @@ public abstract class Ticket{
 	}
 	
 	public void setEstado(EstadosTicket estado) {
-		this.estado = estado;
+		if(this.estado != EstadosTicket.CANCELADO && this.estado != EstadosTicket.FINALIZADO) {
+			this.estado = estado;
+			
+			if(this.estado == EstadosTicket.FINALIZADO) {
+				this.creador.finalizarTicket();
+			}
+			
+			if(this.estado == EstadosTicket.CANCELADO) {
+				this.creador.cancelarTicket();
+			}
+			
+		}
 	}
 	
 	public Date getFechaAlta() {

@@ -117,6 +117,11 @@ public class Agencia {
 		
 		cvs.sort(null);
 		
+		EmpleadoPretenso empleado = (EmpleadoPretenso) cvs.get(0).getTicket().getCreador();
+		empleado.puntajePrimerLugar();
+		empleado = (EmpleadoPretenso) cvs.get(cvs.size() - 1).getTicket().getCreador();
+		empleado.puntajeUltimoLugar();
+		
 		return cvs.iterator();
 	}
 	
@@ -137,6 +142,9 @@ public class Agencia {
 		}
 		
 		puestosLaborales.sort(null);
+		
+		Empleador empleador = (Empleador) puestosLaborales.get(0).getTicket().getCreador();
+		empleador.puntajePrimerLugar();
 		
 		return puestosLaborales.iterator();
 	}

@@ -17,6 +17,16 @@ public class TicketOrdenable implements Comparable<TicketOrdenable> {
 	public int compareTo(TicketOrdenable o) {
 		return -1 * this.puntaje.compareTo(o.puntaje);
 	}
+	
+	
+
+	public Ticket getTicket() {
+		return ticket;
+	}
+
+	public Double getPuntaje() {
+		return puntaje;
+	}
 
 	@Override
 	public String toString() {

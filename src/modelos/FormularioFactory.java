@@ -53,9 +53,9 @@ public class FormularioFactory {
 			break;
 		}
 
-		return new Formulario(locacionResultado, remuneracion.getPosicion(), v1, v2, cargaHorariaResultado,
-				puestoLaboral.getPosicion(), rangoEtario.getPosicion(), experienciaPrevia.getPosicion(),
-				estudios.getPosicion(), rubro);
+		return new Formulario(locacionResultado, remuneracion, v1, v2, cargaHorariaResultado,
+				puestoLaboral, rangoEtario, experienciaPrevia,
+				estudios, rubro);
 	}
 
 }

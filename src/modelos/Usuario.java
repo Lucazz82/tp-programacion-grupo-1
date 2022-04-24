@@ -1,14 +1,11 @@
 package modelos;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-
 import excepciones.ContrasenaIncorrectaException;
 
 public abstract class Usuario {
 	private String nombreUsuario;
 	private String contrasena;
-	private int puntaje;
+	protected int puntaje;
 
 	
 
@@ -23,6 +20,10 @@ public abstract class Usuario {
 			throw new ContrasenaIncorrectaException("Contrasena incorrecta");
 		}
 	}
+	
+	public abstract void finalizarTicket();
+	public abstract void cancelarTicket();
+	public abstract double calcularComision(Ticket ticket);
 	
 	
 	public String getnombreUsuario() {

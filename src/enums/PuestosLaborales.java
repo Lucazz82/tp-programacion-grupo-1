@@ -3,7 +3,7 @@ package enums;
 public enum PuestosLaborales {
 	JUNIOR(0),
 	SENIOR(1),
-	SEMI_SENIOR(2);
+	GERENCIAL(2);
 	private int posicion;
 	private PuestosLaborales(int posicion) {
 		this.posicion = posicion;
