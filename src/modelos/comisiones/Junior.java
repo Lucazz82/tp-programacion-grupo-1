@@ -10,11 +10,6 @@ public class Junior extends PuestoLaboralDecorator {
 	}
 
 	@Override
-	public double calcularComision() {
-		return 0.8*this.encapsulado.calcularComision();
-	}
-
-	@Override
 	public double enfrentar(IEnfrentableAspectos o) {
 		// TODO Auto-generated method stub
 		return o.enfrentarPrimero();
@@ -37,5 +32,18 @@ public class Junior extends PuestoLaboralDecorator {
 		// TODO Auto-generated method stub
 		return -1;
 	}
+	@Override
+	public double calcularPorcentaje() {
+		double porcentaje = this.encapsulado.calcularPorcentaje();
+		double valor;
+		
+		if (porcentaje>=0.8)
+			valor=0;
+		else
+			valor = 0.8-porcentaje;
+		
+		return valor;
+	}
+
 
 }

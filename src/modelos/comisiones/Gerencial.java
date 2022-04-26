@@ -10,11 +10,7 @@ public class Gerencial extends PuestoLaboralDecorator {
 
 	}
 
-	@Override
-	public double calcularComision() {
 
-		return this.encapsulado.calcularComision();
-	}
 
 	@Override
 	public double enfrentar(IEnfrentableAspectos o) {
@@ -38,6 +34,19 @@ public class Gerencial extends PuestoLaboralDecorator {
 	public double enfrentarTercero() {
 
 		return 1;
+	}
+
+	@Override
+	public double calcularPorcentaje() {
+		double porcentaje = this.encapsulado.calcularPorcentaje();
+		double valor;
+		
+		if (porcentaje>=1)
+			valor=0;
+		else
+			valor = 1.0-porcentaje;
+		
+		return valor;
 	}
 
 }
