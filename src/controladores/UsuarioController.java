@@ -19,6 +19,6 @@ public class UsuarioController {
 	}
 	
 	public void registrarEmpleado(String nombreUsuario, String contrasena) {
-		Agencia.getInstancia().agregarEmpleado(new EmpleadoPretenso(nombreUsuario, contrasena));
+		Agencia.getInstancia().registrarUsuario(new EmpleadoPretenso(nombreUsuario, contrasena));
 	}
 }

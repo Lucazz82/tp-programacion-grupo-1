@@ -148,6 +148,29 @@ public class Agencia {
 		
 		return puestosLaborales.iterator();
 	}
+	
+	public void calcularPuntajes() {
+		for(TicketBusquedaEmpleado ticketEmpleador : listasAsignaciones.keySet()) {
+			try {
+				Iterator<TicketOrdenable> lista = this.getListaAsignacion(ticketEmpleador);
+				// empleador1 -> puntaje priemr lugar
+			} catch (TicketInexistenteException e) {
+				// Jamas se va a ejecutar
+				e.printStackTrace();
+			}
+		}
+		
+		for(EmpleadoPretenso empleado : empleados) {
+			try {
+				Iterator<TicketOrdenable> lista = this.getListaAsignacion(empleado.getTicket());
+				// Calcular puntaje primero
+				// Calcular puntaje ultimo
+			} catch (TicketInexistenteException e) {
+				// Puede que se ejecute
+				e.printStackTrace();
+			}
+		}
+	}
 		
 	public void registrarUsuario(EmpleadoPretenso empleado) {
 		this.empleados.add(empleado);
