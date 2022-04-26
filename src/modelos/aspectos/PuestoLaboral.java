@@ -1,10 +1,15 @@
 package modelos.aspectos;
 
 public class PuestoLaboral {
+	private int pos;
+
+	public PuestoLaboral(int pos) {
+		this.pos = pos;
+	}
 
 	private static double[][] pesos = { { 1, -0.5, -1 }, { -0.5, 1, -0.5 }, { -1, 1, -0, 5 } };
 
-	public static double enfrentar(int puestoRequerido, int puestoConseguido) {
-		return pesos[puestoRequerido][puestoConseguido];
+	public double enfrentar(PuestoLaboral o) {
+		return pesos[this.pos][o.pos];
 	}
 }
