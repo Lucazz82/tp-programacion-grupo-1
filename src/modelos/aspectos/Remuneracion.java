@@ -10,4 +10,8 @@ public class Remuneracion {
 	public  double enfrentar(Remuneracion o) {
 		return pesos[this.pos][o.pos];
 	}
+	
+	public int getPos() {
+		return this.pos;
+	}
 }

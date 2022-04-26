@@ -83,14 +83,14 @@ public class EmpleadoPretenso extends Usuario {
 		double porcentaje = 0;
 		Formulario formulario = this.ticket.getFormulario();
 
-		switch (formulario.getPuesto()) {
-		case GERENCIAL:
+		switch (formulario.getPuesto().getPos()) {
+		case 2:
 			porcentaje = 1;
 			break;
-		case JUNIOR:
+		case 0:
 			porcentaje = 0.8;
 			break;
-		case SENIOR:
+		case 1:
 			porcentaje = 0.9;
 			break;
 		default:
@@ -101,14 +101,14 @@ public class EmpleadoPretenso extends Usuario {
 		porcentaje = (porcentaje > 0) ? porcentaje : 0;
 
 		double sueldoPretendido = 0;
-		switch (formulario.getRemuneracion()) {
-		case ENTRE_V1_V2:
+		switch (formulario.getRemuneracion().getPos()) {
+		case 1:
 			sueldoPretendido = (formulario.getV2() + formulario.getV1()) / 2;
 			break;
-		case HASTA_V1:
+		case 0:
 			sueldoPretendido = formulario.getV1();
 			break;
-		case MAS_DE_V2:
+		case 2:
 			sueldoPretendido = formulario.getV2();
 			break;
 		}

@@ -15,6 +15,7 @@ public class RangoEtarioFactory {
 			break;
 		case MENOS_DE_40:
 			resultado = new RangoEtario(0);
+			break;
 		}
 		return resultado;
 	}

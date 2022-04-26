@@ -25,16 +25,12 @@ public class TicketBusquedaEmpleado extends Ticket {
 	public double enfrentar(Ticket o) {
 		double puntaje = 0;
 		puntaje += this.pesos[0] * this.formulario.getLocacion().enfrentar(o.formulario.getLocacion());
-		puntaje += this.pesos[1] * Remuneracion.enfrentar(this.formulario.getRemuneracion().getPosicion(),
-				o.formulario.getRemuneracion().getPosicion());
+		puntaje += this.pesos[1] * this.formulario.getRemuneracion().enfrentar(o.formulario.getRemuneracion());
 		puntaje += this.pesos[2] * this.formulario.getCargaHoraria().enfrentar(o.formulario.getCargaHoraria());
-		puntaje += this.pesos[3] * PuestoLaboral.enfrentar(this.formulario.getPuesto().getPosicion(),
-				o.formulario.getPuesto().getPosicion());
-		puntaje += this.pesos[4] * RangoEtario.enfrentar(this.formulario.getRangoEtario().getPosicion(),
-				o.formulario.getRangoEtario().getPosicion());
+		puntaje += this.pesos[3] * this.formulario.getPuesto().enfrentar(o.formulario.getPuesto());
+		puntaje += this.pesos[4] * this.formulario.getRangoEtario().enfrentar(o.formulario.getRangoEtario());
 		puntaje += this.pesos[5] * this.formulario.getExperiencia().enfrentar(o.formulario.getExperiencia());
-		puntaje += this.pesos[6] * Estudios.enfrentar(this.formulario.getEstudio().getPosicion(),
-				o.formulario.getEstudio().getPosicion());
+		puntaje += this.pesos[6] * this.formulario.getEstudio().enfrentar(o.formulario.getEstudio());
 
 		return puntaje;
 	}

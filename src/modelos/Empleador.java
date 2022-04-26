@@ -1,11 +1,8 @@
 package modelos;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 
-import enums.Rubros;
-import enums.TipoPersona;
 import modelos.comisiones.Rubro;
 
 public class Empleador extends Usuario {
@@ -66,14 +63,14 @@ public class Empleador extends Usuario {
 		Formulario formulario = ticket.getFormulario();
 
 		double sueldoOfrecido = 0;
-		switch (formulario.getRemuneracion()) {
-		case ENTRE_V1_V2:
+		switch (formulario.getRemuneracion().getPos()) {
+		case 1:
 			sueldoOfrecido = (formulario.getV2() + formulario.getV1()) / 2;
 			break;
-		case HASTA_V1:
+		case 0:
 			sueldoOfrecido = formulario.getV1();
 			break;
-		case MAS_DE_V2:
+		case 2:
 			sueldoOfrecido = formulario.getV2();
 			break;
 		}

@@ -1,7 +1,7 @@
 package modelos;
 
 import enums.CargasHorarias;
-import enums.Estudios;
+import enums.EstudiosPrevios;
 import enums.Experiencias;
 import enums.Locaciones;
 import enums.PuestosLaborales;
@@ -12,11 +12,20 @@ import modelos.aspectos.CargaCompleta;
 import modelos.aspectos.CargaExtendida;
 import modelos.aspectos.CargaHoraria;
 import modelos.aspectos.CargaMedia;
+import modelos.aspectos.Estudios;
 import modelos.aspectos.Experiencia;
 import modelos.aspectos.HomeOffice;
 import modelos.aspectos.Indistinto;
 import modelos.aspectos.Locacion;
 import modelos.aspectos.Presencial;
+import modelos.aspectos.PuestoLaboral;
+import modelos.aspectos.RangoEtario;
+import modelos.aspectos.Remuneracion;
+import modelos.aspectos.factories.EstudiosFactory;
+import modelos.aspectos.factories.ExperienciaFactory;
+import modelos.aspectos.factories.PuestoLaboralFactory;
+import modelos.aspectos.factories.RangoEtarioFactory;
+import modelos.aspectos.factories.RemuneracionFactory;
 import modelos.comisiones.ComercioInternacional;
 import modelos.comisiones.ComercioLocal;
 import modelos.comisiones.Rubro;
@@ -26,11 +35,21 @@ public class FormularioFactory {
 
 	public Formulario getFormulario(Locaciones locacion, Remuneraciones remuneracion, double v1, double v2,
 			CargasHorarias cargaHoraria, PuestosLaborales puestoLaboral, RangosEtarios rangoEtario,
-			Experiencias experienciaPrevia, Estudios estudios, Rubros rubro) {
+			Experiencias experienciaPrevia, EstudiosPrevios estudios, Rubros rubro) {
 		Locacion locacionResultado = null;
 		CargaHoraria cargaHorariaResultado = null;
 		Rubro rubroResultado = null;
 		Experiencia experienciaResultado = null;
+		Estudios estudiosResultado = null;
+		Remuneracion remuneracionResultado = null;
+		RangoEtario rangoEtarioResultado = null;
+		PuestoLaboral puestoLaboralResultado = null;
+		
+		ExperienciaFactory experienciaFactory = new ExperienciaFactory();
+		RemuneracionFactory remuneracionFactory = new RemuneracionFactory();
+		EstudiosFactory estudiosFactory = new EstudiosFactory();
+		PuestoLaboralFactory puestoLaboralFactory= new PuestoLaboralFactory();
+		RangoEtarioFactory rangoEtarioFactory= new RangoEtarioFactory();
 
 		switch (locacion) {
 		case CUALQUIERA:
@@ -74,20 +93,14 @@ public class FormularioFactory {
 			break;
 		}
 		
-		switch (experienciaPrevia) {
-		case MEDIA:
-			experienciaResultado = new Experiencia(1);
-			break;
-		case MUCHA:
-			experienciaResultado = new Experiencia(2);
-			break;
-		case NADA:
-			experienciaResultado = new Experiencia(0);
-			break;
-		}
+		experienciaResultado = experienciaFactory.getExperiencias(experienciaPrevia);
+		remuneracionResultado = remuneracionFactory.getRemuneracion(remuneracion);
+		puestoLaboralResultado = puestoLaboralFactory.getPuestoLaboral(puestoLaboral);
+		rangoEtarioResultado = rangoEtarioFactory.getRangosEtarios(rangoEtario);
+		estudiosResultado = estudiosFactory.getEstudios(estudios);
 
-		return new Formulario(locacionResultado, remuneracion, v1, v2, cargaHorariaResultado, puestoLaboral,
-				rangoEtario, experienciaResultado, estudios, rubroResultado);
+		return new Formulario(locacionResultado, remuneracionResultado, v1, v2, cargaHorariaResultado, puestoLaboralResultado,
+				rangoEtarioResultado, experienciaResultado, estudiosResultado, rubroResultado);
 	}
 
 }

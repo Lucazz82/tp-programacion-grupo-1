@@ -1,31 +1,28 @@
 package modelos;
 
-import enums.EstudiosPrevios;
-import enums.Experiencias;
-import enums.Locaciones;
-import enums.PuestosLaborales;
-import enums.RangosEtarios;
-import enums.Remuneraciones;
-import enums.Rubros;
 import modelos.aspectos.CargaHoraria;
+import modelos.aspectos.Estudios;
 import modelos.aspectos.Experiencia;
 import modelos.aspectos.Locacion;
+import modelos.aspectos.PuestoLaboral;
+import modelos.aspectos.RangoEtario;
+import modelos.aspectos.Remuneracion;
 import modelos.comisiones.Rubro;
 
 public class Formulario {
 	private Locacion locacion;
-	private Remuneraciones remuneracion;
+	private Remuneracion remuneracion;
 	private double v1;
 	private double v2;
 	private CargaHoraria cargaHoraria;
-	private PuestosLaborales puesto;
-	private RangosEtarios rangoEtario;
+	private PuestoLaboral puesto;
+	private RangoEtario rangoEtario;
 	private Experiencia experiencia;
-	private EstudiosPrevios estudio;
+	private Estudios estudio;
 	private Rubro rubro;
 
-	public Formulario(Locacion locacion, Remuneraciones remuneracion, double v1, double v2, CargaHoraria cargaHoraria,
-			PuestosLaborales puesto, RangosEtarios rangoEtario, Experiencia experiencia, EstudiosPrevios estudio,
+	public Formulario(Locacion locacion, Remuneracion remuneracion, double v1, double v2, CargaHoraria cargaHoraria,
+			PuestoLaboral puesto, RangoEtario rangoEtario, Experiencia experiencia, Estudios estudio,
 			Rubro rubro) {
 		this.locacion = locacion;
 		this.remuneracion = remuneracion;
@@ -43,7 +40,7 @@ public class Formulario {
 		return locacion;
 	}
 
-	public Remuneraciones getRemuneracion() {
+	public Remuneracion getRemuneracion() {
 		return remuneracion;
 	}
 
@@ -59,11 +56,11 @@ public class Formulario {
 		return cargaHoraria;
 	}
 
-	public PuestosLaborales getPuesto() {
+	public PuestoLaboral getPuesto() {
 		return puesto;
 	}
 
-	public RangosEtarios getRangoEtario() {
+	public RangoEtario getRangoEtario() {
 		return rangoEtario;
 	}
 
@@ -71,7 +68,7 @@ public class Formulario {
 		return experiencia;
 	}
 
-	public EstudiosPrevios getEstudio() {
+	public Estudios getEstudio() {
 		return estudio;
 	}
 

@@ -12,4 +12,9 @@ public class PuestoLaboral {
 	public double enfrentar(PuestoLaboral o) {
 		return pesos[this.pos][o.pos];
 	}
+
+	public int getPos() {
+		return pos;
+	}
+	
 }
