@@ -3,7 +3,7 @@ package prueba;
 import java.util.Iterator;
 
 import enums.CargasHorarias;
-import enums.Estudios;
+import enums.EstudiosPrevios;
 import enums.Experiencias;
 import enums.Locaciones;
 import enums.PuestosLaborales;
@@ -40,13 +40,13 @@ public class Prueba {
 
 		Formulario f1 = fabrica.getFormulario(Locaciones.CUALQUIERA, Remuneraciones.ENTRE_V1_V2, 500, 600,
 				CargasHorarias.COMPLETA, PuestosLaborales.GERENCIAL, RangosEtarios.ENTRE_40_50, Experiencias.MUCHA,
-				Estudios.PRIMARIO, Rubros.SALUD);
+				EstudiosPrevios.PRIMARIO, Rubros.SALUD);
 		Formulario f2 = fabrica.getFormulario(Locaciones.HOME_OFFICE, Remuneraciones.MAS_DE_V2, 50, 1000,
 				CargasHorarias.MEDIA, PuestosLaborales.JUNIOR, RangosEtarios.MENOS_DE_40, Experiencias.MUCHA,
-				Estudios.PRIMARIO, Rubros.SALUD);
+				EstudiosPrevios.PRIMARIO, Rubros.SALUD);
 		Formulario f3 = fabrica.getFormulario(Locaciones.CUALQUIERA, Remuneraciones.HASTA_V1, 500, 600,
 				CargasHorarias.COMPLETA, PuestosLaborales.GERENCIAL, RangosEtarios.MENOS_DE_40, Experiencias.MUCHA,
-				Estudios.PRIMARIO, Rubros.SALUD);
+				EstudiosPrevios.PRIMARIO, Rubros.SALUD);
 
 		Ticket t1 = new TicketBusquedaEmpleo(empleado1, f1);
 		Ticket t2 = new TicketBusquedaEmpleado(empleador2, f2, pesos1);
