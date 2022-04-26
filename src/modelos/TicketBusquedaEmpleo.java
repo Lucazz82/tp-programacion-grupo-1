@@ -1,8 +1,8 @@
 package modelos;
 
-public class TicketBusquedaEmpleo extends Ticket{
+public class TicketBusquedaEmpleo extends Ticket {
 	private boolean resultado;
-	
+
 	public TicketBusquedaEmpleo(Usuario creador, Formulario formulario) {
 		super(creador, formulario);
 	}
@@ -16,14 +16,13 @@ public class TicketBusquedaEmpleo extends Ticket{
 	}
 
 	@Override
-	public double enfrentar(Ticket o) {		
+	public double enfrentar(Ticket o) {
 		return o.enfrentar(this);
 	}
 
 	@Override
 	public String toString() {
-		return "TicketBusquedaEmpleo ["+ super.toString() +" resultado=" + resultado + "]";
+		return "TicketBusquedaEmpleo [" + super.toString() + " resultado=" + resultado + "]";
 	}
-	
-	
+
 }

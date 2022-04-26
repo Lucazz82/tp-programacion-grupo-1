@@ -16,6 +16,9 @@ import modelos.aspectos.HomeOffice;
 import modelos.aspectos.Indistinto;
 import modelos.aspectos.Locacion;
 import modelos.aspectos.Presencial;
+import modelos.comisiones.ComercioInternacional;
+import modelos.comisiones.ComercioLocal;
+import modelos.comisiones.Salud;
 
 public class FormularioFactory {
 
@@ -24,6 +27,7 @@ public class FormularioFactory {
 			Experiencias experienciaPrevia, Estudios estudios, Rubros rubro) {
 		Locacion locacionResultado = null;
 		CargaHoraria cargaHorariaResultado = null;
+		IRubro rubroResultado = null;
 
 		switch (locacion) {
 		case CUALQUIERA:
@@ -53,9 +57,22 @@ public class FormularioFactory {
 			break;
 		}
 
-		return new Formulario(locacionResultado, remuneracion, v1, v2, cargaHorariaResultado,
-				puestoLaboral, rangoEtario, experienciaPrevia,
-				estudios, rubro);
+		switch (rubro) {
+		case COMECIO_LOCAL:
+			rubroResultado = new ComercioLocal();
+			break;
+		case COMERCIO_INTERNACIONAL:
+			rubroResultado = new ComercioInternacional();
+			break;
+		case SALUD:
+			rubroResultado = new Salud();
+			break;
+		default:
+			break;
+		}
+
+		return new Formulario(locacionResultado, remuneracion, v1, v2, cargaHorariaResultado, puestoLaboral,
+				rangoEtario, experienciaPrevia, estudios, rubroResultado);
 	}
 
 }

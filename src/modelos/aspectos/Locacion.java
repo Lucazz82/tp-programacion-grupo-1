@@ -1,7 +1,7 @@
 package modelos.aspectos;
 
-import modelos.Enfrentable;
+import modelos.IEnfrentableAspectos;
 
-public abstract class Locacion implements Enfrentable{
+public abstract class Locacion implements IEnfrentableAspectos {
 
 }

@@ -1,8 +1,5 @@
 package enums;
 
 public enum Locaciones {
-	HOME_OFFICE,
-	PRESENCIAL,
-	CUALQUIERA;
+	HOME_OFFICE, PRESENCIAL, CUALQUIERA;
 }
-

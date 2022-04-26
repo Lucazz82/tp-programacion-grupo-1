@@ -1,8 +1,11 @@
 package modelos;
 
-public interface Enfrentable {
-	public double enfrentar(Enfrentable o); 
+public interface IEnfrentableAspectos {
+	public double enfrentar(IEnfrentableAspectos o);
+
 	public double enfrentarPrimero();
+
 	public double enfrentarSegundo();
+
 	public double enfrentarTercero();
 }

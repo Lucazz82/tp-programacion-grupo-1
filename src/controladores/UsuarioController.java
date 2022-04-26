@@ -11,13 +11,13 @@ public class UsuarioController {
 		try {
 			Usuario usuario = Agencia.getInstancia().buscarUsuario(nombreUsuario);
 			usuario.login(contrasena);
-		} catch(UsuarioInexistenteException e) {
-			
-		} catch(ContrasenaIncorrectaException e) {
-			
+		} catch (UsuarioInexistenteException e) {
+
+		} catch (ContrasenaIncorrectaException e) {
+
 		}
 	}
-	
+
 	public void registrarEmpleado(String nombreUsuario, String contrasena) {
 		Agencia.getInstancia().registrarUsuario(new EmpleadoPretenso(nombreUsuario, contrasena));
 	}

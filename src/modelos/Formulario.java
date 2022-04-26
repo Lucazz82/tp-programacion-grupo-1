@@ -20,11 +20,11 @@ public class Formulario {
 	private RangosEtarios rangoEtario;
 	private Experiencias experiencia;
 	private Estudios estudio;
-	private Rubros rubro;
-	
-	public Formulario(Locacion locacion, Remuneraciones remuneracion, double v1, double v2,
-			CargaHoraria cargaHoraria, PuestosLaborales puesto, RangosEtarios rangoEtario, Experiencias experiencia,
-			Estudios estudio, Rubros rubro) {
+	private IRubro rubro;
+
+	public Formulario(Locacion locacion, Remuneraciones remuneracion, double v1, double v2, CargaHoraria cargaHoraria,
+			PuestosLaborales puesto, RangosEtarios rangoEtario, Experiencias experiencia, Estudios estudio,
+			IRubro rubro) {
 		this.locacion = locacion;
 		this.remuneracion = remuneracion;
 		this.v1 = v1;
@@ -72,9 +72,9 @@ public class Formulario {
 	public Estudios getEstudio() {
 		return estudio;
 	}
-	
-	public Rubros getRubro() {
+
+	public IRubro getRubro() {
 		return rubro;
 	}
-	
+
 }
