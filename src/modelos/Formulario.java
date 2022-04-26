@@ -10,6 +10,7 @@ import enums.Rubros;
 import modelos.aspectos.CargaHoraria;
 import modelos.aspectos.Experiencia;
 import modelos.aspectos.Locacion;
+import modelos.aspectos.PuestoLaboral;
 import modelos.comisiones.Rubro;
 
 public class Formulario {
@@ -18,14 +19,14 @@ public class Formulario {
 	private double v1;
 	private double v2;
 	private CargaHoraria cargaHoraria;
-	private PuestosLaborales puesto;
+	private PuestoLaboral puesto;
 	private RangosEtarios rangoEtario;
 	private Experiencia experiencia;
 	private Estudios estudio;
 	private Rubro rubro;
 
 	public Formulario(Locacion locacion, Remuneraciones remuneracion, double v1, double v2, CargaHoraria cargaHoraria,
-			PuestosLaborales puesto, RangosEtarios rangoEtario, Experiencia experiencia, Estudios estudio,
+			PuestoLaboral puesto, RangosEtarios rangoEtario, Experiencia experiencia, Estudios estudio,
 			Rubro rubro) {
 		this.locacion = locacion;
 		this.remuneracion = remuneracion;
@@ -59,7 +60,7 @@ public class Formulario {
 		return cargaHoraria;
 	}
 
-	public PuestosLaborales getPuesto() {
+	public PuestoLaboral getPuesto() {
 		return puesto;
 	}
 
