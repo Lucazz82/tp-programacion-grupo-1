@@ -29,13 +29,13 @@ public class Junior extends PuestoLaboralDecorator {
 	@Override
 	public double enfrentarSegundo() {
 		// TODO Auto-generated method stub
-		return 0;
+		return -0.5;
 	}
 
 	@Override
 	public double enfrentarTercero() {
 		// TODO Auto-generated method stub
-		return 0;
+		return -1;
 	}
 
 }

@@ -1,21 +1,25 @@
 package modelos.aspectos.factories;
 
 import enums.PuestosLaborales;
-import modelos.aspectos.PuestoLaboral;
+import modelos.IEmpleado;
+import modelos.comisiones.Gerencial;
+import modelos.comisiones.Junior;
+import modelos.comisiones.PuestoLaboralDecorator;
+import modelos.comisiones.Senior;
 
 public class PuestoLaboralFactory {
-	public static PuestoLaboral getPuestoLaboral(PuestosLaborales puesto) {
-		PuestoLaboral resultado = null;
+	public static PuestoLaboralDecorator getPuestoLaboral(PuestosLaborales puesto,IEmpleado empleado) {
+		PuestoLaboralDecorator resultado = null;
 		
 		switch(puesto) {
 		case GERENCIAL:
-			resultado = new PuestoLaboral(2);
+			resultado = new Gerencial(empleado);
 			break;
 		case JUNIOR:
-			resultado = new PuestoLaboral(0);
+			resultado = new Junior(empleado);/////////////////////////////
 			break;
 		case SENIOR:
-			resultado = new PuestoLaboral(1);
+			resultado = new Senior(empleado);
 			break;		
 		}
 		

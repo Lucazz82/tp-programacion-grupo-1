@@ -7,6 +7,7 @@ import modelos.aspectos.Locacion;
 import modelos.aspectos.PuestoLaboral;
 import modelos.aspectos.RangoEtario;
 import modelos.aspectos.Remuneracion;
+import modelos.comisiones.PuestoLaboralDecorator;
 import modelos.comisiones.Rubro;
 
 public class Formulario {
@@ -15,14 +16,14 @@ public class Formulario {
 	private double v1;
 	private double v2;
 	private CargaHoraria cargaHoraria;
-	private PuestoLaboral puesto;
+	private PuestoLaboralDecorator puesto;
 	private RangoEtario rangoEtario;
 	private Experiencia experiencia;
 	private Estudios estudio;
 	private Rubro rubro;
 
 	public Formulario(Locacion locacion, Remuneracion remuneracion, double v1, double v2, CargaHoraria cargaHoraria,
-			PuestoLaboral puesto, RangoEtario rangoEtario, Experiencia experiencia, Estudios estudio,
+			PuestoLaboralDecorator puesto, RangoEtario rangoEtario, Experiencia experiencia, Estudios estudio,
 			Rubro rubro) {
 		this.locacion = locacion;
 		this.remuneracion = remuneracion;
@@ -56,7 +57,7 @@ public class Formulario {
 		return cargaHoraria;
 	}
 
-	public PuestoLaboral getPuesto() {
+	public PuestoLaboralDecorator getPuesto() {
 		return puesto;
 	}
 

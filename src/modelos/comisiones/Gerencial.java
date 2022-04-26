@@ -25,19 +25,19 @@ public class Gerencial extends PuestoLaboralDecorator {
 	@Override
 	public double enfrentarPrimero() {
 
-		return 0;
+		return -1.0;
 	}
 
 	@Override
 	public double enfrentarSegundo() {
 
-		return 0;
+		return -0.5;
 	}
 
 	@Override
 	public double enfrentarTercero() {
 
-		return 0;
+		return 1;
 	}
 
 }
