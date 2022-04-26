@@ -1,6 +1,6 @@
 package modelos;
 
-import enums.Estudios;
+import enums.EstudiosPrevios;
 import enums.Experiencias;
 import enums.Locaciones;
 import enums.PuestosLaborales;
@@ -21,11 +21,11 @@ public class Formulario {
 	private PuestosLaborales puesto;
 	private RangosEtarios rangoEtario;
 	private Experiencia experiencia;
-	private Estudios estudio;
+	private EstudiosPrevios estudio;
 	private Rubro rubro;
 
 	public Formulario(Locacion locacion, Remuneraciones remuneracion, double v1, double v2, CargaHoraria cargaHoraria,
-			PuestosLaborales puesto, RangosEtarios rangoEtario, Experiencia experiencia, Estudios estudio,
+			PuestosLaborales puesto, RangosEtarios rangoEtario, Experiencia experiencia, EstudiosPrevios estudio,
 			Rubro rubro) {
 		this.locacion = locacion;
 		this.remuneracion = remuneracion;
@@ -71,7 +71,7 @@ public class Formulario {
 		return experiencia;
 	}
 
-	public Estudios getEstudio() {
+	public EstudiosPrevios getEstudio() {
 		return estudio;
 	}
 
