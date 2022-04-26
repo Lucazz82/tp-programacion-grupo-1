@@ -80,26 +80,8 @@ public class EmpleadoPretenso extends Usuario {
 
 	@Override
 	public double calcularComision(Ticket ticket) {
-		double porcentaje = 0;
 		Formulario formulario = this.ticket.getFormulario();
-
-		switch (formulario.getPuesto().getPos()) {
-		case 2:
-			porcentaje = 1;
-			break;
-		case 0:
-			porcentaje = 0.8;
-			break;
-		case 1:
-			porcentaje = 0.9;
-			break;
-		default:
-			break;
-		}
-
-		porcentaje -= this.puntaje * 0.01;
-		porcentaje = (porcentaje > 0) ? porcentaje : 0;
-
+		
 		double sueldoPretendido = 0;
 		switch (formulario.getRemuneracion().getPos()) {
 		case 1:
@@ -113,6 +95,6 @@ public class EmpleadoPretenso extends Usuario {
 			break;
 		}
 
-		return sueldoPretendido * porcentaje;
+		return sueldoPretendido ;
 	}
 }
