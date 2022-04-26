@@ -18,6 +18,7 @@ import modelos.aspectos.Locacion;
 import modelos.aspectos.Presencial;
 import modelos.comisiones.ComercioInternacional;
 import modelos.comisiones.ComercioLocal;
+import modelos.comisiones.Rubro;
 import modelos.comisiones.Salud;
 
 public class FormularioFactory {
@@ -27,7 +28,7 @@ public class FormularioFactory {
 			Experiencias experienciaPrevia, Estudios estudios, Rubros rubro) {
 		Locacion locacionResultado = null;
 		CargaHoraria cargaHorariaResultado = null;
-		IRubro rubroResultado = null;
+		Rubro rubroResultado = null;
 
 		switch (locacion) {
 		case CUALQUIERA:

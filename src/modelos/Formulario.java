@@ -9,6 +9,7 @@ import enums.Remuneraciones;
 import enums.Rubros;
 import modelos.aspectos.CargaHoraria;
 import modelos.aspectos.Locacion;
+import modelos.comisiones.Rubro;
 
 public class Formulario {
 	private Locacion locacion;
@@ -20,11 +21,11 @@ public class Formulario {
 	private RangosEtarios rangoEtario;
 	private Experiencias experiencia;
 	private Estudios estudio;
-	private IRubro rubro;
+	private Rubro rubro;
 
 	public Formulario(Locacion locacion, Remuneraciones remuneracion, double v1, double v2, CargaHoraria cargaHoraria,
 			PuestosLaborales puesto, RangosEtarios rangoEtario, Experiencias experiencia, Estudios estudio,
-			IRubro rubro) {
+			Rubro rubro) {
 		this.locacion = locacion;
 		this.remuneracion = remuneracion;
 		this.v1 = v1;
@@ -73,7 +74,7 @@ public class Formulario {
 		return estudio;
 	}
 
-	public IRubro getRubro() {
+	public Rubro getRubro() {
 		return rubro;
 	}
 

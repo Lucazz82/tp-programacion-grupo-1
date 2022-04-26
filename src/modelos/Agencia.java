@@ -89,8 +89,8 @@ public class Agencia {
 				for (EmpleadoPretenso empleado : this.empleados) {
 					TicketBusquedaEmpleo ticketEmpleado = empleado.getTicket();
 
-					if (ticketEmpleado.getEstado() == EstadosTicket.ACTIVO && ticketEmpleador.getFormulario()
-							.getRubro() == ticketEmpleado.getFormulario().getRubro()) {
+					if (ticketEmpleado.getEstado() == EstadosTicket.ACTIVO && ticketEmpleador.getFormulario().getRubro()
+							.mismoRubro(ticketEmpleado.getFormulario().getRubro())) {
 						double puntaje = ticketEmpleador.enfrentar(ticketEmpleado);
 						listasAsignaciones.get(ticketEmpleador).put(ticketEmpleado, puntaje);
 					}

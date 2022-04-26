@@ -6,15 +6,16 @@ import java.util.Iterator;
 
 import enums.Rubros;
 import enums.TipoPersona;
+import modelos.comisiones.Rubro;
 
 public class Empleador extends Usuario {
 
 	private String nombre;
 	private ITipoPersona tipoPersona;
-	private IRubro rubro;
+	private Rubro rubro;
 	private ArrayList<TicketBusquedaEmpleado> tickets = new ArrayList<TicketBusquedaEmpleado>();
 
-	public Empleador(String nombreUsuario, String contrasena, String nombre, ITipoPersona tipoPersona, IRubro rubro) {
+	public Empleador(String nombreUsuario, String contrasena, String nombre, ITipoPersona tipoPersona, Rubro rubro) {
 		super(nombreUsuario, contrasena);
 		this.nombre = nombre;
 		this.tipoPersona = tipoPersona;
@@ -37,7 +38,7 @@ public class Empleador extends Usuario {
 		return tipoPersona;
 	}
 
-	public IRubro getRubro() {
+	public Rubro getRubro() {
 		return rubro;
 	}
 

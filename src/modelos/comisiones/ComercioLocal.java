@@ -1,11 +1,14 @@
 package modelos.comisiones;
 
 import modelos.ITipoPersona;
-import modelos.IRubro;
+import enums.Rubros;
 
-public class ComercioLocal implements IRubro {
+public class ComercioLocal extends Rubro {
 
-	@Override
+	public ComercioLocal() {
+		super(Rubros.COMECIO_LOCAL);
+	}
+
 	public double enfrentar(ITipoPersona o) {
 		return o.enfrentarComercioLocal();
 	}

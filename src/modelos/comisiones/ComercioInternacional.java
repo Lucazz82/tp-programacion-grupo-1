@@ -1,11 +1,14 @@
 package modelos.comisiones;
 
 import modelos.ITipoPersona;
-import modelos.IRubro;
+import enums.Rubros;
 
-public class ComercioInternacional implements IRubro {
+public class ComercioInternacional extends Rubro {
 
-	@Override
+	public ComercioInternacional() {
+		super(Rubros.COMERCIO_INTERNACIONAL);
+	}
+
 	public double enfrentar(ITipoPersona o) {
 		return o.enfrentarComercioInternacional();
 	}

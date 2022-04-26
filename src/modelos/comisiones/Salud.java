@@ -1,11 +1,14 @@
 package modelos.comisiones;
 
 import modelos.ITipoPersona;
-import modelos.IRubro;
+import enums.Rubros;
 
-public class Salud implements IRubro {
+public class Salud extends Rubro {
 
-	@Override
+	public Salud() {
+		super(Rubros.SALUD);
+	}
+
 	public double enfrentar(ITipoPersona o) {
 		return o.enfrentarSalud();
 	}
