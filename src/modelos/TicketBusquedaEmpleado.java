@@ -32,8 +32,7 @@ public class TicketBusquedaEmpleado extends Ticket {
 				o.formulario.getPuesto().getPosicion());
 		puntaje += this.pesos[4] * RangoEtario.enfrentar(this.formulario.getRangoEtario().getPosicion(),
 				o.formulario.getRangoEtario().getPosicion());
-		puntaje += this.pesos[5] * Experiencia.enfrentar(this.formulario.getExperiencia().getPosicion(),
-				o.formulario.getExperiencia().getPosicion());
+		puntaje += this.pesos[5] * this.formulario.getExperiencia().enfrentar(o.formulario.getExperiencia());
 		puntaje += this.pesos[6] * Estudios.enfrentar(this.formulario.getEstudio().getPosicion(),
 				o.formulario.getEstudio().getPosicion());
 

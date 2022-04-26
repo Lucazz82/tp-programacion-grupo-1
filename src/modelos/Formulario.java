@@ -8,6 +8,7 @@ import enums.RangosEtarios;
 import enums.Remuneraciones;
 import enums.Rubros;
 import modelos.aspectos.CargaHoraria;
+import modelos.aspectos.Experiencia;
 import modelos.aspectos.Locacion;
 import modelos.comisiones.Rubro;
 
@@ -19,12 +20,12 @@ public class Formulario {
 	private CargaHoraria cargaHoraria;
 	private PuestosLaborales puesto;
 	private RangosEtarios rangoEtario;
-	private Experiencias experiencia;
+	private Experiencia experiencia;
 	private Estudios estudio;
 	private Rubro rubro;
 
 	public Formulario(Locacion locacion, Remuneraciones remuneracion, double v1, double v2, CargaHoraria cargaHoraria,
-			PuestosLaborales puesto, RangosEtarios rangoEtario, Experiencias experiencia, Estudios estudio,
+			PuestosLaborales puesto, RangosEtarios rangoEtario, Experiencia experiencia, Estudios estudio,
 			Rubro rubro) {
 		this.locacion = locacion;
 		this.remuneracion = remuneracion;
@@ -66,7 +67,7 @@ public class Formulario {
 		return rangoEtario;
 	}
 
-	public Experiencias getExperiencia() {
+	public Experiencia getExperiencia() {
 		return experiencia;
 	}
 

@@ -12,6 +12,7 @@ import modelos.aspectos.CargaCompleta;
 import modelos.aspectos.CargaExtendida;
 import modelos.aspectos.CargaHoraria;
 import modelos.aspectos.CargaMedia;
+import modelos.aspectos.Experiencia;
 import modelos.aspectos.HomeOffice;
 import modelos.aspectos.Indistinto;
 import modelos.aspectos.Locacion;
@@ -29,6 +30,7 @@ public class FormularioFactory {
 		Locacion locacionResultado = null;
 		CargaHoraria cargaHorariaResultado = null;
 		Rubro rubroResultado = null;
+		Experiencia experienciaResultado = null;
 
 		switch (locacion) {
 		case CUALQUIERA:
@@ -71,9 +73,21 @@ public class FormularioFactory {
 		default:
 			break;
 		}
+		
+		switch (experienciaPrevia) {
+		case MEDIA:
+			experienciaResultado = new Experiencia(1);
+			break;
+		case MUCHA:
+			experienciaResultado = new Experiencia(2);
+			break;
+		case NADA:
+			experienciaResultado = new Experiencia(0);
+			break;
+		}
 
 		return new Formulario(locacionResultado, remuneracion, v1, v2, cargaHorariaResultado, puestoLaboral,
-				rangoEtario, experienciaPrevia, estudios, rubroResultado);
+				rangoEtario, experienciaResultado, estudios, rubroResultado);
 	}
 
 }
