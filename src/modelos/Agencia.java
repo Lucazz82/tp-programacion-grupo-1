@@ -185,6 +185,19 @@ public class Agencia {
 			}
 		}
 	}
+	
+	public void empleadoresNoElegidos() {
+		ArrayList<Empleador> empleadores = (ArrayList<Empleador>)this.empleadores.clone();
+		for (EmpleadoPretenso empleado : this.empleados) {
+			Empleador elegido = empleado.getTicket().getElegido().getCreador();
+			if (empleadores.contains(elegido)) {
+				empleadores.remove(elegido);
+			}
+		}
+		for (Empleador empleador : empleadores) {
+			empleador.puntajeNoElegido();
+		}
+	}
 
 	public void registrarUsuario(EmpleadoPretenso empleado) {
 		this.empleados.add(empleado);

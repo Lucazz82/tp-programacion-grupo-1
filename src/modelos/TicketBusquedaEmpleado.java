@@ -34,6 +34,18 @@ public class TicketBusquedaEmpleado extends Ticket {
 
 		return puntaje;
 	}
+	
+	public Empleador getCreador() {
+		return (Empleador)this.creador;
+	}
+	
+	public TicketBusquedaEmpleo getElegido() {
+		return (TicketBusquedaEmpleo)this.elegido;
+	}
+	
+	public void setElegido(TicketBusquedaEmpleo elegido) {
+		this.elegido = elegido;
+	}
 
 	@Override
 	public String toString() {
@@ -62,7 +74,7 @@ public class TicketBusquedaEmpleado extends Ticket {
 
 	@Override
 	public double calcularPorcentaje() {
-		Empleador empleador = (Empleador) this.creador;
+		Empleador empleador = (Empleador)this.creador;
 		return this.formulario.getRubro().enfrentar(empleador.getTipoPersona());
 	}
 

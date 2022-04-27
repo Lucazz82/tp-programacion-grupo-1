@@ -45,16 +45,8 @@ public abstract class Ticket implements IComision {
 		return formulario;
 	}
 
-	public Logueable getCreador() {
+	public Usuario getCreador() {
 		return creador;
-	}
-
-	public Ticket getElegido() {
-		return elegido;
-	}
-
-	public void setElegido(Ticket elegido) {
-		this.elegido = elegido;
 	}
 
 	/**
