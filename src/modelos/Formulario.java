@@ -4,7 +4,6 @@ import modelos.aspectos.CargaHoraria;
 import modelos.aspectos.Estudios;
 import modelos.aspectos.Experiencia;
 import modelos.aspectos.Locacion;
-import modelos.aspectos.PuestoLaboral;
 import modelos.aspectos.RangoEtario;
 import modelos.aspectos.Remuneracion;
 import modelos.comisiones.PuestoLaboralDecorator;
@@ -16,7 +15,7 @@ public class Formulario {
 	private double v1;
 	private double v2;
 	private CargaHoraria cargaHoraria;
-	private PuestoLaboralDecorator puesto;
+	private PuestoLaboralDecorator puesto; // No se usa en formulario, podria ir a otro lado
 	private RangoEtario rangoEtario;
 	private Experiencia experiencia;
 	private Estudios estudio;

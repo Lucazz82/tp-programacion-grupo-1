@@ -16,14 +16,8 @@ public class Agencia {
 	private static Agencia _instancia = null;
 	private ArrayList<EmpleadoPretenso> empleados = new ArrayList<EmpleadoPretenso>();
 	private ArrayList<Empleador> empleadores = new ArrayList<Empleador>();
-
-	/**
-	 * Matriz de puntajes para cada par TicketBusquedaEmpleado y
-	 * TicketBusquedaEmpleo.<br>
-	 * Tiene indice con significado.
-	 */
 	private HashMap<TicketBusquedaEmpleado, HashMap<TicketBusquedaEmpleo, Double>> listasAsignaciones = new HashMap<TicketBusquedaEmpleado, HashMap<TicketBusquedaEmpleo, Double>>();
-//	private HashMap<Empleador, HashMap<EmpleadoPretenso, Double>> listasAsignaciones;
+	private ArrayList<Coincidencia> coincidencias = new ArrayList<Coincidencia>();
 	private GregorianCalendar fechaLista;
 
 	private Agencia() {
@@ -36,25 +30,7 @@ public class Agencia {
 		return _instancia;
 	}
 
-//	public Usuario buscarUsuario(String nombreUsuario) throws UsuarioInexistenteException {
-//		ArrayList<Usuario> usuarios = (ArrayList<Usuario>) empleados.clone();
-//		usuarios.addAll(empleadores);
-//		
-//		int i = 0;		
-//		Usuario usuario = usuarios.get(i);
-//		while(i < usuarios.size() && usuario.getnombreUsuario().equals(nombreUsuario)) {
-//			i++;
-//			usuario = usuarios.get(i);
-//		}
-//		
-//		if(i < usuarios.size()) {			
-//			return usuario;
-//		} else {
-//			throw new UsuarioInexistenteException(nombreUsuario + " no existe");
-//		}
-//	}
-
-	public Usuario buscarUsuario(String nombreUsuario) throws UsuarioInexistenteException {
+	public Logueable buscarUsuario(String nombreUsuario) throws UsuarioInexistenteException {
 		ArrayList<Usuario> usuarios = (ArrayList<Usuario>) empleados.clone();
 		usuarios.addAll(empleadores);
 
@@ -193,6 +169,18 @@ public class Agencia {
 					ultimo.puntajeUltimoLugar();
 			} catch (TicketInexistenteException e) {
 				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void rondaContratacion() {
+		for(TicketBusquedaEmpleado ticketEmpleador : listasAsignaciones.keySet()) {
+			Ticket elegido = ticketEmpleador.getElegido();
+			if(elegido.getElegido() == ticketEmpleador) {
+				Coincidencia coincidencia = new Coincidencia(ticketEmpleador, elegido, ticketEmpleador.calcularComision(), elegido.getCreador().calcularComision());
+				coincidencias.add(coincidencia);
+				ticketEmpleador.setEstado(EstadosTicket.FINALIZADO);
+				elegido.setEstado(EstadosTicket.FINALIZADO);
 			}
 		}
 	}

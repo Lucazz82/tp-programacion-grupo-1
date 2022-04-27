@@ -9,6 +9,7 @@ public abstract class Ticket {
 	protected Formulario formulario;
 	protected EstadosTicket estado;
 	protected Usuario creador;
+	protected Ticket elegido;
 
 	public Ticket(Usuario creador, Formulario formulario) {
 		this.fechaAlta = new Date();
@@ -44,8 +45,16 @@ public abstract class Ticket {
 		return formulario;
 	}
 
-	public Usuario getCreador() {
+	public Logueable getCreador() {
 		return creador;
+	}
+
+	public Ticket getElegido() {
+		return elegido;
+	}
+
+	public void setElegido(Ticket elegido) {
+		this.elegido = elegido;
 	}
 
 	/**

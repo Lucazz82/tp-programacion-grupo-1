@@ -2,7 +2,7 @@ package modelos;
 
 import excepciones.ContrasenaIncorrectaException;
 
-public abstract class Usuario {
+public abstract class Usuario implements Logueable {
 	private String nombreUsuario;
 	private String contrasena;
 	protected int puntaje;
@@ -13,6 +13,7 @@ public abstract class Usuario {
 		this.puntaje = 0;
 	}
 
+	@Override
 	public void login(String contrasena) throws ContrasenaIncorrectaException {
 		if (!this.contrasena.equals(contrasena)) {
 			throw new ContrasenaIncorrectaException("Contrasena incorrecta");

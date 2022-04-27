@@ -4,12 +4,12 @@ import excepciones.ContrasenaIncorrectaException;
 import excepciones.UsuarioInexistenteException;
 import modelos.Agencia;
 import modelos.EmpleadoPretenso;
-import modelos.Usuario;
+import modelos.Logueable;
 
 public class UsuarioController {
 	public void login(String nombreUsuario, String contrasena) {
 		try {
-			Usuario usuario = Agencia.getInstancia().buscarUsuario(nombreUsuario);
+			Logueable usuario = Agencia.getInstancia().buscarUsuario(nombreUsuario);
 			usuario.login(contrasena);
 		} catch (UsuarioInexistenteException e) {
 
