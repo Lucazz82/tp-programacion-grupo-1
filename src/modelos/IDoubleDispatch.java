@@ -1,8 +1,6 @@
 package modelos;
 
-public interface IEnfrentableAspectos {
-	public double enfrentar(IEnfrentableAspectos o);
-
+public interface IDoubleDispatch extends Enfrentable<IDoubleDispatch> {
 	public double enfrentarPrimero();
 
 	public double enfrentarSegundo();

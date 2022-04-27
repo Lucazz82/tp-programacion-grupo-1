@@ -1,11 +1,11 @@
 package modelos.aspectos;
 
-import modelos.IEnfrentableAspectos;
+import modelos.IDoubleDispatch;
 
 public class CargaExtendida extends CargaHoraria {
 
 	@Override
-	public double enfrentar(IEnfrentableAspectos o) {
+	public double enfrentar(IDoubleDispatch o) {
 		return o.enfrentarTercero();
 	}
 

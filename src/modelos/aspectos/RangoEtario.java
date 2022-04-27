@@ -1,6 +1,8 @@
 package modelos.aspectos;
 
-public class RangoEtario {
+import modelos.Enfrentable;
+
+public class RangoEtario implements Enfrentable<RangoEtario> {
      private int pos;
 	
 	public RangoEtario(int pos) {

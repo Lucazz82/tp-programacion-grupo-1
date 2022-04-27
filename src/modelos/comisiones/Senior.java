@@ -1,7 +1,7 @@
 package modelos.comisiones;
 
 import modelos.IEmpleado;
-import modelos.IEnfrentableAspectos;
+import modelos.IDoubleDispatch;
 
 public class Senior extends PuestoLaboralDecorator {
 
@@ -11,7 +11,7 @@ public class Senior extends PuestoLaboralDecorator {
 	}
 
 	@Override
-	public double enfrentar(IEnfrentableAspectos o) {
+	public double enfrentar(IDoubleDispatch o) {
 		return o.enfrentarSegundo();
 	}
 

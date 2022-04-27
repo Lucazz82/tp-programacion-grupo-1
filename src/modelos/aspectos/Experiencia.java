@@ -1,6 +1,8 @@
 package modelos.aspectos;
 
-public class Experiencia {
+import modelos.Enfrentable;
+
+public class Experiencia implements Enfrentable<Experiencia> {
 	private int pos;
 	
 	public Experiencia(int pos) {

@@ -1,6 +1,6 @@
 package modelos.aspectos;
 
-import modelos.IEnfrentableAspectos;
+import modelos.IDoubleDispatch;
 
-public abstract class CargaHoraria implements IEnfrentableAspectos {
+public abstract class CargaHoraria implements IDoubleDispatch {
 }

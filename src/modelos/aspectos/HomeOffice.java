@@ -1,11 +1,11 @@
 package modelos.aspectos;
 
-import modelos.IEnfrentableAspectos;
+import modelos.IDoubleDispatch;
 
 public class HomeOffice extends Locacion {
 
 	@Override
-	public double enfrentar(IEnfrentableAspectos o) {
+	public double enfrentar(IDoubleDispatch o) {
 		return o.enfrentarPrimero();
 	}
 

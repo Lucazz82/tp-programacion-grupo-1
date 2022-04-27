@@ -1,9 +1,9 @@
 package modelos.comisiones;
 
 import modelos.IEmpleado;
-import modelos.IEnfrentableAspectos;
+import modelos.IDoubleDispatch;
 
-public abstract class PuestoLaboralDecorator implements IEmpleado,IEnfrentableAspectos {
+public abstract class PuestoLaboralDecorator implements IEmpleado, IDoubleDispatch {
 	protected IEmpleado encapsulado;
 
 

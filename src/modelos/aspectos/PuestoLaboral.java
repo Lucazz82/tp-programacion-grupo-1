@@ -1,6 +1,8 @@
 package modelos.aspectos;
 
-public class PuestoLaboral {
+import modelos.Enfrentable;
+
+public class PuestoLaboral implements Enfrentable<PuestoLaboral> {
 	private int pos;
 
 	public PuestoLaboral(int pos) {

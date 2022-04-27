@@ -1,7 +1,7 @@
 package modelos.comisiones;
 
 import modelos.IEmpleado;
-import modelos.IEnfrentableAspectos;
+import modelos.IDoubleDispatch;
 
 public class Junior extends PuestoLaboralDecorator {
 
@@ -10,7 +10,7 @@ public class Junior extends PuestoLaboralDecorator {
 	}
 
 	@Override
-	public double enfrentar(IEnfrentableAspectos o) {
+	public double enfrentar(IDoubleDispatch o) {
 		// TODO Auto-generated method stub
 		return o.enfrentarPrimero();
 	}

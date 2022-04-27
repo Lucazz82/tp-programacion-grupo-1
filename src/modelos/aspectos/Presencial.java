@@ -1,11 +1,11 @@
 package modelos.aspectos;
 
-import modelos.IEnfrentableAspectos;
+import modelos.IDoubleDispatch;
 
 public class Presencial extends Locacion {
 
 	@Override
-	public double enfrentar(IEnfrentableAspectos o) {
+	public double enfrentar(IDoubleDispatch o) {
 		return o.enfrentarSegundo();
 	}
 

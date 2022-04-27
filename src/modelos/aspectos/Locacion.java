@@ -1,7 +1,7 @@
 package modelos.aspectos;
 
-import modelos.IEnfrentableAspectos;
+import modelos.IDoubleDispatch;
 
-public abstract class Locacion implements IEnfrentableAspectos {
+public abstract class Locacion implements IDoubleDispatch {
 
 }
