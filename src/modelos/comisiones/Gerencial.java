@@ -1,16 +1,14 @@
 package modelos.comisiones;
 
-import modelos.IEmpleado;
+import modelos.IComision;
 import modelos.IDoubleDispatch;
 
 public class Gerencial extends PuestoLaboralDecorator {
 
-	public Gerencial(IEmpleado encapsulado) {
+	public Gerencial(IComision encapsulado) {
 		super(encapsulado);
 
 	}
-
-
 
 	@Override
 	public double enfrentar(IDoubleDispatch o) {
@@ -40,12 +38,12 @@ public class Gerencial extends PuestoLaboralDecorator {
 	public double calcularPorcentaje() {
 		double porcentaje = this.encapsulado.calcularPorcentaje();
 		double valor;
-		
-		if (porcentaje>=1)
-			valor=0;
+
+		if (porcentaje >= 1)
+			valor = 0;
 		else
-			valor = 1.0-porcentaje;
-		
+			valor = 1.0 - porcentaje;
+
 		return valor;
 	}
 

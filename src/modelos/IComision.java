@@ -1,6 +1,7 @@
 package modelos;
 
-public interface IEmpleado {
+public interface IComision {
 	public double calcularComision();
+
 	public double calcularPorcentaje();
 }

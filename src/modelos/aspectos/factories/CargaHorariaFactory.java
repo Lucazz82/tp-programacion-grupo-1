@@ -9,7 +9,7 @@ import modelos.aspectos.CargaMedia;
 public class CargaHorariaFactory {
 	public static CargaHoraria getCargaHoraria(CargasHorarias cargaHoraria) {
 		CargaHoraria resultado = null;
-		
+
 		switch (cargaHoraria) {
 		case COMPLETA:
 			resultado = new CargaCompleta();
@@ -21,7 +21,7 @@ public class CargaHorariaFactory {
 			resultado = new CargaMedia();
 			break;
 		}
-		
+
 		return resultado;
 	}
 }

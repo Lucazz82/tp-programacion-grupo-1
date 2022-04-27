@@ -6,7 +6,7 @@ import modelos.aspectos.Experiencia;
 public class ExperienciaFactory {
 	public static Experiencia getExperiencias(Experiencias experiencia) {
 		Experiencia resultado = null;
-		switch(experiencia) {
+		switch (experiencia) {
 		case MEDIA:
 			resultado = new Experiencia(1);
 			break;

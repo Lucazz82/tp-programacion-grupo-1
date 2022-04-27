@@ -1,11 +1,11 @@
 package modelos.comisiones;
 
-import modelos.IEmpleado;
+import modelos.IComision;
 import modelos.IDoubleDispatch;
 
 public class Junior extends PuestoLaboralDecorator {
 
-	public Junior(IEmpleado encapsulado) {
+	public Junior(IComision encapsulado) {
 		super(encapsulado);
 	}
 
@@ -32,18 +32,18 @@ public class Junior extends PuestoLaboralDecorator {
 		// TODO Auto-generated method stub
 		return -1;
 	}
+
 	@Override
 	public double calcularPorcentaje() {
 		double porcentaje = this.encapsulado.calcularPorcentaje();
 		double valor;
-		
-		if (porcentaje>=0.8)
-			valor=0;
+
+		if (porcentaje >= 0.8)
+			valor = 0;
 		else
-			valor = 0.8-porcentaje;
-		
+			valor = 0.8 - porcentaje;
+
 		return valor;
 	}
-
 
 }

@@ -24,8 +24,6 @@ public abstract class Usuario implements Logueable {
 
 	public abstract void cancelarTicket();
 
-	public abstract double calcularComision(Ticket ticket);
-
 	public String getnombreUsuario() {
 		return nombreUsuario;
 	}

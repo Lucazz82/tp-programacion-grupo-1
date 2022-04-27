@@ -9,7 +9,7 @@ import modelos.aspectos.Presencial;
 public class LocacionFactory {
 	public static Locacion getLocacion(Locaciones locacion) {
 		Locacion resultado = null;
-		
+
 		switch (locacion) {
 		case CUALQUIERA:
 			resultado = new Indistinto();
@@ -21,7 +21,7 @@ public class LocacionFactory {
 			resultado = new Presencial();
 			break;
 		}
-		
+
 		return resultado;
 	}
 }

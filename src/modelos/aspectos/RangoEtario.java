@@ -3,8 +3,8 @@ package modelos.aspectos;
 import modelos.Enfrentable;
 
 public class RangoEtario implements Enfrentable<RangoEtario> {
-     private int pos;
-	
+	private int pos;
+
 	public RangoEtario(int pos) {
 		this.pos = pos;
 	}

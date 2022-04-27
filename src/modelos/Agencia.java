@@ -172,12 +172,13 @@ public class Agencia {
 			}
 		}
 	}
-	
+
 	public void rondaContratacion() {
-		for(TicketBusquedaEmpleado ticketEmpleador : listasAsignaciones.keySet()) {
-			Ticket elegido = ticketEmpleador.getElegido();
-			if(elegido.getElegido() == ticketEmpleador) {
-				Coincidencia coincidencia = new Coincidencia(ticketEmpleador, elegido, ticketEmpleador.calcularComision(), elegido.getCreador().calcularComision());
+		for (TicketBusquedaEmpleado ticketEmpleador : listasAsignaciones.keySet()) {
+			TicketBusquedaEmpleo elegido = (TicketBusquedaEmpleo) ticketEmpleador.getElegido();
+			if (elegido.getElegido() == ticketEmpleador) {
+				Coincidencia coincidencia = new Coincidencia(ticketEmpleador, elegido,
+						ticketEmpleador.calcularComision(), elegido.calcularComision());
 				coincidencias.add(coincidencia);
 				ticketEmpleador.setEstado(EstadosTicket.FINALIZADO);
 				elegido.setEstado(EstadosTicket.FINALIZADO);

@@ -4,7 +4,7 @@ import java.util.Date;
 
 import enums.EstadosTicket;
 
-public abstract class Ticket {
+public abstract class Ticket implements IComision {
 	protected Date fechaAlta;
 	protected Formulario formulario;
 	protected EstadosTicket estado;

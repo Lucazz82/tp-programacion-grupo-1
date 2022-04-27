@@ -40,4 +40,30 @@ public class TicketBusquedaEmpleado extends Ticket {
 		return "TicketBusquedaEmpleado [" + super.toString() + " pesos=" + Arrays.toString(pesos) + "]";
 	}
 
+	@Override
+	public double calcularComision() {
+		Formulario formulario = this.getFormulario();
+
+		double sueldoOfrecido = 0;
+		switch (formulario.getRemuneracion().getPos()) {
+		case 1:
+			sueldoOfrecido = (formulario.getV2() + formulario.getV1()) / 2;
+			break;
+		case 0:
+			sueldoOfrecido = formulario.getV1();
+			break;
+		case 2:
+			sueldoOfrecido = formulario.getV2();
+			break;
+		}
+
+		return this.calcularPorcentaje() * sueldoOfrecido;
+	}
+
+	@Override
+	public double calcularPorcentaje() {
+		Empleador empleador = (Empleador) this.creador;
+		return this.formulario.getRubro().enfrentar(empleador.getTipoPersona());
+	}
+
 }

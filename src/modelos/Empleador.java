@@ -58,24 +58,4 @@ public class Empleador extends Usuario {
 		this.puntaje += 10;
 	}
 
-	@Override
-	public double calcularComision(Ticket ticket) {
-		Formulario formulario = ticket.getFormulario();
-
-		double sueldoOfrecido = 0;
-		switch (formulario.getRemuneracion().getPos()) {
-		case 1:
-			sueldoOfrecido = (formulario.getV2() + formulario.getV1()) / 2;
-			break;
-		case 0:
-			sueldoOfrecido = formulario.getV1();
-			break;
-		case 2:
-			sueldoOfrecido = formulario.getV2();
-			break;
-		}
-
-		return formulario.getRubro().enfrentar(this.tipoPersona) * sueldoOfrecido;
-	}
-
 }

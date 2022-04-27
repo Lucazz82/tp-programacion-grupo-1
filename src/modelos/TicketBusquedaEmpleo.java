@@ -2,6 +2,7 @@ package modelos;
 
 public class TicketBusquedaEmpleo extends Ticket {
 	private boolean resultado;
+	private IComision comision;
 
 	public TicketBusquedaEmpleo(Usuario creador, Formulario formulario) {
 		super(creador, formulario);
@@ -23,6 +24,16 @@ public class TicketBusquedaEmpleo extends Ticket {
 	@Override
 	public String toString() {
 		return "TicketBusquedaEmpleo [" + super.toString() + " resultado=" + resultado + "]";
+	}
+
+	@Override
+	public double calcularComision() {
+		return this.comision.calcularComision();
+	}
+
+	@Override
+	public double calcularPorcentaje() {
+		return this.comision.calcularPorcentaje();
 	}
 
 }

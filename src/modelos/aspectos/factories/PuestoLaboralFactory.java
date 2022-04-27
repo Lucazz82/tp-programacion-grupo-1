@@ -1,17 +1,17 @@
 package modelos.aspectos.factories;
 
 import enums.PuestosLaborales;
-import modelos.IEmpleado;
+import modelos.IComision;
 import modelos.comisiones.Gerencial;
 import modelos.comisiones.Junior;
 import modelos.comisiones.PuestoLaboralDecorator;
 import modelos.comisiones.Senior;
 
 public class PuestoLaboralFactory {
-	public static PuestoLaboralDecorator getPuestoLaboral(PuestosLaborales puesto,IEmpleado empleado) {
+	public static PuestoLaboralDecorator getPuestoLaboral(PuestosLaborales puesto, IComision empleado) {
 		PuestoLaboralDecorator resultado = null;
-		
-		switch(puesto) {
+
+		switch (puesto) {
 		case GERENCIAL:
 			resultado = new Gerencial(empleado);
 			break;
@@ -20,9 +20,9 @@ public class PuestoLaboralFactory {
 			break;
 		case SENIOR:
 			resultado = new Senior(empleado);
-			break;		
+			break;
 		}
-		
+
 		return resultado;
 	}
 }

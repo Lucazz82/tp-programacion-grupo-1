@@ -29,8 +29,8 @@ public class FormularioFactory {
 
 	public Formulario getFormulario(Locaciones locacion, Remuneraciones remuneracion, double v1, double v2,
 			CargasHorarias cargaHoraria, PuestosLaborales puestoLaboral, RangosEtarios rangoEtario,
-			Experiencias experienciaPrevia, EstudiosPrevios estudios, Rubros rubro, IEmpleado empleado) {
-		
+			Experiencias experienciaPrevia, EstudiosPrevios estudios, Rubros rubro, IComision empleado) {
+
 		Locacion locacionResultado = LocacionFactory.getLocacion(locacion);
 		CargaHoraria cargaHorariaResultado = CargaHorariaFactory.getCargaHoraria(cargaHoraria);
 		Rubro rubroResultado = RubroFactory.getRubro(rubro);
@@ -38,10 +38,10 @@ public class FormularioFactory {
 		Estudios estudiosResultado = EstudiosFactory.getEstudios(estudios);
 		Remuneracion remuneracionResultado = RemuneracionFactory.getRemuneracion(remuneracion);
 		RangoEtario rangoEtarioResultado = RangoEtarioFactory.getRangosEtarios(rangoEtario);
-		PuestoLaboralDecorator puestoLaboralResultado = PuestoLaboralFactory.getPuestoLaboral(puestoLaboral,empleado);
-		
-		return new Formulario(locacionResultado, remuneracionResultado, v1, v2, cargaHorariaResultado, puestoLaboralResultado,
-				rangoEtarioResultado, experienciaResultado, estudiosResultado, rubroResultado);
+		PuestoLaboralDecorator puestoLaboralResultado = PuestoLaboralFactory.getPuestoLaboral(puestoLaboral, empleado);
+
+		return new Formulario(locacionResultado, remuneracionResultado, v1, v2, cargaHorariaResultado,
+				puestoLaboralResultado, rangoEtarioResultado, experienciaResultado, estudiosResultado, rubroResultado);
 	}
 
 }

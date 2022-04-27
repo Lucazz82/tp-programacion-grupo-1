@@ -5,7 +5,7 @@ public class Coincidencia {
 	private TicketBusquedaEmpleo ticketEmpleado;
 	private double comisionEmpleador;
 	private double comisionEmpleado;
-	
+
 	public Coincidencia(TicketBusquedaEmpleado ticketEmpleador, TicketBusquedaEmpleo ticketEmpleado,
 			double comisionEmpleador, double comisionEmpleado) {
 		this.ticketEmpleador = ticketEmpleador;
@@ -29,6 +29,5 @@ public class Coincidencia {
 	public double getComisionEmpleado() {
 		return comisionEmpleado;
 	}
-	
-	
+
 }

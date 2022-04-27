@@ -9,7 +9,7 @@ import modelos.comisiones.Salud;
 public class RubroFactory {
 	public static Rubro getRubro(Rubros rubro) {
 		Rubro resultado = null;
-		
+
 		switch (rubro) {
 		case COMECIO_LOCAL:
 			resultado = new ComercioLocal();
@@ -23,7 +23,7 @@ public class RubroFactory {
 		default:
 			break;
 		}
-		
+
 		return resultado;
 	}
 }

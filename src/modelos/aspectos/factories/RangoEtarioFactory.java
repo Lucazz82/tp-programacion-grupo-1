@@ -6,7 +6,7 @@ import modelos.aspectos.RangoEtario;
 public class RangoEtarioFactory {
 	public static RangoEtario getRangosEtarios(RangosEtarios rango) {
 		RangoEtario resultado = null;
-		switch(rango) {
+		switch (rango) {
 		case ENTRE_40_50:
 			resultado = new RangoEtario(1);
 			break;

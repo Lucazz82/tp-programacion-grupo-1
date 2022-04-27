@@ -5,7 +5,7 @@ import java.util.Date;
 import enums.Experiencias;
 import enums.PuestosLaborales;
 
-public class EmpleadoPretenso extends Usuario implements IEmpleado {
+public class EmpleadoPretenso extends Usuario implements IComision {
 	private String nombre;
 	private String apellido;
 	private String telefono;
@@ -79,29 +79,9 @@ public class EmpleadoPretenso extends Usuario implements IEmpleado {
 	}
 
 	@Override
-	public double calcularComision(Ticket ticket) {
-		Formulario formulario = this.ticket.getFormulario();
-		
-		double sueldoPretendido = 0;
-		switch (formulario.getRemuneracion().getPos()) {
-		case 1:
-			sueldoPretendido = (formulario.getV2() + formulario.getV1()) / 2;
-			break;
-		case 0:
-			sueldoPretendido = formulario.getV1();
-			break;
-		case 2:
-			sueldoPretendido = formulario.getV2();
-			break;
-		}
-
-		return sueldoPretendido ;
-	}
-
-	@Override
 	public double calcularComision() {
-	Formulario formulario = this.ticket.getFormulario();
-		
+		Formulario formulario = this.ticket.getFormulario();
+
 		double sueldoPretendido = 0;
 		switch (formulario.getRemuneracion().getPos()) {
 		case 1:
@@ -115,12 +95,11 @@ public class EmpleadoPretenso extends Usuario implements IEmpleado {
 			break;
 		}
 
-		return sueldoPretendido ;
+		return sueldoPretendido;
 	}
 
 	@Override
 	public double calcularPorcentaje() {
-		// TODO Auto-generated method stub
 		return this.getPuntaje() * 0.01;
 	}
 }
