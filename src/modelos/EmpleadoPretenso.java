@@ -80,22 +80,7 @@ public class EmpleadoPretenso extends Usuario implements IComision {
 
 	@Override
 	public double calcularComision() {
-		Formulario formulario = this.ticket.getFormulario();
-
-		double sueldoPretendido = 0;
-		switch (formulario.getRemuneracion().getPos()) {
-		case 1:
-			sueldoPretendido = (formulario.getV2() + formulario.getV1()) / 2;
-			break;
-		case 0:
-			sueldoPretendido = formulario.getV1();
-			break;
-		case 2:
-			sueldoPretendido = formulario.getV2();
-			break;
-		}
-
-		return sueldoPretendido;
+		return this.ticket.getFormulario().getRemuneracion().getSueldoPretendido();
 	}
 
 	@Override

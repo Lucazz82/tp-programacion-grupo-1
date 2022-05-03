@@ -36,11 +36,11 @@ public class FormularioFactory {
 		Rubro rubroResultado = RubroFactory.getRubro(rubro);
 		Experiencia experienciaResultado = ExperienciaFactory.getExperiencias(experienciaPrevia);
 		Estudios estudiosResultado = EstudiosFactory.getEstudios(estudios);
-		Remuneracion remuneracionResultado = RemuneracionFactory.getRemuneracion(remuneracion);
+		Remuneracion remuneracionResultado = RemuneracionFactory.getRemuneracion(remuneracion, v1, v2);
 		RangoEtario rangoEtarioResultado = RangoEtarioFactory.getRangosEtarios(rangoEtario);
 		PuestoLaboralDecorator puestoLaboralResultado = PuestoLaboralFactory.getPuestoLaboral(puestoLaboral, empleado);
 
-		return new Formulario(locacionResultado, remuneracionResultado, v1, v2, cargaHorariaResultado,
+		return new Formulario(locacionResultado, remuneracionResultado, cargaHorariaResultado,
 				puestoLaboralResultado, rangoEtarioResultado, experienciaResultado, estudiosResultado, rubroResultado);
 	}
 

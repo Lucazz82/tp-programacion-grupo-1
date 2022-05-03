@@ -12,8 +12,6 @@ import modelos.comisiones.Rubro;
 public class Formulario {
 	private Locacion locacion;
 	private Remuneracion remuneracion;
-	private double v1;
-	private double v2;
 	private CargaHoraria cargaHoraria;
 	private PuestoLaboralDecorator puesto; // No se usa en formulario, podria ir a otro lado
 	private RangoEtario rangoEtario;
@@ -21,13 +19,11 @@ public class Formulario {
 	private Estudios estudio;
 	private Rubro rubro;
 
-	public Formulario(Locacion locacion, Remuneracion remuneracion, double v1, double v2, CargaHoraria cargaHoraria,
+	public Formulario(Locacion locacion, Remuneracion remuneracion, CargaHoraria cargaHoraria,
 			PuestoLaboralDecorator puesto, RangoEtario rangoEtario, Experiencia experiencia, Estudios estudio,
 			Rubro rubro) {
 		this.locacion = locacion;
 		this.remuneracion = remuneracion;
-		this.v1 = v1;
-		this.v2 = v2;
 		this.cargaHoraria = cargaHoraria;
 		this.puesto = puesto;
 		this.rangoEtario = rangoEtario;
@@ -42,14 +38,6 @@ public class Formulario {
 
 	public Remuneracion getRemuneracion() {
 		return remuneracion;
-	}
-
-	public double getV1() {
-		return v1;
-	}
-
-	public double getV2() {
-		return v2;
 	}
 
 	public CargaHoraria getCargaHoraria() {

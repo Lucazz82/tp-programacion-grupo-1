@@ -54,21 +54,7 @@ public class TicketBusquedaEmpleado extends Ticket {
 
 	@Override
 	public double calcularComision() {
-		Formulario formulario = this.getFormulario();
-
-		double sueldoOfrecido = 0;
-		switch (formulario.getRemuneracion().getPos()) {
-		case 1:
-			sueldoOfrecido = (formulario.getV2() + formulario.getV1()) / 2;
-			break;
-		case 0:
-			sueldoOfrecido = formulario.getV1();
-			break;
-		case 2:
-			sueldoOfrecido = formulario.getV2();
-			break;
-		}
-
+		double sueldoOfrecido = this.getFormulario().getRemuneracion().getSueldoPretendido();
 		return this.calcularPorcentaje() * sueldoOfrecido;
 	}
 
