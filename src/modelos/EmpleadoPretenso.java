@@ -2,9 +2,6 @@ package modelos;
 
 import java.util.Date;
 
-import enums.Experiencias;
-import enums.PuestosLaborales;
-
 public class EmpleadoPretenso extends Usuario implements IComision {
 	private String nombre;
 	private String apellido;

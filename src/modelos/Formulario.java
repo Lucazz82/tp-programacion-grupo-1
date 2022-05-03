@@ -13,14 +13,14 @@ public class Formulario {
 	private Locacion locacion;
 	private Remuneracion remuneracion;
 	private CargaHoraria cargaHoraria;
-	private PuestoLaboralDecorator puesto; // No se usa en formulario, podria ir a otro lado
+	private IDoubleDispatch puesto; // Se pone un IDoubleDispatch porque solo se usa el enfrentar
 	private RangoEtario rangoEtario;
 	private Experiencia experiencia;
 	private Estudios estudio;
 	private Rubro rubro;
 
 	public Formulario(Locacion locacion, Remuneracion remuneracion, CargaHoraria cargaHoraria,
-			PuestoLaboralDecorator puesto, RangoEtario rangoEtario, Experiencia experiencia, Estudios estudio,
+			IDoubleDispatch puesto, RangoEtario rangoEtario, Experiencia experiencia, Estudios estudio,
 			Rubro rubro) {
 		this.locacion = locacion;
 		this.remuneracion = remuneracion;
@@ -44,7 +44,7 @@ public class Formulario {
 		return cargaHoraria;
 	}
 
-	public PuestoLaboralDecorator getPuesto() {
+	public IDoubleDispatch getPuesto() {
 		return puesto;
 	}
 

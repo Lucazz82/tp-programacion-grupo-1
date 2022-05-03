@@ -2,12 +2,6 @@ package modelos;
 
 import java.util.Arrays;
 
-import modelos.aspectos.Estudios;
-import modelos.aspectos.Experiencia;
-import modelos.aspectos.PuestoLaboral;
-import modelos.aspectos.RangoEtario;
-import modelos.aspectos.Remuneracion;
-
 /**
  * Ticket de busqueda de empleado
  *

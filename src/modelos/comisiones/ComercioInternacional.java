@@ -1,7 +1,7 @@
 package modelos.comisiones;
 
-import modelos.ITipoPersona;
 import enums.Rubros;
+import modelos.ITipoPersona;
 
 public class ComercioInternacional extends Rubro {
 

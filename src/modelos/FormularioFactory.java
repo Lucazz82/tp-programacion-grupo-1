@@ -27,7 +27,7 @@ import modelos.comisiones.Rubro;
 
 public class FormularioFactory {
 
-	public Formulario getFormulario(Locaciones locacion, Remuneraciones remuneracion, double v1, double v2,
+	public static Formulario getFormulario(Locaciones locacion, Remuneraciones remuneracion, double v1, double v2,
 			CargasHorarias cargaHoraria, PuestosLaborales puestoLaboral, RangosEtarios rangoEtario,
 			Experiencias experienciaPrevia, EstudiosPrevios estudios, Rubros rubro, IComision empleado) {
 

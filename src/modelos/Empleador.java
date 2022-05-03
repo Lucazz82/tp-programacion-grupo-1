@@ -11,6 +11,12 @@ public class Empleador extends Usuario {
 	private ITipoPersona tipoPersona;
 	private Rubro rubro;
 	private ArrayList<TicketBusquedaEmpleado> tickets = new ArrayList<TicketBusquedaEmpleado>();
+	
+	public Empleador(String nombreUsuario, String contrasena, ITipoPersona tipoPersona, Rubro rubro) {
+		super(nombreUsuario, contrasena);
+		this.tipoPersona = tipoPersona;
+		this.rubro = rubro;
+	}
 
 	public Empleador(String nombreUsuario, String contrasena, String nombre, ITipoPersona tipoPersona, Rubro rubro) {
 		super(nombreUsuario, contrasena);

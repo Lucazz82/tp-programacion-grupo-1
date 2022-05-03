@@ -16,7 +16,7 @@ public class PuestoLaboralFactory {
 			resultado = new Gerencial(empleado);
 			break;
 		case JUNIOR:
-			resultado = new Junior(empleado);/////////////////////////////
+			resultado = new Junior(empleado);
 			break;
 		case SENIOR:
 			resultado = new Senior(empleado);

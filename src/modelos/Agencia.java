@@ -11,6 +11,7 @@ import excepciones.UsuarioInexistenteException;
 
 public class Agencia {
 	private static Agencia _instancia = null;
+	
 	private ArrayList<EmpleadoPretenso> empleados = new ArrayList<EmpleadoPretenso>();
 	private ArrayList<Empleador> empleadores = new ArrayList<Empleador>();
 	private HashMap<TicketBusquedaEmpleado, HashMap<TicketBusquedaEmpleo, Double>> listasAsignaciones = new HashMap<TicketBusquedaEmpleado, HashMap<TicketBusquedaEmpleo, Double>>();
@@ -41,7 +42,7 @@ public class Agencia {
 		throw new UsuarioInexistenteException(nombreUsuario + " no existe");
 	}
 
-	public void generarListaAsignacion() {
+	public void generarListasAsignacion() {
 		for (Empleador empleador : this.empleadores) {
 			this.generarListaEmpleador(empleador);
 		}
@@ -221,4 +222,7 @@ public class Agencia {
 		return empleadores.iterator();
 	}
 
+	public GregorianCalendar getFechaLista() {
+		return fechaLista;
+	}
 }
