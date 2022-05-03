@@ -21,7 +21,7 @@ public class Remuneracion implements Enfrentable<Remuneracion> {
 
 	public double getSueldoPretendido() {
 		double sueldoPretendido = 0;
-		
+
 		switch (this.pos) {
 		case 0:
 			sueldoPretendido = this.V1;
@@ -33,7 +33,7 @@ public class Remuneracion implements Enfrentable<Remuneracion> {
 			sueldoPretendido = this.V2;
 			break;
 		}
-		
+
 		return sueldoPretendido;
 	}
 }

@@ -40,8 +40,8 @@ public class FormularioFactory {
 		RangoEtario rangoEtarioResultado = RangoEtarioFactory.getRangosEtarios(rangoEtario);
 		PuestoLaboralDecorator puestoLaboralResultado = PuestoLaboralFactory.getPuestoLaboral(puestoLaboral, empleado);
 
-		return new Formulario(locacionResultado, remuneracionResultado, cargaHorariaResultado,
-				puestoLaboralResultado, rangoEtarioResultado, experienciaResultado, estudiosResultado, rubroResultado);
+		return new Formulario(locacionResultado, remuneracionResultado, cargaHorariaResultado, puestoLaboralResultado,
+				rangoEtarioResultado, experienciaResultado, estudiosResultado, rubroResultado);
 	}
 
 }

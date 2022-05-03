@@ -53,7 +53,7 @@ public class Empleador extends Usuario {
 	@Override
 	public void cancelarTicket() {
 	}
-	
+
 	public void puntajeNoElegido() {
 		this.puntaje -= 20;
 	}

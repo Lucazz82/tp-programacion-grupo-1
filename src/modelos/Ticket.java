@@ -46,6 +46,11 @@ public abstract class Ticket implements IComision {
 	}
 
 	public Usuario getCreador() {
+		Usuario creador = null;
+
+		if (this.estado == EstadosTicket.ACTIVO)
+			creador = this.creador;
+
 		return creador;
 	}
 

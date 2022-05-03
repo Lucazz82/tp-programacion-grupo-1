@@ -1,12 +1,9 @@
 package modelos;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.SortedMap;
-import java.util.TreeSet;
 
 import enums.EstadosTicket;
 import excepciones.TicketInexistenteException;
@@ -31,7 +28,8 @@ public class Agencia {
 	}
 
 	public Logueable buscarUsuario(String nombreUsuario) throws UsuarioInexistenteException {
-		ArrayList<Usuario> usuarios = (ArrayList<Usuario>) empleados.clone();
+		ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+		usuarios.addAll(empleados);
 		usuarios.addAll(empleadores);
 
 		for (Usuario usuario : usuarios) {
@@ -162,20 +160,25 @@ public class Agencia {
 					primero.puntajePrimerLugar();
 				}
 				EmpleadoPretenso ultimo = null;
+				// Empieza por el 2do. Si tiene un solo elemento consideramos que es primero no
+				// ultimo.
 				while (lista.hasNext()) {
 					ultimo = (EmpleadoPretenso) lista.next().getTicket().getCreador();
 				}
 				if (ultimo != null)
 					ultimo.puntajeUltimoLugar();
 			} catch (TicketInexistenteException e) {
+				// Puede ser que el empleado no tenga una lista.
 				e.printStackTrace();
 			}
 		}
 	}
 
 	public void rondaContratacion() {
+		this.empleadoresNoElegidos();
+
 		for (TicketBusquedaEmpleado ticketEmpleador : listasAsignaciones.keySet()) {
-			TicketBusquedaEmpleo elegido = (TicketBusquedaEmpleo) ticketEmpleador.getElegido();
+			TicketBusquedaEmpleo elegido = ticketEmpleador.getElegido();
 			if (elegido.getElegido() == ticketEmpleador) {
 				Coincidencia coincidencia = new Coincidencia(ticketEmpleador, elegido,
 						ticketEmpleador.calcularComision(), elegido.calcularComision());
@@ -185,15 +188,18 @@ public class Agencia {
 			}
 		}
 	}
-	
+
 	public void empleadoresNoElegidos() {
-		ArrayList<Empleador> empleadores = (ArrayList<Empleador>)this.empleadores.clone();
+		ArrayList<Empleador> empleadores = new ArrayList<Empleador>();
+		empleadores.addAll(this.empleadores);
+
 		for (EmpleadoPretenso empleado : this.empleados) {
 			Empleador elegido = empleado.getTicket().getElegido().getCreador();
 			if (empleadores.contains(elegido)) {
 				empleadores.remove(elegido);
 			}
 		}
+
 		for (Empleador empleador : empleadores) {
 			empleador.puntajeNoElegido();
 		}

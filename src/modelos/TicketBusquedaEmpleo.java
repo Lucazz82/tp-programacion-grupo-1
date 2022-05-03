@@ -15,15 +15,15 @@ public class TicketBusquedaEmpleo extends Ticket {
 	public boolean isResultado() {
 		return resultado;
 	}
-	
+
 	public EmpleadoPretenso getCreador() {
-		return (EmpleadoPretenso)this.creador;
+		return (EmpleadoPretenso) this.creador;
 	}
-	
+
 	public TicketBusquedaEmpleado getElegido() {
-		return (TicketBusquedaEmpleado)this.elegido;
+		return (TicketBusquedaEmpleado) this.elegido;
 	}
-	
+
 	public void setElegido(TicketBusquedaEmpleado elegido) {
 		this.elegido = elegido;
 	}
