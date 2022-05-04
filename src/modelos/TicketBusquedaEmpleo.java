@@ -1,20 +1,12 @@
 package modelos;
 
 public class TicketBusquedaEmpleo extends Ticket {
-	private boolean resultado;
 	private IComision comision;
 
 	public TicketBusquedaEmpleo(Usuario creador, Formulario formulario) {
 		super(creador, formulario);
 	}
 
-	public void setResultado(boolean resultado) {
-		this.resultado = resultado;
-	}
-
-	public boolean isResultado() {
-		return resultado;
-	}
 
 	public EmpleadoPretenso getCreador() {
 		return (EmpleadoPretenso) this.creador;
@@ -35,7 +27,7 @@ public class TicketBusquedaEmpleo extends Ticket {
 
 	@Override
 	public String toString() {
-		return "TicketBusquedaEmpleo [" + super.toString() + " resultado=" + resultado + "]";
+		return "TicketBusquedaEmpleo [" + super.toString() +"]";
 	}
 
 	@Override
