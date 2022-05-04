@@ -99,13 +99,13 @@ public class Prueba {
 		// Cargar los tickets con sus formularios
 		Formulario f1 = FormularioFactory.getFormulario(Locaciones.CUALQUIERA, Remuneraciones.ENTRE_V1_V2, 500, 600,
 				CargasHorarias.COMPLETA, PuestosLaborales.GERENCIAL, RangosEtarios.ENTRE_40_50, Experiencias.MUCHA,
-				EstudiosPrevios.PRIMARIO, Rubros.SALUD, ep1);
+				EstudiosPrevios.PRIMARIO, Rubros.SALUD);
 		Formulario f2 = FormularioFactory.getFormulario(Locaciones.HOME_OFFICE, Remuneraciones.MAS_DE_V2, 50, 1000,
 				CargasHorarias.MEDIA, PuestosLaborales.JUNIOR, RangosEtarios.MENOS_DE_40, Experiencias.MUCHA,
-				EstudiosPrevios.PRIMARIO, Rubros.SALUD, ep2);
+				EstudiosPrevios.PRIMARIO, Rubros.SALUD);
 		Formulario f3 = FormularioFactory.getFormulario(Locaciones.CUALQUIERA, Remuneraciones.HASTA_V1, 500, 600,
 				CargasHorarias.COMPLETA, PuestosLaborales.GERENCIAL, RangosEtarios.MENOS_DE_40, Experiencias.MUCHA,
-				EstudiosPrevios.PRIMARIO, Rubros.SALUD, ep3);
+				EstudiosPrevios.PRIMARIO, Rubros.SALUD);
 		
 		double pesos1[] = { 1, 2, 4, 5, 6, 7, -5 };
 		double pesos2[] = { 1, 8, 4, 5, 6, -1, 5 };
