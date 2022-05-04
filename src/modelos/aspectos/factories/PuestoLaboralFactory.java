@@ -25,4 +25,22 @@ public class PuestoLaboralFactory {
 
 		return resultado;
 	}
+	
+	public static PuestoLaboralDecorator getPuestoLaboral(PuestosLaborales puesto) {
+		PuestoLaboralDecorator resultado = null;
+
+		switch (puesto) {
+		case GERENCIAL:
+			resultado = new Gerencial();
+			break;
+		case JUNIOR:
+			resultado = new Junior();
+			break;
+		case SENIOR:
+			resultado = new Senior();
+			break;
+		}
+
+		return resultado;
+	}
 }

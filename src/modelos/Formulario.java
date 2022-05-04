@@ -1,27 +1,23 @@
 package modelos;
 
-import modelos.aspectos.CargaHoraria;
 import modelos.aspectos.Estudios;
 import modelos.aspectos.Experiencia;
-import modelos.aspectos.Locacion;
 import modelos.aspectos.RangoEtario;
 import modelos.aspectos.Remuneracion;
-import modelos.comisiones.PuestoLaboralDecorator;
 import modelos.comisiones.Rubro;
 
 public class Formulario {
 	private IDoubleDispatch locacion;
-	private Enfrentable<Remuneracion> remuneracion;
+	private Remuneracion remuneracion;
 	private IDoubleDispatch cargaHoraria;
 	private IDoubleDispatch puesto; // Se pone un IDoubleDispatch porque solo se usa el enfrentar
-	private Enfrentable<RangoEtario> rangoEtario;
-	private Enfrentable<Experiencia> experiencia;
-	private Enfrentable<Estudios> estudio;
-	private Enfrentable<ITipoPersona> rubro;
+	private RangoEtario rangoEtario;
+	private Experiencia experiencia;
+	private Estudios estudio;
+	private Rubro rubro;
 	
-	public Formulario(IDoubleDispatch locacion, Enfrentable<Remuneracion> remuneracion, IDoubleDispatch cargaHoraria,
-			IDoubleDispatch puesto, Enfrentable<RangoEtario> rangoEtario, Enfrentable<Experiencia> experiencia,
-			Enfrentable<Estudios> estudio, Enfrentable<ITipoPersona> rubro) {
+	public Formulario(IDoubleDispatch locacion, Remuneracion remuneracion, IDoubleDispatch cargaHoraria,
+			IDoubleDispatch puesto, RangoEtario rangoEtario, Experiencia experiencia, Estudios estudio, Rubro rubro) {
 		super();
 		this.locacion = locacion;
 		this.remuneracion = remuneracion;
@@ -37,7 +33,7 @@ public class Formulario {
 		return locacion;
 	}
 
-	public Enfrentable<Remuneracion> getRemuneracion() {
+	public Remuneracion getRemuneracion() {
 		return remuneracion;
 	}
 
@@ -49,21 +45,20 @@ public class Formulario {
 		return puesto;
 	}
 
-	public Enfrentable<RangoEtario> getRangoEtario() {
+	public RangoEtario getRangoEtario() {
 		return rangoEtario;
 	}
 
-	public Enfrentable<Experiencia> getExperiencia() {
+	public Experiencia getExperiencia() {
 		return experiencia;
 	}
 
-	public Enfrentable<Estudios> getEstudio() {
+	public Estudios getEstudio() {
 		return estudio;
 	}
 
-	public Enfrentable<ITipoPersona> getRubro() {
+	public Rubro getRubro() {
 		return rubro;
 	}
-
-	
+		
 }

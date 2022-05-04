@@ -4,7 +4,9 @@ import modelos.IComision;
 import modelos.IDoubleDispatch;
 
 public class Gerencial extends PuestoLaboralDecorator {
-
+	public Gerencial() {
+	}
+	
 	public Gerencial(IComision encapsulado) {
 		super(encapsulado);
 

@@ -4,6 +4,8 @@ import modelos.IComision;
 import modelos.IDoubleDispatch;
 
 public class Junior extends PuestoLaboralDecorator {
+	public Junior() {
+	}
 
 	public Junior(IComision encapsulado) {
 		super(encapsulado);
