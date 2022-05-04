@@ -10,18 +10,19 @@ import modelos.comisiones.PuestoLaboralDecorator;
 import modelos.comisiones.Rubro;
 
 public class Formulario {
-	private Locacion locacion;
-	private Remuneracion remuneracion;
-	private CargaHoraria cargaHoraria;
+	private IDoubleDispatch locacion;
+	private Enfrentable<Remuneracion> remuneracion;
+	private IDoubleDispatch cargaHoraria;
 	private IDoubleDispatch puesto; // Se pone un IDoubleDispatch porque solo se usa el enfrentar
-	private RangoEtario rangoEtario;
-	private Experiencia experiencia;
-	private Estudios estudio;
-	private Rubro rubro;
-
-	public Formulario(Locacion locacion, Remuneracion remuneracion, CargaHoraria cargaHoraria,
-			IDoubleDispatch puesto, RangoEtario rangoEtario, Experiencia experiencia, Estudios estudio,
-			Rubro rubro) {
+	private Enfrentable<RangoEtario> rangoEtario;
+	private Enfrentable<Experiencia> experiencia;
+	private Enfrentable<Estudios> estudio;
+	private Enfrentable<ITipoPersona> rubro;
+	
+	public Formulario(IDoubleDispatch locacion, Enfrentable<Remuneracion> remuneracion, IDoubleDispatch cargaHoraria,
+			IDoubleDispatch puesto, Enfrentable<RangoEtario> rangoEtario, Enfrentable<Experiencia> experiencia,
+			Enfrentable<Estudios> estudio, Enfrentable<ITipoPersona> rubro) {
+		super();
 		this.locacion = locacion;
 		this.remuneracion = remuneracion;
 		this.cargaHoraria = cargaHoraria;
@@ -32,15 +33,15 @@ public class Formulario {
 		this.rubro = rubro;
 	}
 
-	public Locacion getLocacion() {
+	public IDoubleDispatch getLocacion() {
 		return locacion;
 	}
 
-	public Remuneracion getRemuneracion() {
+	public Enfrentable<Remuneracion> getRemuneracion() {
 		return remuneracion;
 	}
 
-	public CargaHoraria getCargaHoraria() {
+	public IDoubleDispatch getCargaHoraria() {
 		return cargaHoraria;
 	}
 
@@ -48,20 +49,21 @@ public class Formulario {
 		return puesto;
 	}
 
-	public RangoEtario getRangoEtario() {
+	public Enfrentable<RangoEtario> getRangoEtario() {
 		return rangoEtario;
 	}
 
-	public Experiencia getExperiencia() {
+	public Enfrentable<Experiencia> getExperiencia() {
 		return experiencia;
 	}
 
-	public Estudios getEstudio() {
+	public Enfrentable<Estudios> getEstudio() {
 		return estudio;
 	}
 
-	public Rubro getRubro() {
+	public Enfrentable<ITipoPersona> getRubro() {
 		return rubro;
 	}
 
+	
 }
