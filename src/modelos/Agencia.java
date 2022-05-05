@@ -225,4 +225,8 @@ public class Agencia {
 	public GregorianCalendar getFechaLista() {
 		return fechaLista;
 	}
+	
+	public Iterator<Coincidencia> getCoincidencias() {
+		return this.coincidencias.iterator();
+	}
 }

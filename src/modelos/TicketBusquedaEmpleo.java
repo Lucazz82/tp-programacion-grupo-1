@@ -7,7 +7,6 @@ public class TicketBusquedaEmpleo extends Ticket {
 		super(creador, formulario);
 	}
 
-
 	public EmpleadoPretenso getCreador() {
 		return (EmpleadoPretenso) this.creador;
 	}
@@ -40,4 +39,7 @@ public class TicketBusquedaEmpleo extends Ticket {
 		return this.comision.calcularPorcentaje();
 	}
 
+	public void setComision(IComision comision) {
+		this.comision = comision;
+	}
 }

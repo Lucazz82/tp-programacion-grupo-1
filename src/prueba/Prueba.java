@@ -12,14 +12,17 @@ import enums.Remuneraciones;
 import enums.Rubros;
 import excepciones.TicketInexistenteException;
 import modelos.Agencia;
+import modelos.Coincidencia;
 import modelos.EmpleadoPretenso;
 import modelos.Empleador;
 import modelos.Formulario;
 import modelos.FormularioFactory;
+import modelos.IComision;
 import modelos.Ticket;
 import modelos.TicketBusquedaEmpleado;
 import modelos.TicketBusquedaEmpleo;
 import modelos.TicketOrdenable;
+import modelos.aspectos.factories.PuestoLaboralFactory;
 import modelos.aspectos.factories.RubroFactory;
 import modelos.comisiones.PersonaFisica;
 import modelos.comisiones.PersonaJuridica;
@@ -88,9 +91,9 @@ public class Prueba {
 				RubroFactory.getRubro(Rubros.SALUD));
 		
 		agencia.registrarUsuario(ep1);
-		agencia.registrarUsuario(ep2);
-		agencia.registrarUsuario(ep3);
-		agencia.registrarUsuario(ep4);
+//		agencia.registrarUsuario(ep2);
+//		agencia.registrarUsuario(ep3);
+//		agencia.registrarUsuario(ep4);
 		
 		agencia.registrarUsuario(e1);
 		agencia.registrarUsuario(e2);
@@ -110,14 +113,16 @@ public class Prueba {
 		double pesos1[] = { 1, 2, 4, 5, 6, 7, -5 };
 		double pesos2[] = { 1, 8, 4, 5, 6, -1, 5 };
 		
+		IComision com = PuestoLaboralFactory.getPuestoLaboral(PuestosLaborales.GERENCIAL, ep1);
+		
 		TicketBusquedaEmpleo t1 = new TicketBusquedaEmpleo(ep1, f1);
 		ep1.setTicket(t1);
+		t1.setComision(com);
 		TicketBusquedaEmpleado t2 = new TicketBusquedaEmpleado(e1, f2, pesos1);
 		e1.agregarTicket(t2);
 		TicketBusquedaEmpleado t3 = new TicketBusquedaEmpleado(e2, f3, pesos2);
 		e2.agregarTicket(t3);
 		
-		// Ronda de encuentros laborales
 		agencia.generarListasAsignacion();
 		
 		Iterator<Empleador> iteradorEmpleadores = agencia.getEmpleadores();
@@ -129,9 +134,29 @@ public class Prueba {
 			while(iteradorTickets.hasNext()) {
 				TicketBusquedaEmpleado ticket = iteradorTickets.next();
 				Iterator<TicketOrdenable> listaAsignacion = agencia.getListaAsignacion(ticket);
-				System.out.println(listaAsignacion);
+				while (listaAsignacion.hasNext()) {
+					TicketOrdenable to = listaAsignacion.next();
+					System.out.println(to);
+				}
 			}
 			
+		}
+		
+		ep1.getTicket().setElegido(t2);
+		t2.setElegido(t1);
+		t3.setElegido(t1);
+		
+		agencia.rondaContratacion();
+		
+		Iterator<Coincidencia> coincidencias = agencia.getCoincidencias();
+		while (coincidencias.hasNext()) {
+			Coincidencia c = coincidencias.next();
+			System.out.println(c.getComisionEmpleado());
+			System.out.println(c.getComisionEmpleador());
+			System.out.println(c.getTicketEmpleado());
+			System.out.println(c.getTicketEmpleador());
+			System.out.println(c.getTicketEmpleado().getCreador());
+			System.out.println(c.getTicketEmpleador().getCreador());
 		}
 	}
 

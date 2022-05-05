@@ -48,7 +48,7 @@ public class Empleador extends Usuario {
 	@Override
 	public String toString() {
 		return "Empleador [" + super.toString() + " nombre=" + nombre + ", tipoPersona=" + tipoPersona + ", rubro="
-				+ rubro + ", tickets=" + tickets + "]";
+				+ rubro + ", tickets=" + tickets.size() + "]";
 	}
 
 	@Override

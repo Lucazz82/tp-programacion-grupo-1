@@ -30,4 +30,9 @@ public class Coincidencia {
 		return comisionEmpleado;
 	}
 
+	@Override
+	public String toString() {
+		return "Coincidencia [ticketEmpleador=" + ticketEmpleador + ", ticketEmpleado=" + ticketEmpleado
+				+ ", comisionEmpleador=" + comisionEmpleador + ", comisionEmpleado=" + comisionEmpleado + "]";
+	}
 }
