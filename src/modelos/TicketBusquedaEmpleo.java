@@ -3,8 +3,9 @@ package modelos;
 public class TicketBusquedaEmpleo extends Ticket {
 	private IComision comision;
 
-	public TicketBusquedaEmpleo(Usuario creador, Formulario formulario) {
+	public TicketBusquedaEmpleo(Usuario creador, Formulario formulario, IComision comision) {
 		super(creador, formulario);
+		this.comision = comision;
 	}
 
 	public EmpleadoPretenso getCreador() {
@@ -37,9 +38,5 @@ public class TicketBusquedaEmpleo extends Ticket {
 	@Override
 	public double calcularPorcentaje() {
 		return this.comision.calcularPorcentaje();
-	}
-
-	public void setComision(IComision comision) {
-		this.comision = comision;
 	}
 }
