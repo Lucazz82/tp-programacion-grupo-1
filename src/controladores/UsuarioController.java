@@ -16,9 +16,9 @@ import modelos.aspectos.factories.PuestoLaboralFactory;
 
 public class UsuarioController {
 	public void login(String nombreUsuario, String contrasena) {
-		AgenciaController agenciaController = new AgenciaController();
+		Agencia agencia = Agencia.getInstancia();
 		try {
-			Logueable usuario = agenciaController.buscarUsuario(nombreUsuario);
+			Logueable usuario = agencia.buscarUsuario(nombreUsuario);
 			usuario.login(contrasena);
 		} catch (UsuarioInexistenteException e) {
 

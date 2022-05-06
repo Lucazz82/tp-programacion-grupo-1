@@ -11,7 +11,7 @@ import excepciones.UsuarioInexistenteException;
 
 public class Agencia {
 	private static Agencia _instancia = null;
-	
+
 	private ArrayList<EmpleadoPretenso> empleados = new ArrayList<EmpleadoPretenso>();
 	private ArrayList<Empleador> empleadores = new ArrayList<Empleador>();
 	private HashMap<TicketBusquedaEmpleado, HashMap<TicketBusquedaEmpleo, Double>> listasAsignaciones = new HashMap<TicketBusquedaEmpleado, HashMap<TicketBusquedaEmpleo, Double>>();
@@ -28,7 +28,19 @@ public class Agencia {
 		return _instancia;
 	}
 
-	
+	public Logueable buscarUsuario(String nombreUsuario) throws UsuarioInexistenteException {
+		ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+		usuarios.addAll(empleados);
+		usuarios.addAll(empleadores);
+
+		for (Usuario usuario : usuarios) {
+			if (usuario.getnombreUsuario().equals(nombreUsuario)) {
+				return usuario;
+			}
+		}
+
+		throw new UsuarioInexistenteException(nombreUsuario + " no existe");
+	}
 
 	public void generarListasAsignacion() {
 		for (Empleador empleador : this.empleadores) {
@@ -213,7 +225,7 @@ public class Agencia {
 	public GregorianCalendar getFechaLista() {
 		return fechaLista;
 	}
-	
+
 	public Iterator<Coincidencia> getCoincidencias() {
 		return this.coincidencias.iterator();
 	}
