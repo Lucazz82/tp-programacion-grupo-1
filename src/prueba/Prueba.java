@@ -36,11 +36,11 @@ public class Prueba {
 		// Registrar usuarios
 		
 		EmpleadoPretenso ep1 = new EmpleadoPretenso("Renzo", "GenioInformatico");
-		EmpleadoPretenso ep2 = new EmpleadoPretenso("Teo", "Puto");
-		EmpleadoPretenso ep3 = new EmpleadoPretenso("Cami", "nazi");
-		EmpleadoPretenso ep4 = new EmpleadoPretenso("Raul", "Dametteis");
+		EmpleadoPretenso ep2 = new EmpleadoPretenso("Teo", "Ramos");
+		EmpleadoPretenso ep3 = new EmpleadoPretenso("Cami", "Cacace");
+		EmpleadoPretenso ep4 = new EmpleadoPretenso("Guille", "Profe!");
 
-		Empleador e1 = new Empleador("Lucas", "Peron", new PersonaFisica(),
+		Empleador e1 = new Empleador("Raul", "Rodriguez", new PersonaFisica(),
 				RubroFactory.getRubro(Rubros.COMECIO_LOCAL));
 		Empleador e2 = new Empleador("Franco", "Demaio", "Matias", new PersonaJuridica(),
 				RubroFactory.getRubro(Rubros.COMERCIO_INTERNACIONAL));
@@ -91,6 +91,7 @@ public class Prueba {
 				while (listaAsignacion.hasNext()) {
 					TicketOrdenable to = listaAsignacion.next();
 					System.out.println(to);
+					System.out.println("\n");
 				}
 			}
 			
