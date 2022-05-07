@@ -14,7 +14,6 @@ public abstract class PuestoLaboralDecorator implements IComision, IDoubleDispat
 		this.encapsulado = encapsulado;
 	}
 
-	// DECORATOR QUE TIENE DOUBLE DISPATCH Y UTILIZA TEMPLATE
 	@Override
 	public double calcularComision() {
 		return this.calcularPorcentaje() * this.encapsulado.calcularComision();

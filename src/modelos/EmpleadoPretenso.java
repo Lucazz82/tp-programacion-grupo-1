@@ -7,10 +7,6 @@ public class EmpleadoPretenso extends Usuario implements IComision {
 	private String apellido;
 	private String telefono;
 	private Date fechaNacimiento;
-	/**
-	 * Cada empleado tiene un unico ticket. Es inconsistente que tenga 2 al mismo
-	 * tiempo.
-	 */
 	private TicketBusquedaEmpleo ticket;
 
 	public EmpleadoPretenso(String nombreUsuario, String contrasena) {
@@ -75,13 +71,20 @@ public class EmpleadoPretenso extends Usuario implements IComision {
 		this.puntaje += 5;
 	}
 
+	/**
+	 * Devuelve el sueldo pretendido.
+	 */
 	@Override
 	public double calcularComision() {
 		return this.ticket.getFormulario().getRemuneracion().getSueldoPretendido();
 	}
 
+	/**
+	 * <b>Pre:</b> el puntaje es un valor positivo.
+	 * Devuelve el puntaje en porcentaje.
+	 */
 	@Override
 	public double calcularPorcentaje() {
-		return this.getPuntaje() * 0.01;
+		return (this.getPuntaje() * 0.01 < 1) ? this.getPuntaje() * 0.01 : 1;
 	}
 }

@@ -13,6 +13,13 @@ public abstract class Usuario implements Logueable {
 		this.puntaje = 0;
 	}
 
+	/**
+	 * Valida si la contrasena del usuario es la recibida por parametro.
+	 * 
+	 * @param contrasena contrasena a validar
+	 * @throws ContrasenaIncorrectaException si la contrasena no corresponde a este
+	 *                                       usuario.
+	 */
 	@Override
 	public void login(String contrasena) throws ContrasenaIncorrectaException {
 		if (!this.contrasena.equals(contrasena)) {

@@ -28,7 +28,16 @@ public class Agencia {
 		return _instancia;
 	}
 
-	public Logueable buscarUsuario(String nombreUsuario) throws UsuarioInexistenteException {
+	/**
+	 * Devuelve el usuario correspondiente al nombre de usuario pasado como
+	 * parametro.
+	 * 
+	 * @param nombreUsuario nombre del usuario a buscar.
+	 * @return el usuario correspondiente a ese nombre de usuario.
+	 * @throws UsuarioInexistenteException si no existe un usuario con ese nombre de
+	 *                                     usuario.
+	 */
+	public Usuario buscarUsuario(String nombreUsuario) throws UsuarioInexistenteException {
 		ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 		usuarios.addAll(empleados);
 		usuarios.addAll(empleadores);
@@ -42,6 +51,10 @@ public class Agencia {
 		throw new UsuarioInexistenteException(nombreUsuario + " no existe");
 	}
 
+	/**
+	 * Genera las listas de asignacion de todos los usuarios y las almacena en un
+	 * atributo. Ademas setea la fecha en que ocurrio.
+	 */
 	public void generarListasAsignacion() {
 		for (Empleador empleador : this.empleadores) {
 			this.generarListaEmpleador(empleador);
@@ -50,7 +63,7 @@ public class Agencia {
 	}
 
 	/**
-	 * Genera todos los puntajes de los tickets de un empleador. <br>
+	 * Genera todos los puntajes de los tickets de un empleador.
 	 * 
 	 * @param empleador empleador cuyos tickets van a ser enfrentados.
 	 */
@@ -64,8 +77,8 @@ public class Agencia {
 				for (EmpleadoPretenso empleado : this.empleados) {
 					TicketBusquedaEmpleo ticketEmpleado = empleado.getTicket();
 
-					if (ticketEmpleado.getEstado() == EstadosTicket.ACTIVO && ticketEmpleador.getFormulario().getRubro()
-							.mismoRubro(ticketEmpleado.getFormulario().getRubro())) {
+					if (ticketEmpleado != null && ticketEmpleado.getEstado() == EstadosTicket.ACTIVO && ticketEmpleador
+							.getFormulario().getRubro().mismoRubro(ticketEmpleado.getFormulario().getRubro())) {
 						double puntaje = ticketEmpleador.enfrentar(ticketEmpleado);
 						listasAsignaciones.get(ticketEmpleador).put(ticketEmpleado, puntaje);
 					}
@@ -75,11 +88,10 @@ public class Agencia {
 	}
 
 	/**
-	 * <b>Pre: </b> El ticket no es null. <br>
 	 * 
 	 * @param ticketEmpleador el ticket del que se desea obtener su lista de
 	 *                        asignacion. <br>
-	 * @throws TicketInexistenteException cuando el ticket no posee una lista de
+	 * @throws TicketInexistenteException si el ticket no posee una lista de
 	 *                                    asignacion. <br>
 	 * @return un iterator de los empleados ordenados por su puntaje de forma
 	 *         descendente.
@@ -107,6 +119,15 @@ public class Agencia {
 		return cvs.iterator();
 	}
 
+	/**
+	 * 
+	 * @param ticketEmpleado el ticket del que se desea obtener su lista de
+	 *                       asignacion. <br>
+	 * @return un iterator de los empleados ordenados por su puntaje de forma
+	 *         descendente.
+	 * @throws TicketInexistenteException si el ticket no posee una lista de
+	 *                                    asignacion. <br>
+	 */
 	public Iterator<TicketOrdenable> getListaAsignacion(TicketBusquedaEmpleo ticketEmpleado)
 			throws TicketInexistenteException {
 		ArrayList<TicketOrdenable> puestosLaborales = new ArrayList<TicketOrdenable>();
@@ -148,7 +169,8 @@ public class Agencia {
 					primero.puntajePrimerLugar();
 				}
 			} catch (TicketInexistenteException e) {
-				// Jamas se va a ejecutar
+				// Se puede ejecutar si un ticket se creo despues de ejecutar la lista de
+				// asignacion.
 				e.printStackTrace();
 			}
 		}
@@ -175,6 +197,9 @@ public class Agencia {
 		}
 	}
 
+	/**
+	 * Genera la lista de coincidencias entre los tickets de empleado y empleador.
+	 */
 	public void rondaContratacion() {
 		this.empleadoresNoElegidos();
 
@@ -190,6 +215,9 @@ public class Agencia {
 		}
 	}
 
+	/**
+	 * Les resta puntaje a los empleadores que no fueron elegidos por ningun empleado. 
+	 */
 	public void empleadoresNoElegidos() {
 		ArrayList<Empleador> empleadores = new ArrayList<Empleador>();
 		empleadores.addAll(this.empleadores);
