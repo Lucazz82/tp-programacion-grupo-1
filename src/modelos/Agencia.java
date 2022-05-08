@@ -216,7 +216,8 @@ public class Agencia {
 	}
 
 	/**
-	 * Les resta puntaje a los empleadores que no fueron elegidos por ningun empleado. 
+	 * Les resta puntaje a los empleadores que no fueron elegidos por ningun
+	 * empleado.
 	 */
 	public void empleadoresNoElegidos() {
 		ArrayList<Empleador> empleadores = new ArrayList<Empleador>();

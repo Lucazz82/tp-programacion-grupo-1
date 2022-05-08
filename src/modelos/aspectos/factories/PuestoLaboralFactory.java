@@ -25,7 +25,7 @@ public class PuestoLaboralFactory {
 
 		return resultado;
 	}
-	
+
 	public static PuestoLaboralDecorator getPuestoLaboral(PuestosLaborales puesto) {
 		PuestoLaboralDecorator resultado = null;
 

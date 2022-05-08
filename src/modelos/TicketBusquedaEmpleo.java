@@ -27,7 +27,7 @@ public class TicketBusquedaEmpleo extends Ticket {
 
 	@Override
 	public String toString() {
-		return "TicketBusquedaEmpleo [" + super.toString() +"]";
+		return "TicketBusquedaEmpleo [" + super.toString() + "]";
 	}
 
 	@Override

@@ -2,10 +2,6 @@ package modelos;
 
 import java.util.Arrays;
 
-/**
- * Ticket de busqueda de empleado
- *
- */
 public class TicketBusquedaEmpleado extends Ticket {
 
 	private double[] pesos;

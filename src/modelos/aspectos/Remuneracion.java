@@ -16,9 +16,9 @@ public class Remuneracion implements Enfrentable<Remuneracion> {
 	private static double[][] pesos = { { 1, -0.5, -1 }, { 1, 1, -0.5 }, { 1, 1, 1 } };
 
 	/**
-	 * <b>Pre:</b> o no es null y pos esta entre 0 y 2.
-	 * Recibe otra remuneracion por parametro y devuelve el costo correspondiente a
-	 * enfrentarlos.
+	 * <b>Pre:</b> o no es null y pos esta entre 0 y 2. Recibe otra remuneracion por
+	 * parametro y devuelve el costo correspondiente a enfrentarlos.
+	 * 
 	 * @param o elemento a enfrentar.
 	 */
 	public double enfrentar(Remuneracion o) {

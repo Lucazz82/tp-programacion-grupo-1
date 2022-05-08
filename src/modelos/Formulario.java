@@ -15,7 +15,7 @@ public class Formulario {
 	private Experiencia experiencia;
 	private Estudios estudio;
 	private Rubro rubro;
-	
+
 	public Formulario(IDoubleDispatch locacion, Remuneracion remuneracion, IDoubleDispatch cargaHoraria,
 			IDoubleDispatch puesto, RangoEtario rangoEtario, Experiencia experiencia, Estudios estudio, Rubro rubro) {
 		super();
@@ -60,5 +60,5 @@ public class Formulario {
 	public Rubro getRubro() {
 		return rubro;
 	}
-		
+
 }

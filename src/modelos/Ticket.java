@@ -55,10 +55,11 @@ public abstract class Ticket implements IComision {
 	}
 
 	/**
-	 * Enfrenta 2 tickets de distinto tipo <b>Pre: el ticket recibido es de otro
-	 * tipo.
+	 * Enfrenta 2 tickets de distinto tipo. <br>
+	 * <b>Pre:</b> el ticket recibido es del otro tipo.
 	 * 
-	 * @return: el puntaje del ticket.
+	 * @param o el ticket a enfrentar.
+	 * @return el puntaje del enfrentamiento entre tickets.
 	 */
 	public abstract double enfrentar(Ticket o);
 

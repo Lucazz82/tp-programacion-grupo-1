@@ -80,8 +80,8 @@ public class EmpleadoPretenso extends Usuario implements IComision {
 	}
 
 	/**
-	 * <b>Pre:</b> el puntaje es un valor positivo.
-	 * Devuelve el puntaje en porcentaje.
+	 * <b>Pre:</b> el puntaje es un valor positivo. Devuelve el puntaje en
+	 * porcentaje.
 	 */
 	@Override
 	public double calcularPorcentaje() {

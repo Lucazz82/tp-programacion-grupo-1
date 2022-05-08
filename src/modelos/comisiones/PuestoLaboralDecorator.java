@@ -5,7 +5,7 @@ import modelos.IDoubleDispatch;
 
 public abstract class PuestoLaboralDecorator implements IComision, IDoubleDispatch {
 	protected IComision encapsulado;
-	
+
 	public PuestoLaboralDecorator() {
 		this.encapsulado = null;
 	}
