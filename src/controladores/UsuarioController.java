@@ -11,7 +11,6 @@ import modelos.IComision;
 import modelos.Logueable;
 import modelos.TicketBusquedaEmpleado;
 import modelos.TicketBusquedaEmpleo;
-import modelos.Usuario;
 import modelos.aspectos.factories.PuestoLaboralFactory;
 
 public class UsuarioController {

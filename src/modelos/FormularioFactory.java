@@ -12,7 +12,6 @@ import modelos.aspectos.CargaHoraria;
 import modelos.aspectos.Estudios;
 import modelos.aspectos.Experiencia;
 import modelos.aspectos.Locacion;
-import modelos.aspectos.PuestoLaboral;
 import modelos.aspectos.RangoEtario;
 import modelos.aspectos.Remuneracion;
 import modelos.aspectos.factories.CargaHorariaFactory;

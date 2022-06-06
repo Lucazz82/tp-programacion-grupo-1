@@ -4,7 +4,6 @@ import modelos.aspectos.CargaHoraria;
 import modelos.aspectos.Estudios;
 import modelos.aspectos.Experiencia;
 import modelos.aspectos.Locacion;
-import modelos.aspectos.PuestoLaboral;
 import modelos.aspectos.RangoEtario;
 import modelos.aspectos.Remuneracion;
 import modelos.comisiones.PuestoLaboralDecorator;
@@ -21,7 +20,8 @@ public class Formulario {
 	private Rubro rubro;
 
 	public Formulario(Locacion locacion, Remuneracion remuneracion, CargaHoraria cargaHoraria,
-			PuestoLaboralDecorator puesto, RangoEtario rangoEtario, Experiencia experiencia, Estudios estudio, Rubro rubro) {
+			PuestoLaboralDecorator puesto, RangoEtario rangoEtario, Experiencia experiencia, Estudios estudio,
+			Rubro rubro) {
 		super();
 		this.locacion = locacion;
 		this.remuneracion = remuneracion;

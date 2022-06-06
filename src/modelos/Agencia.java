@@ -205,7 +205,7 @@ public class Agencia {
 
 		for (TicketBusquedaEmpleado ticketEmpleador : listasAsignaciones.keySet()) {
 			TicketBusquedaEmpleo elegido = ticketEmpleador.getElegido();
-			 if (elegido != null && elegido.getElegido() == ticketEmpleador) {
+			if (elegido != null && elegido.getElegido() == ticketEmpleador) {
 				Coincidencia coincidencia = new Coincidencia(ticketEmpleador, elegido,
 						ticketEmpleador.calcularComision(), elegido.calcularComision());
 				coincidencias.add(coincidencia);
