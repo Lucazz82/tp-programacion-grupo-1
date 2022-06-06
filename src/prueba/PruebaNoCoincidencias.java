@@ -93,6 +93,7 @@ public class PruebaNoCoincidencias {
 		TicketBusquedaEmpleo t4 = usuarioControler.agregarTicket(ep4, f4, PuestosLaborales.SENIOR);
 
 		TicketBusquedaEmpleado t5 = usuarioControler.agregarTicket(e1, f5, pesos1);
+		TicketBusquedaEmpleado tigual = usuarioControler.agregarTicket(e1, f5, pesos1);
 		TicketBusquedaEmpleado t6 = usuarioControler.agregarTicket(e2, f6, pesos2);
 		TicketBusquedaEmpleado t7 = usuarioControler.agregarTicket(e3, f7, pesos3);
 		TicketBusquedaEmpleado t8 = usuarioControler.agregarTicket(e3, f8, pesos4);
