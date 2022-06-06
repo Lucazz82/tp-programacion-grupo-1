@@ -1,23 +1,27 @@
 package modelos;
 
+import modelos.aspectos.CargaHoraria;
 import modelos.aspectos.Estudios;
 import modelos.aspectos.Experiencia;
+import modelos.aspectos.Locacion;
+import modelos.aspectos.PuestoLaboral;
 import modelos.aspectos.RangoEtario;
 import modelos.aspectos.Remuneracion;
+import modelos.comisiones.PuestoLaboralDecorator;
 import modelos.comisiones.Rubro;
 
 public class Formulario {
-	private IDoubleDispatch locacion;
+	private Locacion locacion;
 	private Remuneracion remuneracion;
-	private IDoubleDispatch cargaHoraria;
-	private IDoubleDispatch puesto; // Se pone un IDoubleDispatch porque solo se usa el enfrentar
+	private CargaHoraria cargaHoraria;
+	private PuestoLaboralDecorator puesto;
 	private RangoEtario rangoEtario;
 	private Experiencia experiencia;
 	private Estudios estudio;
 	private Rubro rubro;
 
-	public Formulario(IDoubleDispatch locacion, Remuneracion remuneracion, IDoubleDispatch cargaHoraria,
-			IDoubleDispatch puesto, RangoEtario rangoEtario, Experiencia experiencia, Estudios estudio, Rubro rubro) {
+	public Formulario(Locacion locacion, Remuneracion remuneracion, CargaHoraria cargaHoraria,
+			PuestoLaboralDecorator puesto, RangoEtario rangoEtario, Experiencia experiencia, Estudios estudio, Rubro rubro) {
 		super();
 		this.locacion = locacion;
 		this.remuneracion = remuneracion;
@@ -29,7 +33,7 @@ public class Formulario {
 		this.rubro = rubro;
 	}
 
-	public IDoubleDispatch getLocacion() {
+	public Locacion getLocacion() {
 		return locacion;
 	}
 
@@ -37,11 +41,11 @@ public class Formulario {
 		return remuneracion;
 	}
 
-	public IDoubleDispatch getCargaHoraria() {
+	public CargaHoraria getCargaHoraria() {
 		return cargaHoraria;
 	}
 
-	public IDoubleDispatch getPuesto() {
+	public PuestoLaboralDecorator getPuesto() {
 		return puesto;
 	}
 

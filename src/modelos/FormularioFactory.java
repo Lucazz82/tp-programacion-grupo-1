@@ -12,6 +12,7 @@ import modelos.aspectos.CargaHoraria;
 import modelos.aspectos.Estudios;
 import modelos.aspectos.Experiencia;
 import modelos.aspectos.Locacion;
+import modelos.aspectos.PuestoLaboral;
 import modelos.aspectos.RangoEtario;
 import modelos.aspectos.Remuneracion;
 import modelos.aspectos.factories.CargaHorariaFactory;
@@ -31,14 +32,14 @@ public class FormularioFactory {
 			CargasHorarias cargaHoraria, PuestosLaborales puestoLaboral, RangosEtarios rangoEtario,
 			Experiencias experienciaPrevia, EstudiosPrevios estudios, Rubros rubro) {
 
-		IDoubleDispatch locacionResultado = LocacionFactory.getLocacion(locacion);
-		IDoubleDispatch cargaHorariaResultado = CargaHorariaFactory.getCargaHoraria(cargaHoraria);
+		Locacion locacionResultado = LocacionFactory.getLocacion(locacion);
+		CargaHoraria cargaHorariaResultado = CargaHorariaFactory.getCargaHoraria(cargaHoraria);
 		Rubro rubroResultado = RubroFactory.getRubro(rubro);
 		Experiencia experienciaResultado = ExperienciaFactory.getExperiencias(experienciaPrevia);
 		Estudios estudiosResultado = EstudiosFactory.getEstudios(estudios);
 		Remuneracion remuneracionResultado = RemuneracionFactory.getRemuneracion(remuneracion, v1, v2);
 		RangoEtario rangoEtarioResultado = RangoEtarioFactory.getRangosEtarios(rangoEtario);
-		IDoubleDispatch puestoLaboralResultado = PuestoLaboralFactory.getPuestoLaboral(puestoLaboral);
+		PuestoLaboralDecorator puestoLaboralResultado = PuestoLaboralFactory.getPuestoLaboral(puestoLaboral);
 
 		return new Formulario(locacionResultado, remuneracionResultado, cargaHorariaResultado, puestoLaboralResultado,
 				rangoEtarioResultado, experienciaResultado, estudiosResultado, rubroResultado);
