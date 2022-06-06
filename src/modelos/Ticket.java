@@ -2,40 +2,47 @@ package modelos;
 
 import java.util.Date;
 
-import enums.EstadosTicket;
+import modelos.estados.Activo;
+import modelos.estados.IEstado;
 
 public abstract class Ticket implements IComision {
 	protected Date fechaAlta;
 	protected Formulario formulario;
-	protected EstadosTicket estado;
+	protected IEstado estado;
 	protected Usuario creador;
 	protected Ticket elegido;
 
 	public Ticket(Usuario creador, Formulario formulario) {
 		this.fechaAlta = new Date();
-		this.estado = EstadosTicket.ACTIVO;
+		this.estado = new Activo(this);
 		this.formulario = formulario;
 		this.creador = creador;
 	}
-
-	public EstadosTicket getEstado() {
-		return estado;
+	
+	public void setEstado(IEstado estado) {
+		this.estado = estado;
 	}
-
-	public void setEstado(EstadosTicket estado) {
-		if (this.estado != EstadosTicket.CANCELADO && this.estado != EstadosTicket.FINALIZADO) {
-			this.estado = estado;
-
-			if (this.estado == EstadosTicket.FINALIZADO) {
-				this.creador.finalizarTicket();
-			}
-
-			if (this.estado == EstadosTicket.CANCELADO) {
-				this.creador.cancelarTicket();
-			}
-
-		}
+	
+	public void setActivo() {
+		this.estado.setActivo();
 	}
+	
+	public void setSuspendido() {
+		this.estado.setSuspendido();
+	}
+	
+	public void setCancelado() {
+		this.estado.setCancelado();
+	}
+	
+	public void setFinalizado() {
+		this.estado.setFinalizado();
+	}
+	
+	public boolean esActivo() {
+		return this.estado.esActivo();
+	}
+	
 
 	public Date getFechaAlta() {
 		return fechaAlta;
@@ -46,12 +53,7 @@ public abstract class Ticket implements IComision {
 	}
 
 	public Usuario getCreador() {
-		Usuario creador = null;
-
-		if (this.estado == EstadosTicket.ACTIVO)
-			creador = this.creador;
-
-		return creador;
+		return this.estado.getCreador();
 	}
 
 	/**

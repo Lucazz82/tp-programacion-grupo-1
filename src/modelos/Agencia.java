@@ -5,7 +5,6 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import enums.EstadosTicket;
 import excepciones.TicketInexistenteException;
 import excepciones.UsuarioInexistenteException;
 
@@ -71,13 +70,13 @@ public class Agencia {
 		Iterator<TicketBusquedaEmpleado> ticketsEmpleador = empleador.getTickets();
 		while (ticketsEmpleador.hasNext()) {
 			TicketBusquedaEmpleado ticketEmpleador = ticketsEmpleador.next();
-			if (ticketEmpleador.getEstado() == EstadosTicket.ACTIVO) {
+			if (ticketEmpleador.esActivo()) {
 				listasAsignaciones.put(ticketEmpleador, new HashMap<TicketBusquedaEmpleo, Double>());
 
 				for (EmpleadoPretenso empleado : this.empleados) {
 					TicketBusquedaEmpleo ticketEmpleado = empleado.getTicket();
 
-					if (ticketEmpleado != null && ticketEmpleado.getEstado() == EstadosTicket.ACTIVO && ticketEmpleador
+					if (ticketEmpleado != null && ticketEmpleado.esActivo() && ticketEmpleador
 							.getFormulario().getRubro().mismoRubro(ticketEmpleado.getFormulario().getRubro())) {
 						double puntaje = ticketEmpleador.enfrentar(ticketEmpleado);
 						listasAsignaciones.get(ticketEmpleador).put(ticketEmpleado, puntaje);
@@ -209,8 +208,8 @@ public class Agencia {
 				Coincidencia coincidencia = new Coincidencia(ticketEmpleador, elegido,
 						ticketEmpleador.calcularComision(), elegido.calcularComision());
 				coincidencias.add(coincidencia);
-				ticketEmpleador.setEstado(EstadosTicket.FINALIZADO);
-				elegido.setEstado(EstadosTicket.FINALIZADO);
+				ticketEmpleador.setFinalizado();
+				elegido.setFinalizado();;
 			}
 		}
 	}
