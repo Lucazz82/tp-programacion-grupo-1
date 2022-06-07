@@ -16,4 +16,8 @@ public abstract class Rubro implements Enfrentable<ITipoPersona> ,Serializable{
 	public boolean mismoRubro(Rubro o) {
 		return this.rubro == o.rubro;
 	}
+
+	public Rubros getTipo() {
+		return rubro;
+	}
 }

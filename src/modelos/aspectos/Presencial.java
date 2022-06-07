@@ -1,8 +1,13 @@
 package modelos.aspectos;
 
+import enums.Locaciones;
 import modelos.IDoubleDispatch;
 
 public class Presencial extends Locacion {
+	
+	public Presencial() {
+		super(Locaciones.PRESENCIAL);
+	}
 
 	@Override
 	public double enfrentar(IDoubleDispatch o) {

@@ -1,8 +1,13 @@
 package modelos.aspectos;
 
+import enums.Locaciones;
 import modelos.IDoubleDispatch;
 
 public class Indistinto extends Locacion {
+
+	public Indistinto() {
+		super(Locaciones.CUALQUIERA);
+	}
 
 	@Override
 	public double enfrentar(IDoubleDispatch o) {

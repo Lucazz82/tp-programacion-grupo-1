@@ -1,7 +1,7 @@
 package enums;
 
 public enum Rubros {
-	SALUD(0), COMECIO_LOCAL(1), COMERCIO_INTERNACIONAL(2);
+	SALUD(0), COMERCIO_LOCAL(1), COMERCIO_INTERNACIONAL(2);
 
 	private int posicion;
 

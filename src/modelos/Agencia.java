@@ -16,6 +16,22 @@ public class Agencia {
 	private HashMap<TicketBusquedaEmpleado, HashMap<TicketBusquedaEmpleo, Double>> listasAsignaciones = new HashMap<TicketBusquedaEmpleado, HashMap<TicketBusquedaEmpleo, Double>>();
 	private ArrayList<Coincidencia> coincidencias = new ArrayList<Coincidencia>();
 	private GregorianCalendar fechaLista; //NO SE PUEDE PERSISTIR, LO CAMBIAMOS?
+	
+	private BolsaDeTrabajo bolsaDeTrabajo = new BolsaDeTrabajo();
+	
+	public synchronized void agregarTicketABolsa(TicketSimplificado ticket) {
+
+		bolsaDeTrabajo.agregarTickets(ticket);
+	}
+	
+	public synchronized void busquedaBolsa(EmpleadoPretenso empleado) {
+		bolsaDeTrabajo.busqueda(empleado);
+		
+	}
+	
+	public synchronized void devuelveBolsa(TicketSimplificado ticket) {
+		bolsaDeTrabajo.devuelve(ticket);
+	}
 
 	private Agencia() {
 
