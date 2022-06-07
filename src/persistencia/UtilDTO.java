@@ -15,6 +15,12 @@ public class UtilDTO {
 	}
 	
 	public void agenciaFromAgenciaDTO(AgenciaDTO agenciaDTO) {
+		Agencia agencia = Agencia.getInstancia();
 		
+		agencia.setCoincidencias(agenciaDTO.getCoincidencias());
+		agencia.setEmpleadores(agenciaDTO.getEmpleadores());
+		agencia.setEmpleados(agenciaDTO.getEmpleados());
+		agencia.setFechaLista(agenciaDTO.getFechaLista()); //ESTE NO SE PUEDE PERSISTIR ES GREGORIAN CALENDAR
+		agencia.setListasAsignaciones(agenciaDTO.getListasAsignaciones());
 	}
 }
