@@ -1,8 +1,10 @@
 package modelos.aspectos;
 
+import java.io.Serializable;
+
 import modelos.Enfrentable;
 
-public class PuestoLaboral implements Enfrentable<PuestoLaboral> {
+public class PuestoLaboral implements Enfrentable<PuestoLaboral> , Serializable{
 	private int pos;
 
 	public PuestoLaboral(int pos) {

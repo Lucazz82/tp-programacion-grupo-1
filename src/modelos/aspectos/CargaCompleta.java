@@ -1,5 +1,7 @@
 package modelos.aspectos;
 
+import java.io.Serializable;
+
 import modelos.IDoubleDispatch;
 
 public class CargaCompleta extends CargaHoraria {

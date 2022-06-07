@@ -2,7 +2,7 @@ package modelos.aspectos;
 
 import modelos.IDoubleDispatch;
 
-public class CargaMedia extends CargaHoraria {
+public class CargaMedia extends CargaHoraria  {
 
 	@Override
 	public double enfrentar(IDoubleDispatch o) {

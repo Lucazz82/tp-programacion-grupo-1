@@ -1,8 +1,10 @@
 package modelos.aspectos;
 
+import java.io.Serializable;
+
 import modelos.Enfrentable;
 
-public class Experiencia implements Enfrentable<Experiencia> {
+public class Experiencia implements Enfrentable<Experiencia>, Serializable {
 	private int pos;
 
 	public Experiencia(int pos) {

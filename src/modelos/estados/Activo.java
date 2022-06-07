@@ -1,9 +1,11 @@
 package modelos.estados;
 
+import java.io.Serializable;
+
 import modelos.Ticket;
 import modelos.Usuario;
 
-public class Activo implements IEstado {
+public class Activo implements IEstado, Serializable {
 	private Ticket ticket;
 	
 	public Activo(Ticket ticket) {

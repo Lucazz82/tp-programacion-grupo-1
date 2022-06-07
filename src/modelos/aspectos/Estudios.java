@@ -1,8 +1,10 @@
 package modelos.aspectos;
 
+import java.io.Serializable;
+
 import modelos.Enfrentable;
 
-public class Estudios implements Enfrentable<Estudios> {
+public class Estudios implements Enfrentable<Estudios> ,Serializable{
 	private int pos;
 
 	public Estudios(int pos) {

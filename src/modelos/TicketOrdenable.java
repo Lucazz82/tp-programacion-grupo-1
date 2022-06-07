@@ -1,6 +1,8 @@
 package modelos;
 
-public class TicketOrdenable implements Comparable<TicketOrdenable> {
+import java.io.Serializable;
+
+public class TicketOrdenable implements Comparable<TicketOrdenable>, Serializable {
 	private Ticket ticket;
 	private Double puntaje;
 

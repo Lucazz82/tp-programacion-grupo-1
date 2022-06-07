@@ -1,9 +1,11 @@
 package modelos.comisiones;
 
+import java.io.Serializable;
+
 import modelos.IComision;
 import modelos.IDoubleDispatch;
 
-public abstract class PuestoLaboralDecorator implements IComision, IDoubleDispatch {
+public abstract class PuestoLaboralDecorator implements IComision, IDoubleDispatch, Serializable {
 	protected IComision encapsulado;
 
 	public PuestoLaboralDecorator() {

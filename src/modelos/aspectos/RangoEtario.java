@@ -1,8 +1,10 @@
 package modelos.aspectos;
 
+import java.io.Serializable;
+
 import modelos.Enfrentable;
 
-public class RangoEtario implements Enfrentable<RangoEtario> {
+public class RangoEtario implements Enfrentable<RangoEtario>, Serializable {
 	private int pos;
 
 	public RangoEtario(int pos) {

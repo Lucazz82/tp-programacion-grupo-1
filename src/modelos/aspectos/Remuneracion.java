@@ -1,8 +1,10 @@
 package modelos.aspectos;
 
+import java.io.Serializable;
+
 import modelos.Enfrentable;
 
-public class Remuneracion implements Enfrentable<Remuneracion> {
+public class Remuneracion implements Enfrentable<Remuneracion> , Serializable{
 	private int pos;
 	private double V1;
 	private double V2;
