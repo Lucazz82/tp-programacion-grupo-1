@@ -67,4 +67,12 @@ public class Formulario implements Serializable{
 		return rubro;
 	}
 
+	@Override
+	public String toString() {
+		return "Formulario [locacion=" + locacion + ", remuneracion=" + remuneracion + ", cargaHoraria=" + cargaHoraria
+				+ ", puesto=" + puesto + ", rangoEtario=" + rangoEtario + ", experiencia=" + experiencia + ", estudio="
+				+ estudio + ", rubro=" + rubro + "]";
+	}
+
+	
 }
