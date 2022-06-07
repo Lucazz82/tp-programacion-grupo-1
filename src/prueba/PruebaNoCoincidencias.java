@@ -133,8 +133,6 @@ public class PruebaNoCoincidencias {
 		ep4.getTicket().setElegido(t5);
 		t5.setElegido(t4);
 
-		agencia.rondaContratacion();
-
 		System.out.println("\n \n \n RONDA DE CONTRATACIONES: \n \n");
 
 		agencia.rondaContratacion();
@@ -146,6 +144,7 @@ public class PruebaNoCoincidencias {
 //				System.out.println(c.getComisionEmpleador());
 //				System.out.println(c.getTicketEmpleado());
 //				System.out.println(c.getTicketEmpleador());
+			System.out.println("Coincidencia " + (i + 1));
 			System.out.println(c.getTicketEmpleado().getCreador());
 			System.out.println(c.getTicketEmpleador().getCreador());
 			System.out.println("\n");
