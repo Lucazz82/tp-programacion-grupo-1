@@ -37,10 +37,10 @@ public class Agencia {
 
 	}
 
-	public static Agencia getInstancia() {
+	public synchronized static Agencia getInstancia() {
 		if (_instancia == null)
 			_instancia = new Agencia();
-		return _instancia;
+		return _instancia;			
 	}
 
 	/**
