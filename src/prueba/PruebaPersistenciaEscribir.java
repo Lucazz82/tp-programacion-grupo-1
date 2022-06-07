@@ -1,5 +1,6 @@
 package prueba;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -25,9 +26,12 @@ import modelos.TicketOrdenable;
 import modelos.aspectos.factories.RubroFactory;
 import modelos.comisiones.PersonaFisica;
 import modelos.comisiones.PersonaJuridica;
+import persistencia.AgenciaDTO;
+import persistencia.PersistenciaBIN;
+import persistencia.UtilDTO;
 
 public class PruebaPersistenciaEscribir {
-	public static void main(String[] args) throws TicketInexistenteException {
+	public static void main(String[] args) throws TicketInexistenteException, IOException {
 		Agencia agencia = Agencia.getInstancia();
 
 		// Registrar usuarios
@@ -99,16 +103,10 @@ public class PruebaPersistenciaEscribir {
 		t3.setElegido(t1);
 
 		agencia.rondaContratacion();
-
-		ArrayList<Coincidencia> coincidencias = agencia.getCoincidencias();
-		for (int i = 0 ; i < coincidencias.size() ; i++) {
-			Coincidencia c = coincidencias.get(i);
-			System.out.println(c.getComisionEmpleado());
-			System.out.println(c.getComisionEmpleador());
-			System.out.println(c.getTicketEmpleado());
-			System.out.println(c.getTicketEmpleador());
-			System.out.println(c.getTicketEmpleado().getCreador());
-			System.out.println(c.getTicketEmpleador().getCreador());
-		}
+		
+		AgenciaDTO agenciaDTO = UtilDTO.agenciaDTOFromAgencia();
+		PersistenciaBIN<AgenciaDTO> persistencia = new PersistenciaBIN<>();
+		persistencia.persistir("agencia.bin", agenciaDTO);
+		System.out.println("Agencia guardada exitosamente.");
 	}
 }

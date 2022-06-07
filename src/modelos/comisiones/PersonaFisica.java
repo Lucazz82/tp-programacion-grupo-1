@@ -1,8 +1,10 @@
 package modelos.comisiones;
 
+import java.io.Serializable;
+
 import modelos.ITipoPersona;
 
-public class PersonaFisica implements ITipoPersona {
+public class PersonaFisica implements ITipoPersona, Serializable {
 
 	@Override
 	public double enfrentarSalud() {

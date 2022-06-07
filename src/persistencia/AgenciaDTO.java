@@ -1,5 +1,6 @@
 package persistencia;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
@@ -10,12 +11,11 @@ import modelos.Empleador;
 import modelos.TicketBusquedaEmpleado;
 import modelos.TicketBusquedaEmpleo;
 
-public class AgenciaDTO {
+public class AgenciaDTO implements Serializable {
 	private ArrayList<EmpleadoPretenso> empleados = new ArrayList<EmpleadoPretenso>();
 	private ArrayList<Empleador> empleadores = new ArrayList<Empleador>();
 	private HashMap<TicketBusquedaEmpleado, HashMap<TicketBusquedaEmpleo, Double>> listasAsignaciones = new HashMap<TicketBusquedaEmpleado, HashMap<TicketBusquedaEmpleo, Double>>();
 	private ArrayList<Coincidencia> coincidencias = new ArrayList<Coincidencia>();
-	private GregorianCalendar fechaLista;
 	
 	public AgenciaDTO() {}
 
@@ -27,7 +27,6 @@ public class AgenciaDTO {
 		this.empleadores = empleadores;
 		this.listasAsignaciones = listasAsignaciones;
 		this.coincidencias = coincidencias;
-		this.fechaLista = fechaLista;
 	}
 
 	public ArrayList<EmpleadoPretenso> getEmpleados() {
@@ -62,14 +61,4 @@ public class AgenciaDTO {
 	public void setCoincidencias(ArrayList<Coincidencia> coincidencias) {
 		this.coincidencias = coincidencias;
 	}
-
-	public GregorianCalendar getFechaLista() {
-		return fechaLista;
-	}
-
-	public void setFechaLista(GregorianCalendar fechaLista) {
-		this.fechaLista = fechaLista;
-	}
-	
-	
 }
