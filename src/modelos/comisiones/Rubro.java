@@ -1,10 +1,12 @@
 package modelos.comisiones;
 
+import java.io.Serializable;
+
 import enums.Rubros;
 import modelos.Enfrentable;
 import modelos.ITipoPersona;
 
-public abstract class Rubro implements Enfrentable<ITipoPersona> {
+public abstract class Rubro implements Enfrentable<ITipoPersona> ,Serializable{
 	private Rubros rubro;
 
 	public Rubro(Rubros rubro) {

@@ -1,5 +1,7 @@
 package modelos;
 
+import java.io.Serializable;
+
 import modelos.aspectos.CargaHoraria;
 import modelos.aspectos.Estudios;
 import modelos.aspectos.Experiencia;
@@ -9,7 +11,7 @@ import modelos.aspectos.Remuneracion;
 import modelos.comisiones.PuestoLaboralDecorator;
 import modelos.comisiones.Rubro;
 
-public class Formulario {
+public class Formulario implements Serializable{
 	private Locacion locacion;
 	private Remuneracion remuneracion;
 	private CargaHoraria cargaHoraria;

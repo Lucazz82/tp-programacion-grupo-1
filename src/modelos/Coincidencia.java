@@ -1,6 +1,8 @@
 package modelos;
 
-public class Coincidencia {
+import java.io.Serializable;
+
+public class Coincidencia implements Serializable{
 	private TicketBusquedaEmpleado ticketEmpleador;
 	private TicketBusquedaEmpleo ticketEmpleado;
 	private double comisionEmpleador;

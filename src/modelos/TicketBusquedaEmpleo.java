@@ -1,6 +1,8 @@
 package modelos;
 
-public class TicketBusquedaEmpleo extends Ticket {
+import java.io.Serializable;
+
+public class TicketBusquedaEmpleo extends Ticket implements Serializable {
 	private IComision comision;
 
 	public TicketBusquedaEmpleo(Usuario creador, Formulario formulario, IComision comision) {
