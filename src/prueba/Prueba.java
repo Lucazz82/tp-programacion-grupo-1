@@ -1,5 +1,6 @@
 package prueba;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 
 import controladores.UsuarioController;
@@ -76,10 +77,10 @@ public class Prueba {
 
 		agencia.generarListasAsignacion();
 
-		Iterator<Empleador> iteradorEmpleadores = agencia.getEmpleadores();
+		ArrayList<Empleador> empleadores = agencia.getEmpleadores();
 
-		while (iteradorEmpleadores.hasNext()) {
-			Empleador empleador = iteradorEmpleadores.next();
+		for (int j = 0 ; j < empleadores.size() ; j++) {
+			Empleador empleador = empleadores.get(j);
 			Iterator<TicketBusquedaEmpleado> iteradorTickets = empleador.getTickets();
 
 			while (iteradorTickets.hasNext()) {
@@ -100,9 +101,9 @@ public class Prueba {
 
 		agencia.rondaContratacion();
 
-		Iterator<Coincidencia> coincidencias = agencia.getCoincidencias();
-		while (coincidencias.hasNext()) {
-			Coincidencia c = coincidencias.next();
+		ArrayList<Coincidencia> coincidencias = agencia.getCoincidencias();
+		for (int i = 0 ; i < coincidencias.size() ; i++) {
+			Coincidencia c = coincidencias.get(i);
 			System.out.println(c.getComisionEmpleado());
 			System.out.println(c.getComisionEmpleador());
 			System.out.println(c.getTicketEmpleado());
