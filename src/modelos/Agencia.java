@@ -242,19 +242,45 @@ public class Agencia {
 		this.empleadores.add(empleador);
 	}
 
-	public Iterator<EmpleadoPretenso> getEmpleados() {
-		return empleados.iterator();
+	/**** GETTERS Y SETTERS ****/
+	public ArrayList<EmpleadoPretenso> getEmpleados() {
+		return empleados;
 	}
 
-	public Iterator<Empleador> getEmpleadores() {
-		return empleadores.iterator();
+	public void setEmpleados(ArrayList<EmpleadoPretenso> empleados) {
+		this.empleados = empleados;
+	}
+
+	public ArrayList<Empleador> getEmpleadores() {
+		return empleadores;
+	}
+
+	public void setEmpleadores(ArrayList<Empleador> empleadores) {
+		this.empleadores = empleadores;
+	}
+
+	public HashMap<TicketBusquedaEmpleado, HashMap<TicketBusquedaEmpleo, Double>> getListasAsignaciones() {
+		return listasAsignaciones;
+	}
+
+	public void setListasAsignaciones(
+			HashMap<TicketBusquedaEmpleado, HashMap<TicketBusquedaEmpleo, Double>> listasAsignaciones) {
+		this.listasAsignaciones = listasAsignaciones;
+	}
+
+	public ArrayList<Coincidencia> getCoincidencias() {
+		return coincidencias;
+	}
+
+	public void setCoincidencias(ArrayList<Coincidencia> coincidencias) {
+		this.coincidencias = coincidencias;
 	}
 
 	public GregorianCalendar getFechaLista() {
 		return fechaLista;
 	}
 
-	public Iterator<Coincidencia> getCoincidencias() {
-		return this.coincidencias.iterator();
+	public void setFechaLista(GregorianCalendar fechaLista) {
+		this.fechaLista = fechaLista;
 	}
 }

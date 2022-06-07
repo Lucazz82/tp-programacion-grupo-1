@@ -1,8 +1,10 @@
 package modelos;
 
+import java.io.Serializable;
+
 import excepciones.ContrasenaIncorrectaException;
 
-public abstract class Usuario implements Logueable {
+public abstract class Usuario implements Logueable, Serializable {
 	private String nombreUsuario;
 	private String contrasena;
 	protected int puntaje;

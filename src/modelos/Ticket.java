@@ -1,11 +1,12 @@
 package modelos;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import modelos.estados.Activo;
 import modelos.estados.IEstado;
 
-public abstract class Ticket implements IComision {
+public abstract class Ticket implements IComision, Serializable {
 	protected Date fechaAlta;
 	protected Formulario formulario;
 	protected IEstado estado;
