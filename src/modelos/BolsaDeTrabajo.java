@@ -7,9 +7,9 @@ public class BolsaDeTrabajo {
 	
 	public void agregarTickets(TicketSimplificado ticket) {
 		synchronized (this.tickets) {
-			tickets.add(ticket);
+			this.tickets.add(ticket);
 			System.out.println("Ticket agregado: " + ticket.getRubro());
-			tickets.notifyAll();
+			this.tickets.notifyAll();
 		}
 	}
 	
