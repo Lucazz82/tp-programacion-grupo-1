@@ -19,17 +19,15 @@ public class Agencia {
 	
 	private BolsaDeTrabajo bolsaDeTrabajo = new BolsaDeTrabajo();
 	
-	public synchronized void agregarTicketABolsa(TicketSimplificado ticket) {
-
+	public void agregarTicketABolsa(TicketSimplificado ticket) {
 		bolsaDeTrabajo.agregarTickets(ticket);
 	}
 	
-	public synchronized void busquedaBolsa(EmpleadoPretenso empleado) {
+	public void busquedaBolsa(EmpleadoPretenso empleado) {
 		bolsaDeTrabajo.busqueda(empleado);
-		
 	}
 	
-	public synchronized void devuelveBolsa(TicketSimplificado ticket) {
+	public void devuelveBolsa(TicketSimplificado ticket) {
 		bolsaDeTrabajo.devuelve(ticket);
 	}
 
