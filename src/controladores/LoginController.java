@@ -14,7 +14,7 @@ import vista.Login;
 
 public class LoginController implements ActionListener, IController {
 	private Login vista;
-	
+
 	public LoginController() {
 		this.vista = new Login();
 		vista.setActionListener(this);
@@ -23,18 +23,18 @@ public class LoginController implements ActionListener, IController {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String cmd = e.getActionCommand();
-		
+
 		if (cmd.equalsIgnoreCase("Login")) {
 			try {
 				Usuario usuario = Agencia.getInstancia().buscarUsuario(vista.getUsuario());
 				usuario.login(vista.getContrasenia());
 			} catch (UsuarioInexistenteException | ContrasenaIncorrectaException e1) {
 				JOptionPane.showMessageDialog(vista, "Usuario o contraseña incorrectos");
-			}			
+			}
 		} else if (cmd.equalsIgnoreCase("Register")) {
-			Sistema.getInstancia().cambiarController(new RegisterController());
+			Sistema.getInstancia().cambiarController(new Register1Controller());
 			vista.setVisible(false);
 		}
 	}
-	
+
 }

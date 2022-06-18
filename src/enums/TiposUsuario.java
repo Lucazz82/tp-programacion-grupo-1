@@ -1,7 +1,5 @@
 package enums;
 
 public enum TiposUsuario {
-	AGENCIA,
-	EMPLEADOR,
-	EMPLEADO
+	AGENCIA, EMPLEADOR, EMPLEADO
 }

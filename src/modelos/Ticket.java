@@ -19,31 +19,30 @@ public abstract class Ticket implements IComision, Serializable {
 		this.formulario = formulario;
 		this.creador = creador;
 	}
-	
+
 	public void setEstado(IEstado estado) {
 		this.estado = estado;
 	}
-	
+
 	public void setActivo() {
 		this.estado.setActivo();
 	}
-	
+
 	public void setSuspendido() {
 		this.estado.setSuspendido();
 	}
-	
+
 	public void setCancelado() {
 		this.estado.setCancelado();
 	}
-	
+
 	public void setFinalizado() {
 		this.estado.setFinalizado();
 	}
-	
+
 	public boolean esActivo() {
 		return this.estado.esActivo();
 	}
-	
 
 	public Date getFechaAlta() {
 		return fechaAlta;

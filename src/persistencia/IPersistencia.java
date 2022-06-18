@@ -3,21 +3,20 @@ package persistencia;
 import java.io.IOException;
 import java.io.Serializable;
 
-public interface IPersistencia <E>
-{
-    void abrirInput(String nombre) throws IOException;
+public interface IPersistencia<E> {
+	void abrirInput(String nombre) throws IOException;
 
-    void abrirOutput(String nombre) throws IOException;
+	void abrirOutput(String nombre) throws IOException;
 
-    void cerrarOutput() throws IOException;
+	void cerrarOutput() throws IOException;
 
-    void cerrarInput() throws IOException;
+	void cerrarInput() throws IOException;
 
-    void escribir(E objecto) throws IOException;
+	void escribir(E objecto) throws IOException;
 
-    E leer() throws IOException, ClassNotFoundException;
-    
-    void persistir(String nombre, E objeto) throws IOException;
-    
-    E recuperar(String nombre) throws IOException, ClassNotFoundException;
+	E leer() throws IOException, ClassNotFoundException;
+
+	void persistir(String nombre, E objeto) throws IOException;
+
+	E recuperar(String nombre) throws IOException, ClassNotFoundException;
 }

@@ -12,7 +12,7 @@ import java.awt.Font;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 
-public class Login extends JFrame implements ILogin {
+public class Login extends JFrame implements IVista, ILogin {
 
 	private JPanel contentPane;
 	private JLabel usuarioLabel;
@@ -43,59 +43,59 @@ public class Login extends JFrame implements ILogin {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(3, 1, 0, 0));
-		
+
 		usuario = new JPanel();
 		contentPane.add(usuario);
 		usuario.setLayout(new GridLayout(0, 1, 0, 0));
-		
+
 		usuarioLabelPan = new JPanel();
 		usuario.add(usuarioLabelPan);
-		
+
 		usuarioLabel = new JLabel("Usuario:");
 		usuarioLabel.setFont(new Font("Calibri", Font.PLAIN, 20));
 		usuarioLabelPan.add(usuarioLabel);
-		
+
 		usuarioTextPan = new JPanel();
 		usuario.add(usuarioTextPan);
-		
+
 		usuarioText = new JTextField();
 		usuarioTextPan.add(usuarioText);
 		usuarioText.setColumns(10);
-		
+
 		contrasenia = new JPanel();
 		contentPane.add(contrasenia);
 		contrasenia.setLayout(new GridLayout(0, 1, 0, 0));
-		
+
 		contraseniaLabelPan = new JPanel();
 		contrasenia.add(contraseniaLabelPan);
-		
+
 		contraseniaLabel = new JLabel("Contraseña:");
 		contraseniaLabel.setFont(new Font("Calibri", Font.PLAIN, 20));
 		contraseniaLabelPan.add(contraseniaLabel);
-		
+
 		contraseniaTextPan = new JPanel();
 		contrasenia.add(contraseniaTextPan);
-		
+
 		contraseniaText = new JPasswordField();
 		contraseniaText.setColumns(10);
 		contraseniaTextPan.add(contraseniaText);
-		
+
 		botones = new JPanel();
 		contentPane.add(botones);
 		botones.setLayout(new GridLayout(0, 2, 0, 0));
-		
+
 		loginBotonPan = new JPanel();
 		botones.add(loginBotonPan);
-		
+
 		loginBoton = new JButton("Login");
 		loginBotonPan.add(loginBoton);
-		
+
 		registerBotonPan = new JPanel();
 		botones.add(registerBotonPan);
-		
+
 		registerBoton = new JButton("Register");
 		registerBotonPan.add(registerBoton);
-		
+
 		setVisible(true);
 	}
 

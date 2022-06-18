@@ -7,7 +7,7 @@ import modelos.Usuario;
 
 public class Suspendido implements IEstado, Serializable {
 	private Ticket ticket;
-	
+
 	public Suspendido(Ticket ticket) {
 		super();
 		this.ticket = ticket;
@@ -36,11 +36,10 @@ public class Suspendido implements IEstado, Serializable {
 	public Usuario getCreador() {
 		return null;
 	}
-	
+
 	@Override
 	public boolean esActivo() {
 		return false;
 	}
-
 
 }

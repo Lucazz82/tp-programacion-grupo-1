@@ -15,7 +15,7 @@ public class Agencia {
 	private ArrayList<Empleador> empleadores = new ArrayList<Empleador>();
 	private HashMap<TicketBusquedaEmpleado, HashMap<TicketBusquedaEmpleo, Double>> listasAsignaciones = new HashMap<TicketBusquedaEmpleado, HashMap<TicketBusquedaEmpleo, Double>>();
 	private ArrayList<Coincidencia> coincidencias = new ArrayList<Coincidencia>();
-	private GregorianCalendar fechaLista; //NO SE PUEDE PERSISTIR, LO CAMBIAMOS?
+	private GregorianCalendar fechaLista; // NO SE PUEDE PERSISTIR, LO CAMBIAMOS?
 
 	private Agencia() {
 
@@ -76,8 +76,8 @@ public class Agencia {
 				for (EmpleadoPretenso empleado : this.empleados) {
 					TicketBusquedaEmpleo ticketEmpleado = empleado.getTicket();
 
-					if (ticketEmpleado != null && ticketEmpleado.esActivo() && ticketEmpleador
-							.getFormulario().getRubro().mismoRubro(ticketEmpleado.getFormulario().getRubro())) {
+					if (ticketEmpleado != null && ticketEmpleado.esActivo() && ticketEmpleador.getFormulario()
+							.getRubro().mismoRubro(ticketEmpleado.getFormulario().getRubro())) {
 						double puntaje = ticketEmpleador.enfrentar(ticketEmpleado);
 						listasAsignaciones.get(ticketEmpleador).put(ticketEmpleado, puntaje);
 					}
@@ -209,7 +209,8 @@ public class Agencia {
 						ticketEmpleador.calcularComision(), elegido.calcularComision());
 				coincidencias.add(coincidencia);
 				ticketEmpleador.setFinalizado();
-				elegido.setFinalizado();;
+				elegido.setFinalizado();
+				;
 			}
 		}
 	}

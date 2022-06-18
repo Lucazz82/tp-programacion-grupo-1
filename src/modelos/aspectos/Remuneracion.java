@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import modelos.Enfrentable;
 
-public class Remuneracion implements Enfrentable<Remuneracion> , Serializable{
+public class Remuneracion implements Enfrentable<Remuneracion>, Serializable {
 	private int pos;
 	private double V1;
 	private double V2;

@@ -3,7 +3,7 @@ package modelos;
 import java.io.Serializable;
 import java.util.Arrays;
 
-public class TicketBusquedaEmpleado extends Ticket{
+public class TicketBusquedaEmpleado extends Ticket {
 
 	private double[] pesos;
 

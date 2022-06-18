@@ -9,13 +9,13 @@ public class UtilDTO {
 		respuesta.setEmpleadores(Agencia.getInstancia().getEmpleadores());
 		respuesta.setEmpleados(Agencia.getInstancia().getEmpleados());
 		respuesta.setListasAsignaciones(Agencia.getInstancia().getListasAsignaciones());
-		
+
 		return respuesta;
 	}
-	
+
 	public static void agenciaFromAgenciaDTO(AgenciaDTO agenciaDTO) {
 		Agencia agencia = Agencia.getInstancia();
-		
+
 		agencia.setCoincidencias(agenciaDTO.getCoincidencias());
 		agencia.setEmpleadores(agenciaDTO.getEmpleadores());
 		agencia.setEmpleados(agenciaDTO.getEmpleados());

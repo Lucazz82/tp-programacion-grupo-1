@@ -11,7 +11,7 @@ import modelos.aspectos.Remuneracion;
 import modelos.comisiones.PuestoLaboralDecorator;
 import modelos.comisiones.Rubro;
 
-public class Formulario implements Serializable{
+public class Formulario implements Serializable {
 	private Locacion locacion;
 	private Remuneracion remuneracion;
 	private CargaHoraria cargaHoraria;
@@ -74,5 +74,4 @@ public class Formulario implements Serializable{
 				+ estudio + ", rubro=" + rubro + "]";
 	}
 
-	
 }

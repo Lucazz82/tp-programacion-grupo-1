@@ -7,14 +7,15 @@ import modelos.Usuario;
 
 public class Activo implements IEstado, Serializable {
 	private Ticket ticket;
-	
+
 	public Activo(Ticket ticket) {
 		super();
 		this.ticket = ticket;
 	}
 
 	@Override
-	public void setActivo() {}
+	public void setActivo() {
+	}
 
 	@Override
 	public void setSuspendido() {

@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import modelos.Enfrentable;
 
-public class Estudios implements Enfrentable<Estudios> ,Serializable{
+public class Estudios implements Enfrentable<Estudios>, Serializable {
 	private int pos;
 
 	public Estudios(int pos) {

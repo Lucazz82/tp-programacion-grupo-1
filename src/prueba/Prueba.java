@@ -79,7 +79,7 @@ public class Prueba {
 
 		ArrayList<Empleador> empleadores = agencia.getEmpleadores();
 
-		for (int j = 0 ; j < empleadores.size() ; j++) {
+		for (int j = 0; j < empleadores.size(); j++) {
 			Empleador empleador = empleadores.get(j);
 			Iterator<TicketBusquedaEmpleado> iteradorTickets = empleador.getTickets();
 
@@ -102,7 +102,7 @@ public class Prueba {
 		agencia.rondaContratacion();
 
 		ArrayList<Coincidencia> coincidencias = agencia.getCoincidencias();
-		for (int i = 0 ; i < coincidencias.size() ; i++) {
+		for (int i = 0; i < coincidencias.size(); i++) {
 			Coincidencia c = coincidencias.get(i);
 			System.out.println(c.getComisionEmpleado());
 			System.out.println(c.getComisionEmpleador());

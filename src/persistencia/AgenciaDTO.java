@@ -16,8 +16,9 @@ public class AgenciaDTO implements Serializable {
 	private ArrayList<Empleador> empleadores = new ArrayList<Empleador>();
 	private HashMap<TicketBusquedaEmpleado, HashMap<TicketBusquedaEmpleo, Double>> listasAsignaciones = new HashMap<TicketBusquedaEmpleado, HashMap<TicketBusquedaEmpleo, Double>>();
 	private ArrayList<Coincidencia> coincidencias = new ArrayList<Coincidencia>();
-	
-	public AgenciaDTO() {}
+
+	public AgenciaDTO() {
+	}
 
 	public AgenciaDTO(ArrayList<EmpleadoPretenso> empleados, ArrayList<Empleador> empleadores,
 			HashMap<TicketBusquedaEmpleado, HashMap<TicketBusquedaEmpleo, Double>> listasAsignaciones,

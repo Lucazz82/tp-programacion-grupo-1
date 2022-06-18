@@ -4,6 +4,6 @@ import java.io.Serializable;
 
 import modelos.IDoubleDispatch;
 
-public abstract class Locacion implements IDoubleDispatch, Serializable{
+public abstract class Locacion implements IDoubleDispatch, Serializable {
 
 }

@@ -7,7 +7,7 @@ import modelos.Usuario;
 
 public class Finalizado implements IEstado, Serializable {
 	private Ticket ticket;
-	
+
 	public Finalizado(Ticket ticket) {
 		super();
 		this.ticket = ticket;

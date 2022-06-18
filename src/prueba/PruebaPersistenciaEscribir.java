@@ -82,7 +82,7 @@ public class PruebaPersistenciaEscribir {
 
 		ArrayList<Empleador> empleadores = agencia.getEmpleadores();
 
-		for (int j = 0 ; j < empleadores.size() ; j++) {
+		for (int j = 0; j < empleadores.size(); j++) {
 			Empleador empleador = empleadores.get(j);
 			Iterator<TicketBusquedaEmpleado> iteradorTickets = empleador.getTickets();
 
@@ -103,7 +103,7 @@ public class PruebaPersistenciaEscribir {
 		t3.setElegido(t1);
 
 		agencia.rondaContratacion();
-		
+
 		AgenciaDTO agenciaDTO = UtilDTO.agenciaDTOFromAgencia();
 		PersistenciaBIN<AgenciaDTO> persistencia = new PersistenciaBIN<>();
 		persistencia.persistir("agencia.bin", agenciaDTO);

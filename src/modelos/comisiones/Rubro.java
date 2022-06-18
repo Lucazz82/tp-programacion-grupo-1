@@ -6,7 +6,7 @@ import enums.Rubros;
 import modelos.Enfrentable;
 import modelos.ITipoPersona;
 
-public abstract class Rubro implements Enfrentable<ITipoPersona> ,Serializable{
+public abstract class Rubro implements Enfrentable<ITipoPersona>, Serializable {
 	private Rubros rubro;
 
 	public Rubro(Rubros rubro) {

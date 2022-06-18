@@ -24,7 +24,7 @@ import javax.swing.DefaultComboBoxModel;
 import enums.TiposUsuario;
 import javax.swing.JButton;
 
-public class Register1 extends JFrame implements IRegister {
+public class Register1 extends JFrame implements IVista, IRegister {
 
 	private JPanel contentPane;
 	private JLabel usuarioLabel;
@@ -53,55 +53,55 @@ public class Register1 extends JFrame implements IRegister {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(4, 1, 0, 0));
-		
+
 		usuario = new JPanel();
 		contentPane.add(usuario);
 		usuario.setLayout(new GridLayout(2, 1, 0, 0));
-		
+
 		usuarioLabelPan = new JPanel();
 		usuario.add(usuarioLabelPan);
-		
+
 		usuarioLabel = new JLabel("Usuario:");
 		usuarioLabel.setFont(new Font("Cantarell", Font.PLAIN, 20));
 		usuarioLabelPan.add(usuarioLabel);
-		
+
 		usuarioTextPan = new JPanel();
 		usuario.add(usuarioTextPan);
-		
+
 		usuarioText = new JTextField();
 		usuarioTextPan.add(usuarioText);
 		usuarioText.setColumns(10);
-		
+
 		contrasenia = new JPanel();
 		contentPane.add(contrasenia);
 		contrasenia.setLayout(new GridLayout(2, 1, 0, 0));
-		
+
 		contraseniaLabelPan = new JPanel();
 		contrasenia.add(contraseniaLabelPan);
-		
+
 		contraseniaLabel = new JLabel("Contraseña");
 		contraseniaLabel.setFont(new Font("Cantarell", Font.PLAIN, 20));
 		contraseniaLabelPan.add(contraseniaLabel);
-		
+
 		contraseniaTextPan = new JPanel();
 		contrasenia.add(contraseniaTextPan);
-		
+
 		contraseniaText = new JPasswordField();
 		contraseniaText.setColumns(10);
 		contraseniaTextPan.add(contraseniaText);
-		
+
 		desplegable = new JPanel();
 		contentPane.add(desplegable);
-		
+
 		comboBox = new JComboBox();
 		comboBox.setFont(new Font("Cantarell", Font.BOLD, 12));
 		comboBox.setModel(new DefaultComboBoxModel(TiposUsuario.values()));
 		comboBox.setMaximumRowCount(3);
 		desplegable.add(comboBox);
-		
+
 		botones = new JPanel();
 		contentPane.add(botones);
-		
+
 		siguienteBoton = new JButton("Siguente");
 		botones.add(siguienteBoton);
 		this.setVisible(true);
@@ -124,7 +124,7 @@ public class Register1 extends JFrame implements IRegister {
 
 	@Override
 	public TiposUsuario getTipoUsuario() {
-		return (TiposUsuario)comboBox.getSelectedItem();
+		return (TiposUsuario) comboBox.getSelectedItem();
 	}
 
 }

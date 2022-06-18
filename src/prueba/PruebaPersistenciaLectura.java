@@ -18,12 +18,12 @@ public class PruebaPersistenciaLectura {
 		PersistenciaBIN<AgenciaDTO> persistencia = new PersistenciaBIN<>();
 		AgenciaDTO agenciaDTO = persistencia.recuperar("agencia.bin");
 		UtilDTO.agenciaFromAgenciaDTO(agenciaDTO);
-		
+
 		Agencia agencia = Agencia.getInstancia();
-		
+
 		ArrayList<Empleador> empleadores = agencia.getEmpleadores();
 
-		for (int j = 0 ; j < empleadores.size() ; j++) {
+		for (int j = 0; j < empleadores.size(); j++) {
 			Empleador empleador = empleadores.get(j);
 			Iterator<TicketBusquedaEmpleado> iteradorTickets = empleador.getTickets();
 
