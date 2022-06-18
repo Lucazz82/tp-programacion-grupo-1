@@ -20,7 +20,10 @@ public class PruebaSimulacion {
 	public static void main(String args[]) {
 		Empleador e1 = new Empleador("Raul", "Rodriguez", new PersonaFisica(),
 				RubroFactory.getRubro(Rubros.COMERCIO_LOCAL));
-		Thread empleadorThread = new Thread(e1);
+		Thread empleadorThread1 = new Thread(e1, "Raul");
+		Empleador e2 = new Empleador("Sergio", "Chupapija", new PersonaFisica(),
+				RubroFactory.getRubro(Rubros.COMERCIO_LOCAL));
+		Thread empleadorThread2 = new Thread(e1, "Sergio");
 		
 		EmpleadoPretenso ep1 = new EmpleadoPretenso("Renzo", "GenioInformatico");
 		EmpleadoPretenso ep2 = new EmpleadoPretenso("Teo", "Ramos");
@@ -50,11 +53,12 @@ public class PruebaSimulacion {
 //		agencia.agregarTicketABolsa(new TicketSimplificado(this, Locaciones.HOME_OFFICE, Rubros.COMERCIO_LOCAL));
 //		agencia.agregarTicketABolsa(new TicketSimplificado(this, Locaciones.PRESENCIAL, Rubros.COMERCIO_INTERNACIONAL));
 		
-		Thread ep1Thread = new Thread(ep1);
-		Thread ep2Thread = new Thread(ep2);
-		Thread ep3Thread = new Thread(ep3);
+		Thread ep1Thread = new Thread(ep1, "Renzo");
+		Thread ep2Thread = new Thread(ep2, "Teo");
+		Thread ep3Thread = new Thread(ep3, "Lucas");
 		
-		empleadorThread.start();
+		empleadorThread1.start();
+		empleadorThread2.start();
 		ep1Thread.start();
 		ep2Thread.start();
 		ep3Thread.start();

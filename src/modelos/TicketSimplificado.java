@@ -36,4 +36,10 @@ public class TicketSimplificado {
 	public Rubro getRubro() {
 		return rubro;
 	}
+
+	@Override
+	public String toString() {
+		return "TicketSimplificado [fechaAlta=" + fechaAlta + ", creador=" + creador + ", locacion=" + locacion
+				+ ", rubro=" + rubro + "]";
+	}
 }
