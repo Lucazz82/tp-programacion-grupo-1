@@ -103,11 +103,15 @@ public class EmpleadoPretenso extends Usuario implements IComision, Runnable {
 	@Override
 	public void run() {
 		Agencia agencia = Agencia.getInstancia();
-		Util.espera();
-		agencia.busquedaBolsa(this);
-		if (!ganador.getLocacion().mismaLocacion(this.ticket.getFormulario().getLocacion())) {
-			agencia.devuelveBolsa(ganador);
-			ganador = null;
+		for(int i = 0; i < 10; i++) {
+			Util.espera();
+			agencia.busquedaBolsa(this);
+			if (!ganador.getLocacion().mismaLocacion(this.ticket.getFormulario().getLocacion())) {
+				agencia.devuelveBolsa(ganador);
+				ganador = null;
+			} else {
+				break;
+			}
 		}
 	}
 }
