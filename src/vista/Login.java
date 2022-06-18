@@ -12,35 +12,42 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-public class Login extends JFrame {
+public class Login extends JFrame implements ILogin {
 
 	private JPanel contentPane;
-	private JTextField txtUsername;
-	private JPasswordField txtPassword;
+	private JTextField usuarioText;
+	private JPasswordField contraseniaText;
+	
+	private JButton loginButton;
+	private JButton registerButton;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Login frame = new Login();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					Login frame = new Login();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
 	 */
 	public Login() {
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(500, 300, 450, 300);
+		setSize(600, 400);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -64,44 +71,66 @@ public class Login extends JFrame {
 		JPanel usuarioTextPan = new JPanel();
 		usuarioPanel.add(usuarioTextPan);
 		
-		txtUsername = new JTextField();
-		txtUsername.setToolTipText("Username");
-		usuarioTextPan.add(txtUsername);
-		txtUsername.setColumns(10);
+		usuarioText = new JTextField();
+		usuarioText.setToolTipText("Username");
+		usuarioTextPan.add(usuarioText);
+		usuarioText.setColumns(10);
 		
 		JPanel contraseniaPanel = new JPanel();
 		principal.add(contraseniaPanel);
 		contraseniaPanel.setLayout(new GridLayout(2, 1, 0, 0));
 		
-		JPanel labelcontrasenia = new JPanel();
-		contraseniaPanel.add(labelcontrasenia);
+		JPanel contraseniaLabelPan = new JPanel();
+		contraseniaPanel.add(contraseniaLabelPan);
 		
-		JLabel lblNewLabel = new JLabel("Contrase\u00F1a:");
-		lblNewLabel.setFont(new Font("Calibri", Font.PLAIN, 20));
-		labelcontrasenia.add(lblNewLabel);
+		JLabel contraseniaLabel = new JLabel("Contrase\u00F1a:");
+		contraseniaLabel.setFont(new Font("Calibri", Font.PLAIN, 20));
+		contraseniaLabelPan.add(contraseniaLabel);
 		
-		JPanel textPanContrasenia = new JPanel();
-		contraseniaPanel.add(textPanContrasenia);
+		JPanel contraseniaTextPan = new JPanel();
+		contraseniaPanel.add(contraseniaTextPan);
 		
-		txtPassword = new JPasswordField();
-		txtPassword.setColumns(10);
-		textPanContrasenia.add(txtPassword);
+		contraseniaText = new JPasswordField();
+		contraseniaText.setColumns(10);
+		contraseniaTextPan.add(contraseniaText);
 		
-		JPanel buttonPanel = new JPanel();
-		principal.add(buttonPanel);
-		buttonPanel.setLayout(new GridLayout(0, 2, 0, 0));
+		JPanel botonPanel = new JPanel();
+		principal.add(botonPanel);
+		botonPanel.setLayout(new GridLayout(0, 2, 0, 0));
 		
-		JPanel panel_1 = new JPanel();
-		buttonPanel.add(panel_1);
+		JPanel botonLoginPan = new JPanel();
+		botonPanel.add(botonLoginPan);
 		
-		JButton btnNewButton = new JButton("Login");
-		panel_1.add(btnNewButton);
+		JButton botonLogin = new JButton("Login");
+		botonLoginPan.add(botonLogin);
+		loginButton = botonLogin;
 		
-		JPanel panel_2 = new JPanel();
-		buttonPanel.add(panel_2);
+		JPanel botonRegisterPan = new JPanel();
+		botonPanel.add(botonRegisterPan);
 		
-		JButton btnNewButton_1 = new JButton("Register");
-		panel_2.add(btnNewButton_1);
+		JButton botonRegister = new JButton("Register");
+		botonRegisterPan.add(botonRegister);
+		registerButton = botonRegister;
+		
+		this.setVisible(true);
+	}
+
+	@Override
+	public void setActionListener(ActionListener actionListener) {
+		loginButton.addActionListener(actionListener);
+		registerButton.addActionListener(actionListener);
+	}
+
+	@Override
+	public String getUsuario() {
+		return null;
+	}
+
+	@Override
+	public String getContrasenia() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
+
