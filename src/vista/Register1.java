@@ -10,6 +10,8 @@ import javax.swing.border.EmptyBorder;
 import controladores.IController;
 
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.Font;
@@ -22,29 +24,23 @@ import javax.swing.DefaultComboBoxModel;
 import enums.TiposUsuario;
 import javax.swing.JButton;
 
-public class Register1 extends JFrame implements IController {
+public class Register1 extends JFrame implements IRegister {
 
 	private JPanel contentPane;
 	private JLabel usuarioLabel;
 	private JLabel contraseniaLabel;
 	private JPasswordField contraseniaText;
 	private JTextField usuarioText;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Register1 frame = new Register1();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private JButton siguienteBoton;
+	private JComboBox comboBox;
+	private JPanel botones;
+	private JPanel desplegable;
+	private JPanel contraseniaTextPan;
+	private JPanel contraseniaLabelPan;
+	private JPanel contrasenia;
+	private JPanel usuarioTextPan;
+	private JPanel usuarioLabelPan;
+	private JPanel usuario;
 
 	/**
 	 * Create the frame.
@@ -58,57 +54,77 @@ public class Register1 extends JFrame implements IController {
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(4, 1, 0, 0));
 		
-		JPanel usuario = new JPanel();
+		usuario = new JPanel();
 		contentPane.add(usuario);
 		usuario.setLayout(new GridLayout(2, 1, 0, 0));
 		
-		JPanel usuarioLabelPan = new JPanel();
+		usuarioLabelPan = new JPanel();
 		usuario.add(usuarioLabelPan);
 		
 		usuarioLabel = new JLabel("Usuario:");
 		usuarioLabel.setFont(new Font("Cantarell", Font.PLAIN, 20));
 		usuarioLabelPan.add(usuarioLabel);
 		
-		JPanel usuarioTextPan = new JPanel();
+		usuarioTextPan = new JPanel();
 		usuario.add(usuarioTextPan);
 		
 		usuarioText = new JTextField();
 		usuarioTextPan.add(usuarioText);
 		usuarioText.setColumns(10);
 		
-		JPanel contrasenia = new JPanel();
+		contrasenia = new JPanel();
 		contentPane.add(contrasenia);
 		contrasenia.setLayout(new GridLayout(2, 1, 0, 0));
 		
-		JPanel contraseniaLabelPan = new JPanel();
+		contraseniaLabelPan = new JPanel();
 		contrasenia.add(contraseniaLabelPan);
 		
 		contraseniaLabel = new JLabel("Contraseña");
 		contraseniaLabel.setFont(new Font("Cantarell", Font.PLAIN, 20));
 		contraseniaLabelPan.add(contraseniaLabel);
 		
-		JPanel contraseniaTextPan = new JPanel();
+		contraseniaTextPan = new JPanel();
 		contrasenia.add(contraseniaTextPan);
 		
 		contraseniaText = new JPasswordField();
 		contraseniaText.setColumns(10);
 		contraseniaTextPan.add(contraseniaText);
 		
-		JPanel desplegable = new JPanel();
+		desplegable = new JPanel();
 		contentPane.add(desplegable);
 		
-		JComboBox comboBox = new JComboBox();
+		comboBox = new JComboBox();
 		comboBox.setFont(new Font("Cantarell", Font.BOLD, 12));
 		comboBox.setModel(new DefaultComboBoxModel(TiposUsuario.values()));
 		comboBox.setMaximumRowCount(3);
 		desplegable.add(comboBox);
 		
-		JPanel botones = new JPanel();
+		botones = new JPanel();
 		contentPane.add(botones);
 		
-		JButton siguenteBoton = new JButton("Siguente");
-		botones.add(siguenteBoton);
+		siguienteBoton = new JButton("Siguente");
+		botones.add(siguienteBoton);
 		this.setVisible(true);
+	}
+
+	@Override
+	public void setActionListener(ActionListener actionListener) {
+		siguienteBoton.addActionListener(actionListener);
+	}
+
+	@Override
+	public String getUsuario() {
+		return usuarioText.getText();
+	}
+
+	@Override
+	public String getContrasenia() {
+		return String.valueOf(contraseniaText.getPassword());
+	}
+
+	@Override
+	public TiposUsuario getTipoUsuario() {
+		return (TiposUsuario)comboBox.getSelectedItem();
 	}
 
 }

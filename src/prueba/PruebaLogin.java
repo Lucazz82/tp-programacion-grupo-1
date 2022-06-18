@@ -1,6 +1,5 @@
 package prueba;
 
-import controladores.LoginController;
 import controladores.Sistema;
 import modelos.Agencia;
 import modelos.EmpleadoPretenso;

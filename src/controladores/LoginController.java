@@ -11,7 +11,6 @@ import excepciones.UsuarioInexistenteException;
 import modelos.Agencia;
 import modelos.Usuario;
 import vista.Login;
-import vista.Register1;
 
 public class LoginController implements ActionListener, IController {
 	private Login vista;
@@ -33,7 +32,7 @@ public class LoginController implements ActionListener, IController {
 				JOptionPane.showMessageDialog(vista, "Usuario o contraseña incorrectos");
 			}			
 		} else if (cmd.equalsIgnoreCase("Register")) {
-			Sistema.getInstancia().cambiarController(new Register1());
+			Sistema.getInstancia().cambiarController(new RegisterController());
 			vista.setVisible(false);
 		}
 	}
