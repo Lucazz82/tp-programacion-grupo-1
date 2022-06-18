@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import vista.Register2Agencia;
 
-public class Register2AgenciaController implements ActionListener, IController {
+public class Register2AgenciaController implements IController {
 	private Register2Agencia vista;
 
 	public Register2AgenciaController() {

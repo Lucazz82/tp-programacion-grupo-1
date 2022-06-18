@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import vista.Register1;
 
-public class Register1Controller implements ActionListener, IController {
+public class Register1Controller implements IController {
 	private Register1 vista;
 
 	public Register1Controller() {

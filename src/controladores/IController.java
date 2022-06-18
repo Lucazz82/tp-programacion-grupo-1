@@ -1,5 +1,7 @@
 package controladores;
 
-public interface IController {
+import java.awt.event.ActionListener;
+
+public interface IController extends ActionListener {
 
 }

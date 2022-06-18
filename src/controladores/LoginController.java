@@ -12,7 +12,7 @@ import modelos.Agencia;
 import modelos.Usuario;
 import vista.Login;
 
-public class LoginController implements ActionListener, IController {
+public class LoginController implements IController {
 	private Login vista;
 
 	public LoginController() {
