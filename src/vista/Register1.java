@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controladores.IController;
+
 import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -19,7 +22,7 @@ import javax.swing.DefaultComboBoxModel;
 import enums.TiposUsuario;
 import javax.swing.JButton;
 
-public class Register1 extends JFrame {
+public class Register1 extends JFrame implements IController {
 
 	private JPanel contentPane;
 	private JLabel usuarioLabel;

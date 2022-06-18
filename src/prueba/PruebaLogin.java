@@ -1,13 +1,15 @@
 package prueba;
 
 import controladores.LoginController;
+import controladores.Sistema;
 import modelos.Agencia;
 import modelos.EmpleadoPretenso;
 
 public class PruebaLogin {
 
 	public static void main(String[] args) {
-		LoginController controller = new LoginController();
+		Sistema sistema = Sistema.getInstancia();
+		sistema.iniciarSistema();
 		
 		Agencia agencia = Agencia.getInstancia();
 
