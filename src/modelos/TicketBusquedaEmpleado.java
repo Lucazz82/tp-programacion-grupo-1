@@ -1,6 +1,5 @@
 package modelos;
 
-import java.io.Serializable;
 import java.util.Arrays;
 
 public class TicketBusquedaEmpleado extends Ticket {

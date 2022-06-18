@@ -1,14 +1,11 @@
 package vista;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import controladores.IController;
 
 public class Register2Agencia extends JFrame implements IVista {
 

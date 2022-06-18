@@ -1,7 +1,6 @@
 package controladores;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import vista.Register2Empleador;
 

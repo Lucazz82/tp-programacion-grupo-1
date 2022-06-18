@@ -1,28 +1,20 @@
 package vista;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
-import controladores.IController;
-
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import java.awt.Font;
-import javax.swing.JPasswordField;
-import javax.swing.JList;
-import javax.swing.ListSelectionModel;
-import java.awt.Choice;
-import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
-import enums.TiposUsuario;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+
+import enums.TiposUsuario;
 
 public class Register1 extends JFrame implements IVista, IRegister {
 

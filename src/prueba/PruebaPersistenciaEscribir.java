@@ -15,7 +15,6 @@ import enums.Remuneraciones;
 import enums.Rubros;
 import excepciones.TicketInexistenteException;
 import modelos.Agencia;
-import modelos.Coincidencia;
 import modelos.EmpleadoPretenso;
 import modelos.Empleador;
 import modelos.Formulario;
