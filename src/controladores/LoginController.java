@@ -3,6 +3,12 @@ package controladores;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
+
+import excepciones.ContrasenaIncorrectaException;
+import excepciones.UsuarioInexistenteException;
+import modelos.Agencia;
+import modelos.Usuario;
 import vista.Login;
 
 public class LoginController implements ActionListener {
@@ -15,7 +21,22 @@ public class LoginController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println(e);
+		String cmd = e.getActionCommand();
+		
+		if (cmd.equalsIgnoreCase("Login")) {
+			try {
+				Usuario usuario = Agencia.getInstancia().buscarUsuario(vista.getUsuario());
+				usuario.login(vista.getContrasenia());
+			} catch (UsuarioInexistenteException | ContrasenaIncorrectaException e1) {
+				JOptionPane.showMessageDialog(vista, "Usuario o contraseña incorrectos");
+			}
+			
+			
+			
+			
+		} else if (cmd.equalsIgnoreCase("Register")) {
+			System.out.println("Register");
+		}
 	}
 	
 }

@@ -1,44 +1,35 @@
 package vista;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.GridLayout;
-import javax.swing.JTextField;
-import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.JButton;
-import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import java.awt.Font;
+import javax.swing.JPasswordField;
+import javax.swing.JButton;
 
 public class Login extends JFrame implements ILogin {
 
 	private JPanel contentPane;
+	private JLabel usuarioLabel;
+	private JPanel usuarioLabelPan;
 	private JTextField usuarioText;
+	private JPanel usuarioTextPan;
+	private JPanel usuario;
+	private JLabel contraseniaLabel;
+	private JPanel contraseniaLabelPan;
+	private JPanel contraseniaTextPan;
 	private JPasswordField contraseniaText;
-	
-	private JButton loginButton;
-	private JButton registerButton;
-
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					Login frame = new Login();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
+	private JPanel contrasenia;
+	private JButton loginBoton;
+	private JPanel loginBotonPan;
+	private JButton registerBoton;
+	private JPanel registerBotonPan;
+	private JPanel botones;
 
 	/**
 	 * Create the frame.
@@ -46,91 +37,82 @@ public class Login extends JFrame implements ILogin {
 	public Login() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(500, 300, 450, 300);
+		setBounds(100, 100, 1000, 1000);
 		setSize(600, 400);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		contentPane.setLayout(new GridLayout(3, 1, 0, 0));
 		
-		JPanel principal = new JPanel();
-		contentPane.add(principal, BorderLayout.CENTER);
-		principal.setLayout(new GridLayout(3, 1, 0, 0));
+		usuario = new JPanel();
+		contentPane.add(usuario);
+		usuario.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		JPanel usuarioPanel = new JPanel();
-		principal.add(usuarioPanel);
-		usuarioPanel.setLayout(new GridLayout(2, 1, 0, 0));
+		usuarioLabelPan = new JPanel();
+		usuario.add(usuarioLabelPan);
 		
-		JPanel usuarioLabelPan = new JPanel();
-		usuarioPanel.add(usuarioLabelPan);
-		
-		JLabel usuarioLabel = new JLabel("Usuario:");
-		usuarioLabelPan.add(usuarioLabel);
+		usuarioLabel = new JLabel("Usuario:");
 		usuarioLabel.setFont(new Font("Calibri", Font.PLAIN, 20));
+		usuarioLabelPan.add(usuarioLabel);
 		
-		JPanel usuarioTextPan = new JPanel();
-		usuarioPanel.add(usuarioTextPan);
+		usuarioTextPan = new JPanel();
+		usuario.add(usuarioTextPan);
 		
 		usuarioText = new JTextField();
-		usuarioText.setToolTipText("Username");
 		usuarioTextPan.add(usuarioText);
 		usuarioText.setColumns(10);
 		
-		JPanel contraseniaPanel = new JPanel();
-		principal.add(contraseniaPanel);
-		contraseniaPanel.setLayout(new GridLayout(2, 1, 0, 0));
+		contrasenia = new JPanel();
+		contentPane.add(contrasenia);
+		contrasenia.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		JPanel contraseniaLabelPan = new JPanel();
-		contraseniaPanel.add(contraseniaLabelPan);
+		contraseniaLabelPan = new JPanel();
+		contrasenia.add(contraseniaLabelPan);
 		
-		JLabel contraseniaLabel = new JLabel("Contrase\u00F1a:");
+		contraseniaLabel = new JLabel("Contraseña:");
 		contraseniaLabel.setFont(new Font("Calibri", Font.PLAIN, 20));
 		contraseniaLabelPan.add(contraseniaLabel);
 		
-		JPanel contraseniaTextPan = new JPanel();
-		contraseniaPanel.add(contraseniaTextPan);
+		contraseniaTextPan = new JPanel();
+		contrasenia.add(contraseniaTextPan);
 		
 		contraseniaText = new JPasswordField();
 		contraseniaText.setColumns(10);
 		contraseniaTextPan.add(contraseniaText);
 		
-		JPanel botonPanel = new JPanel();
-		principal.add(botonPanel);
-		botonPanel.setLayout(new GridLayout(0, 2, 0, 0));
+		botones = new JPanel();
+		contentPane.add(botones);
+		botones.setLayout(new GridLayout(0, 2, 0, 0));
 		
-		JPanel botonLoginPan = new JPanel();
-		botonPanel.add(botonLoginPan);
+		loginBotonPan = new JPanel();
+		botones.add(loginBotonPan);
 		
-		JButton botonLogin = new JButton("Login");
-		botonLoginPan.add(botonLogin);
-		loginButton = botonLogin;
+		loginBoton = new JButton("Login");
+		loginBotonPan.add(loginBoton);
 		
-		JPanel botonRegisterPan = new JPanel();
-		botonPanel.add(botonRegisterPan);
+		registerBotonPan = new JPanel();
+		botones.add(registerBotonPan);
 		
-		JButton botonRegister = new JButton("Register");
-		botonRegisterPan.add(botonRegister);
-		registerButton = botonRegister;
+		registerBoton = new JButton("Register");
+		registerBotonPan.add(registerBoton);
 		
-		this.setVisible(true);
+		setVisible(true);
 	}
 
 	@Override
 	public void setActionListener(ActionListener actionListener) {
-		loginButton.addActionListener(actionListener);
-		registerButton.addActionListener(actionListener);
+		loginBoton.addActionListener(actionListener);
+		registerBoton.addActionListener(actionListener);
 	}
 
 	@Override
 	public String getUsuario() {
-		return null;
+		return usuarioText.getText();
 	}
 
 	@Override
 	public String getContrasenia() {
-		// TODO Auto-generated method stub
-		return null;
+		return String.valueOf(contraseniaText.getPassword());
 	}
 
 }
-
