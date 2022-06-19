@@ -34,7 +34,8 @@ public class LoginController implements IController, WindowListener {
 			try {
 				Usuario usuario = Agencia.getInstancia().buscarUsuario(vista.getUsuario());
 				usuario.login(vista.getContrasenia());
-				JOptionPane.showMessageDialog(vista, "Usuario logueado");
+				vista.setVisible(false);
+//				JOptionPane.showMessageDialog(vista, "Usuario logueado");
 			} catch (UsuarioInexistenteException | ContrasenaIncorrectaException e1) {
 				JOptionPane.showMessageDialog(vista, "Usuario o contraseña incorrectos");
 			}
@@ -60,9 +61,7 @@ public class LoginController implements IController, WindowListener {
 	}
 
 	@Override
-	public void windowClosed(WindowEvent e) {
-		System.out.println("Me cerre");	
-		
+	public void windowClosed(WindowEvent e) {		
 	}
 
 	@Override
