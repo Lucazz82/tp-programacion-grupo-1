@@ -3,9 +3,12 @@ package modelos;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import enums.Locaciones;
+import enums.Rubros;
 import modelos.comisiones.Rubro;
+import util.Util;
 
-public class Empleador extends Usuario {
+public class Empleador extends Usuario implements Runnable {
 
 	private String nombre;
 	private ITipoPersona tipoPersona;
@@ -66,6 +69,17 @@ public class Empleador extends Usuario {
 
 	public void puntajePrimerLugar() {
 		this.puntaje += 10;
+	}
+	
+	@Override
+	public void run() {
+		Agencia agencia = Agencia.getInstancia();
+//		agencia.agregarTicketABolsa(new TicketSimplificado(this, Locaciones.CUALQUIERA, Rubros.COMERCIO_INTERNACIONAL));
+		agencia.agregarTicketABolsa(new TicketSimplificado(this, Locaciones.HOME_OFFICE, Rubros.SALUD));
+		Util.espera();
+		agencia.agregarTicketABolsa(new TicketSimplificado(this, Locaciones.CUALQUIERA, Rubros.SALUD));
+		Util.espera();
+		agencia.agregarTicketABolsa(new TicketSimplificado(this, Locaciones.PRESENCIAL, Rubros.COMERCIO_INTERNACIONAL));
 	}
 
 }

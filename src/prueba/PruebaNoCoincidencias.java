@@ -40,7 +40,7 @@ public class PruebaNoCoincidencias {
 		EmpleadoPretenso ep4 = new EmpleadoPretenso("Guille", "Profe!");
 
 		Empleador e1 = new Empleador("Raul", "Rodriguez", new PersonaFisica(),
-				RubroFactory.getRubro(Rubros.COMECIO_LOCAL));
+				RubroFactory.getRubro(Rubros.COMERCIO_LOCAL));
 		Empleador e2 = new Empleador("Franco", "Demaio", "Matias", new PersonaJuridica(),
 				RubroFactory.getRubro(Rubros.COMERCIO_INTERNACIONAL));
 		Empleador e3 = new Empleador("Lucas", "DeLellis", "Lucas", new PersonaJuridica(),
@@ -67,13 +67,13 @@ public class PruebaNoCoincidencias {
 				EstudiosPrevios.PRIMARIO, Rubros.COMERCIO_INTERNACIONAL);
 		Formulario f4 = FormularioFactory.getFormulario(Locaciones.PRESENCIAL, Remuneraciones.HASTA_V1, 450, 900,
 				CargasHorarias.COMPLETA, PuestosLaborales.SENIOR, RangosEtarios.MENOS_DE_40, Experiencias.MUCHA,
-				EstudiosPrevios.TERCIARIO, Rubros.COMECIO_LOCAL);
+				EstudiosPrevios.TERCIARIO, Rubros.COMERCIO_LOCAL);
 		Formulario f5 = FormularioFactory.getFormulario(Locaciones.HOME_OFFICE, Remuneraciones.HASTA_V1, 100, 1000,
 				CargasHorarias.COMPLETA, PuestosLaborales.GERENCIAL, RangosEtarios.MENOS_DE_40, Experiencias.MUCHA,
 				EstudiosPrevios.SECUNDARIO, Rubros.COMERCIO_INTERNACIONAL);
 		Formulario f6 = FormularioFactory.getFormulario(Locaciones.CUALQUIERA, Remuneraciones.ENTRE_V1_V2, 535, 570,
 				CargasHorarias.COMPLETA, PuestosLaborales.SENIOR, RangosEtarios.MENOS_DE_40, Experiencias.MUCHA,
-				EstudiosPrevios.TERCIARIO, Rubros.COMECIO_LOCAL);
+				EstudiosPrevios.TERCIARIO, Rubros.COMERCIO_LOCAL);
 		Formulario f7 = FormularioFactory.getFormulario(Locaciones.PRESENCIAL, Remuneraciones.MAS_DE_V2, 375, 600,
 				CargasHorarias.COMPLETA, PuestosLaborales.GERENCIAL, RangosEtarios.MENOS_DE_40, Experiencias.MUCHA,
 				EstudiosPrevios.PRIMARIO, Rubros.SALUD);

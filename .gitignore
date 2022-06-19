@@ -1,4 +1,8 @@
 /bin/
 .metadata
 /doc
+<<<<<<< HEAD
 /datos.bin
+=======
+*.bin
+>>>>>>> refs/heads/concurrencia

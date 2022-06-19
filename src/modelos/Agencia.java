@@ -16,19 +16,34 @@ public class Agencia implements Logueable {
 	private ArrayList<Empleador> empleadores = new ArrayList<Empleador>();
 	private HashMap<TicketBusquedaEmpleado, HashMap<TicketBusquedaEmpleo, Double>> listasAsignaciones = new HashMap<TicketBusquedaEmpleado, HashMap<TicketBusquedaEmpleo, Double>>();
 	private ArrayList<Coincidencia> coincidencias = new ArrayList<Coincidencia>();
-	private GregorianCalendar fechaLista; // NO SE PUEDE PERSISTIR, LO CAMBIAMOS?
+
+	private GregorianCalendar fechaLista; //NO SE PUEDE PERSISTIR, LO CAMBIAMOS?
 	
 	private String username;
 	private String contrasena;
+	
+	private BolsaDeTrabajo bolsaDeTrabajo = new BolsaDeTrabajo();
+	
+	public void agregarTicketABolsa(TicketSimplificado ticket) {
+		bolsaDeTrabajo.agregarTickets(ticket);
+	}
+	
+	public void busquedaBolsa(EmpleadoPretenso empleado) {
+		bolsaDeTrabajo.busqueda(empleado);
+	}
+	
+	public void devuelveBolsa(TicketSimplificado ticket) {
+		bolsaDeTrabajo.devuelve(ticket);
+	}
 
 	private Agencia() {
 
 	}
 
-	public static Agencia getInstancia() {
+	public synchronized static Agencia getInstancia() {
 		if (_instancia == null)
 			_instancia = new Agencia();
-		return _instancia;
+		return _instancia;			
 	}
 
 	/**

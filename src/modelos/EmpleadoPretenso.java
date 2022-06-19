@@ -2,12 +2,16 @@ package modelos;
 
 import java.util.Date;
 
-public class EmpleadoPretenso extends Usuario implements IComision {
+import util.Util;
+
+public class EmpleadoPretenso extends Usuario implements IComision, Runnable {
 	private String nombre;
 	private String apellido;
 	private String telefono;
 	private Date fechaNacimiento;
 	private TicketBusquedaEmpleo ticket;
+	
+	private TicketSimplificado ganador = null;
 
 	public EmpleadoPretenso(String nombreUsuario, String contrasena) {
 		super(nombreUsuario, contrasena);
@@ -44,6 +48,14 @@ public class EmpleadoPretenso extends Usuario implements IComision {
 
 	public TicketBusquedaEmpleo getTicket() {
 		return ticket;
+	}
+
+	public TicketSimplificado getGanador() {
+		return ganador;
+	}
+
+	public void setGanador(TicketSimplificado ganador) {
+		this.ganador = ganador;
 	}
 
 	@Override
@@ -86,5 +98,20 @@ public class EmpleadoPretenso extends Usuario implements IComision {
 	@Override
 	public double calcularPorcentaje() {
 		return (this.getPuntaje() * 0.01 < 1) ? this.getPuntaje() * 0.01 : 1;
+	}
+
+	@Override
+	public void run() {
+		Agencia agencia = Agencia.getInstancia();
+		for(int i = 0; i < 10; i++) {
+			Util.espera();
+			agencia.busquedaBolsa(this);
+			if (!ganador.getLocacion().mismaLocacion(this.ticket.getFormulario().getLocacion())) {
+				agencia.devuelveBolsa(ganador);
+				ganador = null;
+			} else {
+				break;
+			}
+		}
 	}
 }

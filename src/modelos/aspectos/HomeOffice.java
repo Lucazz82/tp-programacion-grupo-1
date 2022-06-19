@@ -1,8 +1,13 @@
 package modelos.aspectos;
 
+import enums.Locaciones;
 import modelos.IDoubleDispatch;
 
 public class HomeOffice extends Locacion {
+
+	public HomeOffice() {
+		super(Locaciones.HOME_OFFICE);
+	}
 
 	@Override
 	public double enfrentar(IDoubleDispatch o) {

@@ -39,7 +39,7 @@ public class Prueba {
 		EmpleadoPretenso ep4 = new EmpleadoPretenso("Guille", "Profe!");
 
 		Empleador e1 = new Empleador("Raul", "Rodriguez", new PersonaFisica(),
-				RubroFactory.getRubro(Rubros.COMECIO_LOCAL));
+				RubroFactory.getRubro(Rubros.COMERCIO_LOCAL));
 		Empleador e2 = new Empleador("Franco", "Demaio", "Matias", new PersonaJuridica(),
 				RubroFactory.getRubro(Rubros.COMERCIO_INTERNACIONAL));
 		Empleador e3 = new Empleador("Lucas", "DeLellis", "Lucas", new PersonaJuridica(),

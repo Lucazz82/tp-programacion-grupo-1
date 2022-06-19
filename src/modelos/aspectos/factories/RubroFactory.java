@@ -11,7 +11,7 @@ public class RubroFactory {
 		Rubro resultado = null;
 
 		switch (rubro) {
-		case COMECIO_LOCAL:
+		case COMERCIO_LOCAL:
 			resultado = new ComercioLocal();
 			break;
 		case COMERCIO_INTERNACIONAL:
