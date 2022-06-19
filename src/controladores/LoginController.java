@@ -3,7 +3,6 @@ package controladores;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
@@ -11,10 +10,6 @@ import excepciones.ContrasenaIncorrectaException;
 import excepciones.UsuarioInexistenteException;
 import modelos.Agencia;
 import modelos.Usuario;
-import persistencia.AgenciaDTO;
-import persistencia.IPersistencia;
-import persistencia.PersistenciaBIN;
-import persistencia.UtilDTO;
 import vista.Login;
 
 public class LoginController implements IController, WindowListener {
@@ -52,12 +47,7 @@ public class LoginController implements IController, WindowListener {
 
 	@Override
 	public void windowClosing(WindowEvent e) {
-		IPersistencia<AgenciaDTO> persistencia = new PersistenciaBIN<AgenciaDTO>();	
-		try {
-			persistencia.persistir("datos.bin", UtilDTO.agenciaDTOFromAgencia());
-		} catch (IOException e1) {
-			System.out.println("Error al persistir");
-		}
+		Sistema.getInstancia().cerrarSistema();
 	}
 
 	@Override

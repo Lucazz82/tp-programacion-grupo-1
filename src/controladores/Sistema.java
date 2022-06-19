@@ -11,6 +11,8 @@ public class Sistema {
 	private static Sistema _instancia = null;
 
 	private IController controladorActual;
+	private IPersistencia<AgenciaDTO> persistencia = new PersistenciaBIN<AgenciaDTO>();
+	private static String filename = "datos.bin";
 
 	private Sistema() {
 
@@ -23,14 +25,21 @@ public class Sistema {
 	}
 
 	public void iniciarSistema() {
-		IPersistencia<AgenciaDTO> persistencia = new PersistenciaBIN<AgenciaDTO>();
 		try {
-			AgenciaDTO agenciaDTO = persistencia.recuperar("datos.bin");
+			AgenciaDTO agenciaDTO = persistencia.recuperar(filename);
 			UtilDTO.agenciaFromAgenciaDTO(agenciaDTO);
 		} catch (ClassNotFoundException | IOException e) {
 			e.printStackTrace();
 		}
 		controladorActual = new LoginController();
+	}
+	
+	public void cerrarSistema() {
+		try {
+			persistencia.persistir(filename, UtilDTO.agenciaDTOFromAgencia());
+		} catch (IOException e1) {
+			System.out.println("Error al persistir");
+		}
 	}
 
 	public void cambiarController(IController controller) {
