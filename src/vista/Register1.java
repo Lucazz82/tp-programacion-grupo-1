@@ -38,6 +38,7 @@ public class Register1 extends JFrame implements IVista, IRegister {
 	 * Create the frame.
 	 */
 	public Register1() {
+		setTitle("Registro");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 400);

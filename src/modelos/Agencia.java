@@ -5,10 +5,11 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import excepciones.ContrasenaIncorrectaException;
 import excepciones.TicketInexistenteException;
 import excepciones.UsuarioInexistenteException;
 
-public class Agencia {
+public class Agencia implements Logueable {
 	private static Agencia _instancia = null;
 
 	private ArrayList<EmpleadoPretenso> empleados = new ArrayList<EmpleadoPretenso>();
@@ -16,6 +17,9 @@ public class Agencia {
 	private HashMap<TicketBusquedaEmpleado, HashMap<TicketBusquedaEmpleo, Double>> listasAsignaciones = new HashMap<TicketBusquedaEmpleado, HashMap<TicketBusquedaEmpleo, Double>>();
 	private ArrayList<Coincidencia> coincidencias = new ArrayList<Coincidencia>();
 	private GregorianCalendar fechaLista; // NO SE PUEDE PERSISTIR, LO CAMBIAMOS?
+	
+	private String username;
+	private String contrasena;
 
 	private Agencia() {
 
@@ -242,6 +246,13 @@ public class Agencia {
 	public void registrarUsuario(Empleador empleador) {
 		this.empleadores.add(empleador);
 	}
+	
+	@Override
+	public void login(String contrasena) throws ContrasenaIncorrectaException {
+		if (!this.contrasena.equals(contrasena)) {
+			throw new ContrasenaIncorrectaException("Contrasena incorrecta");
+		}
+	}
 
 	/**** GETTERS Y SETTERS ****/
 	public ArrayList<EmpleadoPretenso> getEmpleados() {
@@ -284,4 +295,5 @@ public class Agencia {
 	public void setFechaLista(GregorianCalendar fechaLista) {
 		this.fechaLista = fechaLista;
 	}
+
 }
