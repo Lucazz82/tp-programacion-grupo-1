@@ -3,6 +3,7 @@ package vista;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -97,6 +98,10 @@ public class Login extends JFrame implements IVista, ILogin {
 		registerBotonPan.add(registerBoton);
 
 		setVisible(true);
+	}
+	
+	public void setWindowListener(WindowListener windowListener) {
+		this.addWindowListener(windowListener);
 	}
 
 	@Override
