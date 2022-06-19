@@ -2,6 +2,7 @@ package modelos;
 
 import java.util.Date;
 
+import excepciones.AgenciaInexistenteException;
 import util.Util;
 
 public class EmpleadoPretenso extends Usuario implements IComision, Runnable {
@@ -102,7 +103,13 @@ public class EmpleadoPretenso extends Usuario implements IComision, Runnable {
 
 	@Override
 	public void run() {
-		Agencia agencia = Agencia.getInstancia();
+		Agencia agencia = null;
+		try {
+			agencia = Agencia.getInstancia();
+		} catch (AgenciaInexistenteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		for(int i = 0; i < 10; i++) {
 			Util.espera();
 			agencia.busquedaBolsa(this);

@@ -1,12 +1,13 @@
 package prueba;
 
 import controladores.Sistema;
+import excepciones.AgenciaInexistenteException;
 import modelos.Agencia;
 import modelos.EmpleadoPretenso;
 
 public class PruebaLogin {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws AgenciaInexistenteException {
 		Sistema sistema = Sistema.getInstancia();
 		sistema.iniciarSistema();
 

@@ -33,6 +33,9 @@ public class Register1 extends JFrame implements IVista, IRegister {
 	private JPanel usuarioTextPan;
 	private JPanel usuarioLabelPan;
 	private JPanel usuario;
+	private JPanel siguienteBotonPan;
+	private JButton volverBoton;
+	private JPanel volverBotonPan;
 
 	/**
 	 * Create the frame.
@@ -94,15 +97,26 @@ public class Register1 extends JFrame implements IVista, IRegister {
 
 		botones = new JPanel();
 		contentPane.add(botones);
+		botones.setLayout(new GridLayout(0, 2, 0, 0));
+		
+		volverBotonPan = new JPanel();
+		botones.add(volverBotonPan);
+		
+		volverBoton = new JButton("Volver");
+		volverBotonPan.add(volverBoton);
+		
+		siguienteBotonPan = new JPanel();
+		botones.add(siguienteBotonPan);
 
 		siguienteBoton = new JButton("Siguente");
-		botones.add(siguienteBoton);
+		siguienteBotonPan.add(siguienteBoton);
 		this.setVisible(true);
 	}
 
 	@Override
 	public void setActionListener(ActionListener actionListener) {
 		siguienteBoton.addActionListener(actionListener);
+		volverBoton.addActionListener(actionListener);
 	}
 
 	@Override

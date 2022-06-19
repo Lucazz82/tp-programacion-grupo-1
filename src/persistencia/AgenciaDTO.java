@@ -2,7 +2,6 @@ package persistencia;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
 import java.util.HashMap;
 
 import modelos.Coincidencia;
@@ -12,22 +11,31 @@ import modelos.TicketBusquedaEmpleado;
 import modelos.TicketBusquedaEmpleo;
 
 public class AgenciaDTO implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ArrayList<EmpleadoPretenso> empleados = new ArrayList<EmpleadoPretenso>();
 	private ArrayList<Empleador> empleadores = new ArrayList<Empleador>();
 	private HashMap<TicketBusquedaEmpleado, HashMap<TicketBusquedaEmpleo, Double>> listasAsignaciones = new HashMap<TicketBusquedaEmpleado, HashMap<TicketBusquedaEmpleo, Double>>();
 	private ArrayList<Coincidencia> coincidencias = new ArrayList<Coincidencia>();
+	
+	private String usuario;
+	private String contrasenia;
 
 	public AgenciaDTO() {
 	}
 
 	public AgenciaDTO(ArrayList<EmpleadoPretenso> empleados, ArrayList<Empleador> empleadores,
 			HashMap<TicketBusquedaEmpleado, HashMap<TicketBusquedaEmpleo, Double>> listasAsignaciones,
-			ArrayList<Coincidencia> coincidencias, GregorianCalendar fechaLista) {
+			ArrayList<Coincidencia> coincidencias, String usuario, String contrasenia) {
 		super();
 		this.empleados = empleados;
 		this.empleadores = empleadores;
 		this.listasAsignaciones = listasAsignaciones;
 		this.coincidencias = coincidencias;
+		this.usuario = usuario;
+		this.contrasenia = contrasenia;
 	}
 
 	public ArrayList<EmpleadoPretenso> getEmpleados() {
@@ -62,4 +70,22 @@ public class AgenciaDTO implements Serializable {
 	public void setCoincidencias(ArrayList<Coincidencia> coincidencias) {
 		this.coincidencias = coincidencias;
 	}
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
+	public String getContrasenia() {
+		return contrasenia;
+	}
+
+	public void setContrasenia(String contrasenia) {
+		this.contrasenia = contrasenia;
+	}
+	
+	
 }

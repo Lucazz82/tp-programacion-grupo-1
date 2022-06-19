@@ -5,6 +5,7 @@ import java.util.Iterator;
 
 import enums.Locaciones;
 import enums.Rubros;
+import excepciones.AgenciaInexistenteException;
 import modelos.comisiones.Rubro;
 import util.Util;
 
@@ -73,7 +74,13 @@ public class Empleador extends Usuario implements Runnable {
 	
 	@Override
 	public void run() {
-		Agencia agencia = Agencia.getInstancia();
+		Agencia agencia = null;
+		try {
+			agencia = Agencia.getInstancia();
+		} catch (AgenciaInexistenteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 //		agencia.agregarTicketABolsa(new TicketSimplificado(this, Locaciones.CUALQUIERA, Rubros.COMERCIO_INTERNACIONAL));
 		agencia.agregarTicketABolsa(new TicketSimplificado(this, Locaciones.HOME_OFFICE, Rubros.SALUD));
 		Util.espera();

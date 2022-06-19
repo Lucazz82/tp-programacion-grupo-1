@@ -5,6 +5,8 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import excepciones.AgenciaInexistenteException;
+import excepciones.AgenciaYaExistenteException;
 import excepciones.ContrasenaIncorrectaException;
 import excepciones.TicketInexistenteException;
 import excepciones.UsuarioInexistenteException;
@@ -19,8 +21,8 @@ public class Agencia implements Logueable {
 
 	private GregorianCalendar fechaLista; //NO SE PUEDE PERSISTIR, LO CAMBIAMOS?
 	
-	private String username;
-	private String contrasena;
+	private String usuario;
+	private String contrasenia;
 	
 	private BolsaDeTrabajo bolsaDeTrabajo = new BolsaDeTrabajo();
 	
@@ -36,13 +38,15 @@ public class Agencia implements Logueable {
 		bolsaDeTrabajo.devuelve(ticket);
 	}
 
-	private Agencia() {
-
+	private Agencia(String usuario, String contrasenia) {
+		this.usuario = usuario;
+		this.contrasenia = contrasenia;
 	}
 
-	public synchronized static Agencia getInstancia() {
+	public synchronized static Agencia getInstancia() throws AgenciaInexistenteException {
 		if (_instancia == null)
-			_instancia = new Agencia();
+			throw new AgenciaInexistenteException();
+		
 		return _instancia;			
 	}
 
@@ -55,7 +59,7 @@ public class Agencia implements Logueable {
 	 * @throws UsuarioInexistenteException si no existe un usuario con ese nombre de
 	 *                                     usuario.
 	 */
-	public Usuario buscarUsuario(String nombreUsuario) throws UsuarioInexistenteException {
+	public Logueable buscarUsuario(String nombreUsuario) throws UsuarioInexistenteException {
 		ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 		usuarios.addAll(empleados);
 		usuarios.addAll(empleadores);
@@ -65,8 +69,11 @@ public class Agencia implements Logueable {
 				return usuario;
 			}
 		}
-
-		throw new UsuarioInexistenteException(nombreUsuario + " no existe");
+		
+		if(this.usuario.equals(nombreUsuario))
+			return this;
+		else
+			throw new UsuarioInexistenteException(nombreUsuario + " no existe");
 	}
 
 	/**
@@ -262,9 +269,16 @@ public class Agencia implements Logueable {
 		this.empleadores.add(empleador);
 	}
 	
+	public static void registrarAgencia(String usuario, String contrasenia) throws AgenciaYaExistenteException {
+		if(_instancia != null) 
+			throw new AgenciaYaExistenteException();
+		
+		_instancia = new Agencia(usuario, contrasenia);
+	}
+	
 	@Override
 	public void login(String contrasena) throws ContrasenaIncorrectaException {
-		if (!this.contrasena.equals(contrasena)) {
+		if (!this.contrasenia.equals(contrasena)) {
 			throw new ContrasenaIncorrectaException("Contrasena incorrecta");
 		}
 	}
@@ -311,4 +325,13 @@ public class Agencia implements Logueable {
 		this.fechaLista = fechaLista;
 	}
 
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public String getContrasenia() {
+		return contrasenia;
+	}
+
+	
 }
