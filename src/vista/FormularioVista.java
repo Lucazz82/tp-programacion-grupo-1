@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
+
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -20,53 +22,52 @@ import enums.Experiencias;
 import enums.EstudiosPrevios;
 import enums.Rubros;
 
-public class FormularioVista extends JFrame {
+public class FormularioVista extends JFrame implements IVista {
 
 	private JPanel contentPane;
 	private JLabel locacionLabel;
 	private JPanel locacionLabelPan;
 	private JPanel locacion;
-	private JPanel locacionDesplegable;
-	private JComboBox comboBox;
+	private JPanel locacionDesplegablePan;
+	private JComboBox locacionDesplegable;
 	private JPanel remuneracion;
 	private JPanel remuneracionLabelPan;
 	private JLabel remuneracionLabel;
-	private JPanel remuneracionDesplegable;
-	private JComboBox comboBox_1;
+	private JPanel remuneracionDesplegablePan;
+	private JComboBox remuneracionDesplegable;
 	private JPanel cargaHoraria;
 	private JPanel cargaHorariaLabelPan;
 	private JLabel cargaHorariaLabel;
-	private JPanel cargaHorariaDesplegable;
-	private JComboBox comboBox_2;
+	private JPanel cargaHorariaDesplegablePan;
+	private JComboBox cargaHorariaDesplegable;
 	private JPanel puestoLaboral;
 	private JPanel puestoLaboralLabelPan;
 	private JLabel puestoLaboralLabel;
-	private JPanel puestoLaboralDesplegable;
-	private JComboBox comboBox_3;
+	private JPanel puestoLaboralDesplegablePan;
+	private JComboBox puestoLaboralDesplegable;
 	private JPanel rangoEtario;
 	private JPanel rangoEtarioLabelPan;
 	private JLabel rangoEtarioLabel;
-	private JPanel rangoEtarioDesplegable;
-	private JComboBox comboBox_4;
+	private JPanel rangoEtarioDesplegablePan;
+	private JComboBox rangoEtarioDesplegable;
 	private JPanel experiencia;
 	private JPanel experienciaLabelPan;
 	private JLabel experienciaLabel;
-	private JPanel experienciaDesplegable;
-	private JComboBox comboBox_5;
+	private JPanel experienciaDesplegablePan;
+	private JComboBox experienciaDesplegable;
 	private JPanel estudio;
 	private JPanel estudioLabelPan;
 	private JLabel estudioLabel;
-	private JPanel estudioDesplegable;
-	private JComboBox comboBox_6;
+	private JPanel estudioDesplegablePan;
+	private JComboBox estudioDesplegable;
 	private JPanel rubro;
 	private JPanel rubroLabelPan;
 	private JLabel rubroLabel;
-	private JPanel rubroDesplegable;
-	private JComboBox comboBox_7;
+	private JPanel rubroDesplegablePan;
+	private JComboBox rubroDesplegable;
 	private JPanel volver;
-	private JButton volverBoton;
-	private JPanel finalizar;
-	private JButton finalizarBoton;
+	private JPanel crear;
+	private JButton crearBoton;
 
 	/**
 	 * Create the frame.
@@ -77,7 +78,7 @@ public class FormularioVista extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new GridLayout(5, 3, 0, 0));
+		contentPane.setLayout(new GridLayout(0, 2, 0, 0));
 		
 		locacion = new JPanel();
 		contentPane.add(locacion);
@@ -89,12 +90,12 @@ public class FormularioVista extends JFrame {
 		locacionLabel = new JLabel("Locacion:");
 		locacionLabelPan.add(locacionLabel);
 		
-		locacionDesplegable = new JPanel();
-		locacion.add(locacionDesplegable);
+		locacionDesplegablePan = new JPanel();
+		locacion.add(locacionDesplegablePan);
 		
-		comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(Locaciones.values()));
-		locacionDesplegable.add(comboBox);
+		locacionDesplegable = new JComboBox();
+		locacionDesplegable.setModel(new DefaultComboBoxModel(Locaciones.values()));
+		locacionDesplegablePan.add(locacionDesplegable);
 		
 		remuneracion = new JPanel();
 		contentPane.add(remuneracion);
@@ -106,12 +107,12 @@ public class FormularioVista extends JFrame {
 		remuneracionLabel = new JLabel("Remuneracion:");
 		remuneracionLabelPan.add(remuneracionLabel);
 		
-		remuneracionDesplegable = new JPanel();
-		remuneracion.add(remuneracionDesplegable);
+		remuneracionDesplegablePan = new JPanel();
+		remuneracion.add(remuneracionDesplegablePan);
 		
-		comboBox_1 = new JComboBox();
-		comboBox_1.setModel(new DefaultComboBoxModel(Remuneraciones.values()));
-		remuneracionDesplegable.add(comboBox_1);
+		remuneracionDesplegable = new JComboBox();
+		remuneracionDesplegable.setModel(new DefaultComboBoxModel(Remuneraciones.values()));
+		remuneracionDesplegablePan.add(remuneracionDesplegable);
 		
 		cargaHoraria = new JPanel();
 		contentPane.add(cargaHoraria);
@@ -123,12 +124,12 @@ public class FormularioVista extends JFrame {
 		cargaHorariaLabel = new JLabel("Carga Horaria:");
 		cargaHorariaLabelPan.add(cargaHorariaLabel);
 		
-		cargaHorariaDesplegable = new JPanel();
-		cargaHoraria.add(cargaHorariaDesplegable);
+		cargaHorariaDesplegablePan = new JPanel();
+		cargaHoraria.add(cargaHorariaDesplegablePan);
 		
-		comboBox_2 = new JComboBox();
-		comboBox_2.setModel(new DefaultComboBoxModel(CargasHorarias.values()));
-		cargaHorariaDesplegable.add(comboBox_2);
+		cargaHorariaDesplegable = new JComboBox();
+		cargaHorariaDesplegable.setModel(new DefaultComboBoxModel(CargasHorarias.values()));
+		cargaHorariaDesplegablePan.add(cargaHorariaDesplegable);
 		
 		puestoLaboral = new JPanel();
 		contentPane.add(puestoLaboral);
@@ -140,12 +141,12 @@ public class FormularioVista extends JFrame {
 		puestoLaboralLabel = new JLabel("Puesto Laboral:");
 		puestoLaboralLabelPan.add(puestoLaboralLabel);
 		
-		puestoLaboralDesplegable = new JPanel();
-		puestoLaboral.add(puestoLaboralDesplegable);
+		puestoLaboralDesplegablePan = new JPanel();
+		puestoLaboral.add(puestoLaboralDesplegablePan);
 		
-		comboBox_3 = new JComboBox();
-		comboBox_3.setModel(new DefaultComboBoxModel(PuestosLaborales.values()));
-		puestoLaboralDesplegable.add(comboBox_3);
+		puestoLaboralDesplegable = new JComboBox();
+		puestoLaboralDesplegable.setModel(new DefaultComboBoxModel(PuestosLaborales.values()));
+		puestoLaboralDesplegablePan.add(puestoLaboralDesplegable);
 		
 		rangoEtario = new JPanel();
 		contentPane.add(rangoEtario);
@@ -157,12 +158,12 @@ public class FormularioVista extends JFrame {
 		rangoEtarioLabel = new JLabel("Rango Etario:");
 		rangoEtarioLabelPan.add(rangoEtarioLabel);
 		
-		rangoEtarioDesplegable = new JPanel();
-		rangoEtario.add(rangoEtarioDesplegable);
+		rangoEtarioDesplegablePan = new JPanel();
+		rangoEtario.add(rangoEtarioDesplegablePan);
 		
-		comboBox_4 = new JComboBox();
-		comboBox_4.setModel(new DefaultComboBoxModel(RangosEtarios.values()));
-		rangoEtarioDesplegable.add(comboBox_4);
+		rangoEtarioDesplegable = new JComboBox();
+		rangoEtarioDesplegable.setModel(new DefaultComboBoxModel(RangosEtarios.values()));
+		rangoEtarioDesplegablePan.add(rangoEtarioDesplegable);
 		
 		experiencia = new JPanel();
 		contentPane.add(experiencia);
@@ -174,12 +175,12 @@ public class FormularioVista extends JFrame {
 		experienciaLabel = new JLabel("Experiencia:");
 		experienciaLabelPan.add(experienciaLabel);
 		
-		experienciaDesplegable = new JPanel();
-		experiencia.add(experienciaDesplegable);
+		experienciaDesplegablePan = new JPanel();
+		experiencia.add(experienciaDesplegablePan);
 		
-		comboBox_5 = new JComboBox();
-		comboBox_5.setModel(new DefaultComboBoxModel(Experiencias.values()));
-		experienciaDesplegable.add(comboBox_5);
+		experienciaDesplegable = new JComboBox();
+		experienciaDesplegable.setModel(new DefaultComboBoxModel(Experiencias.values()));
+		experienciaDesplegablePan.add(experienciaDesplegable);
 		
 		estudio = new JPanel();
 		contentPane.add(estudio);
@@ -191,12 +192,12 @@ public class FormularioVista extends JFrame {
 		estudioLabel = new JLabel("Estudios:");
 		estudioLabelPan.add(estudioLabel);
 		
-		estudioDesplegable = new JPanel();
-		estudio.add(estudioDesplegable);
+		estudioDesplegablePan = new JPanel();
+		estudio.add(estudioDesplegablePan);
 		
-		comboBox_6 = new JComboBox();
-		comboBox_6.setModel(new DefaultComboBoxModel(EstudiosPrevios.values()));
-		estudioDesplegable.add(comboBox_6);
+		estudioDesplegable = new JComboBox();
+		estudioDesplegable.setModel(new DefaultComboBoxModel(EstudiosPrevios.values()));
+		estudioDesplegablePan.add(estudioDesplegable);
 		
 		rubro = new JPanel();
 		contentPane.add(rubro);
@@ -208,24 +209,67 @@ public class FormularioVista extends JFrame {
 		rubroLabel = new JLabel("Rubro:");
 		rubroLabelPan.add(rubroLabel);
 		
-		rubroDesplegable = new JPanel();
-		rubro.add(rubroDesplegable);
+		rubroDesplegablePan = new JPanel();
+		rubro.add(rubroDesplegablePan);
 		
-		comboBox_7 = new JComboBox();
-		comboBox_7.setModel(new DefaultComboBoxModel(Rubros.values()));
-		rubroDesplegable.add(comboBox_7);
+		rubroDesplegable = new JComboBox();
+		rubroDesplegable.setModel(new DefaultComboBoxModel(Rubros.values()));
+		rubroDesplegablePan.add(rubroDesplegable);
 		
 		volver = new JPanel();
 		contentPane.add(volver);
 		
-		volverBoton = new JButton("Volver");
-		volver.add(volverBoton);
+		crear = new JPanel();
+		contentPane.add(crear);
 		
-		finalizar = new JPanel();
-		contentPane.add(finalizar);
+		crearBoton = new JButton("Crear Ticket");
+		crear.add(crearBoton);
 		
-		finalizarBoton = new JButton("Finalizar");
-		finalizar.add(finalizarBoton);
+		setVisible(true);
 	}
 
+	public Locaciones getLocacion() {
+		return (Locaciones) this.locacionDesplegable.getSelectedItem(); 
+	}
+	
+	public Remuneraciones getRemuneracion() {
+		return (Remuneraciones) this.remuneracionDesplegable.getSelectedItem(); 
+	}
+	
+	public int getV1() {
+		return 0;
+	}
+	
+	public int getV2() {
+		return 0;
+	}
+	
+	public CargasHorarias getCargaHoraria() {
+		return (CargasHorarias) this.cargaHorariaDesplegable.getSelectedItem(); 
+	}
+	
+	public PuestosLaborales getPuestoLaboral() {
+		return (PuestosLaborales) this.puestoLaboralDesplegable.getSelectedItem();
+	}
+	
+	public RangosEtarios getRangoEtario() {
+		return (RangosEtarios) this.rangoEtarioDesplegable.getSelectedItem(); 
+	}
+	
+	public Experiencias getExperiencias() {
+		return (Experiencias) this.experienciaDesplegable.getSelectedItem(); 
+	}
+	
+	public EstudiosPrevios getEstudios() {
+		return (EstudiosPrevios) this.estudioDesplegable.getSelectedItem(); 
+	}
+	
+	public Rubros getRubro() {
+		return (Rubros) this.rubroDesplegable.getSelectedItem(); 
+	}
+
+	@Override
+	public void setActionListener(ActionListener actionListener) {
+		this.crearBoton.addActionListener(actionListener);		
+	}
 }

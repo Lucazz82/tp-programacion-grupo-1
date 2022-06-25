@@ -2,10 +2,41 @@ package controladores;
 
 import java.awt.event.ActionEvent;
 
-public class TicketEmpleadoController extends Controller {
+import javax.swing.JOptionPane;
+
+import enums.Locaciones;
+import modelos.EmpleadoPretenso;
+import modelos.Formulario;
+import modelos.FormularioFactory;
+import modelos.IComision;
+import modelos.TicketBusquedaEmpleo;
+import modelos.aspectos.factories.PuestoLaboralFactory;
+import vista.FormularioVista;
+
+public class TicketEmpleadoController extends Controller {	
+	private FormularioVista vista;
+	private EmpleadoPretenso empleado;
+	
+	public TicketEmpleadoController(EmpleadoPretenso empleado) {
+		super();
+		this.vista = new FormularioVista();
+		this.vista.setActionListener(this);
+//		JOptionPane.showMessageDialog(vista, "Cree un ticket para finalizar el registro del usuario");
+		this.empleado = empleado;
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		if(e.getActionCommand().equalsIgnoreCase("Crear Ticket")) {
+			IComision comision = PuestoLaboralFactory.getPuestoLaboral(this.vista.getPuestoLaboral(), empleado);
+			Formulario formulario = FormularioFactory.getFormulario(this.vista.getLocacion(), this.vista.getRemuneracion(), this.vista.getV1(), this.vista.getV2(), this.vista.getCargaHoraria(), this.vista.getPuestoLaboral(), this.vista.getRangoEtario(), this.vista.getExperiencias(), this.vista.getEstudios(), this.vista.getRubro());
+			TicketBusquedaEmpleo ticket = new TicketBusquedaEmpleo(empleado, formulario, comision);
+			empleado.setTicket(ticket);
+			JOptionPane.showMessageDialog(vista, "Ticket creado con exito");
+			Sistema.getInstancia().cambiarController(new LoginController());
+			this.vista.setVisible(false);
+			
+		}
 	}
 
 }
