@@ -3,6 +3,7 @@ package vista;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusListener;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -37,13 +38,13 @@ public class EmpleadorVista extends JFrame implements IVista {
 	private JPanel agregarTicketBotonPan;
 	private JList<TicketBusquedaEmpleado> listaTickets;
 	private JPanel listaTicketsPan;
-	private JButton desplegarGanadorBoton;
 	private JPanel ganador;
-	private JPanel desplegarCandidatosBotonPan;
 	private JPanel listaCandidatosPan;
 	private JButton elegirGanadorBoton;
 	private JPanel elegirGanadorBotonPan;
 	private JList<TicketBusquedaEmpleo> listaCandidatos;
+	private JButton btnSuspenderTicket;
+	private JPanel suspenderTicketBotonPan;
 
 	/**
 	 * Create the frame.
@@ -58,7 +59,7 @@ public class EmpleadorVista extends JFrame implements IVista {
 		
 		botones = new JPanel();
 		contentPane.add(botones);
-		botones.setLayout(new GridLayout(6, 1, 0, 0));
+		botones.setLayout(new GridLayout(7, 1, 0, 0));
 		
 		verTicketsBotonPan = new JPanel();
 		botones.add(verTicketsBotonPan);
@@ -96,6 +97,12 @@ public class EmpleadorVista extends JFrame implements IVista {
 		agregarTicketBoton = new JButton("Agregar Ticket");
 		agregarTicketBotonPan.add(agregarTicketBoton);
 		
+		suspenderTicketBotonPan = new JPanel();
+		botones.add(suspenderTicketBotonPan);
+		
+		btnSuspenderTicket = new JButton("Suspender Ticket");
+		suspenderTicketBotonPan.add(btnSuspenderTicket);
+		
 		listaTicketsPan = new JPanel();
 		contentPane.add(listaTicketsPan);
 		
@@ -104,13 +111,7 @@ public class EmpleadorVista extends JFrame implements IVista {
 		
 		ganador = new JPanel();
 		contentPane.add(ganador);
-		ganador.setLayout(new GridLayout(3, 1, 0, 0));
-		
-		desplegarCandidatosBotonPan = new JPanel();
-		ganador.add(desplegarCandidatosBotonPan);
-		
-		desplegarGanadorBoton = new JButton("Desplegar Candidatos");
-		desplegarCandidatosBotonPan.add(desplegarGanadorBoton);
+		ganador.setLayout(new GridLayout(2, 1, 0, 0));
 		
 		listaCandidatosPan = new JPanel();
 		ganador.add(listaCandidatosPan);
@@ -133,8 +134,11 @@ public class EmpleadorVista extends JFrame implements IVista {
 		mostrarTicketBoton.addActionListener(actionListener);
 		ticketSimplificadoBoton.addActionListener(actionListener);
 		agregarTicketBoton.addActionListener(actionListener);
-		desplegarGanadorBoton.addActionListener(actionListener);
 		elegirGanadorBoton.addActionListener(actionListener);
+	}
+	
+	public void setFocusListener(FocusListener focusListener ) {
+		listaTickets.addFocusListener(focusListener);
 	}
 	
 	public void setListaTickets(ArrayList<TicketBusquedaEmpleado> tickets) {
