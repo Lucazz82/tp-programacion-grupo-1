@@ -14,7 +14,7 @@ import modelos.Logueable;
 import modelos.Usuario;
 import vista.Login;
 
-public class LoginController implements IController, WindowListener {
+public class LoginController extends Controller {
 	private Login vista;
 
 	public LoginController() {

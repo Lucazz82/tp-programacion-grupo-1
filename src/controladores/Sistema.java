@@ -12,7 +12,7 @@ import persistencia.UtilDTO;
 public class Sistema {
 	private static Sistema _instancia = null;
 
-	private IController controladorActual;
+	private Controller controladorActual;
 	private IPersistencia<AgenciaDTO> persistencia = new PersistenciaBIN<AgenciaDTO>();
 	private static String filename = "datos.bin";
 
@@ -44,7 +44,7 @@ public class Sistema {
 		} catch (AgenciaInexistenteException e) {}
 	}
 
-	public void cambiarController(IController controller) {
+	public void cambiarController(Controller controller) {
 		controladorActual = controller;
 	}
 }

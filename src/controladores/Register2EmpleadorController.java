@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 
 import vista.Register2Empleador;
 
-public class Register2EmpleadorController implements IController {
+public class Register2EmpleadorController extends Controller {
 	private Register2Empleador vista;
 
 	public Register2EmpleadorController() {

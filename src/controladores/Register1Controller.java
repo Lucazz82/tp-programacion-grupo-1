@@ -8,7 +8,7 @@ import excepciones.AgenciaYaExistenteException;
 import modelos.Agencia;
 import vista.Register1;
 
-public class Register1Controller implements IController {
+public class Register1Controller extends Controller {
 	private Register1 vista;
 
 	public Register1Controller() {
@@ -20,7 +20,7 @@ public class Register1Controller implements IController {
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equalsIgnoreCase("Siguente")) {
 			if(!vista.getUsuario().isBlank() && !vista.getContrasenia().isBlank()) {
-				IController controller = null;
+				Controller controller = null;
 				
 				switch (vista.getTipoUsuario()) {
 				case AGENCIA:
@@ -29,7 +29,6 @@ public class Register1Controller implements IController {
 					break;
 				case EMPLEADO:
 					controller = new Register2EmpleadoController();
-					
 					break;
 				case EMPLEADOR:
 					controller = new Register2EmpleadorController();
