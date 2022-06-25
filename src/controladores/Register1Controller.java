@@ -6,6 +6,8 @@ import javax.swing.JOptionPane;
 
 import excepciones.AgenciaYaExistenteException;
 import modelos.Agencia;
+import modelos.EmpleadoPretenso;
+import modelos.Empleador;
 import vista.Register1;
 
 public class Register1Controller extends Controller {
@@ -28,10 +30,10 @@ public class Register1Controller extends Controller {
 					controller = new LoginController();
 					break;
 				case EMPLEADO:
-					controller = new Register2EmpleadoController();
+					controller = new Register2EmpleadoController(new EmpleadoPretenso(vista.getUsuario(), vista.getContrasenia()));
 					break;
 				case EMPLEADOR:
-					controller = new Register2EmpleadorController();
+					controller = new Register2EmpleadorController(new Empleador(vista.getUsuario(), vista.getContrasenia()));
 					break;
 				default:
 					break;
