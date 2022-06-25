@@ -20,7 +20,7 @@ import enums.Experiencias;
 import enums.EstudiosPrevios;
 import enums.Rubros;
 
-public class Register3Formulario extends JFrame {
+public class FormularioVista extends JFrame {
 
 	private JPanel contentPane;
 	private JLabel locacionLabel;
@@ -69,25 +69,9 @@ public class Register3Formulario extends JFrame {
 	private JButton finalizarBoton;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Register3Formulario frame = new Register3Formulario();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
-	public Register3Formulario() {
+	public FormularioVista() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
