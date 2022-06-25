@@ -20,13 +20,21 @@ public class Register2Empleador extends JFrame implements IVista {
 
 	private JPanel contentPane;
 	private JTextField nombreText;
+	private JLabel nombreLabel;
+	private JLabel tipoPersonaLabel;
+	private JComboBox comboBox;
+	private JLabel rubroLabel;
+	private JComboBox comboBox_1;
+	private JButton volverBoton;
+	private JButton siguienteBoton;
 
 	/**
 	 * Create the frame.
 	 */
 	public Register2Empleador() {
+		setTitle("Datos Personales");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 600, 400);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -39,7 +47,7 @@ public class Register2Empleador extends JFrame implements IVista {
 		JPanel nombreLabelPan = new JPanel();
 		nombre.add(nombreLabelPan);
 		
-		JLabel nombreLabel = new JLabel("Nombre:");
+		nombreLabel = new JLabel("Nombre:");
 		nombreLabelPan.add(nombreLabel);
 		
 		JPanel nombreTextPan = new JPanel();
@@ -56,13 +64,13 @@ public class Register2Empleador extends JFrame implements IVista {
 		JPanel tipoPersonaLabelPan = new JPanel();
 		tipoPersona.add(tipoPersonaLabelPan);
 		
-		JLabel tipoPersonaLabel = new JLabel("Tipo de Persona:");
+		tipoPersonaLabel = new JLabel("Tipo de Persona:");
 		tipoPersonaLabelPan.add(tipoPersonaLabel);
 		
 		JPanel desplegableTipoPan = new JPanel();
 		tipoPersona.add(desplegableTipoPan);
 		
-		JComboBox comboBox = new JComboBox();
+		comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(TipoPersona.values()));
 		desplegableTipoPan.add(comboBox);
 		
@@ -73,13 +81,13 @@ public class Register2Empleador extends JFrame implements IVista {
 		JPanel rubroLabelPan = new JPanel();
 		rubro.add(rubroLabelPan);
 		
-		JLabel rubroLabel = new JLabel("Rubro:");
+		rubroLabel = new JLabel("Rubro:");
 		rubroLabelPan.add(rubroLabel);
 		
 		JPanel desplegableRubroPan = new JPanel();
 		rubro.add(desplegableRubroPan);
 		
-		JComboBox comboBox_1 = new JComboBox();
+		comboBox_1 = new JComboBox();
 		comboBox_1.setModel(new DefaultComboBoxModel(Rubros.values()));
 		desplegableRubroPan.add(comboBox_1);
 		
@@ -90,13 +98,13 @@ public class Register2Empleador extends JFrame implements IVista {
 		JPanel volverBotonPan = new JPanel();
 		botones.add(volverBotonPan);
 		
-		JButton volverBoton = new JButton("Volver");
+		volverBoton = new JButton("Volver");
 		volverBotonPan.add(volverBoton);
 		
 		JPanel siguienteBotonPan = new JPanel();
 		botones.add(siguienteBotonPan);
 		
-		JButton siguienteBoton = new JButton("Siguiente");
+		siguienteBoton = new JButton("Siguiente");
 		siguienteBotonPan.add(siguienteBoton);
 		setVisible(true);
 	}
