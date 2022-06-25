@@ -1,15 +1,23 @@
 package controladores;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import javax.swing.JOptionPane;
+
+import excepciones.AgenciaInexistenteException;
+import excepciones.TicketInexistenteException;
 import modelos.Agencia;
 import modelos.Empleador;
 import modelos.TicketBusquedaEmpleado;
+import modelos.TicketBusquedaEmpleo;
+import modelos.TicketOrdenable;
 import vista.EmpleadorVista;
 
-public class EmpleadorController extends Controller {
+public class EmpleadorController extends Controller implements FocusListener {
 	private EmpleadorVista vista;
 	private Empleador empleador;
 	
@@ -30,10 +38,39 @@ public class EmpleadorController extends Controller {
 				tickets.add(it.next());
 			}
 			vista.setListaTickets(tickets);
-		} else if (cmd.equalsIgnoreCase("Desplegar Candidatos")) {
-			
 		} else if (cmd.equalsIgnoreCase("Elegir Ganador")) {
-			
+			if (vista.isListaCandidatosVisible()) {
+				TicketBusquedaEmpleo ticketEmpleado = vista.getCandidatoSeleccionado();
+				TicketBusquedaEmpleado ticketEmpleador = vista.getTicketSeleccionado();
+				ticketEmpleado.setElegido(ticketEmpleador);
+				ticketEmpleador.setElegido(ticketEmpleado);
+				JOptionPane.showMessageDialog(vista, "Ticket seleccionado éxito");
+			}
+		} else if (cmd.equalsIgnoreCase("Activar Ticket")) {
+			TicketBusquedaEmpleado seleccionado = vista.getTicketSeleccionado();
+			seleccionado.setActivo();
+		}else if (cmd.equalsIgnoreCase("Suspender Ticket")) {
+			TicketBusquedaEmpleado seleccionado = vista.getTicketSeleccionado();
+			seleccionado.setSuspendido();
 		}
+	}
+
+	@Override
+	public void focusGained(FocusEvent e) {
+		TicketBusquedaEmpleado ticket = vista.getTicketSeleccionado();
+		ArrayList<TicketBusquedaEmpleo> candidatos = new ArrayList<>();
+		try {
+			Iterator<TicketOrdenable> candidatosIt = Agencia.getInstancia().getListaAsignacion(ticket);
+			while (candidatosIt.hasNext()) {
+				candidatos.add((TicketBusquedaEmpleo)candidatosIt.next().getTicket());
+			}
+			vista.setListaCandidatos(candidatos);
+		} catch (TicketInexistenteException | AgenciaInexistenteException e1) {
+			e1.printStackTrace();
+		}
+	}
+
+	@Override
+	public void focusLost(FocusEvent e) {
 	}
 }
