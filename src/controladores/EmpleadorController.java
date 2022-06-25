@@ -42,7 +42,6 @@ public class EmpleadorController extends Controller implements FocusListener {
 			if (vista.isListaCandidatosVisible()) {
 				TicketBusquedaEmpleo ticketEmpleado = vista.getCandidatoSeleccionado();
 				TicketBusquedaEmpleado ticketEmpleador = vista.getTicketSeleccionado();
-				ticketEmpleado.setElegido(ticketEmpleador);
 				ticketEmpleador.setElegido(ticketEmpleado);
 				JOptionPane.showMessageDialog(vista, "Ticket seleccionado éxito");
 			}
