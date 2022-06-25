@@ -30,10 +30,10 @@ public class Register1Controller extends Controller {
 					controller = new LoginController();
 					break;
 				case EMPLEADO:
-					controller = new Register2EmpleadoController(new EmpleadoPretenso(vista.getUsuario(), vista.getContrasenia()));
+					controller = new Register2EmpleadoController(vista.getUsuario(), vista.getContrasenia());
 					break;
 				case EMPLEADOR:
-					controller = new Register2EmpleadorController(new Empleador(vista.getUsuario(), vista.getContrasenia()));
+					controller = new Register2EmpleadorController(vista.getUsuario(), vista.getContrasenia());
 					break;
 				default:
 					break;

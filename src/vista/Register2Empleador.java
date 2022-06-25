@@ -22,9 +22,9 @@ public class Register2Empleador extends JFrame implements IVista {
 	private JTextField nombreText;
 	private JLabel nombreLabel;
 	private JLabel tipoPersonaLabel;
-	private JComboBox comboBox;
+	private JComboBox tipoPersonaComboBox;
 	private JLabel rubroLabel;
-	private JComboBox comboBox_1;
+	private JComboBox rubroComboBox;
 	private JButton volverBoton;
 	private JButton siguienteBoton;
 
@@ -70,9 +70,9 @@ public class Register2Empleador extends JFrame implements IVista {
 		JPanel desplegableTipoPan = new JPanel();
 		tipoPersona.add(desplegableTipoPan);
 		
-		comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(TipoPersona.values()));
-		desplegableTipoPan.add(comboBox);
+		tipoPersonaComboBox = new JComboBox();
+		tipoPersonaComboBox.setModel(new DefaultComboBoxModel(TipoPersona.values()));
+		desplegableTipoPan.add(tipoPersonaComboBox);
 		
 		JPanel rubro = new JPanel();
 		contentPane.add(rubro);
@@ -87,9 +87,9 @@ public class Register2Empleador extends JFrame implements IVista {
 		JPanel desplegableRubroPan = new JPanel();
 		rubro.add(desplegableRubroPan);
 		
-		comboBox_1 = new JComboBox();
-		comboBox_1.setModel(new DefaultComboBoxModel(Rubros.values()));
-		desplegableRubroPan.add(comboBox_1);
+		rubroComboBox = new JComboBox();
+		rubroComboBox.setModel(new DefaultComboBoxModel(Rubros.values()));
+		desplegableRubroPan.add(rubroComboBox);
 		
 		JPanel botones = new JPanel();
 		contentPane.add(botones);
@@ -111,7 +111,15 @@ public class Register2Empleador extends JFrame implements IVista {
 
 	@Override
 	public void setActionListener(ActionListener actionListener) {
-
+		siguienteBoton.addActionListener(actionListener);
+	}
+	
+	public TipoPersona getTipoPersona() {
+		return (TipoPersona) tipoPersonaComboBox.getSelectedItem();
+	}
+	
+	public Rubros getRubro() {
+		return (Rubros) rubroComboBox.getSelectedItem();
 	}
 
 }
