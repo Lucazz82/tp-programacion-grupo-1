@@ -25,6 +25,7 @@ public class Register2Empleado extends JFrame implements IVista {
 	private JLabel fechaLabel;
 	private JButton volverBoton;
 	private JButton siguienteBoton;
+	private JTextField fechaText;
 
 	/**
 	 * Create the frame.
@@ -99,8 +100,12 @@ public class Register2Empleado extends JFrame implements IVista {
 		fechaLabel = new JLabel("Fecha:");
 		fechaLabelPan.add(fechaLabel);
 		
-		JPanel fechaText = new JPanel();
-		fecha.add(fechaText);
+		JPanel fechaTextPan = new JPanel();
+		fecha.add(fechaTextPan);
+		
+		fechaText = new JTextField();
+		fechaTextPan.add(fechaText);
+		fechaText.setColumns(10);
 		
 		JPanel botones = new JPanel();
 		contentPane.add(botones);
@@ -122,7 +127,23 @@ public class Register2Empleado extends JFrame implements IVista {
 
 	@Override
 	public void setActionListener(ActionListener actionListener) {
-
+		this.volverBoton.addActionListener(actionListener);
+		this.siguienteBoton.addActionListener(actionListener);
+	}
+	
+	public String getNombre() {
+		return this.nombreText.getText();
+	}
+	
+	public String getApellido() {
+		return this.apellidoText.getText();
 	}
 
+	public String getTelefono() {
+		return this.telefonoText.getText();
+	}
+	
+	public String getFecha() {
+		return this.fechaText.getText();
+	}
 }
