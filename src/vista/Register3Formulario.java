@@ -23,6 +23,50 @@ import enums.Rubros;
 public class Register3Formulario extends JFrame {
 
 	private JPanel contentPane;
+	private JLabel locacionLabel;
+	private JPanel locacionLabelPan;
+	private JPanel locacion;
+	private JPanel locacionDesplegable;
+	private JComboBox comboBox;
+	private JPanel remuneracion;
+	private JPanel remuneracionLabelPan;
+	private JLabel remuneracionLabel;
+	private JPanel remuneracionDesplegable;
+	private JComboBox comboBox_1;
+	private JPanel cargaHoraria;
+	private JPanel cargaHorariaLabelPan;
+	private JLabel cargaHorariaLabel;
+	private JPanel cargaHorariaDesplegable;
+	private JComboBox comboBox_2;
+	private JPanel puestoLaboral;
+	private JPanel puestoLaboralLabelPan;
+	private JLabel puestoLaboralLabel;
+	private JPanel puestoLaboralDesplegable;
+	private JComboBox comboBox_3;
+	private JPanel rangoEtario;
+	private JPanel rangoEtarioLabelPan;
+	private JLabel rangoEtarioLabel;
+	private JPanel rangoEtarioDesplegable;
+	private JComboBox comboBox_4;
+	private JPanel experiencia;
+	private JPanel experienciaLabelPan;
+	private JLabel experienciaLabel;
+	private JPanel experienciaDesplegable;
+	private JComboBox comboBox_5;
+	private JPanel estudio;
+	private JPanel estudioLabelPan;
+	private JLabel estudioLabel;
+	private JPanel estudioDesplegable;
+	private JComboBox comboBox_6;
+	private JPanel rubro;
+	private JPanel rubroLabelPan;
+	private JLabel rubroLabel;
+	private JPanel rubroDesplegable;
+	private JComboBox comboBox_7;
+	private JPanel volver;
+	private JButton volverBoton;
+	private JPanel finalizar;
+	private JButton finalizarBoton;
 
 	/**
 	 * Launch the application.
@@ -51,152 +95,152 @@ public class Register3Formulario extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(5, 3, 0, 0));
 		
-		JPanel locacion = new JPanel();
+		locacion = new JPanel();
 		contentPane.add(locacion);
 		locacion.setLayout(new GridLayout(2, 0, 0, 0));
 		
-		JPanel locacionLabelPan = new JPanel();
+		locacionLabelPan = new JPanel();
 		locacion.add(locacionLabelPan);
 		
-		JLabel locacionLabel = new JLabel("Locacion:");
+		locacionLabel = new JLabel("Locacion:");
 		locacionLabelPan.add(locacionLabel);
 		
-		JPanel locacionDesplegable = new JPanel();
+		locacionDesplegable = new JPanel();
 		locacion.add(locacionDesplegable);
 		
-		JComboBox comboBox = new JComboBox();
+		comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(Locaciones.values()));
 		locacionDesplegable.add(comboBox);
 		
-		JPanel remuneracion = new JPanel();
+		remuneracion = new JPanel();
 		contentPane.add(remuneracion);
 		remuneracion.setLayout(new GridLayout(2, 0, 0, 0));
 		
-		JPanel remuneracionLabelPan = new JPanel();
+		remuneracionLabelPan = new JPanel();
 		remuneracion.add(remuneracionLabelPan);
 		
-		JLabel remuneracionLabel = new JLabel("Remuneracion:");
+		remuneracionLabel = new JLabel("Remuneracion:");
 		remuneracionLabelPan.add(remuneracionLabel);
 		
-		JPanel remuneracionDesplegable = new JPanel();
+		remuneracionDesplegable = new JPanel();
 		remuneracion.add(remuneracionDesplegable);
 		
-		JComboBox comboBox_1 = new JComboBox();
+		comboBox_1 = new JComboBox();
 		comboBox_1.setModel(new DefaultComboBoxModel(Remuneraciones.values()));
 		remuneracionDesplegable.add(comboBox_1);
 		
-		JPanel cargaHoraria = new JPanel();
+		cargaHoraria = new JPanel();
 		contentPane.add(cargaHoraria);
 		cargaHoraria.setLayout(new GridLayout(2, 0, 0, 0));
 		
-		JPanel cargaHorariaLabelPan = new JPanel();
+		cargaHorariaLabelPan = new JPanel();
 		cargaHoraria.add(cargaHorariaLabelPan);
 		
-		JLabel cargaHorariaLabel = new JLabel("Carga Horaria:");
+		cargaHorariaLabel = new JLabel("Carga Horaria:");
 		cargaHorariaLabelPan.add(cargaHorariaLabel);
 		
-		JPanel cargaHorariaDesplegable = new JPanel();
+		cargaHorariaDesplegable = new JPanel();
 		cargaHoraria.add(cargaHorariaDesplegable);
 		
-		JComboBox comboBox_2 = new JComboBox();
+		comboBox_2 = new JComboBox();
 		comboBox_2.setModel(new DefaultComboBoxModel(CargasHorarias.values()));
 		cargaHorariaDesplegable.add(comboBox_2);
 		
-		JPanel puestoLaboral = new JPanel();
+		puestoLaboral = new JPanel();
 		contentPane.add(puestoLaboral);
 		puestoLaboral.setLayout(new GridLayout(2, 0, 0, 0));
 		
-		JPanel puestoLaboralLabelPan = new JPanel();
+		puestoLaboralLabelPan = new JPanel();
 		puestoLaboral.add(puestoLaboralLabelPan);
 		
-		JLabel puestoLaboralLabel = new JLabel("Puesto Laboral:");
+		puestoLaboralLabel = new JLabel("Puesto Laboral:");
 		puestoLaboralLabelPan.add(puestoLaboralLabel);
 		
-		JPanel puestoLaboralDesplegable = new JPanel();
+		puestoLaboralDesplegable = new JPanel();
 		puestoLaboral.add(puestoLaboralDesplegable);
 		
-		JComboBox comboBox_3 = new JComboBox();
+		comboBox_3 = new JComboBox();
 		comboBox_3.setModel(new DefaultComboBoxModel(PuestosLaborales.values()));
 		puestoLaboralDesplegable.add(comboBox_3);
 		
-		JPanel rangoEtario = new JPanel();
+		rangoEtario = new JPanel();
 		contentPane.add(rangoEtario);
 		rangoEtario.setLayout(new GridLayout(2, 0, 0, 0));
 		
-		JPanel rangoEtarioLabelPan = new JPanel();
+		rangoEtarioLabelPan = new JPanel();
 		rangoEtario.add(rangoEtarioLabelPan);
 		
-		JLabel rangoEtarioLabel = new JLabel("Rango Etario:");
+		rangoEtarioLabel = new JLabel("Rango Etario:");
 		rangoEtarioLabelPan.add(rangoEtarioLabel);
 		
-		JPanel rangoEtarioDesplegable = new JPanel();
+		rangoEtarioDesplegable = new JPanel();
 		rangoEtario.add(rangoEtarioDesplegable);
 		
-		JComboBox comboBox_4 = new JComboBox();
+		comboBox_4 = new JComboBox();
 		comboBox_4.setModel(new DefaultComboBoxModel(RangosEtarios.values()));
 		rangoEtarioDesplegable.add(comboBox_4);
 		
-		JPanel experiencia = new JPanel();
+		experiencia = new JPanel();
 		contentPane.add(experiencia);
 		experiencia.setLayout(new GridLayout(2, 0, 0, 0));
 		
-		JPanel experienciaLabelPan = new JPanel();
+		experienciaLabelPan = new JPanel();
 		experiencia.add(experienciaLabelPan);
 		
-		JLabel experienciaLabel = new JLabel("Experiencia:");
+		experienciaLabel = new JLabel("Experiencia:");
 		experienciaLabelPan.add(experienciaLabel);
 		
-		JPanel experienciaDesplegable = new JPanel();
+		experienciaDesplegable = new JPanel();
 		experiencia.add(experienciaDesplegable);
 		
-		JComboBox comboBox_5 = new JComboBox();
+		comboBox_5 = new JComboBox();
 		comboBox_5.setModel(new DefaultComboBoxModel(Experiencias.values()));
 		experienciaDesplegable.add(comboBox_5);
 		
-		JPanel estudio = new JPanel();
+		estudio = new JPanel();
 		contentPane.add(estudio);
 		estudio.setLayout(new GridLayout(2, 0, 0, 0));
 		
-		JPanel estudioLabelPan = new JPanel();
+		estudioLabelPan = new JPanel();
 		estudio.add(estudioLabelPan);
 		
-		JLabel estudioLabel = new JLabel("Estudios:");
+		estudioLabel = new JLabel("Estudios:");
 		estudioLabelPan.add(estudioLabel);
 		
-		JPanel estudioDesplegable = new JPanel();
+		estudioDesplegable = new JPanel();
 		estudio.add(estudioDesplegable);
 		
-		JComboBox comboBox_6 = new JComboBox();
+		comboBox_6 = new JComboBox();
 		comboBox_6.setModel(new DefaultComboBoxModel(EstudiosPrevios.values()));
 		estudioDesplegable.add(comboBox_6);
 		
-		JPanel rubro = new JPanel();
+		rubro = new JPanel();
 		contentPane.add(rubro);
 		rubro.setLayout(new GridLayout(2, 0, 0, 0));
 		
-		JPanel rubroLabelPan = new JPanel();
+		rubroLabelPan = new JPanel();
 		rubro.add(rubroLabelPan);
 		
-		JLabel rubroLabel = new JLabel("Rubro:");
+		rubroLabel = new JLabel("Rubro:");
 		rubroLabelPan.add(rubroLabel);
 		
-		JPanel rubroDesplegable = new JPanel();
+		rubroDesplegable = new JPanel();
 		rubro.add(rubroDesplegable);
 		
-		JComboBox comboBox_7 = new JComboBox();
+		comboBox_7 = new JComboBox();
 		comboBox_7.setModel(new DefaultComboBoxModel(Rubros.values()));
 		rubroDesplegable.add(comboBox_7);
 		
-		JPanel volver = new JPanel();
+		volver = new JPanel();
 		contentPane.add(volver);
 		
-		JButton volverBoton = new JButton("Volver");
+		volverBoton = new JButton("Volver");
 		volver.add(volverBoton);
 		
-		JPanel finalizar = new JPanel();
+		finalizar = new JPanel();
 		contentPane.add(finalizar);
 		
-		JButton finalizarBoton = new JButton("Finalizar");
+		finalizarBoton = new JButton("Finalizar");
 		finalizar.add(finalizarBoton);
 	}
 
