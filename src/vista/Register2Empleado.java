@@ -19,13 +19,20 @@ public class Register2Empleado extends JFrame implements IVista {
 	private JTextField nombreText;
 	private JTextField apellidoText;
 	private JTextField telefonoText;
+	private JLabel nombreLabel;
+	private JLabel apellidoLabel;
+	private JLabel telefonoLabel;
+	private JLabel fechaLabel;
+	private JButton volverBoton;
+	private JButton siguienteBoton;
 
 	/**
 	 * Create the frame.
 	 */
 	public Register2Empleado() {
+		setTitle("Datos Personales");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 600, 400);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -38,7 +45,7 @@ public class Register2Empleado extends JFrame implements IVista {
 		JPanel nombreLabelPan = new JPanel();
 		nombre.add(nombreLabelPan);
 		
-		JLabel nombreLabel = new JLabel("Nombre:");
+		nombreLabel = new JLabel("Nombre:");
 		nombreLabelPan.add(nombreLabel);
 		
 		JPanel nombreTextPan = new JPanel();
@@ -55,7 +62,7 @@ public class Register2Empleado extends JFrame implements IVista {
 		JPanel apellidoLabelPan = new JPanel();
 		apellido.add(apellidoLabelPan);
 		
-		JLabel apellidoLabel = new JLabel("Apellido:");
+		apellidoLabel = new JLabel("Apellido:");
 		apellidoLabelPan.add(apellidoLabel);
 		
 		JPanel apellidoTextPan = new JPanel();
@@ -72,7 +79,7 @@ public class Register2Empleado extends JFrame implements IVista {
 		JPanel telefonoLabelPan = new JPanel();
 		telefono.add(telefonoLabelPan);
 		
-		JLabel telefonoLabel = new JLabel("Telefono:");
+		telefonoLabel = new JLabel("Telefono:");
 		telefonoLabelPan.add(telefonoLabel);
 		
 		JPanel telefonoTextPan = new JPanel();
@@ -89,7 +96,7 @@ public class Register2Empleado extends JFrame implements IVista {
 		JPanel fechaLabelPan = new JPanel();
 		fecha.add(fechaLabelPan);
 		
-		JLabel fechaLabel = new JLabel("Fecha:");
+		fechaLabel = new JLabel("Fecha:");
 		fechaLabelPan.add(fechaLabel);
 		
 		JPanel fechaText = new JPanel();
@@ -102,13 +109,13 @@ public class Register2Empleado extends JFrame implements IVista {
 		JPanel volverBotonPan = new JPanel();
 		botones.add(volverBotonPan);
 		
-		JButton volverBoton = new JButton("Volver");
+		volverBoton = new JButton("Volver");
 		volverBotonPan.add(volverBoton);
 		
 		JPanel siguienteBotonPan = new JPanel();
 		botones.add(siguienteBotonPan);
 		
-		JButton siguienteBoton = new JButton("Siguiente");
+		siguienteBoton = new JButton("Siguiente");
 		siguienteBotonPan.add(siguienteBoton);
 		setVisible(true);
 	}
