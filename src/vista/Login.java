@@ -14,6 +14,10 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import enums.TiposUsuario;
+import java.awt.BorderLayout;
+import javax.swing.BoxLayout;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class Login extends JFrame implements IVista, ILogin {
 
@@ -33,6 +37,9 @@ public class Login extends JFrame implements IVista, ILogin {
 	private JButton registerBoton;
 	private JPanel registerBotonPan;
 	private JPanel botones;
+	private JPanel principal;
+	private JComboBox tipoUsuarioDesplegable;
+	private JPanel tipoUsuarioPanel;
 
 	/**
 	 * Create the frame.
@@ -46,11 +53,15 @@ public class Login extends JFrame implements IVista, ILogin {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new GridLayout(3, 1, 0, 0));
+		contentPane.setLayout(new BorderLayout(0, 0));
+
+		principal = new JPanel();
+		contentPane.add(principal, BorderLayout.CENTER);
+		principal.setLayout(new GridLayout(3, 1, 0, 0));
 
 		usuario = new JPanel();
-		contentPane.add(usuario);
-		usuario.setLayout(new GridLayout(0, 1, 0, 0));
+		principal.add(usuario);
+		usuario.setLayout(new GridLayout(2, 1, 0, 0));
 
 		usuarioLabelPan = new JPanel();
 		usuario.add(usuarioLabelPan);
@@ -67,8 +78,8 @@ public class Login extends JFrame implements IVista, ILogin {
 		usuarioText.setColumns(10);
 
 		contrasenia = new JPanel();
-		contentPane.add(contrasenia);
-		contrasenia.setLayout(new GridLayout(0, 1, 0, 0));
+		principal.add(contrasenia);
+		contrasenia.setLayout(new GridLayout(2, 1, 0, 0));
 
 		contraseniaLabelPan = new JPanel();
 		contrasenia.add(contraseniaLabelPan);
@@ -84,8 +95,15 @@ public class Login extends JFrame implements IVista, ILogin {
 		contraseniaText.setColumns(10);
 		contraseniaTextPan.add(contraseniaText);
 
+		tipoUsuarioPanel = new JPanel();
+		principal.add(tipoUsuarioPanel);
+
+		tipoUsuarioDesplegable = new JComboBox();
+		tipoUsuarioDesplegable.setModel(new DefaultComboBoxModel(TiposUsuario.values()));
+		tipoUsuarioPanel.add(tipoUsuarioDesplegable);
+
 		botones = new JPanel();
-		contentPane.add(botones);
+		contentPane.add(botones, BorderLayout.SOUTH);
 		botones.setLayout(new GridLayout(0, 2, 0, 0));
 
 		loginBotonPan = new JPanel();
@@ -102,7 +120,7 @@ public class Login extends JFrame implements IVista, ILogin {
 
 		setVisible(true);
 	}
-	
+
 	public void setWindowListener(WindowListener windowListener) {
 		this.addWindowListener(windowListener);
 	}
@@ -122,8 +140,8 @@ public class Login extends JFrame implements IVista, ILogin {
 	public String getContrasenia() {
 		return String.valueOf(contraseniaText.getPassword());
 	}
-	
+
 	public TiposUsuario getTipoUsuario() {
-		return null;
+		return (TiposUsuario) this.tipoUsuarioDesplegable.getSelectedItem();
 	}
 }

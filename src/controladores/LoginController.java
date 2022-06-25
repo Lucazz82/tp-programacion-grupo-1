@@ -38,6 +38,7 @@ public class LoginController extends Controller {
 				
 				switch (vista.getTipoUsuario()) {
 				case AGENCIA:
+					controller = new AgenciaController();
 					break;
 				case EMPLEADO:
 					controller = new EmpleadoController((EmpleadoPretenso)usuario);
