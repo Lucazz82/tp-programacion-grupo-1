@@ -10,6 +10,8 @@ import excepciones.AgenciaInexistenteException;
 import excepciones.ContrasenaIncorrectaException;
 import excepciones.UsuarioInexistenteException;
 import modelos.Agencia;
+import modelos.EmpleadoPretenso;
+import modelos.Empleador;
 import modelos.Logueable;
 import modelos.Usuario;
 import vista.Login;
@@ -31,6 +33,24 @@ public class LoginController extends Controller {
 			try {
 				Logueable usuario = Agencia.getInstancia().buscarUsuario(vista.getUsuario());
 				usuario.login(vista.getContrasenia());
+				
+				Controller controller = null;
+				
+				switch (vista.getTipoUsuario()) {
+				case AGENCIA:
+					break;
+				case EMPLEADO:
+					controller = new EmpleadoController((EmpleadoPretenso)usuario);
+					break;
+				case EMPLEADOR:
+					controller = new EmpleadorController((Empleador)usuario);
+					break;
+				default:
+					break;
+				}
+				
+				Sistema.getInstancia().cambiarController(controller);
+				
 				vista.setVisible(false);
 //				JOptionPane.showMessageDialog(vista, "Usuario logueado");
 			} catch (UsuarioInexistenteException | ContrasenaIncorrectaException e1) {

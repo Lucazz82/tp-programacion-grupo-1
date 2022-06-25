@@ -13,6 +13,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import enums.TiposUsuario;
+
 public class Login extends JFrame implements IVista, ILogin {
 
 	private JPanel contentPane;
@@ -120,5 +122,8 @@ public class Login extends JFrame implements IVista, ILogin {
 	public String getContrasenia() {
 		return String.valueOf(contraseniaText.getPassword());
 	}
-
+	
+	public TiposUsuario getTipoUsuario() {
+		return null;
+	}
 }
