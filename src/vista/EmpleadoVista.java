@@ -1,20 +1,19 @@
 package vista;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 
-import javax.swing.JLabel;
-import javax.swing.JTextPane;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import java.awt.Dimension;
+import javax.swing.JTextPane;
+import javax.swing.border.EmptyBorder;
+
+import modelos.TicketBusquedaEmpleado;
 
 public class EmpleadoVista extends JFrame implements IVista{
 
@@ -35,8 +34,6 @@ public class EmpleadoVista extends JFrame implements IVista{
 	private JPanel ticketSimplificadoPan;
 	private JButton ticketSimplificado;
 	private JPanel ganadorTicket;
-	private JPanel ganadorBotonPan;
-	private JButton ganadorBoton;
 	private JScrollPane scrollPane;
 	private JList listaEmpleadores;
 	private JPanel elegirBotonPan;
@@ -105,14 +102,7 @@ public class EmpleadoVista extends JFrame implements IVista{
 		
 		ganadorTicket = new JPanel();
 		contentPane.add(ganadorTicket);
-		ganadorTicket.setLayout(new GridLayout(3, 0, 0, 0));
-		
-		ganadorBotonPan = new JPanel();
-		ganadorBotonPan.setMaximumSize(new Dimension(30000, 30000));
-		ganadorTicket.add(ganadorBotonPan);
-		
-		ganadorBoton = new JButton("Elegir Ganador");
-		ganadorBotonPan.add(ganadorBoton);
+		ganadorTicket.setLayout(new GridLayout(2, 0, 0, 0));
 		
 		scrollPane = new JScrollPane();
 		ganadorTicket.add(scrollPane);
@@ -133,9 +123,13 @@ public class EmpleadoVista extends JFrame implements IVista{
 		activarBoton.addActionListener(actionListener);
 		cambiarBoton.addActionListener(actionListener);
 		mostrarBoton.addActionListener(actionListener);
-		ganadorBoton.addActionListener(actionListener);
 		elegirBoton.addActionListener(actionListener);
 		ticketSimplificado.addActionListener(actionListener);
+	}
+	
+	
+	public TicketBusquedaEmpleado getTicketSeleccionado() {
+		return (TicketBusquedaEmpleado)this.listaEmpleadores.getSelectedValue();
 	}
 	
 
