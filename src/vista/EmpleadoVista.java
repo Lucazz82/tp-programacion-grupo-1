@@ -153,5 +153,6 @@ public class EmpleadoVista extends JFrame implements IVista{
 		elegirBoton.addActionListener(actionListener);
 		ticketSimplificado.addActionListener(actionListener);
 	}
+	
 
 }

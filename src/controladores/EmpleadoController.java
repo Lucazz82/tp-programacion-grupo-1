@@ -30,6 +30,7 @@ public class EmpleadoController extends Controller{
 			
 		}
 		
+		
 	}
 	
 	
