@@ -43,22 +43,6 @@ public class EmpleadoVista extends JFrame implements IVista{
 	private JButton elegirBoton;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					EmpleadoVista frame = new EmpleadoVista();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
 	public EmpleadoVista() {
@@ -133,7 +117,7 @@ public class EmpleadoVista extends JFrame implements IVista{
 		scrollPane = new JScrollPane();
 		ganadorTicket.add(scrollPane);
 		
-		listaEmpleadores = new JList();
+		listaEmpleadores = new JList<>();
 		scrollPane.setViewportView(listaEmpleadores);
 		
 		elegirBotonPan = new JPanel();

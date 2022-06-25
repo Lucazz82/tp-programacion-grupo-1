@@ -3,29 +3,169 @@ package vista;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.GridLayout;
+import java.awt.Font;
+
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JList;
+
+import modelos.TicketBusquedaEmpleado;
+import modelos.TicketBusquedaEmpleo;
 
 public class EmpleadorVista extends JFrame implements IVista {
 
 	private JPanel contentPane;
+	private JPanel botones;
+	private JPanel verTicketsBotonPan;
+	private JButton verTicketsBoton;
+	private JPanel cambiarTicketBotonPan;
+	private JButton cambiarTicketBoton;
+	private JButton activarTicketBoton;
+	private JPanel activarTicketBotonPan;
+	private JButton mostrarTicketBoton;
+	private JPanel mostrarTicketBotonPan;
+	private JButton ticketSimplificadoBoton;
+	private JPanel ticketSimplificadoPan;
+	private JButton agregarTicketBoton;
+	private JPanel agregarTicketBotonPan;
+	private JList<TicketBusquedaEmpleado> listaTickets;
+	private JPanel listaTicketsPan;
+	private JButton desplegarGanadorBoton;
+	private JPanel ganador;
+	private JPanel desplegarCandidatosBotonPan;
+	private JPanel listaCandidatosPan;
+	private JButton elegirGanadorBoton;
+	private JPanel elegirGanadorBotonPan;
+	private JList<TicketBusquedaEmpleo> listaCandidatos;
 
 	/**
 	 * Create the frame.
 	 */
 	public EmpleadorVista() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 600, 400);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		contentPane.setLayout(new GridLayout(0, 3, 0, 0));
+		
+		botones = new JPanel();
+		contentPane.add(botones);
+		botones.setLayout(new GridLayout(6, 1, 0, 0));
+		
+		verTicketsBotonPan = new JPanel();
+		botones.add(verTicketsBotonPan);
+		
+		verTicketsBoton = new JButton("Ver Tickets");
+		verTicketsBotonPan.add(verTicketsBoton);
+		
+		cambiarTicketBotonPan = new JPanel();
+		botones.add(cambiarTicketBotonPan);
+		
+		cambiarTicketBoton = new JButton("Cambiar Ticket");
+		cambiarTicketBotonPan.add(cambiarTicketBoton);
+		
+		activarTicketBotonPan = new JPanel();
+		botones.add(activarTicketBotonPan);
+		
+		activarTicketBoton = new JButton("Activar Ticket");
+		activarTicketBotonPan.add(activarTicketBoton);
+		
+		mostrarTicketBotonPan = new JPanel();
+		botones.add(mostrarTicketBotonPan);
+		
+		mostrarTicketBoton = new JButton("Mostrar Ticket");
+		mostrarTicketBotonPan.add(mostrarTicketBoton);
+		
+		ticketSimplificadoPan = new JPanel();
+		botones.add(ticketSimplificadoPan);
+		
+		ticketSimplificadoBoton = new JButton("Ticket Simplificado");
+		ticketSimplificadoPan.add(ticketSimplificadoBoton);
+		
+		agregarTicketBotonPan = new JPanel();
+		botones.add(agregarTicketBotonPan);
+		
+		agregarTicketBoton = new JButton("Agregar Ticket");
+		agregarTicketBotonPan.add(agregarTicketBoton);
+		
+		listaTicketsPan = new JPanel();
+		contentPane.add(listaTicketsPan);
+		
+		listaTickets = new JList<>();
+		listaTicketsPan.add(listaTickets);
+		
+		ganador = new JPanel();
+		contentPane.add(ganador);
+		ganador.setLayout(new GridLayout(3, 1, 0, 0));
+		
+		desplegarCandidatosBotonPan = new JPanel();
+		ganador.add(desplegarCandidatosBotonPan);
+		
+		desplegarGanadorBoton = new JButton("Desplegar Candidatos");
+		desplegarCandidatosBotonPan.add(desplegarGanadorBoton);
+		
+		listaCandidatosPan = new JPanel();
+		ganador.add(listaCandidatosPan);
+		
+		listaCandidatos = new JList<>();
+		listaCandidatosPan.add(listaCandidatos);
+		
+		elegirGanadorBotonPan = new JPanel();
+		ganador.add(elegirGanadorBotonPan);
+		
+		elegirGanadorBoton = new JButton("Elegir Ganador");
+		elegirGanadorBotonPan.add(elegirGanadorBoton);
 	}
 
 	@Override
 	public void setActionListener(ActionListener actionListener) {
+		verTicketsBoton.addActionListener(actionListener);
+		cambiarTicketBoton.addActionListener(actionListener);
+		activarTicketBoton.addActionListener(actionListener);
+		mostrarTicketBoton.addActionListener(actionListener);
+		ticketSimplificadoBoton.addActionListener(actionListener);
+		agregarTicketBoton.addActionListener(actionListener);
+		desplegarGanadorBoton.addActionListener(actionListener);
+		elegirGanadorBoton.addActionListener(actionListener);
 	}
-
+	
+	public void setListaTickets(ArrayList<TicketBusquedaEmpleado> tickets) {
+		DefaultListModel<TicketBusquedaEmpleado> listModel = new DefaultListModel<>();
+		for (int i = 0; i < tickets.size(); i++) {
+			listModel.add(i, tickets.get(i));
+		}
+		this.listaTickets = new JList<>(listModel);
+	}
+	
+	public TicketBusquedaEmpleado getTicketSeleccionado() {
+		return (TicketBusquedaEmpleado)this.listaTickets.getSelectedValue();
+	}
+	
+	public TicketBusquedaEmpleo getCandidatoSeleccionado() {
+		return (TicketBusquedaEmpleo)this.listaCandidatos.getSelectedValue();
+	}
+	
+	public void setListaCandidatos(ArrayList<TicketBusquedaEmpleo> tickets) {
+		DefaultListModel<TicketBusquedaEmpleo> listModel = new DefaultListModel<>();
+		for (int i = 0; i < tickets.size(); i++) {
+			listModel.add(i, tickets.get(i));
+		}
+		this.listaCandidatos = new JList<>(listModel);
+	}
+	
+	public void setListaCandidatosVisible(boolean visible) {
+		this.listaCandidatos.setVisible(visible);
+	}
+	
+	public boolean isListaCandidatosVisible() {
+		return this.listaCandidatos.isVisible();
+	}
 }

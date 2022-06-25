@@ -2,13 +2,16 @@ package controladores;
 
 import java.awt.event.ActionEvent;
 
+import modelos.EmpleadoPretenso;
 import vista.EmpleadoVista;
 
 public class EmpleadoController extends Controller{
 	private EmpleadoVista vista;
+	private EmpleadoPretenso empleado;
 
-	public EmpleadoController() {
+	public EmpleadoController(EmpleadoPretenso empleado) {
 		this.vista = new EmpleadoVista();
+		this.empleado = empleado;
 		vista.setActionListener(this);
 	}
 
@@ -29,10 +32,7 @@ public class EmpleadoController extends Controller{
 		}else if(e.getActionCommand().equalsIgnoreCase("Ticket Simplificado")) {
 			
 		}
-		
-		
 	}
-	
 	
 	
 }
