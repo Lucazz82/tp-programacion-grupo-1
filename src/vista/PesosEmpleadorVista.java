@@ -12,6 +12,7 @@ import java.awt.event.WindowListener;
 
 import javax.swing.JLabel;
 import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.JButton;
 
 public class PesosEmpleadorVista extends JFrame implements IVista{
@@ -81,7 +82,7 @@ public class PesosEmpleadorVista extends JFrame implements IVista{
 		locacionPanNum = new JPanel();
 		pesos1Pan.add(locacionPanNum);
 		
-		spinnerLocacion = new JSpinner();
+		spinnerLocacion = new JSpinner(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
 		locacionPanNum.add(spinnerLocacion);
 		
 		remuneracionPan = new JPanel();
@@ -93,7 +94,7 @@ public class PesosEmpleadorVista extends JFrame implements IVista{
 		remuneracionPanNum = new JPanel();
 		pesos1Pan.add(remuneracionPanNum);
 		
-		spinnerRemuneracion = new JSpinner();
+		spinnerRemuneracion = new JSpinner(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
 		remuneracionPanNum.add(spinnerRemuneracion);
 		
 		pesos2Pan = new JPanel();
@@ -109,7 +110,7 @@ public class PesosEmpleadorVista extends JFrame implements IVista{
 		cargaHorariaPanNum = new JPanel();
 		pesos2Pan.add(cargaHorariaPanNum);
 		
-		spinnerCargaHoraria = new JSpinner();
+		spinnerCargaHoraria = new JSpinner(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
 		cargaHorariaPanNum.add(spinnerCargaHoraria);
 		
 		tipoDePuestoPan = new JPanel();
@@ -121,7 +122,7 @@ public class PesosEmpleadorVista extends JFrame implements IVista{
 		tipoDePuestoPanNum = new JPanel();
 		pesos2Pan.add(tipoDePuestoPanNum);
 		
-		spinnerPuesto = new JSpinner();
+		spinnerPuesto = new JSpinner(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
 		tipoDePuestoPanNum.add(spinnerPuesto);
 		
 		pesos3Pan = new JPanel();
@@ -137,7 +138,7 @@ public class PesosEmpleadorVista extends JFrame implements IVista{
 		rengoEtarioPanNum = new JPanel();
 		pesos3Pan.add(rengoEtarioPanNum);
 		
-		spinnerRangoEtario = new JSpinner();
+		spinnerRangoEtario = new JSpinner(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
 		rengoEtarioPanNum.add(spinnerRangoEtario);
 		
 		experienciaPan = new JPanel();
@@ -149,7 +150,7 @@ public class PesosEmpleadorVista extends JFrame implements IVista{
 		experienciaPanNum = new JPanel();
 		pesos3Pan.add(experienciaPanNum);
 		
-		spinnerExperiencia = new JSpinner();
+		spinnerExperiencia = new JSpinner(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
 		experienciaPanNum.add(spinnerExperiencia);
 		
 		JPanel pesoYBoton = new JPanel();
@@ -165,7 +166,7 @@ public class PesosEmpleadorVista extends JFrame implements IVista{
 		estudiosPanNum = new JPanel();
 		pesoYBoton.add(estudiosPanNum);
 		
-		spinnerEstudios = new JSpinner();
+		spinnerEstudios = new JSpinner(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
 		estudiosPanNum.add(spinnerEstudios);
 		
 		enBlanco = new JPanel();
@@ -176,6 +177,9 @@ public class PesosEmpleadorVista extends JFrame implements IVista{
 		
 		siguienteBoton = new JButton("Siguiente");
 		siguienteBotonPan.add(siguienteBoton);
+		
+		setLocationRelativeTo(null);
+		setVisible(true);
 	}
 
 	@Override
@@ -186,5 +190,33 @@ public class PesosEmpleadorVista extends JFrame implements IVista{
 	@Override
 	public void setWindowListener(WindowListener windowListener) {
 		
+	}
+	
+	public int getLocacion() {
+		return (int)this.spinnerLocacion.getValue();
+	}
+	
+	public int getRemuneracion() {
+		return (int)this.spinnerRemuneracion.getValue();
+	}
+	
+	public int getRangoEtario() {
+		return (int)this.spinnerRangoEtario.getValue();
+	}
+	
+	public int getExperiencia() {
+		return (int)this.spinnerExperiencia.getValue();
+	}
+	
+	public int getPuesto() {
+		return (int)this.spinnerPuesto.getValue();
+	}
+	
+	public int getCargaHoraria() {
+		return (int)this.spinnerCargaHoraria.getValue();
+	}
+	
+	public int getEstudios() {
+		return (int)this.spinnerEstudios.getValue();
 	}
 }

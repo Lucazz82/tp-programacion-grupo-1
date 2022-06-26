@@ -24,7 +24,6 @@ public abstract class Controller<E extends IVista> implements ActionListener, Wi
 	@Override
 	public void windowClosing(WindowEvent e) {
 		Sistema.getInstancia().cerrarSistema();
-		
 	}
 
 	@Override

@@ -3,7 +3,6 @@ package modelos;
 import java.util.Arrays;
 
 public class TicketBusquedaEmpleado extends Ticket {
-
 	private double[] pesos;
 
 	public TicketBusquedaEmpleado(Usuario creador, Formulario formulario, double[] pesos) {

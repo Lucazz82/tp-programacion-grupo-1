@@ -93,6 +93,12 @@ public class EmpleadorVista extends JFrame implements IVista {
 		btnSuspenderTicket = new JButton("Suspender Ticket");
 		suspenderTicketBotonPan.add(btnSuspenderTicket);
 		
+		suspenderTicketBotonPan = new JPanel();
+		botones.add(suspenderTicketBotonPan);
+		
+		btnSuspenderTicket = new JButton("Suspender Ticket");
+		suspenderTicketBotonPan.add(btnSuspenderTicket);
+		
 		mostrarTicketBotonPan = new JPanel();
 		botones.add(mostrarTicketBotonPan);
 		
@@ -190,6 +196,5 @@ public class EmpleadorVista extends JFrame implements IVista {
 	@Override
 	public void setWindowListener(WindowListener windowListener) {
 		// TODO Auto-generated method stub
-		
 	}
 }
