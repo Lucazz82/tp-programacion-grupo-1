@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowListener;
 import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
@@ -123,5 +124,12 @@ public class AgenciaVista extends JFrame implements IVista {
         }
         
     }
+
+
+	@Override
+	public void setWindowListener(WindowListener windowListener) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

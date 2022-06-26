@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowListener;
 
 import javax.swing.JLabel;
 import javax.swing.JButton;
@@ -272,5 +273,11 @@ public class FormularioVista extends JFrame implements IVista {
 	@Override
 	public void setActionListener(ActionListener actionListener) {
 		this.crearBoton.addActionListener(actionListener);		
+	}
+
+	@Override
+	public void setWindowListener(WindowListener windowListener) {
+		// TODO Auto-generated method stub
+		
 	}
 }

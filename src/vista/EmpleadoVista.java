@@ -3,6 +3,7 @@ package vista;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -133,6 +134,12 @@ public class EmpleadoVista extends JFrame implements IVista{
 	
 	public TicketBusquedaEmpleado getTicketSeleccionado() {
 		return (TicketBusquedaEmpleado)this.listaEmpleadores.getSelectedValue();
+	}
+
+	@Override
+	public void setWindowListener(WindowListener windowListener) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 
