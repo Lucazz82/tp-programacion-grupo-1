@@ -7,11 +7,13 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
+
 import javax.swing.JLabel;
 import javax.swing.JSpinner;
 import javax.swing.JButton;
 
-public class PesosEmpleadorVista extends JFrame {
+public class PesosEmpleadorVista extends JFrame implements IVista{
 
 	private JPanel contentPane;
 	private JPanel pesosLabelPan;
@@ -192,6 +194,11 @@ public class PesosEmpleadorVista extends JFrame {
 		
 		siguienteBoton = new JButton("Siguiente");
 		siguienteBotonPan.add(siguienteBoton);
+	}
+
+	@Override
+	public void setActionListener(ActionListener actionListener) {
+		siguienteBoton.addActionListener(actionListener);
 	}
 
 }
