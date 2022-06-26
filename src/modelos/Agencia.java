@@ -85,6 +85,7 @@ public class Agencia implements Logueable {
 			this.generarListaEmpleador(empleador);
 		}
 		this.fechaLista = new GregorianCalendar();
+		this.calcularPuntajes();
 	}
 
 	/**
