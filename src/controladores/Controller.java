@@ -7,7 +7,7 @@ import java.awt.event.WindowListener;
 import vista.IVista;
 
 public abstract class Controller<E extends IVista> implements ActionListener, WindowListener {
-	private E vista;
+	protected E vista;
 	
 	public Controller(E vista) {
 		this.vista = vista;
