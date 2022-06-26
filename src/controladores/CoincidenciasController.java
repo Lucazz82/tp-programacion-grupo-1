@@ -23,7 +23,10 @@ public class CoincidenciasController extends Controller<CoincidenciasVista> {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
+		if (e.getActionCommand().equalsIgnoreCase("Volver")) {
+			Sistema.getInstancia().cambiarController(new AgenciaController());
+			this.vista.setVisible(false);
+		}
 	}
 
 }
