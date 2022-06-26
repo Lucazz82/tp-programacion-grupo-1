@@ -1,10 +1,14 @@
 package vista;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowListener;
+import java.util.ArrayList;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -13,8 +17,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 
 import modelos.TicketBusquedaEmpleado;
+import modelos.Usuario;
 
 public class EmpleadoVista extends JFrame implements IVista{
 
@@ -35,7 +41,7 @@ public class EmpleadoVista extends JFrame implements IVista{
 	private JPanel ticketSimplificadoPan;
 	private JButton ticketSimplificado;
 	private JPanel ganadorTicket;
-	private JScrollPane scrollPane;
+	private JScrollPane listaEmpleadoresPan;
 	private JList listaEmpleadores;
 	private JPanel elegirBotonPan;
 	private JButton elegirBoton;
@@ -105,11 +111,11 @@ public class EmpleadoVista extends JFrame implements IVista{
 		contentPane.add(ganadorTicket);
 		ganadorTicket.setLayout(new GridLayout(2, 0, 0, 0));
 		
-		scrollPane = new JScrollPane();
-		ganadorTicket.add(scrollPane);
+		listaEmpleadoresPan = new JScrollPane();
+		ganadorTicket.add(listaEmpleadoresPan);
 		
 		listaEmpleadores = new JList<>();
-		scrollPane.setViewportView(listaEmpleadores);
+		listaEmpleadoresPan.setViewportView(listaEmpleadores);
 		
 		elegirBotonPan = new JPanel();
 		ganadorTicket.add(elegirBotonPan);
@@ -135,12 +141,20 @@ public class EmpleadoVista extends JFrame implements IVista{
 	public TicketBusquedaEmpleado getTicketSeleccionado() {
 		return (TicketBusquedaEmpleado)this.listaEmpleadores.getSelectedValue();
 	}
+	
+	public void setListaEmpleadores(ArrayList<TicketBusquedaEmpleado> tickets) {
+        DefaultListModel<TicketBusquedaEmpleado> listModel = new DefaultListModel<>();
+        this.listaEmpleadores= new JList<>(listModel);
+        this.listaEmpleadores.setBorder(new LineBorder(new Color(0, 0, 0), 1));
+		this.listaEmpleadoresPan.add(this.listaEmpleadores, BorderLayout.CENTER);
+        
+        for(TicketBusquedaEmpleado ticket : tickets) {
+        	listModel.addElement(ticket);
+        }
+	}
 
 	@Override
 	public void setWindowListener(WindowListener windowListener) {
 		// TODO Auto-generated method stub
-		
 	}
-	
-
 }

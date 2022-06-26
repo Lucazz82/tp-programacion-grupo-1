@@ -122,9 +122,7 @@ public class AgenciaVista extends JFrame implements IVista {
         for(Usuario usuario : usuarios) {
         	listModel.addElement(usuario);
         }
-        
     }
-
 
 	@Override
 	public void setWindowListener(WindowListener windowListener) {
