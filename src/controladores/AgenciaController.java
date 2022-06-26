@@ -45,13 +45,9 @@ public class AgenciaController extends Controller<AgenciaVista> {
 		Agencia agencia = null;
 		try {
 			 agencia = Agencia.getInstancia();
+			 this.vista.setListaEmpleados(agencia.getEmpleados());
+			 this.vista.setListaEmpleadores(agencia.getEmpleadores());
 		} catch (AgenciaInexistenteException e) {}
-		
-		ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
-		usuarios.addAll(agencia.getEmpleadores());
-		usuarios.addAll(agencia.getEmpleados());
-		
-		this.vista.setListaUsuarios(usuarios);
 	}
 
 }

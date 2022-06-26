@@ -1,5 +1,6 @@
 package controladores;
 
+import java.io.File;
 import java.io.IOException;
 
 import excepciones.AgenciaInexistenteException;
@@ -28,20 +29,24 @@ public class Sistema {
 
 	public void iniciarSistema() {
 		try {
-			AgenciaDTO agenciaDTO = persistencia.recuperar(filename);
-			UtilDTO.agenciaFromAgenciaDTO(agenciaDTO);
+			File file = new File(filename);
+			if (file.exists()) {
+				AgenciaDTO agenciaDTO = persistencia.recuperar(filename);
+				UtilDTO.agenciaFromAgenciaDTO(agenciaDTO);
+			}
 		} catch (ClassNotFoundException | IOException | AgenciaInexistenteException | AgenciaYaExistenteException e) {
 			e.printStackTrace();
 		}
 		controladorActual = new LoginController();
 	}
-	
+
 	public void cerrarSistema() {
 		try {
 			persistencia.persistir(filename, UtilDTO.agenciaDTOFromAgencia());
 		} catch (IOException e1) {
 			System.out.println("Error al persistir");
-		} catch (AgenciaInexistenteException e) {}
+		} catch (AgenciaInexistenteException e) {
+		}
 	}
 
 	public void cambiarController(Controller controller) {

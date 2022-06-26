@@ -10,7 +10,7 @@ public class EmpleadoPretenso extends Usuario implements IComision, Runnable {
 	private String apellido;
 	private String telefono;
 	private Date fechaNacimiento;
-	private TicketBusquedaEmpleo ticket;
+	private TicketBusquedaEmpleo ticket = null;
 	
 	private TicketSimplificado ganador = null;
 
@@ -44,6 +44,10 @@ public class EmpleadoPretenso extends Usuario implements IComision, Runnable {
 	}
 
 	public void setTicket(TicketBusquedaEmpleo ticket) {
+		if(this.ticket != null) {
+			
+		}
+		
 		this.ticket = ticket;
 	}
 

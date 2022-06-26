@@ -21,16 +21,16 @@ public class EmpleadoController extends Controller<EmpleadoVista> implements Foc
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equalsIgnoreCase("Suspender Ticket")) {
 			this.empleado.getTicket().setSuspendido();
-		}else if(e.getActionCommand().equalsIgnoreCase("Activar Ticket")) {
+		} else if(e.getActionCommand().equalsIgnoreCase("Activar Ticket")) {
 			this.empleado.getTicket().setActivo();
-		}else if(e.getActionCommand().equalsIgnoreCase("Mostrar Ticket")) {
+		} else if(e.getActionCommand().equalsIgnoreCase("Mostrar Ticket")) {
 			JOptionPane.showMessageDialog(vista, this.empleado.getTicket().toString());
-		}else if(e.getActionCommand().equalsIgnoreCase("Cambiar Ticket")) {
-			Sistema.getInstancia().cambiarController(new TicketEmpleadoController(this.empleado));
-			this.vista.setVisible(false);
-		}else if(e.getActionCommand().equalsIgnoreCase("Elegir")) {
+		} else if(e.getActionCommand().equalsIgnoreCase("Cambiar Ticket")) {
+//			Sistema.getInstancia().cambiarController(new TicketEmpleadoController(this.empleado));
+//			this.vista.setVisible(false);
+		} else if(e.getActionCommand().equalsIgnoreCase("Elegir")) {
 			this.vista.getTicketSeleccionado().setElegido(this.empleado.getTicket());
-		}else if(e.getActionCommand().equalsIgnoreCase("Ticket Simplificado")) {
+		} else if(e.getActionCommand().equalsIgnoreCase("Ticket Simplificado")) {
 			
 		}
 	}
