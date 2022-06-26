@@ -115,7 +115,7 @@ public class AgenciaVista extends JFrame implements IVista {
 	public void setListaUsuarios(ArrayList<Usuario> usuarios) {
         DefaultListModel<Usuario> listModel = new DefaultListModel<>();
         this.usuariosLista= new JList<>(listModel);
-		this.usuariosLista.setBorder(new LineBorder(new Color(0, 0, 0), 5));
+		this.usuariosLista.setBorder(new LineBorder(new Color(0, 0, 0), 1));
 		this.usuariosPan.add(usuariosLista, BorderLayout.CENTER);
         
         for(Usuario usuario : usuarios) {

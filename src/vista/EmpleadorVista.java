@@ -1,6 +1,7 @@
 package vista;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusListener;
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 import javax.swing.JLabel;
 import java.awt.GridLayout;
 import java.awt.Font;
@@ -150,6 +152,7 @@ public class EmpleadorVista extends JFrame implements IVista {
 			listModel.add(i, tickets.get(i));
 		}
 		this.listaTickets = new JList<>(listModel);
+		this.listaTickets.setBorder(new LineBorder(new Color(0, 0, 0), 1));
 		listaTicketsPan.add(listaTickets);
 	}
 	
@@ -167,6 +170,7 @@ public class EmpleadorVista extends JFrame implements IVista {
 			listModel.add(i, tickets.get(i));
 		}
 		this.listaCandidatos = new JList<>(listModel);
+		this.listaCandidatos.setBorder(new LineBorder(new Color(0, 0, 0), 1));
 		listaCandidatosPan.add(listaTickets);
 	}
 	
