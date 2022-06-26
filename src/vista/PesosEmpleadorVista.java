@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowListener;
 
 import javax.swing.JLabel;
 import javax.swing.JSpinner;
@@ -53,25 +54,6 @@ public class PesosEmpleadorVista extends JFrame implements IVista{
 	private JPanel estudiosPanNum;
 	private JPanel siguienteBotonPan;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					PesosEmpleadorVista frame = new PesosEmpleadorVista();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public PesosEmpleadorVista() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -201,4 +183,8 @@ public class PesosEmpleadorVista extends JFrame implements IVista{
 		siguienteBoton.addActionListener(actionListener);
 	}
 
+	@Override
+	public void setWindowListener(WindowListener windowListener) {
+		
+	}
 }

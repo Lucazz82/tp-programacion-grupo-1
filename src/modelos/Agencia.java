@@ -75,6 +75,26 @@ public class Agencia implements Logueable {
 		else
 			throw new UsuarioInexistenteException(nombreUsuario + " no existe");
 	}
+	
+	public Empleador buscarEmpleador(String nombreUsuario) throws UsuarioInexistenteException {
+		for (Empleador empleador : this.empleadores) {
+			if (empleador.getnombreUsuario().equals(nombreUsuario)) {
+				return empleador;
+			}
+		}
+		
+		throw new UsuarioInexistenteException(nombreUsuario + " no existe");
+	}
+	
+	public EmpleadoPretenso buscarEmpleado(String nombreUsuario) throws UsuarioInexistenteException {
+		for (EmpleadoPretenso empleado : this.empleados) {
+			if (empleado.getnombreUsuario().equals(nombreUsuario)) {
+				return empleado;
+			}
+		}
+		
+		throw new UsuarioInexistenteException(nombreUsuario + " no existe");
+	}
 
 	/**
 	 * Genera las listas de asignacion de todos los usuarios y las almacena en un
