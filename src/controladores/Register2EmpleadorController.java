@@ -31,14 +31,14 @@ public class Register2EmpleadorController extends Controller {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String cmd = e.getActionCommand();
-		
+
 		if (cmd.equalsIgnoreCase("Siguiente")) {
 			if (!nombreUsuario.isBlank() && !contrasenia.isBlank()) {
 				try {
 					Agencia agencia = Agencia.getInstancia();
-					
+
 					Rubro rubro = RubroFactory.getRubro(vista.getRubro());
-					
+
 					ITipoPersona tipoPersona = null;
 
 					switch (vista.getTipoPersona()) {
@@ -51,10 +51,12 @@ public class Register2EmpleadorController extends Controller {
 					default:
 						break;
 					}
-					
-					Empleador empleador = new Empleador(nombreUsuario, contrasenia, tipoPersona, rubro);
+
+					Empleador empleador = new Empleador(nombreUsuario, contrasenia, vista.getNombre(), tipoPersona,
+							rubro);
 					agencia.registrarUsuario(empleador);
-					Sistema.getInstancia().cambiarController(new EmpleadorController(empleador));
+					JOptionPane.showMessageDialog(vista, "Usuario registrado con exito");
+					Sistema.getInstancia().cambiarController(new LoginController());
 					vista.setVisible(false);
 				} catch (AgenciaInexistenteException e1) {
 					e1.printStackTrace();
@@ -62,7 +64,7 @@ public class Register2EmpleadorController extends Controller {
 			} else {
 				JOptionPane.showMessageDialog(vista, "Complete los campos");
 			}
-		} else if (cmd.equalsIgnoreCase("Volver")){
+		} else if (cmd.equalsIgnoreCase("Volver")) {
 			Sistema.getInstancia().cambiarController(new Register1Controller());
 			vista.setVisible(false);
 		}

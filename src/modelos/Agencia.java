@@ -334,5 +334,11 @@ public class Agencia implements Logueable {
 		return contrasenia;
 	}
 
-	
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
+	public void setContrasenia(String contrasenia) {
+		this.contrasenia = contrasenia;
+	}
 }

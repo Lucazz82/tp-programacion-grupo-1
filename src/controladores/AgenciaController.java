@@ -38,7 +38,8 @@ public class AgenciaController extends Controller {
 			agencia.rondaContratacion();
 			JOptionPane.showMessageDialog(vista, "Ronda de contratacion generada con exito");
 		} else if(e.getActionCommand().equalsIgnoreCase("Ver Coincidencias")) {
-			
+			Sistema.getInstancia().cambiarController(new CoincidenciasController());
+			this.vista.setVisible(false);
 		}
 	}
 	
