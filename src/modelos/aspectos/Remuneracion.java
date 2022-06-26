@@ -2,14 +2,17 @@ package modelos.aspectos;
 
 import java.io.Serializable;
 
+import enums.Remuneraciones;
 import modelos.Enfrentable;
 
 public class Remuneracion implements Enfrentable<Remuneracion>, Serializable {
+	private Remuneraciones tipo;
 	private int pos;
 	private double V1;
 	private double V2;
 
-	public Remuneracion(int pos, double v1, double v2) {
+	public Remuneracion(Remuneraciones tipo, int pos, double v1, double v2) {
+		this.tipo = tipo;
 		this.pos = pos;
 		this.V1 = v1;
 		this.V2 = v2;
@@ -44,4 +47,10 @@ public class Remuneracion implements Enfrentable<Remuneracion>, Serializable {
 
 		return sueldoPretendido;
 	}
+
+	@Override
+	public String toString() {
+		return tipo.name();
+	}
+	
 }

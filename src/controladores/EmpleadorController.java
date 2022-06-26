@@ -24,6 +24,7 @@ public class EmpleadorController extends Controller<EmpleadorVista> implements F
 		super(new EmpleadorVista());
 		this.empleador = empleador;
 		this.setListaTickets();
+		this.vista.setFocusListener(this);
 	}
 
 
@@ -34,20 +35,26 @@ public class EmpleadorController extends Controller<EmpleadorVista> implements F
 		if (cmd.equalsIgnoreCase("Cambiar Ticket")) {
 			JOptionPane.showMessageDialog(vista, "Función no disponible por el momento");
 		} else if (cmd.equalsIgnoreCase("Elegir Ganador")) {
-			if (vista.isListaCandidatosVisible()) {
-				TicketBusquedaEmpleo ticketEmpleado = vista.getCandidatoSeleccionado();
-				TicketBusquedaEmpleado ticketEmpleador = vista.getTicketSeleccionado();
-				ticketEmpleador.setElegido(ticketEmpleado);
-				JOptionPane.showMessageDialog(vista, "Ticket seleccionado éxito");
-			}
+			TicketBusquedaEmpleo ticketEmpleado = vista.getCandidatoSeleccionado();
+			TicketBusquedaEmpleado ticketEmpleador = vista.getTicketSeleccionado();
+			ticketEmpleador.setElegido(ticketEmpleado);
+			JOptionPane.showMessageDialog(vista, "Ticket seleccionado éxito");
 		} else if (cmd.equalsIgnoreCase("Activar Ticket")) {
 			TicketBusquedaEmpleado seleccionado = vista.getTicketSeleccionado();
+			JOptionPane.showMessageDialog(vista, "Ticket Activado");
 			seleccionado.setActivo();
 		}else if (cmd.equalsIgnoreCase("Suspender Ticket")) {
 			TicketBusquedaEmpleado seleccionado = vista.getTicketSeleccionado();
 			seleccionado.setSuspendido();
+			JOptionPane.showMessageDialog(vista, "Ticket Suspendido");
 		} else if (cmd.equalsIgnoreCase("Agregar Ticket")) {
 			Sistema.getInstancia().cambiarController(new TicketEmpleadorController(empleador));
+			vista.setVisible(false);
+		} else if (cmd.equalsIgnoreCase("Cerrar Sesion")) {
+			Sistema.getInstancia().cambiarController(new LoginController());
+			vista.setVisible(false);
+		} else if (cmd.equalsIgnoreCase("Ticket Simplificado")) {
+			Sistema.getInstancia().cambiarController(new TicketSimplificadoController(empleador));
 			vista.setVisible(false);
 		}
 	}
@@ -71,9 +78,12 @@ public class EmpleadorController extends Controller<EmpleadorVista> implements F
 				candidatos.add((TicketBusquedaEmpleo)candidatosIt.next().getTicket());
 			}
 			vista.setListaCandidatos(candidatos);
-		} catch (TicketInexistenteException | AgenciaInexistenteException e1) {
-			e1.printStackTrace();
+		} catch (AgenciaInexistenteException e1) {
+		} catch (TicketInexistenteException e1) {
+//			JOptionPane.showMessageDialog(vista, "El ticket no posee una lista de asignacion");
+			this.vista.limpiarListaTickets();
 		}
+		
 	}
 
 	@Override

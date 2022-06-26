@@ -30,8 +30,8 @@ public class ListaDeAsignacionVista extends JFrame implements IVista{
 	private JButton volverBoton;
 	private JList ticketsEmpleadorLista;
 	private JList ticketsEmpleadosLista;
-	private JScrollPane busquedaEmpleadoScrollPan;
-	private JScrollPane busquedaEmpleoScrollPane;
+	private JPanel ticketBusquedaEmpleadoPan;
+	private JPanel ticketBusquedaEmpleoPan;
 
 	/**
 	 * Launch the application.
@@ -72,8 +72,9 @@ public class ListaDeAsignacionVista extends JFrame implements IVista{
 		ticketBusquedaEmpleadoLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		listaTicketsBusquedaEmpleadoPan.add(ticketBusquedaEmpleadoLabel, BorderLayout.NORTH);
 		
-		busquedaEmpleadoScrollPan = new JScrollPane();
-		listaTicketsBusquedaEmpleadoPan.add(busquedaEmpleadoScrollPan, BorderLayout.CENTER);
+		ticketBusquedaEmpleadoPan = new JPanel();
+		listaTicketsBusquedaEmpleadoPan.add(ticketBusquedaEmpleadoPan, BorderLayout.CENTER);
+		ticketBusquedaEmpleadoPan.setLayout(new BorderLayout(0, 0));
 		
 		JPanel listaTicketsBusquedaEmpleoPan = new JPanel();
 		centro.add(listaTicketsBusquedaEmpleoPan);
@@ -84,8 +85,9 @@ public class ListaDeAsignacionVista extends JFrame implements IVista{
 		ticketBusquedaEmpleoLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		listaTicketsBusquedaEmpleoPan.add(ticketBusquedaEmpleoLabel, BorderLayout.NORTH);
 		
-		busquedaEmpleoScrollPane = new JScrollPane();
-		listaTicketsBusquedaEmpleoPan.add(busquedaEmpleoScrollPane, BorderLayout.CENTER);
+		ticketBusquedaEmpleoPan = new JPanel();
+		listaTicketsBusquedaEmpleoPan.add(ticketBusquedaEmpleoPan, BorderLayout.CENTER);
+		ticketBusquedaEmpleoPan.setLayout(new BorderLayout(0, 0));
 		
 		this.setVisible(true);
 		
@@ -99,7 +101,7 @@ public class ListaDeAsignacionVista extends JFrame implements IVista{
         DefaultListModel<TicketBusquedaEmpleado> listModel = new DefaultListModel<>();
 		ticketsEmpleadorLista = new JList<>(listModel);
 		ticketsEmpleadorLista.setBorder(new LineBorder(new Color(0, 0, 0), 1));
-		this.busquedaEmpleoScrollPane.add(ticketsEmpleadorLista);
+		this.ticketBusquedaEmpleadoPan.add(ticketsEmpleadorLista,BorderLayout.CENTER);
         
 				
         for(TicketBusquedaEmpleado ticket : ticketEmpleadores) {
@@ -112,7 +114,7 @@ public class ListaDeAsignacionVista extends JFrame implements IVista{
         DefaultListModel<TicketOrdenable> listModel = new DefaultListModel<>();
         ticketsEmpleadosLista = new JList<>(listModel);
 		ticketsEmpleadosLista.setBorder(new LineBorder(new Color(0, 0, 0), 1));
-		this.busquedaEmpleoScrollPane.add(ticketsEmpleadosLista);
+		this.ticketBusquedaEmpleoPan.add(ticketsEmpleadosLista, BorderLayout.CENTER);
         
         for(TicketOrdenable ticket : listaEmpleados) {
         	listModel.addElement(ticket);
@@ -134,7 +136,7 @@ public class ListaDeAsignacionVista extends JFrame implements IVista{
 
 	@Override
 	public void setWindowListener(WindowListener windowListener) {
-		// TODO Auto-generated method stub	
+		this.addWindowListener(windowListener);
 	}
 
 }

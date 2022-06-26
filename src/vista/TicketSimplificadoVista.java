@@ -21,10 +21,11 @@ public class TicketSimplificadoVista extends JFrame implements IVista{
 	private JPanel contentPane;
 	private JPanel centro;
 	private JPanel sur;
-	private JPanel crear;
+	private JPanel crearPan;
 	private JButton crearBoton;
 	private JComboBox locacionDesplegable;
 	private JComboBox rubroDesplegable;
+	private JButton volverBoton;
 
 
 
@@ -80,11 +81,17 @@ public class TicketSimplificadoVista extends JFrame implements IVista{
 		sur = new JPanel();
 		contentPane.add(sur, BorderLayout.SOUTH);
 		
-		crear = new JPanel();
-		sur.add(crear);
+		JPanel volverPan = new JPanel();
+		sur.add(volverPan);
+		
+		volverBoton = new JButton("Volver");
+		volverPan.add(volverBoton);
+		
+		crearPan = new JPanel();
+		sur.add(crearPan);
 		
 		crearBoton = new JButton("Crear Ticket");
-		crear.add(crearBoton);
+		crearPan.add(crearBoton);
 		
 		setLocationRelativeTo(null);
 		setVisible(true);
@@ -102,11 +109,12 @@ public class TicketSimplificadoVista extends JFrame implements IVista{
 	@Override
 	public void setActionListener(ActionListener actionListener) {
 		this.crearBoton.addActionListener(actionListener);
+		this.volverBoton.addActionListener(actionListener);
 	}
 
 	@Override
 	public void setWindowListener(WindowListener windowListener) {
-		// TODO Auto-generated method stub
+		this.addWindowListener(windowListener);
 		
 	}
 	

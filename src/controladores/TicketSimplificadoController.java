@@ -3,6 +3,8 @@ package controladores;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
+
 import enums.Locaciones;
 import enums.Rubros;
 import excepciones.AgenciaInexistenteException;
@@ -35,11 +37,15 @@ public class TicketSimplificadoController extends Controller<TicketSimplificadoV
 			
 			try {
 				Agencia.getInstancia().agregarTicketABolsa(ticket);
+				JOptionPane.showMessageDialog(vista, "Ticket creado éxito");
 			} catch (AgenciaInexistenteException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			
+		} else if(e.getActionCommand().equalsIgnoreCase("Volver")) {
+			Sistema.getInstancia().cambiarController(new EmpleadorController(this.empleador));
+			this.vista.setVisible(false);
 		}
 		
 	}
