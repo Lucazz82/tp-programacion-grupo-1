@@ -31,6 +31,8 @@ public class AgenciaController extends Controller<AgenciaVista> {
 			agencia.generarListasAsignacion();
 			JOptionPane.showMessageDialog(vista, "Listas de asignacion generadas con exito");
 		} else if(e.getActionCommand().equalsIgnoreCase("Ver Listas de Asignacion")) {
+			Sistema.getInstancia().cambiarController(new ListaDeAsignacionController());
+			this.vista.setVisible(false);
 			
 		} else if(e.getActionCommand().equalsIgnoreCase("Iniciar Ronda de Contratacion")) {
 			agencia.rondaContratacion();

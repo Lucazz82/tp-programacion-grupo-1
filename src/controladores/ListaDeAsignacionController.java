@@ -22,14 +22,15 @@ public class ListaDeAsignacionController extends Controller<ListaDeAsignacionVis
 	
 	
 
-	public ListaDeAsignacionController(ListaDeAsignacionVista vista) {
-		super(vista);
+	public ListaDeAsignacionController() {
+		super(new ListaDeAsignacionVista());
 		this.vista.setFocusListener(this);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().equalsIgnoreCase("Volver")) {
+			Sistema.getInstancia().cambiarController(new AgenciaController());
 			this.vista.setVisible(false);
 		}
 		
@@ -61,7 +62,7 @@ public class ListaDeAsignacionController extends Controller<ListaDeAsignacionVis
 	      while (iterator.hasNext()) {
 	          actualList.add(iterator.next());
 	       }
-	      
+	     
 		this.vista.setListaTicketsEmpleados(actualList);
 		
 	}

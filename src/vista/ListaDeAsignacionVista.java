@@ -19,6 +19,10 @@ import javax.swing.border.LineBorder;
 
 import modelos.TicketBusquedaEmpleado;
 import modelos.TicketOrdenable;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import java.awt.Font;
+import javax.swing.JScrollPane;
 
 public class ListaDeAsignacionVista extends JFrame implements IVista{
 
@@ -26,6 +30,8 @@ public class ListaDeAsignacionVista extends JFrame implements IVista{
 	private JButton volverBoton;
 	private JList ticketsEmpleadorLista;
 	private JList ticketsEmpleadosLista;
+	private JScrollPane busquedaEmpleadoScrollPan;
+	private JScrollPane busquedaEmpleoScrollPane;
 
 	/**
 	 * Launch the application.
@@ -36,8 +42,12 @@ public class ListaDeAsignacionVista extends JFrame implements IVista{
 	 * Create the frame.
 	 */
 	public ListaDeAsignacionVista() {
+		
+		setTitle("Listas de asignacion");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 1000, 500);
+		setLocationRelativeTo(null);
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -51,7 +61,36 @@ public class ListaDeAsignacionVista extends JFrame implements IVista{
 		
 		JPanel centro = new JPanel();
 		contentPane.add(centro, BorderLayout.CENTER);
-		centro.setLayout(new GridLayout(2, 2, 0, 0));
+		centro.setLayout(new GridLayout(1, 2, 0, 0));
+		
+		JPanel listaTicketsBusquedaEmpleadoPan = new JPanel();
+		centro.add(listaTicketsBusquedaEmpleadoPan);
+		listaTicketsBusquedaEmpleadoPan.setLayout(new BorderLayout(0, 0));
+		
+		JLabel ticketBusquedaEmpleadoLabel = new JLabel("Tickets busqueda empleado");
+		ticketBusquedaEmpleadoLabel.setFont(new Font("Calibri", Font.BOLD, 15));
+		ticketBusquedaEmpleadoLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		listaTicketsBusquedaEmpleadoPan.add(ticketBusquedaEmpleadoLabel, BorderLayout.NORTH);
+		
+		busquedaEmpleadoScrollPan = new JScrollPane();
+		listaTicketsBusquedaEmpleadoPan.add(busquedaEmpleadoScrollPan, BorderLayout.CENTER);
+		
+		JPanel listaTicketsBusquedaEmpleoPan = new JPanel();
+		centro.add(listaTicketsBusquedaEmpleoPan);
+		listaTicketsBusquedaEmpleoPan.setLayout(new BorderLayout(0, 0));
+		
+		JLabel ticketBusquedaEmpleoLabel = new JLabel("Tickets busqueda empleo");
+		ticketBusquedaEmpleoLabel.setFont(new Font("Calibri", Font.BOLD, 15));
+		ticketBusquedaEmpleoLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		listaTicketsBusquedaEmpleoPan.add(ticketBusquedaEmpleoLabel, BorderLayout.NORTH);
+		
+		busquedaEmpleoScrollPane = new JScrollPane();
+		listaTicketsBusquedaEmpleoPan.add(busquedaEmpleoScrollPane, BorderLayout.CENTER);
+		
+		this.setVisible(true);
+		
+		ticketsEmpleadorLista = new JList<>();
+		ticketsEmpleadosLista = new JList<>();
 		
 		
 	}
@@ -60,6 +99,7 @@ public class ListaDeAsignacionVista extends JFrame implements IVista{
         DefaultListModel<TicketBusquedaEmpleado> listModel = new DefaultListModel<>();
 		ticketsEmpleadorLista = new JList<>(listModel);
 		ticketsEmpleadorLista.setBorder(new LineBorder(new Color(0, 0, 0), 1));
+		this.busquedaEmpleoScrollPane.add(ticketsEmpleadorLista);
         
 				
         for(TicketBusquedaEmpleado ticket : ticketEmpleadores) {
@@ -72,6 +112,7 @@ public class ListaDeAsignacionVista extends JFrame implements IVista{
         DefaultListModel<TicketOrdenable> listModel = new DefaultListModel<>();
         ticketsEmpleadosLista = new JList<>(listModel);
 		ticketsEmpleadosLista.setBorder(new LineBorder(new Color(0, 0, 0), 1));
+		this.busquedaEmpleoScrollPane.add(ticketsEmpleadosLista);
         
         for(TicketOrdenable ticket : listaEmpleados) {
         	listModel.addElement(ticket);
