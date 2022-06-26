@@ -36,6 +36,8 @@ public class EmpleadorController extends Controller<EmpleadorVista> implements F
 				tickets.add(it.next());
 			}
 			vista.setListaTickets(tickets);
+		} else if (cmd.equalsIgnoreCase("Cambiar Ticket")) {
+			JOptionPane.showMessageDialog(vista, "Función no disponible por el momento");
 		} else if (cmd.equalsIgnoreCase("Elegir Ganador")) {
 			if (vista.isListaCandidatosVisible()) {
 				TicketBusquedaEmpleo ticketEmpleado = vista.getCandidatoSeleccionado();
