@@ -15,4 +15,9 @@ public abstract class Locacion implements IDoubleDispatch, Serializable{
 	public boolean mismaLocacion(Locacion o) {
 		return locacion == o.locacion;
 	}
+
+	@Override
+	public String toString() {
+		return locacion.toString();
+	}
 }
