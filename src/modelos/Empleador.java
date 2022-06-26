@@ -51,8 +51,7 @@ public class Empleador extends Usuario implements Runnable {
 
 	@Override
 	public String toString() {
-		return "Empleador [" + super.toString() + " nombre=" + nombre + ", tipoPersona=" + tipoPersona + ", rubro="
-				+ rubro + ", tickets=" + tickets.size() + "]";
+		return super.toString();
 	}
 
 	@Override

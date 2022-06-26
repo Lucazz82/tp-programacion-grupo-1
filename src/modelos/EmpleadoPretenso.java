@@ -61,8 +61,7 @@ public class EmpleadoPretenso extends Usuario implements IComision, Runnable {
 
 	@Override
 	public String toString() {
-		return "EmpleadoPretenso [nombre=" + nombre + ", apellido=" + apellido + ", telefono=" + telefono
-				+ ", fechaNacimiento=" + fechaNacimiento + ", " + super.toString() + "]";
+		return super.toString();
 	}
 
 	@Override

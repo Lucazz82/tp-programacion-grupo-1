@@ -47,6 +47,6 @@ public abstract class Usuario implements Logueable, Serializable {
 
 	@Override
 	public String toString() {
-		return "nombreUsuario=" + nombreUsuario + ", contrasena=" + contrasena + ", puntaje=" + puntaje;
+		return "Nombre de Usuario: " + nombreUsuario + " Puntaje: " + puntaje;
 	}
 }

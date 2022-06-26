@@ -104,6 +104,10 @@ public class AgenciaVista extends JFrame implements IVista {
 
 	@Override
 	public void setActionListener(ActionListener actionListener) {
+		this.generarListasBoton.addActionListener(actionListener);
+		this.verListasBoton.addActionListener(actionListener);
+		this.rondaContratacionBoton.addActionListener(actionListener);
+		this.coincidenciasBoton.addActionListener(actionListener);
 		this.cerrarBoton.addActionListener(actionListener);
 	}
 	
