@@ -30,7 +30,9 @@ public class Register2EmpleadorController extends Controller {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getActionCommand().equalsIgnoreCase("Siguente")) {
+		String cmd = e.getActionCommand();
+		
+		if (cmd.equalsIgnoreCase("Siguiente")) {
 			if (!nombreUsuario.isBlank() && !contrasenia.isBlank()) {
 				try {
 					Agencia agencia = Agencia.getInstancia();
@@ -49,6 +51,7 @@ public class Register2EmpleadorController extends Controller {
 					default:
 						break;
 					}
+					
 					Empleador empleador = new Empleador(nombreUsuario, contrasenia, tipoPersona, rubro);
 					agencia.registrarUsuario(empleador);
 					Sistema.getInstancia().cambiarController(new EmpleadorController(empleador));
@@ -59,7 +62,7 @@ public class Register2EmpleadorController extends Controller {
 			} else {
 				JOptionPane.showMessageDialog(vista, "Complete los campos");
 			}
-		} else if (e.getActionCommand().equalsIgnoreCase("Volver")){
+		} else if (cmd.equalsIgnoreCase("Volver")){
 			Sistema.getInstancia().cambiarController(new Register1Controller());
 			vista.setVisible(false);
 		}

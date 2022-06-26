@@ -124,6 +124,8 @@ public class EmpleadorVista extends JFrame implements IVista {
 		
 		elegirGanadorBoton = new JButton("Elegir Ganador");
 		elegirGanadorBotonPan.add(elegirGanadorBoton);
+		
+		setVisible(true);
 	}
 
 	@Override
