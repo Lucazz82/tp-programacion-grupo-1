@@ -1,8 +1,10 @@
 package modelos.aspectos;
 
+import enums.CargasHorarias;
 import modelos.IDoubleDispatch;
 
 public class CargaExtendida extends CargaHoraria {
+	private CargasHorarias carga = CargasHorarias.EXTENDIDA;
 
 	@Override
 	public double enfrentar(IDoubleDispatch o) {
@@ -22,6 +24,11 @@ public class CargaExtendida extends CargaHoraria {
 	@Override
 	public double enfrentarTercero() {
 		return 1;
+	}
+	
+	@Override
+	public String toString() {
+		return carga.toString();
 	}
 
 }

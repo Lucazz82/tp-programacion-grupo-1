@@ -23,5 +23,10 @@ public class CargaMedia extends CargaHoraria {
 	public double enfrentarTercero() {
 		return -1.0;
 	}
+	
+	@Override
+	public String toString() {
+		return "Carga Media";
+	}
 
 }

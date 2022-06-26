@@ -19,7 +19,7 @@ public abstract class Ticket implements IComision, Serializable {
 		this.formulario = formulario;
 		this.creador = creador;
 	}
-
+	
 	public void setEstado(IEstado estado) {
 		this.estado = estado;
 	}

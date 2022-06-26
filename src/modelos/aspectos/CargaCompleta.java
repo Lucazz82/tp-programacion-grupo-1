@@ -24,4 +24,8 @@ public class CargaCompleta extends CargaHoraria {
 		return -0.5;
 	}
 
+	@Override
+	public String toString() {
+		return "Carga Completa";
+	}
 }

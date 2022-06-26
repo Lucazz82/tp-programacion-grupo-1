@@ -16,5 +16,9 @@ public class Estudios implements Enfrentable<Estudios>, Serializable {
 	public double enfrentar(Estudios o) {
 		return pesos[this.pos][o.pos];
 	}
-
+	
+	@Override
+	public String toString() {
+		return "Carga Completa";
+	}
 }
