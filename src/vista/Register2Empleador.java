@@ -2,6 +2,7 @@ package vista;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -126,6 +127,12 @@ public class Register2Empleador extends JFrame implements IVista {
 	
 	public String getNombre() {
 		return nombreText.getText();
+	}
+
+	@Override
+	public void setWindowListener(WindowListener windowListener) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
