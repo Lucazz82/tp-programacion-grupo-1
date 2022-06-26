@@ -40,6 +40,11 @@ public class TicketEmpleadoController extends Controller<FormularioVista> {
 	public void windowActivated(WindowEvent e) {
 		JOptionPane.showMessageDialog(vista, "Cree un ticket para finalizar el registro del usuario");
 	}
+
+	@Override
+	public void windowOpened(WindowEvent e) {
+		JOptionPane.showMessageDialog(vista, "Cree un ticket para finalizar el registro del usuario");
+	}
 	
 	
 

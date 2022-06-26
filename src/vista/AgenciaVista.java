@@ -18,6 +18,8 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import modelos.EmpleadoPretenso;
+import modelos.Empleador;
 import modelos.Usuario;
 
 public class AgenciaVista extends JFrame implements IVista {
@@ -27,9 +29,10 @@ public class AgenciaVista extends JFrame implements IVista {
 	private JPanel cerrarPan;
 	private JButton cerrarBoton;
 	private JPanel botonesPan;
-	private JPanel usuariosPan;
-	private JLabel usuariosLabel;
-	private JList usuariosLista;
+	private JPanel empleadosPan;
+	private JLabel empleadosLabel;
+	private JList empleadosLista;
+	private JList empleadoresLista;
 	private JButton generarListasBoton;
 	private JPanel generarListasPan;
 	private JButton verListasBoton;
@@ -38,6 +41,8 @@ public class AgenciaVista extends JFrame implements IVista {
 	private JPanel rondaContratacionPan;
 	private JButton coincidenciasBoton;
 	private JPanel coincidenciasPan;
+	private JPanel empleadoresPan;
+	private JLabel empleadoresLabel;
 
 
 	/**
@@ -46,7 +51,7 @@ public class AgenciaVista extends JFrame implements IVista {
 	public AgenciaVista() {
 		setTitle("Agencia");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 600, 400);
+		setBounds(100, 100, 1000, 500);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -54,7 +59,7 @@ public class AgenciaVista extends JFrame implements IVista {
 		
 		principalPan = new JPanel();
 		contentPane.add(principalPan, BorderLayout.CENTER);
-		principalPan.setLayout(new GridLayout(0, 2, 0, 0));
+		principalPan.setLayout(new GridLayout(0, 3, 0, 0));
 		
 		botonesPan = new JPanel();
 		principalPan.add(botonesPan);
@@ -84,14 +89,25 @@ public class AgenciaVista extends JFrame implements IVista {
 		coincidenciasBoton = new JButton("Ver Coincidencias");
 		coincidenciasPan.add(coincidenciasBoton);
 		
-		usuariosPan = new JPanel();
-		principalPan.add(usuariosPan);
-		usuariosPan.setLayout(new BorderLayout(0, 0));
+		empleadosPan = new JPanel();
+		empleadosPan.setBorder(new EmptyBorder(10, 10, 10, 10));
+		principalPan.add(empleadosPan);
+		empleadosPan.setLayout(new BorderLayout(0, 0));
 		
-		usuariosLabel = new JLabel("Lista de Usuarios");
-		usuariosLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		usuariosLabel.setFont(new Font("Calibri", Font.BOLD, 20));
-		usuariosPan.add(usuariosLabel, BorderLayout.NORTH);
+		empleadosLabel = new JLabel("Lista de Empleados");
+		empleadosLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		empleadosLabel.setFont(new Font("Calibri", Font.BOLD, 20));
+		empleadosPan.add(empleadosLabel, BorderLayout.NORTH);
+		
+		empleadoresPan = new JPanel();
+		empleadoresPan.setBorder(new EmptyBorder(10, 10, 10, 10));
+		principalPan.add(empleadoresPan);
+		empleadoresPan.setLayout(new BorderLayout(0, 0));
+		
+		empleadoresLabel = new JLabel("Lista de Empleadores");
+		empleadoresLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		empleadoresLabel.setFont(new Font("Calibri", Font.BOLD, 20));
+		empleadoresPan.add(empleadoresLabel, BorderLayout.NORTH);
 		
 		cerrarPan = new JPanel();
 		contentPane.add(cerrarPan, BorderLayout.SOUTH);
@@ -113,13 +129,24 @@ public class AgenciaVista extends JFrame implements IVista {
 		this.cerrarBoton.addActionListener(actionListener);
 	}
 	
-	public void setListaUsuarios(ArrayList<Usuario> usuarios) {
-        DefaultListModel<Usuario> listModel = new DefaultListModel<>();
-        this.usuariosLista= new JList<>(listModel);
-		this.usuariosLista.setBorder(new LineBorder(new Color(0, 0, 0), 1));
-		this.usuariosPan.add(usuariosLista, BorderLayout.CENTER);
+	public void setListaEmpleados(ArrayList<EmpleadoPretenso> usuarios) {
+        DefaultListModel<EmpleadoPretenso> listModel = new DefaultListModel<>();
+        this.empleadosLista = new JList<>(listModel);
+		this.empleadosLista.setBorder(new LineBorder(new Color(0, 0, 0), 1));
+		this.empleadosPan.add(empleadosLista, BorderLayout.CENTER);
         
-        for(Usuario usuario : usuarios) {
+        for(EmpleadoPretenso usuario : usuarios) {
+        	listModel.addElement(usuario);
+        }
+    }
+	
+	public void setListaEmpleadores(ArrayList<Empleador> usuarios) {
+        DefaultListModel<Empleador> listModel = new DefaultListModel<>();
+        this.empleadoresLista = new JList<>(listModel);
+		this.empleadoresLista.setBorder(new LineBorder(new Color(0, 0, 0), 1));
+		this.empleadoresPan.add(empleadoresLista, BorderLayout.CENTER);
+        
+        for(Empleador usuario : usuarios) {
         	listModel.addElement(usuario);
         }
     }

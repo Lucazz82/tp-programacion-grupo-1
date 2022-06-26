@@ -38,10 +38,10 @@ public class LoginController extends Controller<Login> {
 					controller = new AgenciaController();
 					break;
 				case EMPLEADO:
-					controller = new EmpleadoController((EmpleadoPretenso)usuario);
+					controller = new EmpleadoController((EmpleadoPretenso) usuario);
 					break;
 				case EMPLEADOR:
-					controller = new EmpleadorController((Empleador)usuario);
+					controller = new EmpleadorController((Empleador) usuario);
 					break;
 				default:
 					break;
