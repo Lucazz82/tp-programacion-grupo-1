@@ -51,6 +51,9 @@ public class EmpleadorController extends Controller<EmpleadorVista> implements F
 		}else if (cmd.equalsIgnoreCase("Suspender Ticket")) {
 			TicketBusquedaEmpleado seleccionado = vista.getTicketSeleccionado();
 			seleccionado.setSuspendido();
+		} else if (cmd.equalsIgnoreCase("Agregar Ticket")) {
+			Sistema.getInstancia().cambiarController(new TicketEmpleadorController(empleador));
+			vista.setVisible(false);
 		}
 	}
 

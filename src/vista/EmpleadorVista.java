@@ -82,6 +82,12 @@ public class EmpleadorVista extends JFrame implements IVista {
 		activarTicketBoton = new JButton("Activar Ticket");
 		activarTicketBotonPan.add(activarTicketBoton);
 		
+		suspenderTicketBotonPan = new JPanel();
+		botones.add(suspenderTicketBotonPan);
+		
+		btnSuspenderTicket = new JButton("Suspender Ticket");
+		suspenderTicketBotonPan.add(btnSuspenderTicket);
+		
 		mostrarTicketBotonPan = new JPanel();
 		botones.add(mostrarTicketBotonPan);
 		
@@ -99,12 +105,6 @@ public class EmpleadorVista extends JFrame implements IVista {
 		
 		agregarTicketBoton = new JButton("Agregar Ticket");
 		agregarTicketBotonPan.add(agregarTicketBoton);
-		
-		suspenderTicketBotonPan = new JPanel();
-		botones.add(suspenderTicketBotonPan);
-		
-		btnSuspenderTicket = new JButton("Suspender Ticket");
-		suspenderTicketBotonPan.add(btnSuspenderTicket);
 		
 		listaTicketsPan = new JPanel();
 		contentPane.add(listaTicketsPan);
@@ -186,6 +186,5 @@ public class EmpleadorVista extends JFrame implements IVista {
 	@Override
 	public void setWindowListener(WindowListener windowListener) {
 		// TODO Auto-generated method stub
-		
 	}
 }

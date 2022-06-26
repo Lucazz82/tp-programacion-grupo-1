@@ -69,6 +69,8 @@ public class FormularioVista extends JFrame implements IVista {
 	private JPanel volver;
 	private JPanel crear;
 	private JButton crearBoton;
+	private JButton volverBoton;
+	private JPanel volverBotonPan;
 
 	/**
 	 * Create the frame.
@@ -219,6 +221,12 @@ public class FormularioVista extends JFrame implements IVista {
 		
 		volver = new JPanel();
 		contentPane.add(volver);
+		
+		volverBotonPan = new JPanel();
+		volver.add(volverBotonPan);
+		
+		volverBoton = new JButton("Volver");
+		volverBotonPan.add(volverBoton);
 		
 		crear = new JPanel();
 		contentPane.add(crear);
