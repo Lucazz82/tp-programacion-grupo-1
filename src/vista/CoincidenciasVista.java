@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowListener;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -83,5 +84,11 @@ public class CoincidenciasVista extends JFrame implements IVista{
         }
         
     }
+
+	@Override
+	public void setWindowListener(WindowListener windowListener) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

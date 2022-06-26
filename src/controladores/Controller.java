@@ -4,8 +4,17 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
-public abstract class Controller implements ActionListener, WindowListener {
+import vista.IVista;
 
+public abstract class Controller<E extends IVista> implements ActionListener, WindowListener {
+	protected E vista;
+	
+	public Controller(E vista) {
+		this.vista = vista;
+		this.vista.setActionListener(this);
+		this.vista.setWindowListener(this);
+	}
+		
 	@Override
 	public void windowOpened(WindowEvent e) {
 		// TODO Auto-generated method stub

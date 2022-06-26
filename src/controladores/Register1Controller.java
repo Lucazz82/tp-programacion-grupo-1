@@ -10,12 +10,10 @@ import modelos.EmpleadoPretenso;
 import modelos.Empleador;
 import vista.Register1;
 
-public class Register1Controller extends Controller {
-	private Register1 vista;
+public class Register1Controller extends Controller<Register1> {
 
 	public Register1Controller() {
-		this.vista = new Register1();
-		vista.setActionListener(this);
+		super(new Register1());
 	}
 
 	@Override

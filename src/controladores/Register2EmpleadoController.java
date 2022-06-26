@@ -11,14 +11,12 @@ import modelos.Agencia;
 import modelos.EmpleadoPretenso;
 import vista.Register2Empleado;
 
-public class Register2EmpleadoController extends Controller {
-	private Register2Empleado vista;
+public class Register2EmpleadoController extends Controller<Register2Empleado> {
 	private String usuario;
 	private String contrasenia;
 
 	public Register2EmpleadoController(String usuario, String contrasenia) {
-		this.vista = new Register2Empleado();
-		vista.setActionListener(this);
+		super(new Register2Empleado());
 		this.usuario = usuario;
 		this.contrasenia = contrasenia;
 	}

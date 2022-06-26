@@ -3,6 +3,7 @@ package vista;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowListener;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -101,6 +102,12 @@ public class TicketSimplificadoVista extends JFrame implements IVista{
 	@Override
 	public void setActionListener(ActionListener actionListener) {
 		this.crearBoton.addActionListener(actionListener);
+	}
+
+	@Override
+	public void setWindowListener(WindowListener windowListener) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

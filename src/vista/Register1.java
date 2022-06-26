@@ -3,6 +3,7 @@ package vista;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowListener;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -134,6 +135,12 @@ public class Register1 extends JFrame implements IVista, IRegister {
 	@Override
 	public TiposUsuario getTipoUsuario() {
 		return (TiposUsuario) comboBox.getSelectedItem();
+	}
+
+	@Override
+	public void setWindowListener(WindowListener windowListener) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

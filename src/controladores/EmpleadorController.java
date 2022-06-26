@@ -17,14 +17,12 @@ import modelos.TicketBusquedaEmpleo;
 import modelos.TicketOrdenable;
 import vista.EmpleadorVista;
 
-public class EmpleadorController extends Controller implements FocusListener {
-	private EmpleadorVista vista;
+public class EmpleadorController extends Controller<EmpleadorVista> implements FocusListener {
 	private Empleador empleador;
 	
 	public EmpleadorController(Empleador empleador) {
-		this.vista = new EmpleadorVista();
+		super(new EmpleadorVista());
 		this.empleador = empleador;
-		vista.setActionListener(this);
 	}
 
 	@Override

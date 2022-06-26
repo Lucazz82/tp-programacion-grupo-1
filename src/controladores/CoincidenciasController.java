@@ -6,11 +6,10 @@ import excepciones.AgenciaInexistenteException;
 import modelos.Agencia;
 import vista.CoincidenciasVista;
 
-public class CoincidenciasController extends Controller {
-	private CoincidenciasVista vista;
+public class CoincidenciasController extends Controller<CoincidenciasVista> {
 	
 	public CoincidenciasController() {
-		this.vista = new CoincidenciasVista();
+		super(new CoincidenciasVista());
 		this.setCoincidencias();
 	}
 

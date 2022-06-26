@@ -1,6 +1,7 @@
 package controladores;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JOptionPane;
 
@@ -13,15 +14,11 @@ import modelos.TicketBusquedaEmpleo;
 import modelos.aspectos.factories.PuestoLaboralFactory;
 import vista.FormularioVista;
 
-public class TicketEmpleadoController extends Controller {	
-	private FormularioVista vista;
+public class TicketEmpleadoController extends Controller<FormularioVista> {	
 	private EmpleadoPretenso empleado;
 	
 	public TicketEmpleadoController(EmpleadoPretenso empleado) {
-		super();
-		this.vista = new FormularioVista();
-		this.vista.setActionListener(this);
-//		JOptionPane.showMessageDialog(vista, "Cree un ticket para finalizar el registro del usuario");
+		super(new FormularioVista());
 		this.empleado = empleado;
 	}
 
@@ -38,5 +35,12 @@ public class TicketEmpleadoController extends Controller {
 			
 		}
 	}
+
+	@Override
+	public void windowActivated(WindowEvent e) {
+		JOptionPane.showMessageDialog(vista, "Cree un ticket para finalizar el registro del usuario");
+	}
+	
+	
 
 }
