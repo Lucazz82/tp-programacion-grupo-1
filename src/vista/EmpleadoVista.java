@@ -75,6 +75,7 @@ public class EmpleadoVista extends JFrame implements IVista{
 		puntajePan.add(puntajePanText);
 		
 		puntajeText = new JTextPane();
+		puntajeText.setEditable(false);
 		puntajePanText.add(puntajeText);
 		
 		suspenderBotonPan = new JPanel();
