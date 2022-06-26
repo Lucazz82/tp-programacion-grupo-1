@@ -28,20 +28,22 @@ public class LoginController extends Controller<Login> {
 
 		if (cmd.equalsIgnoreCase("Login")) {
 			try {
-				Logueable usuario = Agencia.getInstancia().buscarUsuario(vista.getUsuario());
-				usuario.login(vista.getContrasenia());
-				
 				Controller controller = null;
 				
 				switch (vista.getTipoUsuario()) {
 				case AGENCIA:
+					Agencia.getInstancia().login(vista.getContrasenia());
 					controller = new AgenciaController();
 					break;
 				case EMPLEADO:
-					controller = new EmpleadoController((EmpleadoPretenso)usuario);
+					EmpleadoPretenso empleado = Agencia.getInstancia().buscarEmpleado(vista.getUsuario());
+					empleado.login(vista.getContrasenia());
+					controller = new EmpleadoController(empleado);
 					break;
 				case EMPLEADOR:
-					controller = new EmpleadorController((Empleador)usuario);
+					Empleador empleador = Agencia.getInstancia().buscarEmpleador(vista.getUsuario());
+					empleador.login(vista.getContrasenia());
+					controller = new EmpleadorController(empleador);
 					break;
 				default:
 					break;
@@ -50,12 +52,12 @@ public class LoginController extends Controller<Login> {
 				Sistema.getInstancia().cambiarController(controller);
 				
 				vista.setVisible(false);
-//				JOptionPane.showMessageDialog(vista, "Usuario logueado");
-			} catch (UsuarioInexistenteException | ContrasenaIncorrectaException e1) {
+				
+			} catch (UsuarioInexistenteException | ContrasenaIncorrectaException | ClassCastException e1) {
 				JOptionPane.showMessageDialog(vista, "Usuario o contraseña incorrectos");
 			} catch (AgenciaInexistenteException e1) {
 				JOptionPane.showMessageDialog(vista, "Primero se debe crear una agencia");
-			}
+			} 
 			
 		} else if (cmd.equalsIgnoreCase("Register")) {
 			Sistema.getInstancia().cambiarController(new Register1Controller());
