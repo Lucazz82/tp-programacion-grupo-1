@@ -147,6 +147,7 @@ public class EmpleadorVista extends JFrame implements IVista {
 			listModel.add(i, tickets.get(i));
 		}
 		this.listaTickets = new JList<>(listModel);
+		listaTicketsPan.add(listaTickets);
 	}
 	
 	public TicketBusquedaEmpleado getTicketSeleccionado() {
@@ -163,6 +164,7 @@ public class EmpleadorVista extends JFrame implements IVista {
 			listModel.add(i, tickets.get(i));
 		}
 		this.listaCandidatos = new JList<>(listModel);
+		listaCandidatosPan.add(listaTickets);
 	}
 	
 	public void setListaCandidatosVisible(boolean visible) {
