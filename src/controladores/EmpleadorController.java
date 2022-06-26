@@ -23,20 +23,15 @@ public class EmpleadorController extends Controller<EmpleadorVista> implements F
 	public EmpleadorController(Empleador empleador) {
 		super(new EmpleadorVista());
 		this.empleador = empleador;
+		this.setListaTickets();
 	}
+
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String cmd = e.getActionCommand();
 		
-		if (cmd.equalsIgnoreCase("Ver Tickets")) {
-			ArrayList<TicketBusquedaEmpleado> tickets = new ArrayList<>();
-			Iterator<TicketBusquedaEmpleado> it = empleador.getTickets();
-			while (it.hasNext()) {
-				tickets.add(it.next());
-			}
-			vista.setListaTickets(tickets);
-		} else if (cmd.equalsIgnoreCase("Cambiar Ticket")) {
+		if (cmd.equalsIgnoreCase("Cambiar Ticket")) {
 			JOptionPane.showMessageDialog(vista, "Función no disponible por el momento");
 		} else if (cmd.equalsIgnoreCase("Elegir Ganador")) {
 			if (vista.isListaCandidatosVisible()) {
@@ -54,6 +49,15 @@ public class EmpleadorController extends Controller<EmpleadorVista> implements F
 		}
 	}
 
+	private void setListaTickets() {	
+		ArrayList<TicketBusquedaEmpleado> tickets = new ArrayList<>();
+		Iterator<TicketBusquedaEmpleado> it = empleador.getTickets();
+		while (it.hasNext()) {
+			tickets.add(it.next());
+		}
+		vista.setListaTickets(tickets);
+	}
+	
 	@Override
 	public void focusGained(FocusEvent e) {
 		TicketBusquedaEmpleado ticket = vista.getTicketSeleccionado();

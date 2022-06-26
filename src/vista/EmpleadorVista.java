@@ -27,8 +27,6 @@ public class EmpleadorVista extends JFrame implements IVista {
 
 	private JPanel contentPane;
 	private JPanel botones;
-	private JPanel verTicketsBotonPan;
-	private JButton verTicketsBoton;
 	private JPanel cambiarTicketBotonPan;
 	private JButton cambiarTicketBoton;
 	private JButton activarTicketBoton;
@@ -48,6 +46,9 @@ public class EmpleadorVista extends JFrame implements IVista {
 	private JList<TicketBusquedaEmpleo> listaCandidatos;
 	private JButton btnSuspenderTicket;
 	private JPanel suspenderTicketBotonPan;
+	private JPanel sur;
+	private JPanel principal;
+	private JButton cerrarSesionBoton;
 
 	/**
 	 * Create the frame.
@@ -58,17 +59,27 @@ public class EmpleadorVista extends JFrame implements IVista {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new GridLayout(0, 3, 0, 0));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		
+		principal = new JPanel();
+		contentPane.add(principal, BorderLayout.CENTER);
+		principal.setLayout(new GridLayout(0, 3, 0, 0));
 		
 		botones = new JPanel();
-		contentPane.add(botones);
-		botones.setLayout(new GridLayout(7, 1, 0, 0));
+		principal.add(botones);
+		botones.setLayout(new GridLayout(6, 1, 0, 0));
 		
-		verTicketsBotonPan = new JPanel();
-		botones.add(verTicketsBotonPan);
+		agregarTicketBotonPan = new JPanel();
+		botones.add(agregarTicketBotonPan);
 		
-		verTicketsBoton = new JButton("Ver Tickets");
-		verTicketsBotonPan.add(verTicketsBoton);
+		agregarTicketBoton = new JButton("Agregar Ticket");
+		agregarTicketBotonPan.add(agregarTicketBoton);
+		
+		activarTicketBotonPan = new JPanel();
+		botones.add(activarTicketBotonPan);
+		
+		activarTicketBoton = new JButton("Activar Ticket");
+		activarTicketBotonPan.add(activarTicketBoton);
 		
 		cambiarTicketBotonPan = new JPanel();
 		botones.add(cambiarTicketBotonPan);
@@ -76,11 +87,11 @@ public class EmpleadorVista extends JFrame implements IVista {
 		cambiarTicketBoton = new JButton("Cambiar Ticket");
 		cambiarTicketBotonPan.add(cambiarTicketBoton);
 		
-		activarTicketBotonPan = new JPanel();
-		botones.add(activarTicketBotonPan);
+		suspenderTicketBotonPan = new JPanel();
+		botones.add(suspenderTicketBotonPan);
 		
-		activarTicketBoton = new JButton("Activar Ticket");
-		activarTicketBotonPan.add(activarTicketBoton);
+		btnSuspenderTicket = new JButton("Suspender Ticket");
+		suspenderTicketBotonPan.add(btnSuspenderTicket);
 		
 		mostrarTicketBotonPan = new JPanel();
 		botones.add(mostrarTicketBotonPan);
@@ -94,26 +105,14 @@ public class EmpleadorVista extends JFrame implements IVista {
 		ticketSimplificadoBoton = new JButton("Ticket Simplificado");
 		ticketSimplificadoPan.add(ticketSimplificadoBoton);
 		
-		agregarTicketBotonPan = new JPanel();
-		botones.add(agregarTicketBotonPan);
-		
-		agregarTicketBoton = new JButton("Agregar Ticket");
-		agregarTicketBotonPan.add(agregarTicketBoton);
-		
-		suspenderTicketBotonPan = new JPanel();
-		botones.add(suspenderTicketBotonPan);
-		
-		btnSuspenderTicket = new JButton("Suspender Ticket");
-		suspenderTicketBotonPan.add(btnSuspenderTicket);
-		
 		listaTicketsPan = new JPanel();
-		contentPane.add(listaTicketsPan);
+		principal.add(listaTicketsPan);
 		
 		listaTickets = new JList<>();
 		listaTicketsPan.add(listaTickets);
 		
 		ganador = new JPanel();
-		contentPane.add(ganador);
+		principal.add(ganador);
 		ganador.setLayout(new GridLayout(2, 1, 0, 0));
 		
 		listaCandidatosPan = new JPanel();
@@ -128,13 +127,18 @@ public class EmpleadorVista extends JFrame implements IVista {
 		elegirGanadorBoton = new JButton("Elegir Ganador");
 		elegirGanadorBotonPan.add(elegirGanadorBoton);
 		
+		sur = new JPanel();
+		contentPane.add(sur, BorderLayout.SOUTH);
+		
+		cerrarSesionBoton = new JButton("Cerrar Sesion");
+		sur.add(cerrarSesionBoton);
+		
 		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 
 	@Override
 	public void setActionListener(ActionListener actionListener) {
-		verTicketsBoton.addActionListener(actionListener);
 		cambiarTicketBoton.addActionListener(actionListener);
 		activarTicketBoton.addActionListener(actionListener);
 		mostrarTicketBoton.addActionListener(actionListener);
