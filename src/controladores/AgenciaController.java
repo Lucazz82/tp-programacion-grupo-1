@@ -10,12 +10,10 @@ import modelos.Agencia;
 import modelos.Usuario;
 import vista.AgenciaVista;
 
-public class AgenciaController extends Controller {
-	private AgenciaVista vista;
+public class AgenciaController extends Controller<AgenciaVista> {
 	
 	public AgenciaController() {
-		this.vista = new AgenciaVista();
-		this.vista.setActionListener(this);
+		super(new AgenciaVista());
 		this.setListaUsuarios();
 	}
 	

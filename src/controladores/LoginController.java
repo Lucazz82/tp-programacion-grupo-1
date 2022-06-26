@@ -16,13 +16,10 @@ import modelos.Logueable;
 import modelos.Usuario;
 import vista.Login;
 
-public class LoginController extends Controller {
-	private Login vista;
-
+public class LoginController extends Controller<Login> {
+	
 	public LoginController() {
-		this.vista = new Login();
-		vista.setActionListener(this);
-		vista.setWindowListener(this);
+		super(new Login());
 	}
 
 	@Override

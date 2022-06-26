@@ -11,16 +11,13 @@ import modelos.Empleador;
 import modelos.TicketSimplificado;
 import vista.TicketSimplificadoVista;
 
-public class TicketSimplificadoController extends Controller implements ActionListener {
-	
-	private TicketSimplificadoVista vista;
+public class TicketSimplificadoController extends Controller<TicketSimplificadoVista> implements ActionListener {
 	private Empleador empleador;
 	private Rubros rubro;
 	private Locaciones locacion;
 	
 	public TicketSimplificadoController(Empleador e) {
-		this.vista = new TicketSimplificadoVista();
-		this.vista.setActionListener(this);
+		super(new TicketSimplificadoVista());
 		this.empleador = e;		
 	}
 	

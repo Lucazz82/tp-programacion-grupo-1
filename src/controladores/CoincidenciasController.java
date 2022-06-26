@@ -7,7 +7,6 @@ import modelos.Agencia;
 import vista.CoincidenciasVista;
 
 public class CoincidenciasController extends Controller<CoincidenciasVista> {
-	private CoincidenciasVista vista;
 	
 	public CoincidenciasController() {
 		super(new CoincidenciasVista());

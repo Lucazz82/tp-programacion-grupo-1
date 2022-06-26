@@ -9,14 +9,12 @@ import javax.swing.JOptionPane;
 import modelos.EmpleadoPretenso;
 import vista.EmpleadoVista;
 
-public class EmpleadoController extends Controller implements FocusListener{
-	private EmpleadoVista vista;
+public class EmpleadoController extends Controller<EmpleadoVista> implements FocusListener{
 	private EmpleadoPretenso empleado;
 
 	public EmpleadoController(EmpleadoPretenso empleado) {
-		this.vista = new EmpleadoVista();
+		super(new EmpleadoVista());
 		this.empleado = empleado;
-		vista.setActionListener(this);
 	}
 
 	@Override

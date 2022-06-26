@@ -16,16 +16,14 @@ import modelos.comisiones.PersonaJuridica;
 import modelos.comisiones.Rubro;
 import vista.Register2Empleador;
 
-public class Register2EmpleadorController extends Controller {
-	private Register2Empleador vista;
+public class Register2EmpleadorController extends Controller<Register2Empleador> {
 	private String nombreUsuario;
 	private String contrasenia;
 
 	public Register2EmpleadorController(String nombreUsuario, String contrasenia) {
+		super(new Register2Empleador());
 		this.nombreUsuario = nombreUsuario;
 		this.contrasenia = contrasenia;
-		this.vista = new Register2Empleador();
-		vista.setActionListener(this);
 	}
 
 	@Override
