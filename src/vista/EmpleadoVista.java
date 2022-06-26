@@ -115,6 +115,9 @@ public class EmpleadoVista extends JFrame implements IVista{
 		
 		elegirBoton = new JButton("Elegir");
 		elegirBotonPan.add(elegirBoton);
+		
+		setLocationRelativeTo(null);
+		setVisible(true);
 	}
 
 	@Override

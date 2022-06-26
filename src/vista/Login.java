@@ -118,6 +118,7 @@ public class Login extends JFrame implements IVista, ILogin {
 		registerBoton = new JButton("Register");
 		registerBotonPan.add(registerBoton);
 
+		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 

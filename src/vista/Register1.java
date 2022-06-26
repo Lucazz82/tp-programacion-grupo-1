@@ -110,7 +110,9 @@ public class Register1 extends JFrame implements IVista, IRegister {
 
 		siguienteBoton = new JButton("Siguente");
 		siguienteBotonPan.add(siguienteBoton);
-		this.setVisible(true);
+		
+		setLocationRelativeTo(null);
+		setVisible(true);
 	}
 
 	@Override

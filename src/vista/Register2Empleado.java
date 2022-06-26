@@ -122,6 +122,8 @@ public class Register2Empleado extends JFrame implements IVista {
 		
 		siguienteBoton = new JButton("Siguiente");
 		siguienteBotonPan.add(siguienteBoton);
+		
+		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 

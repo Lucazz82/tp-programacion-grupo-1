@@ -225,6 +225,7 @@ public class FormularioVista extends JFrame implements IVista {
 		crearBoton = new JButton("Crear Ticket");
 		crear.add(crearBoton);
 		
+		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 

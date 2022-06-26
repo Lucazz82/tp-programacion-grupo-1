@@ -98,6 +98,7 @@ public class AgenciaVista extends JFrame implements IVista {
 		cerrarBoton = new JButton("Cerrar Sesion");
 		cerrarPan.add(cerrarBoton);
 		
+		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 

@@ -84,6 +84,9 @@ public class TicketSimplificadoVista extends JFrame implements IVista{
 		
 		crearBoton = new JButton("Crear Ticket");
 		crear.add(crearBoton);
+		
+		setLocationRelativeTo(null);
+		setVisible(true);
 	}
 	
 	public Locaciones getLocacion() {
