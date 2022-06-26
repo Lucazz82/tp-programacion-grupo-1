@@ -52,9 +52,10 @@ public class Register2EmpleadorController extends Controller {
 						break;
 					}
 					
-					Empleador empleador = new Empleador(nombreUsuario, contrasenia, tipoPersona, rubro);
+					Empleador empleador = new Empleador(nombreUsuario, contrasenia, vista.getNombre() , tipoPersona, rubro);
 					agencia.registrarUsuario(empleador);
-					Sistema.getInstancia().cambiarController(new EmpleadorController(empleador));
+					JOptionPane.showMessageDialog(vista, "Usuario registrado con exito");
+					Sistema.getInstancia().cambiarController(new LoginController());
 					vista.setVisible(false);
 				} catch (AgenciaInexistenteException e1) {
 					e1.printStackTrace();

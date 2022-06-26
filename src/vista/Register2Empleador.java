@@ -106,6 +106,8 @@ public class Register2Empleador extends JFrame implements IVista {
 		
 		siguienteBoton = new JButton("Siguiente");
 		siguienteBotonPan.add(siguienteBoton);
+		
+		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 
@@ -120,6 +122,10 @@ public class Register2Empleador extends JFrame implements IVista {
 	
 	public Rubros getRubro() {
 		return (Rubros) rubroComboBox.getSelectedItem();
+	}
+	
+	public String getNombre() {
+		return nombreText.getText();
 	}
 
 }

@@ -24,5 +24,7 @@ public class UtilDTO {
 		agencia.setEmpleadores(agenciaDTO.getEmpleadores());
 		agencia.setEmpleados(agenciaDTO.getEmpleados());
 		agencia.setListasAsignaciones(agenciaDTO.getListasAsignaciones());
+		agencia.setUsuario(agenciaDTO.getUsuario());
+		agencia.setContrasenia(agenciaDTO.getContrasenia());
 	}
 }
