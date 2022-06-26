@@ -1,20 +1,29 @@
 package vista;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
+import java.awt.GridLayout;
+import java.awt.event.ActionListener;
 
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.BoxLayout;
-import java.awt.GridLayout;
-import javax.swing.JLabel;
-import javax.swing.JComboBox;
-import javax.swing.JButton;
 
-public class TicketSimplificadoVista extends JFrame {
+import enums.Locaciones;
+import enums.Rubros;
+
+public class TicketSimplificadoVista extends JFrame implements IVista{
 
 	private JPanel contentPane;
+	private JPanel centro;
+	private JPanel sur;
+	private JPanel crear;
+	private JButton crearBoton;
+	private JComboBox locacionDesplegable;
+	private JComboBox rubroDesplegable;
 
 
 
@@ -27,11 +36,15 @@ public class TicketSimplificadoVista extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new GridLayout(3, 0, 0, 0));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		
+		centro = new JPanel();
+		contentPane.add(centro, BorderLayout.CENTER);
+		centro.setLayout(new GridLayout(2, 0, 0, 0));
 		
 		JPanel locacion = new JPanel();
-		contentPane.add(locacion);
-		locacion.setLayout(new GridLayout(2, 0, 0, 0));
+		centro.add(locacion);
+		locacion.setLayout(new GridLayout(2, 1, 0, 0));
 		
 		JPanel locacionLabelPan = new JPanel();
 		locacion.add(locacionLabelPan);
@@ -42,11 +55,12 @@ public class TicketSimplificadoVista extends JFrame {
 		JPanel locacionDesplegablePan = new JPanel();
 		locacion.add(locacionDesplegablePan);
 		
-		JComboBox locacionDesplegable = new JComboBox();
+		locacionDesplegable = new JComboBox();
+		locacionDesplegable.setModel(new DefaultComboBoxModel(Locaciones.values()));
 		locacionDesplegablePan.add(locacionDesplegable);
 		
 		JPanel rubro = new JPanel();
-		contentPane.add(rubro);
+		centro.add(rubro);
 		rubro.setLayout(new GridLayout(2, 0, 0, 0));
 		
 		JPanel rubroLabelPan = new JPanel();
@@ -58,14 +72,32 @@ public class TicketSimplificadoVista extends JFrame {
 		JPanel rubroDesplegablePan = new JPanel();
 		rubro.add(rubroDesplegablePan);
 		
-		JComboBox rubroDesplegable = new JComboBox();
+		rubroDesplegable = new JComboBox();
+		rubroDesplegable.setModel(new DefaultComboBoxModel(Rubros.values()));
 		rubroDesplegablePan.add(rubroDesplegable);
 		
-		JPanel crear = new JPanel();
-		contentPane.add(crear);
+		sur = new JPanel();
+		contentPane.add(sur, BorderLayout.SOUTH);
 		
-		JButton crearBoton = new JButton("Crear Ticket");
+		crear = new JPanel();
+		sur.add(crear);
+		
+		crearBoton = new JButton("Crear Ticket");
 		crear.add(crearBoton);
 	}
+	
+	public Locaciones getLocacion() {
+		return (Locaciones) this.locacionDesplegable.getSelectedItem();
+	}
+	
+	public Rubros getRubro() {
+		return (Rubros) this.rubroDesplegable.getSelectedItem();
+	}
+	
 
+	@Override
+	public void setActionListener(ActionListener actionListener) {
+		this.crearBoton.addActionListener(actionListener);
+	}
+	
 }
