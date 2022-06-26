@@ -115,6 +115,7 @@ public class Register2Empleador extends JFrame implements IVista {
 	@Override
 	public void setActionListener(ActionListener actionListener) {
 		siguienteBoton.addActionListener(actionListener);
+		volverBoton.addActionListener(actionListener);
 	}
 	
 	public TipoPersona getTipoPersona() {
@@ -131,7 +132,7 @@ public class Register2Empleador extends JFrame implements IVista {
 
 	@Override
 	public void setWindowListener(WindowListener windowListener) {
-		// TODO Auto-generated method stub
+		this.addWindowListener(windowListener);
 		
 	}
 

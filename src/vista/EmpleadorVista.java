@@ -22,6 +22,8 @@ import javax.swing.JList;
 
 import modelos.TicketBusquedaEmpleado;
 import modelos.TicketBusquedaEmpleo;
+import javax.swing.SwingConstants;
+import javax.swing.JScrollPane;
 
 public class EmpleadorVista extends JFrame implements IVista {
 
@@ -49,6 +51,8 @@ public class EmpleadorVista extends JFrame implements IVista {
 	private JPanel sur;
 	private JPanel principal;
 	private JButton cerrarSesionBoton;
+	private JLabel ticketsLabel;
+	private JScrollPane listaTicketsScrollPan;
 
 	/**
 	 * Create the frame.
@@ -93,12 +97,6 @@ public class EmpleadorVista extends JFrame implements IVista {
 		btnSuspenderTicket = new JButton("Suspender Ticket");
 		suspenderTicketBotonPan.add(btnSuspenderTicket);
 		
-		suspenderTicketBotonPan = new JPanel();
-		botones.add(suspenderTicketBotonPan);
-		
-		btnSuspenderTicket = new JButton("Suspender Ticket");
-		suspenderTicketBotonPan.add(btnSuspenderTicket);
-		
 		mostrarTicketBotonPan = new JPanel();
 		botones.add(mostrarTicketBotonPan);
 		
@@ -113,9 +111,16 @@ public class EmpleadorVista extends JFrame implements IVista {
 		
 		listaTicketsPan = new JPanel();
 		principal.add(listaTicketsPan);
+		listaTicketsPan.setLayout(new BorderLayout(0, 0));
+		listaTicketsPan.setBorder(new EmptyBorder(10, 10, 10, 10));
 		
-		listaTickets = new JList<>();
-		listaTicketsPan.add(listaTickets);
+		ticketsLabel = new JLabel("Tickets");
+		ticketsLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		ticketsLabel.setFont(new Font("Calibri", Font.BOLD, 20));
+		listaTicketsPan.add(ticketsLabel, BorderLayout.NORTH);
+		
+		listaTicketsScrollPan = new JScrollPane();
+		listaTicketsPan.add(listaTicketsScrollPan, BorderLayout.CENTER);
 		
 		ganador = new JPanel();
 		principal.add(ganador);
@@ -151,6 +156,7 @@ public class EmpleadorVista extends JFrame implements IVista {
 		ticketSimplificadoBoton.addActionListener(actionListener);
 		agregarTicketBoton.addActionListener(actionListener);
 		elegirGanadorBoton.addActionListener(actionListener);
+		cerrarSesionBoton.addActionListener(actionListener);
 	}
 	
 	public void setFocusListener(FocusListener focusListener ) {
@@ -159,12 +165,14 @@ public class EmpleadorVista extends JFrame implements IVista {
 	
 	public void setListaTickets(ArrayList<TicketBusquedaEmpleado> tickets) {
 		DefaultListModel<TicketBusquedaEmpleado> listModel = new DefaultListModel<>();
+		this.listaTickets = new JList<>(listModel);
+		this.listaTickets.setBorder(new LineBorder(new Color(0, 0, 0), 1));
+		listaTicketsScrollPan.setViewportView(listaTickets);
+		
 		for (int i = 0; i < tickets.size(); i++) {
 			listModel.add(i, tickets.get(i));
 		}
-		this.listaTickets = new JList<>(listModel);
-		this.listaTickets.setBorder(new LineBorder(new Color(0, 0, 0), 1));
-		listaTicketsPan.add(listaTickets);
+	        
 	}
 	
 	public TicketBusquedaEmpleado getTicketSeleccionado() {
@@ -195,6 +203,6 @@ public class EmpleadorVista extends JFrame implements IVista {
 
 	@Override
 	public void setWindowListener(WindowListener windowListener) {
-		// TODO Auto-generated method stub
+		this.addWindowListener(windowListener);
 	}
 }

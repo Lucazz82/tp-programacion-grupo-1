@@ -49,6 +49,9 @@ public class EmpleadorController extends Controller<EmpleadorVista> implements F
 		} else if (cmd.equalsIgnoreCase("Agregar Ticket")) {
 			Sistema.getInstancia().cambiarController(new TicketEmpleadorController(empleador));
 			vista.setVisible(false);
+		} else if (cmd.equalsIgnoreCase("Cerrar Sesion")) {
+			Sistema.getInstancia().cambiarController(new LoginController());
+			vista.setVisible(false);
 		}
 	}
 

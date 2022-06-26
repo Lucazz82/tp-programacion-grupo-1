@@ -139,8 +139,7 @@ public class Register1 extends JFrame implements IVista, IRegister {
 
 	@Override
 	public void setWindowListener(WindowListener windowListener) {
-		// TODO Auto-generated method stub
-		
+		this.addWindowListener(windowListener);		
 	}
 
 }

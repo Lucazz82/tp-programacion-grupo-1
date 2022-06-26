@@ -189,7 +189,7 @@ public class PesosEmpleadorVista extends JFrame implements IVista{
 
 	@Override
 	public void setWindowListener(WindowListener windowListener) {
-		
+		this.addWindowListener(windowListener);
 	}
 	
 	public int getLocacion() {

@@ -87,7 +87,7 @@ public class CoincidenciasVista extends JFrame implements IVista{
 
 	@Override
 	public void setWindowListener(WindowListener windowListener) {
-		// TODO Auto-generated method stub
+		this.addWindowListener(windowListener);
 		
 	}
 
