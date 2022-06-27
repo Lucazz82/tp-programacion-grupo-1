@@ -37,5 +37,9 @@ public class Cancelado implements IEstado, Serializable {
 	public boolean esActivo() {
 		return false;
 	}
-
+	
+	@Override
+	public String toString() {
+		return "Cancelado";
+	}
 }

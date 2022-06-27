@@ -13,4 +13,8 @@ public class ComercioLocal extends Rubro {
 		return o.enfrentarComercioLocal();
 	}
 
+	@Override
+	public String toString() {
+		return "Comercio Local";
+	}
 }

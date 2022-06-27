@@ -12,5 +12,9 @@ public class Salud extends Rubro {
 	public double enfrentar(ITipoPersona o) {
 		return o.enfrentarSalud();
 	}
-
+	
+	@Override
+	public String toString() {
+		return "Salud";
+	}
 }

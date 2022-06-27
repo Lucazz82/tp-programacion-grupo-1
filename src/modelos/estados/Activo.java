@@ -41,5 +41,10 @@ public class Activo implements IEstado, Serializable {
 	public boolean esActivo() {
 		return true;
 	}
+	
+	@Override
+	public String toString() {
+		return "Activo";
+	}
 
 }

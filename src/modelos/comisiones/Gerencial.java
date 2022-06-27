@@ -48,5 +48,10 @@ public class Gerencial extends PuestoLaboralDecorator {
 
 		return valor;
 	}
+	
+	@Override
+	public String toString() {
+		return "Gerencial";
+	}
 
 }

@@ -2,6 +2,7 @@ package modelos.comisiones;
 
 import java.io.Serializable;
 
+import enums.PuestosLaborales;
 import modelos.IComision;
 import modelos.IDoubleDispatch;
 

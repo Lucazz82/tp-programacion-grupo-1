@@ -2,6 +2,7 @@ package modelos.aspectos;
 
 import java.io.Serializable;
 
+import enums.PuestosLaborales;
 import modelos.Enfrentable;
 
 public class PuestoLaboral implements Enfrentable<PuestoLaboral>, Serializable {
@@ -16,5 +17,4 @@ public class PuestoLaboral implements Enfrentable<PuestoLaboral>, Serializable {
 	public double enfrentar(PuestoLaboral o) {
 		return pesos[this.pos][o.pos];
 	}
-
 }

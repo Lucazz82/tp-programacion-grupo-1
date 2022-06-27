@@ -24,7 +24,8 @@ public class EmpleadoController extends Controller<EmpleadoVista> implements Foc
 		} else if(e.getActionCommand().equalsIgnoreCase("Activar Ticket")) {
 			this.empleado.getTicket().setActivo();
 		} else if(e.getActionCommand().equalsIgnoreCase("Mostrar Ticket")) {
-			JOptionPane.showMessageDialog(vista, this.empleado.getTicket().toString());
+			Sistema.getInstancia().cambiarController(new DatosTicketEmpleadoController(empleado, empleado.getTicket()));
+			vista.setVisible(false);
 		} else if(e.getActionCommand().equalsIgnoreCase("Cambiar Ticket")) {
 //			Sistema.getInstancia().cambiarController(new TicketEmpleadoController(this.empleado));
 //			this.vista.setVisible(false);
