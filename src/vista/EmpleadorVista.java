@@ -55,6 +55,7 @@ public class EmpleadorVista extends JFrame implements IVista {
 	private JPanel puntajePan;
 	private JLabel puntajeLabel;
 	private JTextPane puntajeText;
+	private JScrollPane scrollPane;
 
 	/**
 	 * Create the frame.
@@ -134,9 +135,11 @@ public class EmpleadorVista extends JFrame implements IVista {
 		
 		listaCandidatosPan = new JPanel();
 		ganador.add(listaCandidatosPan);
+		listaCandidatosPan.setLayout(new BorderLayout(0, 0));
 		
-		listaCandidatos = new JList<>();
-		listaCandidatosPan.add(listaCandidatos);
+		scrollPane = new JScrollPane();
+		listaCandidatosPan.add(scrollPane);
+		
 		
 		elegirGanadorBotonPan = new JPanel();
 		ganador.add(elegirGanadorBotonPan);
@@ -190,12 +193,15 @@ public class EmpleadorVista extends JFrame implements IVista {
 	
 	public void setListaCandidatos(ArrayList<TicketBusquedaEmpleo> tickets) {
 		DefaultListModel<TicketBusquedaEmpleo> listModel = new DefaultListModel<>();
+		
 		for (int i = 0; i < tickets.size(); i++) {
 			listModel.add(i, tickets.get(i));
 		}
+		
 		this.listaCandidatos = new JList<>(listModel);
 		this.listaCandidatos.setBorder(new LineBorder(new Color(0, 0, 0), 1));
-		listaCandidatosPan.add(listaTickets);
+//		listaCandidatosPan.add(listaCandidatos);
+		this.scrollPane.setViewportView(listaCandidatos);
 	}
 	
 	public void setListaCandidatosVisible(boolean visible) {

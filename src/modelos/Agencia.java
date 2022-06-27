@@ -221,7 +221,6 @@ public class Agencia implements Logueable {
 			} catch (TicketInexistenteException e) {
 				// Se puede ejecutar si un ticket se creo despues de ejecutar la lista de
 				// asignacion.
-				e.printStackTrace();
 			}
 		}
 
@@ -242,7 +241,6 @@ public class Agencia implements Logueable {
 					ultimo.puntajeUltimoLugar();
 			} catch (TicketInexistenteException e) {
 				// Puede ser que el empleado no tenga una lista.
-				e.printStackTrace();
 			}
 		}
 	}
@@ -275,9 +273,11 @@ public class Agencia implements Logueable {
 		empleadores.addAll(this.empleadores);
 
 		for (EmpleadoPretenso empleado : this.empleados) {
-			Empleador elegido = empleado.getTicket().getElegido().getCreador();
-			if (empleadores.contains(elegido)) {
-				empleadores.remove(elegido);
+			if(empleado.getTicket().getElegido() != null) {
+				Empleador elegido = empleado.getTicket().getElegido().getCreador();
+				if (empleadores.contains(elegido)) {
+					empleadores.remove(elegido);
+				}				
 			}
 		}
 

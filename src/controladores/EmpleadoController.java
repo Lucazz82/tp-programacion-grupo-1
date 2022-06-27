@@ -29,7 +29,6 @@ public class EmpleadoController extends Controller<EmpleadoVista> implements Foc
 		try {
 			it = Agencia.getInstancia().getListaAsignacion(empleado.getTicket());
 		} catch (TicketInexistenteException | AgenciaInexistenteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -45,17 +44,23 @@ public class EmpleadoController extends Controller<EmpleadoVista> implements Foc
 		if (e.getActionCommand().equalsIgnoreCase("Suspender Ticket")) {
 			this.empleado.getTicket().setSuspendido();
 			JOptionPane.showMessageDialog(vista, "Ticket suspendido con éxito");
+			
 		} else if (e.getActionCommand().equalsIgnoreCase("Activar Ticket")) {
 			this.empleado.getTicket().setActivo();
 			JOptionPane.showMessageDialog(vista, "Ticket activado con éxito");
+			
 		} else if (e.getActionCommand().equalsIgnoreCase("Elegir")) {
-			this.vista.getTicketSeleccionado().setElegido(this.empleado.getTicket());
+			this.empleado.getTicket().setElegido(this.vista.getTicketSeleccionado());
+			JOptionPane.showMessageDialog(vista, "Ticket elegido con éxito");
+			
 		} else if (e.getActionCommand().equalsIgnoreCase("Mostrar Ticket")) {
 			Sistema.getInstancia().cambiarController(new DatosTicketEmpleadoController(empleado, this.empleado.getTicket()));
 			vista.setVisible(false);
+			
 		} else if (e.getActionCommand().equalsIgnoreCase("Ticket Simplificado")) {
 			Thread h = new Thread(this.empleado);
 			h.start();
+			
 		} else if (e.getActionCommand().equalsIgnoreCase("Cerrar Sesión")) {
 			Sistema.getInstancia().cambiarController(new LoginController());
 			vista.setVisible(false);

@@ -29,6 +29,8 @@ public class ListaDeAsignacionController extends Controller<ListaDeAsignacionVis
 		if (e.getActionCommand().equalsIgnoreCase("Volver")) {
 			Sistema.getInstancia().cambiarController(new AgenciaController());
 			this.vista.setVisible(false);
+		} else if (e.getActionCommand().equalsIgnoreCase("Buscar")) {
+			
 		}
 	}
 
@@ -56,11 +58,9 @@ public class ListaDeAsignacionController extends Controller<ListaDeAsignacionVis
 		try {
 			iterator = Agencia.getInstancia().getListaAsignacion(ticket);
 		} catch (TicketInexistenteException e1) {
-			e1.printStackTrace();
 			this.vista.setListaTicketsEmpleados(new ArrayList<>());
 			return;
 		} catch (AgenciaInexistenteException e1) {
-			e1.printStackTrace();
 		}
 		
 		List<TicketOrdenable> actualList = new ArrayList<>();

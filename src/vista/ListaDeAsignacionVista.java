@@ -32,6 +32,9 @@ public class ListaDeAsignacionVista extends JFrame implements IVista {
 	private JList ticketsEmpleadosLista;
 	private JPanel ticketBusquedaEmpleadoPan;
 	private JPanel ticketBusquedaEmpleoPan;
+	private DefaultListModel<TicketOrdenable> ticketsEmpleadosListaModel;
+	private JScrollPane ticketBusquedaEmpleadoScrollPan;
+	private JButton buscarBoton;
 
 	public ListaDeAsignacionVista() {
 		
@@ -68,6 +71,12 @@ public class ListaDeAsignacionVista extends JFrame implements IVista {
 		listaTicketsBusquedaEmpleadoPan.add(ticketBusquedaEmpleadoPan, BorderLayout.CENTER);
 		ticketBusquedaEmpleadoPan.setLayout(new BorderLayout(0, 0));
 		
+		ticketBusquedaEmpleadoScrollPan = new JScrollPane();
+		ticketBusquedaEmpleadoPan.add(ticketBusquedaEmpleadoScrollPan, BorderLayout.CENTER);
+		
+		buscarBoton = new JButton("Buscar");
+		ticketBusquedaEmpleadoPan.add(buscarBoton, BorderLayout.SOUTH);
+		
 		JPanel listaTicketsBusquedaEmpleoPan = new JPanel();
 		centro.add(listaTicketsBusquedaEmpleoPan);
 		listaTicketsBusquedaEmpleoPan.setLayout(new BorderLayout(0, 0));
@@ -81,37 +90,41 @@ public class ListaDeAsignacionVista extends JFrame implements IVista {
 		listaTicketsBusquedaEmpleoPan.add(ticketBusquedaEmpleoPan, BorderLayout.CENTER);
 		ticketBusquedaEmpleoPan.setLayout(new BorderLayout(0, 0));
 		
-		this.setVisible(true);
+        ticketsEmpleadosListaModel = new DefaultListModel<>();
+        ticketsEmpleadosLista = new JList<>(ticketsEmpleadosListaModel);
+		ticketsEmpleadosLista.setBorder(new LineBorder(new Color(0, 0, 0), 1));
+		this.ticketBusquedaEmpleoPan.add(ticketsEmpleadosLista);
 		
-		//ticketsEmpleadorLista = new JList<>();
-		//ticketsEmpleadosLista = new JList<>();
+		this.setVisible(true);
 	}
 	
 	public void setListaTicketsEmpleadores(ArrayList<TicketBusquedaEmpleado> ticketEmpleadores) {
         DefaultListModel<TicketBusquedaEmpleado> listModel = new DefaultListModel<>();
 		ticketsEmpleadorLista = new JList<>(listModel);
 		ticketsEmpleadorLista.setBorder(new LineBorder(new Color(0, 0, 0), 1));
-		this.ticketBusquedaEmpleadoPan.add(ticketsEmpleadorLista,BorderLayout.CENTER);
+		this.ticketBusquedaEmpleadoScrollPan.setViewportView(ticketsEmpleadorLista);
 				
         for(TicketBusquedaEmpleado ticket : ticketEmpleadores) {
         	listModel.addElement(ticket);
         }
+        
+        this.repaint();
     }
 	
 	public void setListaTicketsEmpleados(List<TicketOrdenable> listaEmpleados) {
-        DefaultListModel<TicketOrdenable> listModel = new DefaultListModel<>();
-        ticketsEmpleadosLista = new JList<>(listModel);
-		ticketsEmpleadosLista.setBorder(new LineBorder(new Color(0, 0, 0), 1));
-		this.ticketBusquedaEmpleoPan.add(ticketsEmpleadosLista);
+		this.ticketsEmpleadosListaModel.clear();
         
         for(TicketOrdenable ticket : listaEmpleados) {
-        	listModel.addElement(ticket);
+        	this.ticketsEmpleadosListaModel.addElement(ticket);
         }
+        this.setVisible(false);
+        this.setVisible(true);
     }
 	
 	@Override
 	public void setActionListener(ActionListener actionListener) {
 		this.volverBoton.addActionListener(actionListener);
+		this.buscarBoton.addActionListener(actionListener);
 	}
 	
 	public void setFocusListener(FocusListener f) {
