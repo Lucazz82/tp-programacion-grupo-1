@@ -41,10 +41,7 @@ public class EmpleadoController extends Controller<EmpleadoVista> implements Foc
 	}
 
 	private void mostrarMensajes() {
-		for (String s : this.empleado.getMensajes()) {
-			JOptionPane.showMessageDialog(vista, s);
-		}
-
+		JOptionPane.showMessageDialog(vista, this.empleado.getMensaje());
 		this.empleado.vaciarMensajes();
 	}
 
@@ -73,8 +70,9 @@ public class EmpleadoController extends Controller<EmpleadoVista> implements Foc
 		} else if (e.getActionCommand().equalsIgnoreCase("Cerrar Sesión")) {
 			Sistema.getInstancia().cambiarController(new LoginController());
 			vista.setVisible(false);
+		} else if (e.getActionCommand().equalsIgnoreCase("Ver Mensajes Simulacion")) {
+			this.mostrarMensajes();			
 		}
-		this.mostrarMensajes();
 	}
 
 	@Override

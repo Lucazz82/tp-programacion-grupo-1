@@ -13,7 +13,7 @@ public abstract class Usuario implements Logueable, Serializable, Observer {
 	protected int puntaje;
 
 	protected Observable observables = null;
-	protected ArrayList<String> mensajes = new ArrayList<String>();
+	protected String mensaje = null;
 
 	public Usuario(String nombreUsuario, String contrasena) {
 		this.nombreUsuario = nombreUsuario;
@@ -51,18 +51,18 @@ public abstract class Usuario implements Logueable, Serializable, Observer {
 		return puntaje;
 	}
 
-	public ArrayList<String> getMensajes() {
-		return mensajes;
+	public String getMensaje() {
+		return (mensaje == null) ? "No tiene mensajes" : mensaje;
 	}
 
 	public void vaciarMensajes() {
-		this.mensajes = new ArrayList<String>();
+		this.mensaje = null;
 	}
 
 	@Override
 	public void update(Observable o, Object arg) {
 		if (this.observables == o) {
-			this.mensajes.add((String) arg);
+			this.mensaje = (String) arg;
 		}
 	}
 

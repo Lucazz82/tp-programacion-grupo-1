@@ -118,15 +118,15 @@ public class EmpleadoPretenso extends Usuario implements IComision, Runnable {
 				if (!ganador.getLocacion().mismaLocacion(this.ticket.getFormulario().getLocacion())) {
 					agencia.devuelveBolsa(ganador);
 					ganador = null;
-					this.mensajes.add("El ticket no coincide, se devuelve");
+					this.mensaje = "El ticket no coincide, se devuelve";
 				} else {
 					agencia.confirmarEleccion(ganador);
-					this.mensajes.add("El ticket coincide, finaliza simulacion");
+					this.mensaje = "El ticket coincide, finaliza simulacion";
 				}
 
 				this.cantidadBusquedas++;
 			} else {
-				this.mensajes.add("Ya tiene un ticket simplificado");
+				this.mensaje = "Ya tiene un ticket simplificado";
 			}
 
 			agencia.getBolsaDeTrabajo().deleteObserver(this);

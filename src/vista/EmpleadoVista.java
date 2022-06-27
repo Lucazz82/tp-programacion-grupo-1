@@ -43,6 +43,8 @@ public class EmpleadoVista extends JFrame implements IVista {
 	private JButton cerrarSesionBoton;
 	private JPanel elegirBotonPan;
 	private JPanel cerrarSesionBotonPan;
+	private JButton verMensajesBoton;
+	private JPanel verMensajesPan;
 
 	public EmpleadoVista() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -96,6 +98,12 @@ public class EmpleadoVista extends JFrame implements IVista {
 
 		ticketSimplificado = new JButton("Ticket Simplificado");
 		ticketSimplificadoPan.add(ticketSimplificado);
+		
+		verMensajesPan = new JPanel();
+		controlTicket.add(verMensajesPan);
+		
+		verMensajesBoton = new JButton("Ver Mensajes Simulacion");
+		verMensajesPan.add(verMensajesBoton);
 
 		ganadorTicket = new JPanel();
 		contentPane.add(ganadorTicket);
@@ -135,6 +143,7 @@ public class EmpleadoVista extends JFrame implements IVista {
 		elegirBoton.addActionListener(actionListener);
 		ticketSimplificado.addActionListener(actionListener);
 		cerrarSesionBoton.addActionListener(actionListener);
+		verMensajesBoton.addActionListener(actionListener);
 	}
 
 	public TicketOrdenable getTicketSeleccionado() {

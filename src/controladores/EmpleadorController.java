@@ -34,10 +34,7 @@ public class EmpleadorController extends Controller<EmpleadorVista> implements L
 	}
 
 	private void mostrarMensajes() {
-		for (String s : this.empleador.getMensajes()) {
-			JOptionPane.showMessageDialog(vista, s);
-		}
-
+		JOptionPane.showMessageDialog(vista, this.empleador.getMensaje());
 		this.empleador.vaciarMensajes();
 	}
 
@@ -94,7 +91,6 @@ public class EmpleadorController extends Controller<EmpleadorVista> implements L
 				JOptionPane.showMessageDialog(vista, "Seleccione un ticket");
 			}
 		}
-		this.mostrarMensajes();
 	}
 
 	private void setListaTickets() {
