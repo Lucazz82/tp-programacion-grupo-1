@@ -121,20 +121,38 @@ public class Agencia implements Logueable {
 		Iterator<TicketBusquedaEmpleado> ticketsEmpleador = empleador.getTickets();
 		while (ticketsEmpleador.hasNext()) {
 			TicketBusquedaEmpleado ticketEmpleador = ticketsEmpleador.next();
-			if (ticketEmpleador.esActivo()) {
+			if (ticketEmpleador.esActivo() && !this.isEnCoincidencias(ticketEmpleador)) {
 				listasAsignaciones.put(ticketEmpleador, new HashMap<TicketBusquedaEmpleo, Double>());
 
 				for (EmpleadoPretenso empleado : this.empleados) {
 					TicketBusquedaEmpleo ticketEmpleado = empleado.getTicket();
 
 					if (ticketEmpleado != null && ticketEmpleado.esActivo() && ticketEmpleador.getFormulario()
-							.getRubro().mismoRubro(ticketEmpleado.getFormulario().getRubro())) {
+							.getRubro().mismoRubro(ticketEmpleado.getFormulario().getRubro()) && !this.isEnCoincidencias(ticketEmpleado)) {
 						double puntaje = ticketEmpleador.enfrentar(ticketEmpleado);
 						listasAsignaciones.get(ticketEmpleador).put(ticketEmpleado, puntaje);
 					}
 				}
 			}
 		}
+	}
+
+	private boolean isEnCoincidencias(TicketBusquedaEmpleado ticketEmpleador) {
+		for(Coincidencia coincidencia : coincidencias) {
+			if(coincidencia.getTicketEmpleador() == ticketEmpleador) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	private boolean isEnCoincidencias(TicketBusquedaEmpleo ticketEmpleado) {
+		for(Coincidencia coincidencia : coincidencias) {
+			if(coincidencia.getTicketEmpleado() == ticketEmpleado) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**
@@ -204,37 +222,41 @@ public class Agencia implements Logueable {
 	 */
 	public void calcularPuntajes() {
 		for (TicketBusquedaEmpleado ticketEmpleador : listasAsignaciones.keySet()) {
-			try {
-				Iterator<TicketOrdenable> lista = this.getListaAsignacion(ticketEmpleador);
-				if (lista.hasNext()) {
-					EmpleadoPretenso primero = (EmpleadoPretenso) lista.next().getTicket().getCreador();
-					primero.puntajePrimerLugar();
+			if(!this.isEnCoincidencias(ticketEmpleador)) {
+				try {
+					Iterator<TicketOrdenable> lista = this.getListaAsignacion(ticketEmpleador);
+					if (lista.hasNext()) {
+						EmpleadoPretenso primero = (EmpleadoPretenso) lista.next().getTicket().getCreador();
+						primero.puntajePrimerLugar();
+					}
+					
+					EmpleadoPretenso ultimo = null;
+					// Empieza por el 2do. Si tiene un solo elemento consideramos que es primero no
+					// ultimo.
+					while (lista.hasNext()) {
+						ultimo = (EmpleadoPretenso) lista.next().getTicket().getCreador();
+					}
+					if (ultimo != null)
+						ultimo.puntajeUltimoLugar();
+					
+				} catch (TicketInexistenteException e) {
+					// Se puede ejecutar si un ticket se creo despues de ejecutar la lista de
+					// asignacion.
 				}
-
-				EmpleadoPretenso ultimo = null;
-				// Empieza por el 2do. Si tiene un solo elemento consideramos que es primero no
-				// ultimo.
-				while (lista.hasNext()) {
-					ultimo = (EmpleadoPretenso) lista.next().getTicket().getCreador();
-				}
-				if (ultimo != null)
-					ultimo.puntajeUltimoLugar();
-
-			} catch (TicketInexistenteException e) {
-				// Se puede ejecutar si un ticket se creo despues de ejecutar la lista de
-				// asignacion.
 			}
 		}
 
 		for (EmpleadoPretenso empleado : empleados) {
-			try {
-				Iterator<TicketOrdenable> lista = this.getListaAsignacion(empleado.getTicket());
-				if (lista.hasNext()) {
-					Empleador primero = (Empleador) lista.next().getTicket().getCreador();
-					primero.puntajePrimerLugar();
-				}
-			} catch (TicketInexistenteException e) {
-				// Puede ser que el empleado no tenga una lista.
+			if(!this.isEnCoincidencias(empleado.getTicket())) {
+				try {
+					Iterator<TicketOrdenable> lista = this.getListaAsignacion(empleado.getTicket());
+					if (lista.hasNext()) {
+						Empleador primero = (Empleador) lista.next().getTicket().getCreador();
+						primero.puntajePrimerLugar();
+					}
+				} catch (TicketInexistenteException e) {
+					// Puede ser que el empleado no tenga una lista.
+				}				
 			}
 		}
 	}
@@ -246,14 +268,16 @@ public class Agencia implements Logueable {
 		this.empleadoresNoElegidos();
 
 		for (TicketBusquedaEmpleado ticketEmpleador : listasAsignaciones.keySet()) {
-			TicketBusquedaEmpleo elegido = ticketEmpleador.getElegido();
-			if (elegido != null && elegido.getElegido() == ticketEmpleador) {
-				Coincidencia coincidencia = new Coincidencia(ticketEmpleador, elegido,
-						ticketEmpleador.calcularComision(), elegido.calcularComision());
-				coincidencias.add(coincidencia);
-				ticketEmpleador.setFinalizado();
-				elegido.setFinalizado();
-				;
+			if(!this.isEnCoincidencias(ticketEmpleador)) {
+				TicketBusquedaEmpleo elegido = ticketEmpleador.getElegido();
+				if (elegido != null && !this.isEnCoincidencias(elegido) && elegido.getElegido() == ticketEmpleador) {
+					Coincidencia coincidencia = new Coincidencia(ticketEmpleador, elegido,
+							ticketEmpleador.calcularComision(), elegido.calcularComision());
+					coincidencias.add(coincidencia);
+					ticketEmpleador.setFinalizado();
+					elegido.setFinalizado();
+					;
+				}				
 			}
 		}
 	}
