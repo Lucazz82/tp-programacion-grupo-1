@@ -15,7 +15,7 @@ public class Empleador extends Usuario implements Runnable {
 	private ITipoPersona tipoPersona;
 	private Rubro rubro;
 	private ArrayList<TicketBusquedaEmpleado> tickets = new ArrayList<TicketBusquedaEmpleado>();
-	
+
 	private TicketSimplificado ticketSimplificado = null;
 
 	public Empleador(String nombreUsuario, String contrasena, ITipoPersona tipoPersona, Rubro rubro) {
@@ -50,7 +50,7 @@ public class Empleador extends Usuario implements Runnable {
 	public Rubro getRubro() {
 		return rubro;
 	}
-	
+
 	public void agregarTicketSimplificado(TicketSimplificado ticketSimplificado) {
 		this.ticketSimplificado = ticketSimplificado;
 	}
@@ -76,9 +76,9 @@ public class Empleador extends Usuario implements Runnable {
 	public void puntajePrimerLugar() {
 		this.puntaje += 10;
 	}
-	
+
 	@Override
-	public void run() {		
+	public void run() {
 		try {
 			Agencia agencia = Agencia.getInstancia();
 			this.observables = agencia.getBolsaDeTrabajo();
@@ -86,7 +86,8 @@ public class Empleador extends Usuario implements Runnable {
 			agencia.agregarTicketABolsa(ticketSimplificado);
 			agencia.getBolsaDeTrabajo().deleteObserver(this);
 			this.observables = null;
-		} catch (AgenciaInexistenteException e) {}
+		} catch (AgenciaInexistenteException e) {
+		}
 	}
 
 }

@@ -7,7 +7,7 @@ import modelos.Agencia;
 import vista.CoincidenciasVista;
 
 public class CoincidenciasController extends Controller<CoincidenciasVista> {
-	
+
 	public CoincidenciasController() {
 		super(new CoincidenciasVista());
 		this.setCoincidencias();
@@ -17,8 +17,9 @@ public class CoincidenciasController extends Controller<CoincidenciasVista> {
 		try {
 			Agencia agencia = Agencia.getInstancia();
 			this.vista.setListaCoincidencias(agencia.getCoincidencias());
-		} catch (AgenciaInexistenteException e) {}
-		
+		} catch (AgenciaInexistenteException e) {
+		}
+
 	}
 
 	@Override

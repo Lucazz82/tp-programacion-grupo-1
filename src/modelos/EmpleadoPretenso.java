@@ -12,7 +12,7 @@ public class EmpleadoPretenso extends Usuario implements IComision, Runnable {
 	private String telefono;
 	private Date fechaNacimiento;
 	private TicketBusquedaEmpleo ticket = null;
-	
+
 	private TicketSimplificado ganador = null;
 	private int cantidadBusquedas = 0;
 
@@ -46,10 +46,10 @@ public class EmpleadoPretenso extends Usuario implements IComision, Runnable {
 	}
 
 	public void setTicket(TicketBusquedaEmpleo ticket) {
-		if(this.ticket != null) {
-			
+		if (this.ticket != null) {
+
 		}
-		
+
 		this.ticket = ticket;
 	}
 
@@ -112,9 +112,9 @@ public class EmpleadoPretenso extends Usuario implements IComision, Runnable {
 			Agencia agencia = Agencia.getInstancia();
 			this.observables = agencia.getBolsaDeTrabajo();
 			agencia.getBolsaDeTrabajo().addObserver(this);
-			if(this.ganador == null && this.cantidadBusquedas < 10) {
-				agencia.busquedaBolsa(this);	
-				
+			if (this.ganador == null && this.cantidadBusquedas < 10) {
+				agencia.busquedaBolsa(this);
+
 				if (!ganador.getLocacion().mismaLocacion(this.ticket.getFormulario().getLocacion())) {
 					agencia.devuelveBolsa(ganador);
 					ganador = null;
@@ -123,15 +123,16 @@ public class EmpleadoPretenso extends Usuario implements IComision, Runnable {
 					agencia.confirmarEleccion(ganador);
 					this.mensajes.add("El ticket coincide, finaliza simulacion");
 				}
-				
+
 				this.cantidadBusquedas++;
 			} else {
 				this.mensajes.add("Ya tiene un ticket simplificado");
 			}
-			
+
 			agencia.getBolsaDeTrabajo().deleteObserver(this);
 			this.observables = null;
-		} catch (AgenciaInexistenteException e) {}
-		
+		} catch (AgenciaInexistenteException e) {
+		}
+
 	}
 }

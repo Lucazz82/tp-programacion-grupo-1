@@ -4,7 +4,7 @@ import enums.Locaciones;
 import modelos.IDoubleDispatch;
 
 public class Presencial extends Locacion {
-	
+
 	public Presencial() {
 		super(Locaciones.PRESENCIAL);
 	}

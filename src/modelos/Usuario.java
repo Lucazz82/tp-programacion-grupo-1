@@ -11,7 +11,7 @@ public abstract class Usuario implements Logueable, Serializable, Observer {
 	private String nombreUsuario;
 	private String contrasena;
 	protected int puntaje;
-	
+
 	protected Observable observables = null;
 	protected ArrayList<String> mensajes = new ArrayList<String>();
 
@@ -50,18 +50,18 @@ public abstract class Usuario implements Logueable, Serializable, Observer {
 	public int getPuntaje() {
 		return puntaje;
 	}
-	
+
 	public ArrayList<String> getMensajes() {
 		return mensajes;
 	}
-	
+
 	public void vaciarMensajes() {
 		this.mensajes = new ArrayList<String>();
 	}
 
 	@Override
 	public void update(Observable o, Object arg) {
-		if(this.observables == o) {
+		if (this.observables == o) {
 			this.mensajes.add((String) arg);
 		}
 	}

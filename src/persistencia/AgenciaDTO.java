@@ -20,10 +20,10 @@ public class AgenciaDTO implements Serializable {
 	private ArrayList<Empleador> empleadores = new ArrayList<Empleador>();
 	private HashMap<TicketBusquedaEmpleado, HashMap<TicketBusquedaEmpleo, Double>> listasAsignaciones = new HashMap<TicketBusquedaEmpleado, HashMap<TicketBusquedaEmpleo, Double>>();
 	private ArrayList<Coincidencia> coincidencias = new ArrayList<Coincidencia>();
-	
+
 	private String usuario;
 	private String contrasenia;
-	
+
 	private BolsaDeTrabajo bolsaDeTrabajo;
 
 	public AgenciaDTO() {
@@ -45,12 +45,10 @@ public class AgenciaDTO implements Serializable {
 	public BolsaDeTrabajo getBolsaDeTrabajo() {
 		return bolsaDeTrabajo;
 	}
-	
-	
+
 	public void setBolsaDeTrabajo(BolsaDeTrabajo bolsaDeTrabajo) {
 		this.bolsaDeTrabajo = bolsaDeTrabajo;
 	}
-
 
 	public ArrayList<EmpleadoPretenso> getEmpleados() {
 		return empleados;
@@ -100,6 +98,5 @@ public class AgenciaDTO implements Serializable {
 	public void setContrasenia(String contrasenia) {
 		this.contrasenia = contrasenia;
 	}
-	
-	
+
 }

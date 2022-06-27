@@ -38,7 +38,7 @@ public class Register1 extends JFrame implements IVista, IRegister {
 	private JPanel siguienteBotonPan;
 	private JButton volverBoton;
 	private JPanel volverBotonPan;
-	
+
 	private char defaultChar;
 	private JRadioButton mostrarContraseniaBoton;
 
@@ -91,7 +91,7 @@ public class Register1 extends JFrame implements IVista, IRegister {
 		this.defaultChar = this.contraseniaText.getEchoChar();
 		contraseniaText.setColumns(10);
 		contraseniaTextPan.add(contraseniaText);
-		
+
 		mostrarContraseniaBoton = new JRadioButton("");
 		contraseniaTextPan.add(mostrarContraseniaBoton);
 
@@ -107,19 +107,19 @@ public class Register1 extends JFrame implements IVista, IRegister {
 		botones = new JPanel();
 		contentPane.add(botones);
 		botones.setLayout(new GridLayout(0, 2, 0, 0));
-		
+
 		volverBotonPan = new JPanel();
 		botones.add(volverBotonPan);
-		
+
 		volverBoton = new JButton("Volver");
 		volverBotonPan.add(volverBoton);
-		
+
 		siguienteBotonPan = new JPanel();
 		botones.add(siguienteBotonPan);
 
 		siguienteBoton = new JButton("Siguente");
 		siguienteBotonPan.add(siguienteBoton);
-		
+
 		setLocationRelativeTo(null);
 		setVisible(true);
 	}
@@ -148,12 +148,12 @@ public class Register1 extends JFrame implements IVista, IRegister {
 
 	@Override
 	public void setWindowListener(WindowListener windowListener) {
-		this.addWindowListener(windowListener);		
+		this.addWindowListener(windowListener);
 	}
-	
+
 	public void intercambiarContrasenia() {
 		boolean estado = mostrarContraseniaBoton.isSelected();
-		if(estado) {
+		if (estado) {
 			this.contraseniaText.setEchoChar((char) 0);
 		} else {
 			this.contraseniaText.setEchoChar(this.defaultChar);

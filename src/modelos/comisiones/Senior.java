@@ -47,7 +47,7 @@ public class Senior extends PuestoLaboralDecorator {
 
 		return valor;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Junior";

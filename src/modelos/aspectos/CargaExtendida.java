@@ -25,7 +25,7 @@ public class CargaExtendida extends CargaHoraria {
 	public double enfrentarTercero() {
 		return 1;
 	}
-	
+
 	@Override
 	public String toString() {
 		return carga.toString();

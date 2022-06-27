@@ -15,7 +15,7 @@ public class TicketSimplificado implements Serializable {
 	private Empleador creador;
 	private Locacion locacion;
 	private Rubro rubro;
-	
+
 	public TicketSimplificado(Empleador creador, Locaciones locacion, Rubros rubro) {
 		this.creador = creador;
 		this.locacion = LocacionFactory.getLocacion(locacion);

@@ -39,7 +39,7 @@ public class TicketBusquedaEmpleo extends Ticket {
 	public double calcularPorcentaje() {
 		return this.comision.calcularPorcentaje();
 	}
-	
+
 	public String stringEstado() {
 		return this.estado.toString();
 	}

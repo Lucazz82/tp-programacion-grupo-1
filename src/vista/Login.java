@@ -43,7 +43,7 @@ public class Login extends JFrame implements IVista, ILogin {
 	private JComboBox tipoUsuarioDesplegable;
 	private JPanel tipoUsuarioPanel;
 	private JRadioButton mostrarContraseniaBoton;
-	
+
 	private char defaultChar;
 
 	/**
@@ -100,7 +100,7 @@ public class Login extends JFrame implements IVista, ILogin {
 		this.defaultChar = this.contraseniaText.getEchoChar();
 		contraseniaText.setColumns(10);
 		contraseniaTextPan.add(contraseniaText);
-		
+
 		mostrarContraseniaBoton = new JRadioButton("");
 		contraseniaTextPan.add(mostrarContraseniaBoton);
 
@@ -155,11 +155,11 @@ public class Login extends JFrame implements IVista, ILogin {
 	public TiposUsuario getTipoUsuario() {
 		return (TiposUsuario) this.tipoUsuarioDesplegable.getSelectedItem();
 	}
-	
+
 	public void intercambiarContrasenia() {
 		boolean estado = mostrarContraseniaBoton.isSelected();
-		
-		if(estado) {
+
+		if (estado) {
 			this.contraseniaText.setEchoChar((char) 0);
 		} else {
 			this.contraseniaText.setEchoChar(this.defaultChar);

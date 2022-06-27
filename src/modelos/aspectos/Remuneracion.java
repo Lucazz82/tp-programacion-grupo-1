@@ -52,5 +52,5 @@ public class Remuneracion implements Enfrentable<Remuneracion>, Serializable {
 	public String toString() {
 		return tipo.name();
 	}
-	
+
 }

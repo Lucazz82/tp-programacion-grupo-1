@@ -18,10 +18,10 @@ public class Register1Controller extends Controller<Register1> {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getActionCommand().equalsIgnoreCase("Siguente")) {
-			if(!vista.getUsuario().isBlank() && !vista.getContrasenia().isBlank()) {
+		if (e.getActionCommand().equalsIgnoreCase("Siguente")) {
+			if (!vista.getUsuario().isBlank() && !vista.getContrasenia().isBlank()) {
 				Controller controller = null;
-				
+
 				switch (vista.getTipoUsuario()) {
 				case AGENCIA:
 					this.registrarAgencia();
@@ -35,14 +35,14 @@ public class Register1Controller extends Controller<Register1> {
 					break;
 				default:
 					break;
-				}		
-				
+				}
+
 				Sistema.getInstancia().cambiarController(controller);
 				vista.setVisible(false);
 			} else {
 				JOptionPane.showMessageDialog(vista, "Complete los campos");
 			}
-		} else if(e.getActionCommand().equalsIgnoreCase("Volver")) {
+		} else if (e.getActionCommand().equalsIgnoreCase("Volver")) {
 			Sistema.getInstancia().cambiarController(new LoginController());
 			vista.setVisible(false);
 		} else if (e.getActionCommand().equalsIgnoreCase("")) {
@@ -54,9 +54,9 @@ public class Register1Controller extends Controller<Register1> {
 	private void registrarAgencia() {
 		try {
 			Agencia.registrarAgencia(vista.getUsuario(), vista.getContrasenia());
-			JOptionPane.showMessageDialog(vista, "Agencia registrada con exito");	
+			JOptionPane.showMessageDialog(vista, "Agencia registrada con exito");
 		} catch (AgenciaYaExistenteException e) {
 			JOptionPane.showMessageDialog(vista, "Ya existe una agencia");
-		}		
+		}
 	}
 }

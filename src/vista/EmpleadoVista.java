@@ -22,7 +22,7 @@ import javax.swing.border.LineBorder;
 import modelos.TicketBusquedaEmpleado;
 import modelos.Usuario;
 
-public class EmpleadoVista extends JFrame implements IVista{
+public class EmpleadoVista extends JFrame implements IVista {
 
 	private JPanel contentPane;
 	private JPanel controlTicket;
@@ -54,78 +54,78 @@ public class EmpleadoVista extends JFrame implements IVista{
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(0, 2, 0, 0));
-		
+
 		controlTicket = new JPanel();
 		contentPane.add(controlTicket);
 		controlTicket.setLayout(new GridLayout(6, 1, 0, 0));
-		
+
 		JPanel puntajePan = new JPanel();
 		controlTicket.add(puntajePan);
 		puntajePan.setLayout(new GridLayout(0, 2, 0, 0));
-		
+
 		puntajePanLabel = new JPanel();
 		puntajePan.add(puntajePanLabel);
-		
+
 		puntajeLabel = new JLabel("Puntaje:");
 		puntajePanLabel.add(puntajeLabel);
-		
+
 		puntajePanText = new JPanel();
 		puntajePan.add(puntajePanText);
-		
+
 		puntajeText = new JTextPane();
 		puntajeText.setEditable(false);
 		puntajePanText.add(puntajeText);
-		
+
 		suspenderBotonPan = new JPanel();
 		controlTicket.add(suspenderBotonPan);
-		
+
 		suspenderBoton = new JButton("Suspender Ticket");
 		suspenderBotonPan.add(suspenderBoton);
-		
+
 		activarBotonPan = new JPanel();
 		controlTicket.add(activarBotonPan);
-		
+
 		activarBoton = new JButton("Activar Ticket");
 		activarBotonPan.add(activarBoton);
-		
+
 		mostrarBotonPan = new JPanel();
 		controlTicket.add(mostrarBotonPan);
-		
+
 		mostrarBoton = new JButton("Mostrar Ticket");
 		mostrarBotonPan.add(mostrarBoton);
-		
+
 		ticketSimplificadoPan = new JPanel();
 		controlTicket.add(ticketSimplificadoPan);
-		
+
 		ticketSimplificado = new JButton("Ticket Simplificado");
 		ticketSimplificadoPan.add(ticketSimplificado);
-		
+
 		ganadorTicket = new JPanel();
 		contentPane.add(ganadorTicket);
 		ganadorTicket.setLayout(new GridLayout(2, 0, 0, 0));
-		
+
 		listaEmpleadoresPan = new JScrollPane();
 		ganadorTicket.add(listaEmpleadoresPan);
-		
+
 		listaEmpleadores = new JList<>();
 		listaEmpleadoresPan.setViewportView(listaEmpleadores);
-		
+
 		botonesPanel = new JPanel();
 		ganadorTicket.add(botonesPanel);
 		botonesPanel.setLayout(new GridLayout(0, 1, 0, 0));
-		
+
 		elegirBotonPan = new JPanel();
 		botonesPanel.add(elegirBotonPan);
-		
+
 		elegirBoton = new JButton("Elegir");
 		elegirBotonPan.add(elegirBoton);
-		
+
 		cerrarSesionBotonPan = new JPanel();
 		botonesPanel.add(cerrarSesionBotonPan);
-		
+
 		cerrarSesionBoton = new JButton("Cerrar Sesión");
 		cerrarSesionBotonPan.add(cerrarSesionBoton);
-		
+
 		setLocationRelativeTo(null);
 		setVisible(true);
 	}
@@ -139,28 +139,27 @@ public class EmpleadoVista extends JFrame implements IVista{
 		ticketSimplificado.addActionListener(actionListener);
 		cerrarSesionBoton.addActionListener(actionListener);
 	}
-	
-	
+
 	public TicketBusquedaEmpleado getTicketSeleccionado() {
-		return (TicketBusquedaEmpleado)this.listaEmpleadores.getSelectedValue();
+		return (TicketBusquedaEmpleado) this.listaEmpleadores.getSelectedValue();
 	}
-	
+
 	public void setListaEmpleadores(ArrayList<TicketBusquedaEmpleado> tickets) {
-        DefaultListModel<TicketBusquedaEmpleado> listModel = new DefaultListModel<>();
-        this.listaEmpleadores= new JList<>(listModel);
-        this.listaEmpleadores.setBorder(new LineBorder(new Color(0, 0, 0), 1));
+		DefaultListModel<TicketBusquedaEmpleado> listModel = new DefaultListModel<>();
+		this.listaEmpleadores = new JList<>(listModel);
+		this.listaEmpleadores.setBorder(new LineBorder(new Color(0, 0, 0), 1));
 		this.listaEmpleadoresPan.setViewportView(this.listaEmpleadores);
-        
-        for(TicketBusquedaEmpleado ticket : tickets) {
-        	listModel.addElement(ticket);
-        }
+
+		for (TicketBusquedaEmpleado ticket : tickets) {
+			listModel.addElement(ticket);
+		}
 	}
 
 	@Override
 	public void setWindowListener(WindowListener windowListener) {
 		this.addWindowListener(windowListener);
 	}
-	
+
 	public void setPuntaje(int puntaje) {
 		this.puntajeText.setText(Integer.toString(puntaje));
 	}

@@ -41,7 +41,7 @@ public class Suspendido implements IEstado, Serializable {
 	public boolean esActivo() {
 		return false;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Suspendido";

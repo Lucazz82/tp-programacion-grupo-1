@@ -23,17 +23,19 @@ public class Register2EmpleadoController extends Controller<Register2Empleado> {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getActionCommand().equalsIgnoreCase("Siguiente")) {
-			EmpleadoPretenso empleado = new EmpleadoPretenso(usuario, contrasenia, this.vista.getNombre(), this.vista.getApellido(), this.vista.getTelefono(), new Date(this.vista.getFecha()));
-			
+		if (e.getActionCommand().equalsIgnoreCase("Siguiente")) {
+			EmpleadoPretenso empleado = new EmpleadoPretenso(usuario, contrasenia, this.vista.getNombre(),
+					this.vista.getApellido(), this.vista.getTelefono(), new Date(this.vista.getFecha()));
+
 			try {
 				Agencia.getInstancia().registrarUsuario(empleado);
-			} catch (AgenciaInexistenteException e1) {}
-			
+			} catch (AgenciaInexistenteException e1) {
+			}
+
 			JOptionPane.showMessageDialog(vista, "Usuario registrado con exito");
 			Sistema.getInstancia().cambiarController(new TicketEmpleadoController(empleado));
 			this.vista.setVisible(false);
-		} else if(e.getActionCommand().equalsIgnoreCase("Volver")) {
+		} else if (e.getActionCommand().equalsIgnoreCase("Volver")) {
 			Sistema.getInstancia().cambiarController(new Register1Controller());
 			this.vista.setVisible(false);
 		}

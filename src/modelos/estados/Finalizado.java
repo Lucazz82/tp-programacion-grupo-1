@@ -39,7 +39,7 @@ public class Finalizado implements IEstado, Serializable {
 	public boolean esActivo() {
 		return false;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Finalizado";

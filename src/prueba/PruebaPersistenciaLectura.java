@@ -16,7 +16,8 @@ import persistencia.PersistenciaBIN;
 import persistencia.UtilDTO;
 
 public class PruebaPersistenciaLectura {
-	public static void main(String args[]) throws ClassNotFoundException, IOException, TicketInexistenteException, AgenciaInexistenteException {
+	public static void main(String args[])
+			throws ClassNotFoundException, IOException, TicketInexistenteException, AgenciaInexistenteException {
 		PersistenciaBIN<AgenciaDTO> persistencia = new PersistenciaBIN<>();
 		AgenciaDTO agenciaDTO = persistencia.recuperar("agencia.bin");
 		try {

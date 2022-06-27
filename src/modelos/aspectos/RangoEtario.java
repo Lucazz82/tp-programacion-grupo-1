@@ -19,7 +19,7 @@ public class RangoEtario implements Enfrentable<RangoEtario>, Serializable {
 	public double enfrentar(RangoEtario o) {
 		return pesos[this.pos][o.pos];
 	}
-	
+
 	@Override
 	public String toString() {
 		return tipo.name();

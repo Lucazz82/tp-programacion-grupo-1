@@ -33,12 +33,11 @@ public class EmpleadorController extends Controller<EmpleadorVista> implements L
 		this.mostrarMensajes();
 	}
 
-
 	private void mostrarMensajes() {
-		for(String s : this.empleador.getMensajes()) {
-			JOptionPane.showMessageDialog(vista, s);	
+		for (String s : this.empleador.getMensajes()) {
+			JOptionPane.showMessageDialog(vista, s);
 		}
-		
+
 		this.empleador.vaciarMensajes();
 	}
 
@@ -55,7 +54,7 @@ public class EmpleadorController extends Controller<EmpleadorVista> implements L
 			} else {
 				JOptionPane.showMessageDialog(vista, "Debe seleccionar un ticket");
 			}
-			
+
 		} else if (cmd.equalsIgnoreCase("Activar Ticket")) {
 			if (vista.getTicketSeleccionado() != null) {
 				TicketBusquedaEmpleado seleccionado = vista.getTicketSeleccionado();
@@ -64,7 +63,7 @@ public class EmpleadorController extends Controller<EmpleadorVista> implements L
 			} else {
 				JOptionPane.showMessageDialog(vista, "Seleccione un ticket");
 			}
-			
+
 		} else if (cmd.equalsIgnoreCase("Suspender Ticket")) {
 			if (vista.getTicketSeleccionado() != null) {
 				TicketBusquedaEmpleado seleccionado = vista.getTicketSeleccionado();
@@ -73,19 +72,19 @@ public class EmpleadorController extends Controller<EmpleadorVista> implements L
 			} else {
 				JOptionPane.showMessageDialog(vista, "Seleccione un ticket");
 			}
-			
+
 		} else if (cmd.equalsIgnoreCase("Agregar Ticket")) {
 			Sistema.getInstancia().cambiarController(new TicketEmpleadorController(empleador));
 			vista.setVisible(false);
-			
+
 		} else if (cmd.equalsIgnoreCase("Cerrar Sesion")) {
 			Sistema.getInstancia().cambiarController(new LoginController());
 			vista.setVisible(false);
-			
+
 		} else if (cmd.equalsIgnoreCase("Ticket Simplificado")) {
 			Sistema.getInstancia().cambiarController(new TicketSimplificadoController(empleador));
 			vista.setVisible(false);
-			
+
 		} else if (cmd.equalsIgnoreCase("Mostrar Ticket")) {
 			if (vista.getTicketSeleccionado() != null) {
 				Sistema.getInstancia().cambiarController(

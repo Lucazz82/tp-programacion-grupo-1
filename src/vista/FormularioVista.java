@@ -91,246 +91,246 @@ public class FormularioVista extends JFrame implements IVista {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
-		
+
 		principal = new JPanel();
 		contentPane.add(principal, BorderLayout.CENTER);
 		principal.setLayout(new GridLayout(0, 2, 0, 0));
-		
+
 		locacion = new JPanel();
 		principal.add(locacion);
 		locacion.setLayout(new GridLayout(2, 0, 0, 0));
-		
+
 		locacionLabelPan = new JPanel();
 		locacion.add(locacionLabelPan);
-		
+
 		locacionLabel = new JLabel("Locacion:");
 		locacionLabelPan.add(locacionLabel);
-		
+
 		locacionDesplegablePan = new JPanel();
 		locacion.add(locacionDesplegablePan);
-		
+
 		locacionDesplegable = new JComboBox();
 		locacionDesplegable.setModel(new DefaultComboBoxModel(Locaciones.values()));
 		locacionDesplegablePan.add(locacionDesplegable);
-		
+
 		remuneracion = new JPanel();
 		principal.add(remuneracion);
 		remuneracion.setLayout(new GridLayout(2, 0, 0, 0));
-		
+
 		remuneracionLabelPan = new JPanel();
 		remuneracion.add(remuneracionLabelPan);
-		
+
 		remuneracionLabel = new JLabel("Remuneracion:");
 		remuneracionLabelPan.add(remuneracionLabel);
-		
+
 		remuneracionDesplegablePan = new JPanel();
 		remuneracion.add(remuneracionDesplegablePan);
-		
+
 		remuneracionDesplegable = new JComboBox();
 		remuneracionDesplegable.setModel(new DefaultComboBoxModel(Remuneraciones.values()));
 		remuneracionDesplegablePan.add(remuneracionDesplegable);
-		
+
 		cargaHoraria = new JPanel();
 		principal.add(cargaHoraria);
 		cargaHoraria.setLayout(new GridLayout(2, 0, 0, 0));
-		
+
 		cargaHorariaLabelPan = new JPanel();
 		cargaHoraria.add(cargaHorariaLabelPan);
-		
+
 		cargaHorariaLabel = new JLabel("Carga Horaria:");
 		cargaHorariaLabelPan.add(cargaHorariaLabel);
-		
+
 		cargaHorariaDesplegablePan = new JPanel();
 		cargaHoraria.add(cargaHorariaDesplegablePan);
-		
+
 		cargaHorariaDesplegable = new JComboBox();
 		cargaHorariaDesplegable.setModel(new DefaultComboBoxModel(CargasHorarias.values()));
 		cargaHorariaDesplegablePan.add(cargaHorariaDesplegable);
-		
+
 		limites = new JPanel();
 		principal.add(limites);
 		limites.setLayout(new GridLayout(2, 2, 0, 0));
-		
+
 		V1Label = new JLabel("V1");
 		limites.add(V1Label);
-		
+
 		V2Label = new JLabel("V2");
 		limites.add(V2Label);
-		
+
 		V1Spinner = new JSpinner();
 		V1Spinner.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
 		limites.add(V1Spinner);
-		
+
 		V2Spinner = new JSpinner();
 		V2Spinner.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
 		limites.add(V2Spinner);
-		
+
 		puestoLaboral = new JPanel();
 		principal.add(puestoLaboral);
 		puestoLaboral.setLayout(new GridLayout(2, 0, 0, 0));
-		
+
 		puestoLaboralLabelPan = new JPanel();
 		puestoLaboral.add(puestoLaboralLabelPan);
-		
+
 		puestoLaboralLabel = new JLabel("Puesto Laboral:");
 		puestoLaboralLabelPan.add(puestoLaboralLabel);
-		
+
 		puestoLaboralDesplegablePan = new JPanel();
 		puestoLaboral.add(puestoLaboralDesplegablePan);
-		
+
 		puestoLaboralDesplegable = new JComboBox();
 		puestoLaboralDesplegable.setModel(new DefaultComboBoxModel(PuestosLaborales.values()));
 		puestoLaboralDesplegablePan.add(puestoLaboralDesplegable);
-		
+
 		rangoEtario = new JPanel();
 		principal.add(rangoEtario);
 		rangoEtario.setLayout(new GridLayout(2, 0, 0, 0));
-		
+
 		rangoEtarioLabelPan = new JPanel();
 		rangoEtario.add(rangoEtarioLabelPan);
-		
+
 		rangoEtarioLabel = new JLabel("Rango Etario:");
 		rangoEtarioLabelPan.add(rangoEtarioLabel);
-		
+
 		rangoEtarioDesplegablePan = new JPanel();
 		rangoEtario.add(rangoEtarioDesplegablePan);
-		
+
 		rangoEtarioDesplegable = new JComboBox();
 		rangoEtarioDesplegable.setModel(new DefaultComboBoxModel(RangosEtarios.values()));
 		rangoEtarioDesplegablePan.add(rangoEtarioDesplegable);
-		
+
 		experiencia = new JPanel();
 		principal.add(experiencia);
 		experiencia.setLayout(new GridLayout(2, 0, 0, 0));
-		
+
 		experienciaLabelPan = new JPanel();
 		experiencia.add(experienciaLabelPan);
-		
+
 		experienciaLabel = new JLabel("Experiencia:");
 		experienciaLabelPan.add(experienciaLabel);
-		
+
 		experienciaDesplegablePan = new JPanel();
 		experiencia.add(experienciaDesplegablePan);
-		
+
 		experienciaDesplegable = new JComboBox();
 		experienciaDesplegable.setModel(new DefaultComboBoxModel(Experiencias.values()));
 		experienciaDesplegablePan.add(experienciaDesplegable);
-		
+
 		estudio = new JPanel();
 		principal.add(estudio);
 		estudio.setLayout(new GridLayout(2, 0, 0, 0));
-		
+
 		estudioLabelPan = new JPanel();
 		estudio.add(estudioLabelPan);
-		
+
 		estudioLabel = new JLabel("Estudios:");
 		estudioLabelPan.add(estudioLabel);
-		
+
 		estudioDesplegablePan = new JPanel();
 		estudio.add(estudioDesplegablePan);
-		
+
 		estudioDesplegable = new JComboBox();
 		estudioDesplegable.setModel(new DefaultComboBoxModel(EstudiosPrevios.values()));
 		estudioDesplegablePan.add(estudioDesplegable);
-		
+
 		rubro = new JPanel();
 		principal.add(rubro);
 		rubro.setLayout(new GridLayout(2, 0, 0, 0));
-		
+
 		rubroLabelPan = new JPanel();
 		rubro.add(rubroLabelPan);
-		
+
 		rubroLabel = new JLabel("Rubro:");
 		rubroLabelPan.add(rubroLabel);
-		
+
 		rubroDesplegablePan = new JPanel();
 		rubro.add(rubroDesplegablePan);
-		
+
 		rubroDesplegable = new JComboBox();
 		rubroDesplegable.setModel(new DefaultComboBoxModel(Rubros.values()));
 		rubroDesplegablePan.add(rubroDesplegable);
-		
+
 		sur = new JPanel();
 		contentPane.add(sur, BorderLayout.SOUTH);
-		
+
 		volver = new JPanel();
 		sur.add(volver);
-		
+
 		volverBotonPan = new JPanel();
 		volver.add(volverBotonPan);
-		
+
 		volverBoton = new JButton("Volver");
 		volverBotonPan.add(volverBoton);
-		
+
 		crear = new JPanel();
 		sur.add(crear);
-		
+
 		crearBoton = new JButton("Crear Ticket");
 		crear.add(crearBoton);
-		
+
 		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 
 	public Locaciones getLocacion() {
-		return (Locaciones) this.locacionDesplegable.getSelectedItem(); 
+		return (Locaciones) this.locacionDesplegable.getSelectedItem();
 	}
-	
+
 	public Remuneraciones getRemuneracion() {
-		return (Remuneraciones) this.remuneracionDesplegable.getSelectedItem(); 
+		return (Remuneraciones) this.remuneracionDesplegable.getSelectedItem();
 	}
-	
+
 	public int getV1() {
 		return (int) this.V1Spinner.getValue();
 	}
-	
+
 	public void desHabilitarV1() {
 		this.V1Spinner.setEnabled(false);
 	}
-	
+
 	public void desHabilitarV2() {
 		this.V2Spinner.setEnabled(false);
 	}
-	
+
 	public void habilitarV1() {
 		this.V1Spinner.setEnabled(true);
 	}
-	
+
 	public void habilitarV2() {
 		this.V2Spinner.setEnabled(true);
 	}
-	
+
 	public int getV2() {
 		return (int) this.V2Spinner.getValue();
 	}
-	
+
 	public CargasHorarias getCargaHoraria() {
-		return (CargasHorarias) this.cargaHorariaDesplegable.getSelectedItem(); 
+		return (CargasHorarias) this.cargaHorariaDesplegable.getSelectedItem();
 	}
-	
+
 	public PuestosLaborales getPuestoLaboral() {
 		return (PuestosLaborales) this.puestoLaboralDesplegable.getSelectedItem();
 	}
-	
+
 	public RangosEtarios getRangoEtario() {
-		return (RangosEtarios) this.rangoEtarioDesplegable.getSelectedItem(); 
+		return (RangosEtarios) this.rangoEtarioDesplegable.getSelectedItem();
 	}
-	
+
 	public Experiencias getExperiencias() {
-		return (Experiencias) this.experienciaDesplegable.getSelectedItem(); 
+		return (Experiencias) this.experienciaDesplegable.getSelectedItem();
 	}
-	
+
 	public EstudiosPrevios getEstudios() {
-		return (EstudiosPrevios) this.estudioDesplegable.getSelectedItem(); 
+		return (EstudiosPrevios) this.estudioDesplegable.getSelectedItem();
 	}
-	
+
 	public Rubros getRubro() {
-		return (Rubros) this.rubroDesplegable.getSelectedItem(); 
+		return (Rubros) this.rubroDesplegable.getSelectedItem();
 	}
 
 	@Override
 	public void setActionListener(ActionListener actionListener) {
-		this.crearBoton.addActionListener(actionListener);	
+		this.crearBoton.addActionListener(actionListener);
 		this.volverBoton.addActionListener(actionListener);
 		this.remuneracionDesplegable.addActionListener(actionListener);
 	}
@@ -338,6 +338,6 @@ public class FormularioVista extends JFrame implements IVista {
 	@Override
 	public void setWindowListener(WindowListener windowListener) {
 		this.addWindowListener(windowListener);
-		
+
 	}
 }

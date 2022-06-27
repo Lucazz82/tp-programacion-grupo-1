@@ -11,13 +11,13 @@ import vista.DatosTicket;
 
 public class DatosTicketEmpleadoController extends Controller<DatosTicket> {
 	private EmpleadoPretenso empleado;
-	
+
 	public DatosTicketEmpleadoController(EmpleadoPretenso empleado, TicketBusquedaEmpleo ticket) {
 		super(new DatosTicket());
 		this.empleado = empleado;
-		
+
 		Formulario formulario = ticket.getFormulario();
-		
+
 		vista.setLocacion(formulario.getLocacion().toString());
 		vista.setExperiencia(formulario.getExperiencia().toString());
 		vista.setRubro(formulario.getRubro().toString());
@@ -34,7 +34,7 @@ public class DatosTicketEmpleadoController extends Controller<DatosTicket> {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String cmd = e.getActionCommand();
-		
+
 		if (cmd.equalsIgnoreCase("Volver")) {
 			Sistema.getInstancia().cambiarController(new EmpleadoController(empleado));
 			vista.setVisible(false);

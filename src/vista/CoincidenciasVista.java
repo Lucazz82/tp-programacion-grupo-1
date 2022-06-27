@@ -20,7 +20,7 @@ import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 
-public class CoincidenciasVista extends JFrame implements IVista{
+public class CoincidenciasVista extends JFrame implements IVista {
 
 	private JPanel contentPane;
 	private JPanel principal;
@@ -40,23 +40,23 @@ public class CoincidenciasVista extends JFrame implements IVista{
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
-		
+
 		principal = new JPanel();
 		contentPane.add(principal, BorderLayout.CENTER);
 		principal.setLayout(new BorderLayout(0, 0));
-		
+
 		coincidenciasListaScrollPane = new JScrollPane();
 		principal.add(coincidenciasListaScrollPane);
-		
+
 		coincidenciasLista = new JList();
 		coincidenciasListaScrollPane.setViewportView(coincidenciasLista);
-		
+
 		volverPan = new JPanel();
 		contentPane.add(volverPan, BorderLayout.SOUTH);
-		
+
 		volverBoton = new JButton("Volver");
 		volverPan.add(volverBoton);
-		
+
 		setLocationRelativeTo(null);
 		setVisible(true);
 	}
@@ -65,22 +65,22 @@ public class CoincidenciasVista extends JFrame implements IVista{
 	public void setActionListener(ActionListener actionListener) {
 		this.volverBoton.addActionListener(actionListener);
 	}
-	
+
 	public void setListaCoincidencias(ArrayList<Coincidencia> coincidencias) {
-        DefaultListModel<Coincidencia> listModel = new DefaultListModel<>();
-        coincidenciasLista = new JList(listModel);
+		DefaultListModel<Coincidencia> listModel = new DefaultListModel<>();
+		coincidenciasLista = new JList(listModel);
 		coincidenciasListaScrollPane.setViewportView(coincidenciasLista);
-        
-        for(Coincidencia coincidencia : coincidencias) {
-        	listModel.addElement(coincidencia);
-        }
-        
-    }
+
+		for (Coincidencia coincidencia : coincidencias) {
+			listModel.addElement(coincidencia);
+		}
+
+	}
 
 	@Override
 	public void setWindowListener(WindowListener windowListener) {
 		this.addWindowListener(windowListener);
-		
+
 	}
 
 }

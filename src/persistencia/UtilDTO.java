@@ -17,7 +17,8 @@ public class UtilDTO {
 		return respuesta;
 	}
 
-	public static void agenciaFromAgenciaDTO(AgenciaDTO agenciaDTO) throws AgenciaInexistenteException, AgenciaYaExistenteException {
+	public static void agenciaFromAgenciaDTO(AgenciaDTO agenciaDTO)
+			throws AgenciaInexistenteException, AgenciaYaExistenteException {
 		Agencia.registrarAgencia(agenciaDTO.getUsuario(), agenciaDTO.getContrasenia());
 		Agencia agencia = Agencia.getInstancia();
 

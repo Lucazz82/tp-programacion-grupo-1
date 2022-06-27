@@ -33,20 +33,20 @@ public class ListaDeAsignacionController extends Controller<ListaDeAsignacionVis
 			Sistema.getInstancia().cambiarController(new AgenciaController());
 			this.vista.setVisible(false);
 		} else if (e.getActionCommand().equalsIgnoreCase("Buscar")) {
-			
+
 		}
 	}
 
 	private void setListaTicketsEmpleadores() {
 		ArrayList<TicketBusquedaEmpleado> ticketsBusquedaEmpleados = new ArrayList<>();
 		HashMap<TicketBusquedaEmpleado, HashMap<TicketBusquedaEmpleo, Double>> listasAsignaciones = new HashMap<TicketBusquedaEmpleado, HashMap<TicketBusquedaEmpleo, Double>>();
-		
+
 		try {
 			listasAsignaciones = Agencia.getInstancia().getListasAsignaciones();
 		} catch (AgenciaInexistenteException e) {
 			e.printStackTrace();
 		}
-		
+
 		for (TicketBusquedaEmpleado ticketBusquedaEmpleado : listasAsignaciones.keySet()) {
 			ticketsBusquedaEmpleados.add(ticketBusquedaEmpleado);
 		}
@@ -68,8 +68,8 @@ public class ListaDeAsignacionController extends Controller<ListaDeAsignacionVis
 			actualList = new ArrayList<TicketOrdenable>();
 		} catch (AgenciaInexistenteException e1) {
 		}
-		
-		this.vista.setListaTicketsEmpleados(actualList);	
+
+		this.vista.setListaTicketsEmpleados(actualList);
 	}
 
 }

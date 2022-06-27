@@ -19,25 +19,25 @@ public class Agencia implements Logueable {
 	private HashMap<TicketBusquedaEmpleado, HashMap<TicketBusquedaEmpleo, Double>> listasAsignaciones = new HashMap<TicketBusquedaEmpleado, HashMap<TicketBusquedaEmpleo, Double>>();
 	private ArrayList<Coincidencia> coincidencias = new ArrayList<Coincidencia>();
 
-	private GregorianCalendar fechaLista; //NO SE PUEDE PERSISTIR, LO CAMBIAMOS?
-	
+	private GregorianCalendar fechaLista; // NO SE PUEDE PERSISTIR, LO CAMBIAMOS?
+
 	private String usuario;
 	private String contrasenia;
-	
+
 	private BolsaDeTrabajo bolsaDeTrabajo = new BolsaDeTrabajo();
-	
+
 	public void agregarTicketABolsa(TicketSimplificado ticket) {
 		bolsaDeTrabajo.agregarTickets(ticket);
 	}
-	
+
 	public void busquedaBolsa(EmpleadoPretenso empleado) {
 		bolsaDeTrabajo.busqueda(empleado);
 	}
-	
+
 	public void devuelveBolsa(TicketSimplificado ticket) {
 		bolsaDeTrabajo.devuelve(ticket);
 	}
-	
+
 	public void confirmarEleccion(TicketSimplificado ticket) {
 		bolsaDeTrabajo.confirmarEleccion(ticket);
 	}
@@ -50,8 +50,8 @@ public class Agencia implements Logueable {
 	public synchronized static Agencia getInstancia() throws AgenciaInexistenteException {
 		if (_instancia == null)
 			throw new AgenciaInexistenteException();
-		
-		return _instancia;			
+
+		return _instancia;
 	}
 
 	/**
@@ -73,30 +73,30 @@ public class Agencia implements Logueable {
 				return usuario;
 			}
 		}
-		
-		if(this.usuario.equals(nombreUsuario))
+
+		if (this.usuario.equals(nombreUsuario))
 			return this;
 		else
 			throw new UsuarioInexistenteException(nombreUsuario + " no existe");
 	}
-	
+
 	public Empleador buscarEmpleador(String nombreUsuario) throws UsuarioInexistenteException {
 		for (Empleador empleador : this.empleadores) {
 			if (empleador.getnombreUsuario().equals(nombreUsuario)) {
 				return empleador;
 			}
 		}
-		
+
 		throw new UsuarioInexistenteException(nombreUsuario + " no existe");
 	}
-	
+
 	public EmpleadoPretenso buscarEmpleado(String nombreUsuario) throws UsuarioInexistenteException {
 		for (EmpleadoPretenso empleado : this.empleados) {
 			if (empleado.getnombreUsuario().equals(nombreUsuario)) {
 				return empleado;
 			}
 		}
-		
+
 		throw new UsuarioInexistenteException(nombreUsuario + " no existe");
 	}
 
@@ -210,7 +210,7 @@ public class Agencia implements Logueable {
 					EmpleadoPretenso primero = (EmpleadoPretenso) lista.next().getTicket().getCreador();
 					primero.puntajePrimerLugar();
 				}
-				
+
 				EmpleadoPretenso ultimo = null;
 				// Empieza por el 2do. Si tiene un solo elemento consideramos que es primero no
 				// ultimo.
@@ -219,7 +219,7 @@ public class Agencia implements Logueable {
 				}
 				if (ultimo != null)
 					ultimo.puntajeUltimoLugar();
-				
+
 			} catch (TicketInexistenteException e) {
 				// Se puede ejecutar si un ticket se creo despues de ejecutar la lista de
 				// asignacion.
@@ -267,11 +267,11 @@ public class Agencia implements Logueable {
 		empleadores.addAll(this.empleadores);
 
 		for (EmpleadoPretenso empleado : this.empleados) {
-			if(empleado.getTicket().getElegido() != null) {
+			if (empleado.getTicket().getElegido() != null) {
 				Empleador elegido = empleado.getTicket().getElegido().getCreador();
 				if (empleadores.contains(elegido)) {
 					empleadores.remove(elegido);
-				}				
+				}
 			}
 		}
 
@@ -287,14 +287,14 @@ public class Agencia implements Logueable {
 	public void registrarUsuario(Empleador empleador) {
 		this.empleadores.add(empleador);
 	}
-	
+
 	public static void registrarAgencia(String usuario, String contrasenia) throws AgenciaYaExistenteException {
-		if(_instancia != null) 
+		if (_instancia != null)
 			throw new AgenciaYaExistenteException();
-		
+
 		_instancia = new Agencia(usuario, contrasenia);
 	}
-	
+
 	@Override
 	public void login(String contrasena) throws ContrasenaIncorrectaException {
 		if (!this.contrasenia.equals(contrasena)) {
@@ -367,6 +367,5 @@ public class Agencia implements Logueable {
 	public void setBolsaDeTrabajo(BolsaDeTrabajo bolsaDeTrabajo) {
 		this.bolsaDeTrabajo = bolsaDeTrabajo;
 	}
-	
-	
+
 }
