@@ -28,21 +28,6 @@ public class CoincidenciasVista extends JFrame implements IVista{
 	private JList coincidenciasLista;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					CoincidenciasVista frame = new CoincidenciasVista();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
 	public CoincidenciasVista() {
