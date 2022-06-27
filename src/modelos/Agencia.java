@@ -19,7 +19,7 @@ public class Agencia implements Logueable {
 	private HashMap<TicketBusquedaEmpleado, HashMap<TicketBusquedaEmpleo, Double>> listasAsignaciones = new HashMap<TicketBusquedaEmpleado, HashMap<TicketBusquedaEmpleo, Double>>();
 	private ArrayList<Coincidencia> coincidencias = new ArrayList<Coincidencia>();
 
-	private GregorianCalendar fechaLista; // NO SE PUEDE PERSISTIR, LO CAMBIAMOS?
+	private GregorianCalendar fechaLista;
 
 	private String usuario;
 	private String contrasenia;

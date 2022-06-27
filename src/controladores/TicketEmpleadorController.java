@@ -24,7 +24,6 @@ public class TicketEmpleadorController extends Controller<FormularioVista> {
 			Sistema.getInstancia().cambiarController(new EmpleadorController(empleador));
 			vista.setVisible(false);
 		} else if (cmd.equalsIgnoreCase("Crear Ticket")) {
-			// Verificar que los campos no esten vacios
 			Formulario formulario = FormularioFactory.getFormulario(vista.getLocacion(), vista.getRemuneracion(),
 					vista.getV1(), vista.getV2(), vista.getCargaHoraria(), vista.getPuestoLaboral(),
 					vista.getRangoEtario(), vista.getExperiencias(), vista.getEstudios(), vista.getRubro());
