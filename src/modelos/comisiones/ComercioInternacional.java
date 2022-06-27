@@ -13,4 +13,8 @@ public class ComercioInternacional extends Rubro {
 		return o.enfrentarComercioInternacional();
 	}
 
+	@Override
+	public String toString() {
+		return "Comercio Internacional";
+	}
 }

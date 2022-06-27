@@ -8,13 +8,13 @@ public class EstudiosFactory {
 		Estudios resultado = null;
 		switch (estudios) {
 		case PRIMARIO:
-			resultado = new Estudios(0);
+			resultado = new Estudios(estudios, 0);
 			break;
 		case SECUNDARIO:
-			resultado = new Estudios(1);
+			resultado = new Estudios(estudios, 1);
 			break;
 		case TERCIARIO:
-			resultado = new Estudios(2);
+			resultado = new Estudios(estudios, 2);
 			break;
 		}
 		return resultado;

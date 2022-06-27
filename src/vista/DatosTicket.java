@@ -122,7 +122,7 @@ public class DatosTicket extends JFrame implements IVista{
 		estudio = new JPanel();
 		left.add(estudio);
 		
-		estudioLabel = new JLabel("Estudio:");
+		estudioLabel = new JLabel("Estudios Previos:");
 		estudio.add(estudioLabel);
 		
 		estudioText = new JLabel("New label");
@@ -180,7 +180,7 @@ public class DatosTicket extends JFrame implements IVista{
 
 	@Override
 	public void setActionListener(ActionListener actionListener) {
-		
+		this.volverBoton.addActionListener(actionListener);
 	}
 
 	@Override

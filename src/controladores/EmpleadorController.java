@@ -61,7 +61,12 @@ public class EmpleadorController extends Controller<EmpleadorVista> implements F
 			Sistema.getInstancia().cambiarController(new TicketSimplificadoController(empleador));
 			vista.setVisible(false);
 		} else if (cmd.equalsIgnoreCase("Mostrar Ticket")) {
-			
+			if (vista.getTicketSeleccionado() != null) {
+				Sistema.getInstancia().cambiarController(new DatosTicketEmpleadorController(empleador, vista.getTicketSeleccionado()));
+				vista.setVisible(false);
+			} else {
+				JOptionPane.showMessageDialog(vista, "Seleccione un ticket");
+			}
 		}
 	}
 

@@ -2,12 +2,15 @@ package modelos.aspectos;
 
 import java.io.Serializable;
 
+import enums.EstudiosPrevios;
 import modelos.Enfrentable;
 
 public class Estudios implements Enfrentable<Estudios>, Serializable {
+	private EstudiosPrevios estudios;
 	private int pos;
 
-	public Estudios(int pos) {
+	public Estudios(EstudiosPrevios estudios, int pos) {
+		this.estudios = estudios;
 		this.pos = pos;
 	}
 
@@ -19,6 +22,6 @@ public class Estudios implements Enfrentable<Estudios>, Serializable {
 	
 	@Override
 	public String toString() {
-		return "Carga Completa";
+		return this.estudios.toString();
 	}
 }

@@ -47,5 +47,10 @@ public class Junior extends PuestoLaboralDecorator {
 
 		return valor;
 	}
+	
+	@Override
+	public String toString() {
+		return "Junior";
+	}
 
 }

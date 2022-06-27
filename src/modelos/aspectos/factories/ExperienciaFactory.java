@@ -8,13 +8,13 @@ public class ExperienciaFactory {
 		Experiencia resultado = null;
 		switch (experiencia) {
 		case MEDIA:
-			resultado = new Experiencia(1);
+			resultado = new Experiencia(experiencia, 1);
 			break;
 		case MUCHA:
-			resultado = new Experiencia(2);
+			resultado = new Experiencia(experiencia, 2);
 			break;
 		case NADA:
-			resultado = new Experiencia(0);
+			resultado = new Experiencia(experiencia, 0);
 			break;
 		}
 		return resultado;

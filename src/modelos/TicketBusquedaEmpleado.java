@@ -53,4 +53,7 @@ public class TicketBusquedaEmpleado extends Ticket {
 		return this.formulario.getRubro().enfrentar(empleador.getTipoPersona());
 	}
 
+	public String stringEstado() {
+		return this.estado.toString();
+	}
 }
