@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import javax.swing.JOptionPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import excepciones.AgenciaInexistenteException;
 import excepciones.TicketInexistenteException;
@@ -17,14 +19,14 @@ import modelos.TicketBusquedaEmpleo;
 import modelos.TicketOrdenable;
 import vista.EmpleadorVista;
 
-public class EmpleadorController extends Controller<EmpleadorVista> implements FocusListener {
+public class EmpleadorController extends Controller<EmpleadorVista> implements ListSelectionListener {
 	private Empleador empleador;
 
 	public EmpleadorController(Empleador empleador) {
 		super(new EmpleadorVista());
 		this.empleador = empleador;
 		this.setListaTickets();
-		this.vista.setFocusListener(this);
+		this.vista.addSelectionListener(this);
 		this.vista.setPuntaje(empleador.getPuntaje());
 	}
 
@@ -93,7 +95,7 @@ public class EmpleadorController extends Controller<EmpleadorVista> implements F
 	}
 
 	@Override
-	public void focusGained(FocusEvent e) {
+	public void valueChanged(ListSelectionEvent e) {
 		TicketBusquedaEmpleado ticket = vista.getTicketSeleccionado();
 		ArrayList<TicketBusquedaEmpleo> candidatos = new ArrayList<>();
 		try {
@@ -107,10 +109,5 @@ public class EmpleadorController extends Controller<EmpleadorVista> implements F
 //			JOptionPane.showMessageDialog(vista, "El ticket no posee una lista de asignacion");
 			this.vista.limpiarListaTickets();
 		}
-
-	}
-
-	@Override
-	public void focusLost(FocusEvent e) {
 	}
 }
