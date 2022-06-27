@@ -2,10 +2,10 @@ package controladores;
 
 import java.awt.event.ActionEvent;
 
+import enums.Remuneraciones;
 import modelos.Empleador;
 import modelos.Formulario;
 import modelos.FormularioFactory;
-import modelos.TicketBusquedaEmpleado;
 import vista.FormularioVista;
 
 public class TicketEmpleadorController extends Controller<FormularioVista> {
@@ -30,6 +30,25 @@ public class TicketEmpleadorController extends Controller<FormularioVista> {
 					vista.getRangoEtario(), vista.getExperiencias(), vista.getEstudios(), vista.getRubro());
 			Sistema.getInstancia().cambiarController(new PesosController(empleador, formulario));
 			vista.setVisible(false);
+		} else if(cmd.equalsIgnoreCase("comboBoxChanged")) {
+			Remuneraciones remuneracion = this.vista.getRemuneracion();
+			
+			switch(remuneracion) {
+				case ENTRE_V1_V2:
+					this.vista.habilitarV1();
+					this.vista.habilitarV2();
+					break;
+				case HASTA_V1:
+					this.vista.habilitarV1();
+					this.vista.desHabilitarV2();
+					break;
+				case MAS_DE_V2:
+					this.vista.desHabilitarV1();
+					this.vista.habilitarV2();
+					break;
+				default:
+					break;
+			}
 		}
 	}
 }

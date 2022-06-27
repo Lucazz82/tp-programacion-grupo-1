@@ -1,34 +1,37 @@
 package vista;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowListener;
 
-import javax.swing.JLabel;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
-import enums.Locaciones;
-import enums.Remuneraciones;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.border.EmptyBorder;
+
 import enums.CargasHorarias;
+import enums.EstudiosPrevios;
+import enums.Experiencias;
+import enums.Locaciones;
 import enums.PuestosLaborales;
 import enums.RangosEtarios;
-import enums.Experiencias;
-import enums.EstudiosPrevios;
+import enums.Remuneraciones;
 import enums.Rubros;
 
 public class FormularioVista extends JFrame implements IVista {
 
 	private JPanel contentPane;
-	private JLabel locacionLabel;
-	private JPanel locacionLabelPan;
+	private JPanel principal;
+	private JPanel sur;
 	private JPanel locacion;
+	private JPanel locacionLabelPan;
+	private JLabel locacionLabel;
 	private JPanel locacionDesplegablePan;
 	private JComboBox locacionDesplegable;
 	private JPanel remuneracion;
@@ -67,24 +70,34 @@ public class FormularioVista extends JFrame implements IVista {
 	private JPanel rubroDesplegablePan;
 	private JComboBox rubroDesplegable;
 	private JPanel volver;
+	private JPanel volverBotonPan;
+	private JButton volverBoton;
 	private JPanel crear;
 	private JButton crearBoton;
-	private JButton volverBoton;
-	private JPanel volverBotonPan;
+	private JPanel limites;
+	private JLabel V1Label;
+	private JLabel V2Label;
+	private JSpinner V1Spinner;
+	private JSpinner V2Spinner;
 
 	/**
 	 * Create the frame.
 	 */
 	public FormularioVista() {
+		setTitle("Creacion de Formulario");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 400);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new GridLayout(0, 2, 0, 0));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		
+		principal = new JPanel();
+		contentPane.add(principal, BorderLayout.CENTER);
+		principal.setLayout(new GridLayout(0, 2, 0, 0));
 		
 		locacion = new JPanel();
-		contentPane.add(locacion);
+		principal.add(locacion);
 		locacion.setLayout(new GridLayout(2, 0, 0, 0));
 		
 		locacionLabelPan = new JPanel();
@@ -101,7 +114,7 @@ public class FormularioVista extends JFrame implements IVista {
 		locacionDesplegablePan.add(locacionDesplegable);
 		
 		remuneracion = new JPanel();
-		contentPane.add(remuneracion);
+		principal.add(remuneracion);
 		remuneracion.setLayout(new GridLayout(2, 0, 0, 0));
 		
 		remuneracionLabelPan = new JPanel();
@@ -118,7 +131,7 @@ public class FormularioVista extends JFrame implements IVista {
 		remuneracionDesplegablePan.add(remuneracionDesplegable);
 		
 		cargaHoraria = new JPanel();
-		contentPane.add(cargaHoraria);
+		principal.add(cargaHoraria);
 		cargaHoraria.setLayout(new GridLayout(2, 0, 0, 0));
 		
 		cargaHorariaLabelPan = new JPanel();
@@ -134,8 +147,26 @@ public class FormularioVista extends JFrame implements IVista {
 		cargaHorariaDesplegable.setModel(new DefaultComboBoxModel(CargasHorarias.values()));
 		cargaHorariaDesplegablePan.add(cargaHorariaDesplegable);
 		
+		limites = new JPanel();
+		principal.add(limites);
+		limites.setLayout(new GridLayout(2, 2, 0, 0));
+		
+		V1Label = new JLabel("V1");
+		limites.add(V1Label);
+		
+		V2Label = new JLabel("V2");
+		limites.add(V2Label);
+		
+		V1Spinner = new JSpinner();
+		V1Spinner.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
+		limites.add(V1Spinner);
+		
+		V2Spinner = new JSpinner();
+		V2Spinner.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
+		limites.add(V2Spinner);
+		
 		puestoLaboral = new JPanel();
-		contentPane.add(puestoLaboral);
+		principal.add(puestoLaboral);
 		puestoLaboral.setLayout(new GridLayout(2, 0, 0, 0));
 		
 		puestoLaboralLabelPan = new JPanel();
@@ -152,7 +183,7 @@ public class FormularioVista extends JFrame implements IVista {
 		puestoLaboralDesplegablePan.add(puestoLaboralDesplegable);
 		
 		rangoEtario = new JPanel();
-		contentPane.add(rangoEtario);
+		principal.add(rangoEtario);
 		rangoEtario.setLayout(new GridLayout(2, 0, 0, 0));
 		
 		rangoEtarioLabelPan = new JPanel();
@@ -169,7 +200,7 @@ public class FormularioVista extends JFrame implements IVista {
 		rangoEtarioDesplegablePan.add(rangoEtarioDesplegable);
 		
 		experiencia = new JPanel();
-		contentPane.add(experiencia);
+		principal.add(experiencia);
 		experiencia.setLayout(new GridLayout(2, 0, 0, 0));
 		
 		experienciaLabelPan = new JPanel();
@@ -186,7 +217,7 @@ public class FormularioVista extends JFrame implements IVista {
 		experienciaDesplegablePan.add(experienciaDesplegable);
 		
 		estudio = new JPanel();
-		contentPane.add(estudio);
+		principal.add(estudio);
 		estudio.setLayout(new GridLayout(2, 0, 0, 0));
 		
 		estudioLabelPan = new JPanel();
@@ -203,7 +234,7 @@ public class FormularioVista extends JFrame implements IVista {
 		estudioDesplegablePan.add(estudioDesplegable);
 		
 		rubro = new JPanel();
-		contentPane.add(rubro);
+		principal.add(rubro);
 		rubro.setLayout(new GridLayout(2, 0, 0, 0));
 		
 		rubroLabelPan = new JPanel();
@@ -219,8 +250,11 @@ public class FormularioVista extends JFrame implements IVista {
 		rubroDesplegable.setModel(new DefaultComboBoxModel(Rubros.values()));
 		rubroDesplegablePan.add(rubroDesplegable);
 		
+		sur = new JPanel();
+		contentPane.add(sur, BorderLayout.SOUTH);
+		
 		volver = new JPanel();
-		contentPane.add(volver);
+		sur.add(volver);
 		
 		volverBotonPan = new JPanel();
 		volver.add(volverBotonPan);
@@ -229,7 +263,7 @@ public class FormularioVista extends JFrame implements IVista {
 		volverBotonPan.add(volverBoton);
 		
 		crear = new JPanel();
-		contentPane.add(crear);
+		sur.add(crear);
 		
 		crearBoton = new JButton("Crear Ticket");
 		crear.add(crearBoton);
@@ -247,11 +281,27 @@ public class FormularioVista extends JFrame implements IVista {
 	}
 	
 	public int getV1() {
-		return 0;
+		return (int) this.V1Spinner.getValue();
+	}
+	
+	public void desHabilitarV1() {
+		this.V1Spinner.setEnabled(false);
+	}
+	
+	public void desHabilitarV2() {
+		this.V2Spinner.setEnabled(false);
+	}
+	
+	public void habilitarV1() {
+		this.V1Spinner.setEnabled(true);
+	}
+	
+	public void habilitarV2() {
+		this.V2Spinner.setEnabled(true);
 	}
 	
 	public int getV2() {
-		return 0;
+		return (int) this.V2Spinner.getValue();
 	}
 	
 	public CargasHorarias getCargaHoraria() {
@@ -280,7 +330,9 @@ public class FormularioVista extends JFrame implements IVista {
 
 	@Override
 	public void setActionListener(ActionListener actionListener) {
-		this.crearBoton.addActionListener(actionListener);		
+		this.crearBoton.addActionListener(actionListener);	
+		this.volverBoton.addActionListener(actionListener);
+		this.remuneracionDesplegable.addActionListener(actionListener);
 	}
 
 	@Override
