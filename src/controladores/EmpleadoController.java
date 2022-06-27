@@ -34,6 +34,7 @@ public class EmpleadoController extends Controller<EmpleadoVista> implements Foc
 		} else if(e.getActionCommand().equalsIgnoreCase("Ticket Simplificado")) {
 			Thread h = new Thread(this.empleado);
 			h.start();
+			System.out.println("Hola rey");
 		}
 		else if (e.getActionCommand().equalsIgnoreCase("Cerrar Sesión")) {
 			Sistema.getInstancia().cambiarController(new LoginController());

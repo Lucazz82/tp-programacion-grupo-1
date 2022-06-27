@@ -13,6 +13,7 @@ public class UtilDTO {
 		respuesta.setListasAsignaciones(Agencia.getInstancia().getListasAsignaciones());
 		respuesta.setUsuario(Agencia.getInstancia().getUsuario());
 		respuesta.setContrasenia(Agencia.getInstancia().getContrasenia());
+		respuesta.setBolsaDeTrabajo(Agencia.getInstancia().getBolsaDeTrabajo());
 		return respuesta;
 	}
 
@@ -26,5 +27,6 @@ public class UtilDTO {
 		agencia.setListasAsignaciones(agenciaDTO.getListasAsignaciones());
 		agencia.setUsuario(agenciaDTO.getUsuario());
 		agencia.setContrasenia(agenciaDTO.getContrasenia());
+		agencia.setBolsaDeTrabajo(agenciaDTO.getBolsaDeTrabajo());
 	}
 }

@@ -1,33 +1,32 @@
 package modelos;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class BolsaDeTrabajo {
+public class BolsaDeTrabajo implements Serializable {
 	private ArrayList<TicketSimplificado> tickets = new ArrayList<>();
 	private HashMap<Empleador, Integer> cantidadTickets = new HashMap<Empleador, Integer>();
 	
-	public void agregarTickets(TicketSimplificado ticket) {
-		synchronized (this.tickets) {
-			Empleador creador = ticket.getCreador(); 
+	public synchronized void agregarTickets(TicketSimplificado ticket) {
+		Empleador creador = ticket.getCreador(); 
+		
+		if(cantidadTickets.containsKey(creador)) {
+			int cantidad = cantidadTickets.get(creador);
 			
-			if(cantidadTickets.containsKey(creador)) {
-				int cantidad = cantidadTickets.get(creador);
-				
-				if(cantidad < 3) {
-					cantidadTickets.put(creador, cantidad + 1);
-					this.tickets.add(ticket);
-				} else {
-					System.out.println("No se puede agregar ticket, ya tiene 3");
-				}
-			} else {
-				cantidadTickets.put(creador, 1);
+			if(cantidad < 3) {
+				cantidadTickets.put(creador, cantidad + 1);
 				this.tickets.add(ticket);
+			} else {
+				System.out.println("No se puede agregar ticket, ya tiene 3");
 			}
-			
-			System.out.println("Ticket agregado: " + ticket.getRubro());
-			this.tickets.notifyAll();
+		} else {
+			cantidadTickets.put(creador, 1);
+			this.tickets.add(ticket);
 		}
+		
+		System.out.println("Ticket agregado: " + ticket.getRubro());
+		this.notifyAll();
 	}
 	
 	public synchronized void busqueda(EmpleadoPretenso empleado) {

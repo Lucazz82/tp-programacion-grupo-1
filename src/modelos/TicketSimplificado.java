@@ -1,5 +1,6 @@
 package modelos;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import enums.Locaciones;
@@ -9,7 +10,7 @@ import modelos.aspectos.factories.LocacionFactory;
 import modelos.aspectos.factories.RubroFactory;
 import modelos.comisiones.Rubro;
 
-public class TicketSimplificado {
+public class TicketSimplificado implements Serializable {
 	private Date fechaAlta;
 	private Empleador creador;
 	private Locacion locacion;

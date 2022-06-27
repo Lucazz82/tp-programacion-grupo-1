@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import modelos.BolsaDeTrabajo;
 import modelos.Coincidencia;
 import modelos.EmpleadoPretenso;
 import modelos.Empleador;
@@ -22,13 +23,15 @@ public class AgenciaDTO implements Serializable {
 	
 	private String usuario;
 	private String contrasenia;
+	
+	private BolsaDeTrabajo bolsaDeTrabajo;
 
 	public AgenciaDTO() {
 	}
 
 	public AgenciaDTO(ArrayList<EmpleadoPretenso> empleados, ArrayList<Empleador> empleadores,
 			HashMap<TicketBusquedaEmpleado, HashMap<TicketBusquedaEmpleo, Double>> listasAsignaciones,
-			ArrayList<Coincidencia> coincidencias, String usuario, String contrasenia) {
+			ArrayList<Coincidencia> coincidencias, String usuario, String contrasenia, BolsaDeTrabajo bolsaDeTrabajo) {
 		super();
 		this.empleados = empleados;
 		this.empleadores = empleadores;
@@ -36,7 +39,18 @@ public class AgenciaDTO implements Serializable {
 		this.coincidencias = coincidencias;
 		this.usuario = usuario;
 		this.contrasenia = contrasenia;
+		this.bolsaDeTrabajo = bolsaDeTrabajo;
 	}
+
+	public BolsaDeTrabajo getBolsaDeTrabajo() {
+		return bolsaDeTrabajo;
+	}
+	
+	
+	public void setBolsaDeTrabajo(BolsaDeTrabajo bolsaDeTrabajo) {
+		this.bolsaDeTrabajo = bolsaDeTrabajo;
+	}
+
 
 	public ArrayList<EmpleadoPretenso> getEmpleados() {
 		return empleados;

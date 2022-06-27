@@ -37,6 +37,10 @@ public class Agencia implements Logueable {
 	public void devuelveBolsa(TicketSimplificado ticket) {
 		bolsaDeTrabajo.devuelve(ticket);
 	}
+	
+	public void confirmarEleccion(TicketSimplificado ticket) {
+		bolsaDeTrabajo.confirmarEleccion(ticket);
+	}
 
 	private Agencia(String usuario, String contrasenia) {
 		this.usuario = usuario;
@@ -361,4 +365,14 @@ public class Agencia implements Logueable {
 	public void setContrasenia(String contrasenia) {
 		this.contrasenia = contrasenia;
 	}
+
+	public BolsaDeTrabajo getBolsaDeTrabajo() {
+		return bolsaDeTrabajo;
+	}
+
+	public void setBolsaDeTrabajo(BolsaDeTrabajo bolsaDeTrabajo) {
+		this.bolsaDeTrabajo = bolsaDeTrabajo;
+	}
+	
+	
 }
