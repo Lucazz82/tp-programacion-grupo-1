@@ -110,7 +110,7 @@ public class EmpleadoPretenso extends Usuario implements IComision, Runnable {
 	public void run() {
 		try {
 			Agencia agencia = Agencia.getInstancia();
-			this.observables.add(agencia.getBolsaDeTrabajo());
+			this.observables = agencia.getBolsaDeTrabajo();
 			agencia.getBolsaDeTrabajo().addObserver(this);
 			if(this.ganador == null && this.cantidadBusquedas < 10) {
 				agencia.busquedaBolsa(this);	
@@ -118,20 +118,19 @@ public class EmpleadoPretenso extends Usuario implements IComision, Runnable {
 				if (!ganador.getLocacion().mismaLocacion(this.ticket.getFormulario().getLocacion())) {
 					agencia.devuelveBolsa(ganador);
 					ganador = null;
-					this.setChanged();
-					this.notifyObservers("El ticket no coincide, se devuelve");
+					this.mensajes.add("El ticket no coincide, se devuelve");
 				} else {
 					agencia.confirmarEleccion(ganador);
-					this.setChanged();
-					this.notifyObservers("El ticket coincide, finaliza simulacion");
+					this.mensajes.add("El ticket coincide, finaliza simulacion");
 				}
 				
 				this.cantidadBusquedas++;
 			} else {
-				this.setChanged();
-				this.notifyObservers("Ya tiene un ticket simplificado");
+				this.mensajes.add("Ya tiene un ticket simplificado");
 			}
 			
+			agencia.getBolsaDeTrabajo().deleteObserver(this);
+			this.observables = null;
 		} catch (AgenciaInexistenteException e) {}
 		
 	}

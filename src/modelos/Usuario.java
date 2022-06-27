@@ -7,12 +7,13 @@ import java.util.Observer;
 
 import excepciones.ContrasenaIncorrectaException;
 
-public abstract class Usuario extends Observable implements Logueable, Serializable, Observer {
+public abstract class Usuario implements Logueable, Serializable, Observer {
 	private String nombreUsuario;
 	private String contrasena;
 	protected int puntaje;
 	
-	protected ArrayList<Observable> observables = new ArrayList<Observable>();
+	protected Observable observables = null;
+	protected ArrayList<String> mensajes = new ArrayList<String>();
 
 	public Usuario(String nombreUsuario, String contrasena) {
 		this.nombreUsuario = nombreUsuario;
@@ -49,18 +50,21 @@ public abstract class Usuario extends Observable implements Logueable, Serializa
 	public int getPuntaje() {
 		return puntaje;
 	}
+	
+	public ArrayList<String> getMensajes() {
+		return mensajes;
+	}
+	
+	public void vaciarMensajes() {
+		this.mensajes = new ArrayList<String>();
+	}
 
 	@Override
 	public void update(Observable o, Object arg) {
-		if(this.observables.contains(o)) {
+		if(this.observables == o) {
 			System.out.println("Hola ->" + (String) arg);
-			this.setChanged();
-			this.notifyObservers(arg);
+			this.mensajes.add((String) arg);
 		}
-	}
-	
-	public void agregarObservador(Observer o) {
-		this.addObserver(o);
 	}
 
 	@Override

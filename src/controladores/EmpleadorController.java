@@ -19,17 +19,24 @@ import modelos.TicketBusquedaEmpleo;
 import modelos.TicketOrdenable;
 import vista.EmpleadorVista;
 
-public class EmpleadorController extends Controller<EmpleadorVista> implements FocusListener, Observer {
+public class EmpleadorController extends Controller<EmpleadorVista> implements FocusListener {
 	private Empleador empleador;
-	private ArrayList<Observable> observables = new ArrayList<Observable>();
 	
 	public EmpleadorController(Empleador empleador) {
 		super(new EmpleadorVista());
 		this.empleador = empleador;
 		this.setListaTickets();
 		this.vista.setFocusListener(this);
-		this.observables.add(empleador);
-		empleador.addObserver(this);
+		this.mostrarMensajes();
+	}
+
+
+	private void mostrarMensajes() {
+		for(String s : this.empleador.getMensajes()) {
+			JOptionPane.showMessageDialog(vista, s);	
+		}
+		
+		this.empleador.vaciarMensajes();
 	}
 
 
@@ -106,10 +113,4 @@ public class EmpleadorController extends Controller<EmpleadorVista> implements F
 	public void focusLost(FocusEvent e) {
 	}
 
-
-	@Override
-	public void update(Observable o, Object arg) {
-		if(this.observables.add(o))
-			JOptionPane.showMessageDialog(vista, (String) arg);	
-	}
 }

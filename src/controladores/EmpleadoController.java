@@ -14,15 +14,21 @@ import modelos.Agencia;
 import modelos.EmpleadoPretenso;
 import vista.EmpleadoVista;
 
-public class EmpleadoController extends Controller<EmpleadoVista> implements FocusListener, Observer {
+public class EmpleadoController extends Controller<EmpleadoVista> implements FocusListener {
 	private EmpleadoPretenso empleado;
-	private ArrayList<Observable> observables = new ArrayList<Observable>();
 	
 	public EmpleadoController(EmpleadoPretenso empleado) {
 		super(new EmpleadoVista());
 		this.empleado = empleado;
-		this.observables.add(empleado);
-		empleado.addObserver(this);
+		this.mostrarMensajes();
+	}
+	
+	private void mostrarMensajes() {
+		for(String s : this.empleado.getMensajes()) {
+			JOptionPane.showMessageDialog(vista, s);	
+		}
+		
+		this.empleado.vaciarMensajes();
 	}
 
 	@Override
@@ -59,16 +65,6 @@ public class EmpleadoController extends Controller<EmpleadoVista> implements Foc
 	public void focusLost(FocusEvent e) {
 		// TODO Auto-generated method stub
 		
-	}
-
-	/***
-	 * <b>Pre:</b> el argumento es un string.
-	 */
-	@Override
-	public void update(Observable o, Object arg) {
-		if(this.observables.add(o))
-			JOptionPane.showMessageDialog(vista, (String) arg);		
-	}
-	
+	}	
 	
 }
