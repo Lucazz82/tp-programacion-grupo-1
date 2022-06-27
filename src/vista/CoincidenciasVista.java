@@ -18,6 +18,7 @@ import modelos.Usuario;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JList;
+import javax.swing.JScrollPane;
 
 public class CoincidenciasVista extends JFrame implements IVista{
 
@@ -26,11 +27,13 @@ public class CoincidenciasVista extends JFrame implements IVista{
 	private JPanel volverPan;
 	private JButton volverBoton;
 	private JList coincidenciasLista;
+	private JScrollPane coincidenciasListaScrollPane;
 
 	/**
 	 * Create the frame.
 	 */
 	public CoincidenciasVista() {
+		setTitle("Coincidencias");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 400);
 		contentPane = new JPanel();
@@ -40,9 +43,13 @@ public class CoincidenciasVista extends JFrame implements IVista{
 		
 		principal = new JPanel();
 		contentPane.add(principal, BorderLayout.CENTER);
+		principal.setLayout(new BorderLayout(0, 0));
+		
+		coincidenciasListaScrollPane = new JScrollPane();
+		principal.add(coincidenciasListaScrollPane);
 		
 		coincidenciasLista = new JList();
-		principal.add(coincidenciasLista);
+		coincidenciasListaScrollPane.setViewportView(coincidenciasLista);
 		
 		volverPan = new JPanel();
 		contentPane.add(volverPan, BorderLayout.SOUTH);
@@ -62,7 +69,7 @@ public class CoincidenciasVista extends JFrame implements IVista{
 	public void setListaCoincidencias(ArrayList<Coincidencia> coincidencias) {
         DefaultListModel<Coincidencia> listModel = new DefaultListModel<>();
         coincidenciasLista = new JList(listModel);
-		principal.add(coincidenciasLista);
+		coincidenciasListaScrollPane.setViewportView(coincidenciasLista);
         
         for(Coincidencia coincidencia : coincidencias) {
         	listModel.addElement(coincidencia);
