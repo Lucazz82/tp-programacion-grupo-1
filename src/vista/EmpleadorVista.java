@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.JLabel;
 import java.awt.GridLayout;
 import java.awt.Font;
@@ -167,8 +168,8 @@ public class EmpleadorVista extends JFrame implements IVista {
 		cerrarSesionBoton.addActionListener(actionListener);
 	}
 	
-	public void setFocusListener(FocusListener focusListener ) {
-		listaTickets.addFocusListener(focusListener);
+	public void addSelectionListener(ListSelectionListener s) {
+		listaTickets.addListSelectionListener(s);
 	}
 	
 	public void setListaTickets(ArrayList<TicketBusquedaEmpleado> tickets) {
