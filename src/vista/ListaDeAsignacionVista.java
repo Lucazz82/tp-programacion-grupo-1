@@ -36,7 +36,7 @@ public class ListaDeAsignacionVista extends JFrame implements IVista {
 	private JPanel ticketBusquedaEmpleoPan;
 	private JScrollPane ticketBusquedaEmpleadoScrollPan;
 	private JScrollPane ticketBusquedaEmpleoScrollPane;
-	private DefaultListModel<TicketBusquedaEmpleo> listModelTicketBusquedaEmpleo;
+	private DefaultListModel<TicketOrdenable> listModelTicketBusquedaEmpleo;
 
 	public ListaDeAsignacionVista() {
 		
@@ -113,10 +113,10 @@ public class ListaDeAsignacionVista extends JFrame implements IVista {
         this.repaint();
     }
 	
-	public void setListaTicketsEmpleados(List<TicketBusquedaEmpleo> listaEmpleados) {
+	public void setListaTicketsEmpleados(List<TicketOrdenable> listaEmpleados) {
 		this.listModelTicketBusquedaEmpleo.clear();
         
-        for(TicketBusquedaEmpleo ticket : listaEmpleados) {
+        for(TicketOrdenable ticket : listaEmpleados) {
         	this.listModelTicketBusquedaEmpleo.addElement(ticket);
         }
         

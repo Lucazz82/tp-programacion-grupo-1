@@ -10,6 +10,7 @@ public class Cancelado implements IEstado, Serializable {
 
 	public Cancelado(Ticket ticket) {
 		this.ticket = ticket;
+		this.ticket.getCreador().cancelarTicket();
 	}
 
 	@Override

@@ -58,14 +58,14 @@ public class ListaDeAsignacionController extends Controller<ListaDeAsignacionVis
 	public void valueChanged(ListSelectionEvent e) {
 		TicketBusquedaEmpleado ticket = (TicketBusquedaEmpleado) this.vista.getTicketSeleccionado();
 		Iterator<TicketOrdenable> iterator = null;
-		List<TicketBusquedaEmpleo> actualList = new ArrayList<>();
+		List<TicketOrdenable> actualList = new ArrayList<>();
 		try {
 			iterator = Agencia.getInstancia().getListaAsignacion(ticket);
 			while (iterator.hasNext()) {
-				actualList.add((TicketBusquedaEmpleo) iterator.next().getTicket());
+				actualList.add(iterator.next());
 			}
 		} catch (TicketInexistenteException e1) {
-			actualList = new ArrayList<TicketBusquedaEmpleo>();
+			actualList = new ArrayList<TicketOrdenable>();
 		} catch (AgenciaInexistenteException e1) {
 		}
 		

@@ -11,6 +11,7 @@ public class Finalizado implements IEstado, Serializable {
 	public Finalizado(Ticket ticket) {
 		super();
 		this.ticket = ticket;
+		this.ticket.getCreador().finalizarTicket();
 	}
 
 	@Override

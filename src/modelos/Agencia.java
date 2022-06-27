@@ -161,11 +161,6 @@ public class Agencia implements Logueable {
 
 		cvs.sort(null);
 
-		EmpleadoPretenso empleado = (EmpleadoPretenso) cvs.get(0).getTicket().getCreador();
-		empleado.puntajePrimerLugar();
-		empleado = (EmpleadoPretenso) cvs.get(cvs.size() - 1).getTicket().getCreador();
-		empleado.puntajeUltimoLugar();
-
 		return cvs.iterator();
 	}
 
@@ -198,9 +193,6 @@ public class Agencia implements Logueable {
 
 		puestosLaborales.sort(null);
 
-		Empleador empleador = (Empleador) puestosLaborales.get(0).getTicket().getCreador();
-		empleador.puntajePrimerLugar();
-
 		return puestosLaborales.iterator();
 	}
 
@@ -218,6 +210,16 @@ public class Agencia implements Logueable {
 					EmpleadoPretenso primero = (EmpleadoPretenso) lista.next().getTicket().getCreador();
 					primero.puntajePrimerLugar();
 				}
+				
+				EmpleadoPretenso ultimo = null;
+				// Empieza por el 2do. Si tiene un solo elemento consideramos que es primero no
+				// ultimo.
+				while (lista.hasNext()) {
+					ultimo = (EmpleadoPretenso) lista.next().getTicket().getCreador();
+				}
+				if (ultimo != null)
+					ultimo.puntajeUltimoLugar();
+				
 			} catch (TicketInexistenteException e) {
 				// Se puede ejecutar si un ticket se creo despues de ejecutar la lista de
 				// asignacion.
@@ -231,14 +233,6 @@ public class Agencia implements Logueable {
 					Empleador primero = (Empleador) lista.next().getTicket().getCreador();
 					primero.puntajePrimerLugar();
 				}
-				EmpleadoPretenso ultimo = null;
-				// Empieza por el 2do. Si tiene un solo elemento consideramos que es primero no
-				// ultimo.
-				while (lista.hasNext()) {
-					ultimo = (EmpleadoPretenso) lista.next().getTicket().getCreador();
-				}
-				if (ultimo != null)
-					ultimo.puntajeUltimoLugar();
 			} catch (TicketInexistenteException e) {
 				// Puede ser que el empleado no tenga una lista.
 			}
