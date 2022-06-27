@@ -6,3 +6,4 @@
 =======
 *.bin
 >>>>>>> refs/heads/concurrencia
+/target/
