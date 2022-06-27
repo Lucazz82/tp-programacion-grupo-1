@@ -8,6 +8,9 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
 import excepciones.AgenciaInexistenteException;
 import excepciones.TicketInexistenteException;
 import modelos.Agencia;
@@ -16,12 +19,12 @@ import modelos.TicketBusquedaEmpleo;
 import modelos.TicketOrdenable;
 import vista.ListaDeAsignacionVista;
 
-public class ListaDeAsignacionController extends Controller<ListaDeAsignacionVista> implements FocusListener {
+public class ListaDeAsignacionController extends Controller<ListaDeAsignacionVista> implements ListSelectionListener {
 
 	public ListaDeAsignacionController() {
 		super(new ListaDeAsignacionVista());
 		setListaTicketsEmpleadores();
-		this.vista.setFocusListener(this);
+		this.vista.addListSelectionListener(this);
 	}
 
 	@Override
@@ -52,28 +55,21 @@ public class ListaDeAsignacionController extends Controller<ListaDeAsignacionVis
 	}
 
 	@Override
-	public void focusGained(FocusEvent e) {
+	public void valueChanged(ListSelectionEvent e) {
 		TicketBusquedaEmpleado ticket = (TicketBusquedaEmpleado) this.vista.getTicketSeleccionado();
 		Iterator<TicketOrdenable> iterator = null;
+		List<TicketBusquedaEmpleo> actualList = new ArrayList<>();
 		try {
 			iterator = Agencia.getInstancia().getListaAsignacion(ticket);
+			while (iterator.hasNext()) {
+				actualList.add((TicketBusquedaEmpleo) iterator.next().getTicket());
+			}
 		} catch (TicketInexistenteException e1) {
-			this.vista.setListaTicketsEmpleados(new ArrayList<>());
-			return;
+			actualList = new ArrayList<TicketBusquedaEmpleo>();
 		} catch (AgenciaInexistenteException e1) {
 		}
 		
-		List<TicketOrdenable> actualList = new ArrayList<>();
-		while (iterator.hasNext()) {
-			actualList.add(iterator.next());
-		}
-		this.vista.setListaTicketsEmpleados(actualList);
-	}
-
-	@Override
-	public void focusLost(FocusEvent e) {
-		// TODO Auto-generated method stub
-
+		this.vista.setListaTicketsEmpleados(actualList);	
 	}
 
 }
