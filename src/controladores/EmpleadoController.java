@@ -35,6 +35,10 @@ public class EmpleadoController extends Controller<EmpleadoVista> implements Foc
 			Thread h = new Thread(this.empleado);
 			h.start();
 		}
+		else if (e.getActionCommand().equalsIgnoreCase("Cerrar Sesión")) {
+			Sistema.getInstancia().cambiarController(new LoginController());
+			vista.setVisible(false);
+		}
 	}
 
 	@Override

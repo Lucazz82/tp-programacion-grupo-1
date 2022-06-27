@@ -43,12 +43,12 @@ public class EmpleadoVista extends JFrame implements IVista{
 	private JPanel ganadorTicket;
 	private JScrollPane listaEmpleadoresPan;
 	private JList listaEmpleadores;
-	private JPanel elegirBotonPan;
+	private JPanel botonesPanel;
 	private JButton elegirBoton;
+	private JButton cerrarSesionBoton;
+	private JPanel elegirBotonPan;
+	private JPanel cerrarSesionBotonPan;
 
-	/**
-	 * Create the frame.
-	 */
 	public EmpleadoVista() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -118,11 +118,21 @@ public class EmpleadoVista extends JFrame implements IVista{
 		listaEmpleadores = new JList<>();
 		listaEmpleadoresPan.setViewportView(listaEmpleadores);
 		
+		botonesPanel = new JPanel();
+		ganadorTicket.add(botonesPanel);
+		botonesPanel.setLayout(new GridLayout(0, 1, 0, 0));
+		
 		elegirBotonPan = new JPanel();
-		ganadorTicket.add(elegirBotonPan);
+		botonesPanel.add(elegirBotonPan);
 		
 		elegirBoton = new JButton("Elegir");
 		elegirBotonPan.add(elegirBoton);
+		
+		cerrarSesionBotonPan = new JPanel();
+		botonesPanel.add(cerrarSesionBotonPan);
+		
+		cerrarSesionBoton = new JButton("Cerrar Sesión");
+		cerrarSesionBotonPan.add(cerrarSesionBoton);
 		
 		setLocationRelativeTo(null);
 		setVisible(true);
@@ -136,6 +146,7 @@ public class EmpleadoVista extends JFrame implements IVista{
 		mostrarBoton.addActionListener(actionListener);
 		elegirBoton.addActionListener(actionListener);
 		ticketSimplificado.addActionListener(actionListener);
+		cerrarSesionBoton.addActionListener(actionListener);
 	}
 	
 	
@@ -156,6 +167,6 @@ public class EmpleadoVista extends JFrame implements IVista{
 
 	@Override
 	public void setWindowListener(WindowListener windowListener) {
-		// TODO Auto-generated method stub
+		this.addWindowListener(windowListener);
 	}
 }
