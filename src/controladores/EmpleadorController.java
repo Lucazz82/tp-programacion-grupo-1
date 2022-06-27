@@ -32,9 +32,7 @@ public class EmpleadorController extends Controller<EmpleadorVista> implements F
 	public void actionPerformed(ActionEvent e) {
 		String cmd = e.getActionCommand();
 
-		if (cmd.equalsIgnoreCase("Cambiar Ticket")) {
-			JOptionPane.showMessageDialog(vista, "Función no disponible por el momento");
-		} else if (cmd.equalsIgnoreCase("Elegir Ganador")) {
+		if (cmd.equalsIgnoreCase("Elegir Ganador")) {
 			if (this.vista.isListaCandidatosVisible()) {
 				TicketBusquedaEmpleo ticketEmpleado = vista.getCandidatoSeleccionado();
 				TicketBusquedaEmpleado ticketEmpleador = vista.getTicketSeleccionado();

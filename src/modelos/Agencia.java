@@ -149,7 +149,7 @@ public class Agencia implements Logueable {
 	public Iterator<TicketOrdenable> getListaAsignacion(TicketBusquedaEmpleado ticketEmpleador)
 			throws TicketInexistenteException {
 		ArrayList<TicketOrdenable> cvs = new ArrayList<TicketOrdenable>();
-		if (!listasAsignaciones.containsKey(ticketEmpleador))
+		if (!listasAsignaciones.containsKey(ticketEmpleador) || listasAsignaciones.get(ticketEmpleador).isEmpty())
 			throw new TicketInexistenteException("El ticket no tiene una lista de asignacion", ticketEmpleador);
 
 		HashMap<TicketBusquedaEmpleo, Double> puntajesTicket = listasAsignaciones.get(ticketEmpleador);
@@ -215,7 +215,7 @@ public class Agencia implements Logueable {
 			try {
 				Iterator<TicketOrdenable> lista = this.getListaAsignacion(ticketEmpleador);
 				if (lista.hasNext()) {
-					Empleador primero = (Empleador) lista.next().getTicket().getCreador();
+					EmpleadoPretenso primero = (EmpleadoPretenso) lista.next().getTicket().getCreador();
 					primero.puntajePrimerLugar();
 				}
 			} catch (TicketInexistenteException e) {
@@ -229,7 +229,7 @@ public class Agencia implements Logueable {
 			try {
 				Iterator<TicketOrdenable> lista = this.getListaAsignacion(empleado.getTicket());
 				if (lista.hasNext()) {
-					EmpleadoPretenso primero = (EmpleadoPretenso) lista.next().getTicket().getCreador();
+					Empleador primero = (Empleador) lista.next().getTicket().getCreador();
 					primero.puntajePrimerLugar();
 				}
 				EmpleadoPretenso ultimo = null;

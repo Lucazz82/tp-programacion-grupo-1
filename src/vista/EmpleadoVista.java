@@ -32,8 +32,6 @@ public class EmpleadoVista extends JFrame implements IVista{
 	private JTextPane puntajeText;
 	private JPanel suspenderBotonPan;
 	private JButton suspenderBoton;
-	private JPanel cambiarBotonPan;
-	private JButton cambiarBoton;
 	private JPanel activarBotonPan;
 	private JButton activarBoton;
 	private JPanel mostrarBotonPan;
@@ -83,12 +81,6 @@ public class EmpleadoVista extends JFrame implements IVista{
 		
 		suspenderBoton = new JButton("Suspender Ticket");
 		suspenderBotonPan.add(suspenderBoton);
-		
-		cambiarBotonPan = new JPanel();
-		controlTicket.add(cambiarBotonPan);
-		
-		cambiarBoton = new JButton("Cambiar Ticket");
-		cambiarBotonPan.add(cambiarBoton);
 		
 		activarBotonPan = new JPanel();
 		controlTicket.add(activarBotonPan);
@@ -142,7 +134,6 @@ public class EmpleadoVista extends JFrame implements IVista{
 	public void setActionListener(ActionListener actionListener) {
 		suspenderBoton.addActionListener(actionListener);
 		activarBoton.addActionListener(actionListener);
-		cambiarBoton.addActionListener(actionListener);
 		mostrarBoton.addActionListener(actionListener);
 		elegirBoton.addActionListener(actionListener);
 		ticketSimplificado.addActionListener(actionListener);
@@ -158,7 +149,7 @@ public class EmpleadoVista extends JFrame implements IVista{
         DefaultListModel<TicketBusquedaEmpleado> listModel = new DefaultListModel<>();
         this.listaEmpleadores= new JList<>(listModel);
         this.listaEmpleadores.setBorder(new LineBorder(new Color(0, 0, 0), 1));
-		this.listaEmpleadoresPan.add(this.listaEmpleadores, BorderLayout.CENTER);
+		this.listaEmpleadoresPan.setViewportView(this.listaEmpleadores);
         
         for(TicketBusquedaEmpleado ticket : tickets) {
         	listModel.addElement(ticket);

@@ -24,7 +24,7 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JScrollPane;
 
-public class ListaDeAsignacionVista extends JFrame implements IVista{
+public class ListaDeAsignacionVista extends JFrame implements IVista {
 
 	private JPanel contentPane;
 	private JButton volverBoton;
@@ -33,9 +33,6 @@ public class ListaDeAsignacionVista extends JFrame implements IVista{
 	private JPanel ticketBusquedaEmpleadoPan;
 	private JPanel ticketBusquedaEmpleoPan;
 
-	/**
-	 * Create the frame.
-	 */
 	public ListaDeAsignacionVista() {
 		
 		setTitle("Listas de asignacion");
@@ -86,10 +83,8 @@ public class ListaDeAsignacionVista extends JFrame implements IVista{
 		
 		this.setVisible(true);
 		
-		ticketsEmpleadorLista = new JList<>();
-		ticketsEmpleadosLista = new JList<>();
-		
-		
+		//ticketsEmpleadorLista = new JList<>();
+		//ticketsEmpleadosLista = new JList<>();
 	}
 	
 	public void setListaTicketsEmpleadores(ArrayList<TicketBusquedaEmpleado> ticketEmpleadores) {
@@ -97,24 +92,21 @@ public class ListaDeAsignacionVista extends JFrame implements IVista{
 		ticketsEmpleadorLista = new JList<>(listModel);
 		ticketsEmpleadorLista.setBorder(new LineBorder(new Color(0, 0, 0), 1));
 		this.ticketBusquedaEmpleadoPan.add(ticketsEmpleadorLista,BorderLayout.CENTER);
-        
 				
         for(TicketBusquedaEmpleado ticket : ticketEmpleadores) {
         	listModel.addElement(ticket);
         }
-        
     }
 	
 	public void setListaTicketsEmpleados(List<TicketOrdenable> listaEmpleados) {
         DefaultListModel<TicketOrdenable> listModel = new DefaultListModel<>();
         ticketsEmpleadosLista = new JList<>(listModel);
 		ticketsEmpleadosLista.setBorder(new LineBorder(new Color(0, 0, 0), 1));
-		this.ticketBusquedaEmpleoPan.add(ticketsEmpleadosLista, BorderLayout.CENTER);
+		this.ticketBusquedaEmpleoPan.add(ticketsEmpleadosLista);
         
         for(TicketOrdenable ticket : listaEmpleados) {
         	listModel.addElement(ticket);
         }
-        
     }
 	
 	@Override
@@ -125,6 +117,7 @@ public class ListaDeAsignacionVista extends JFrame implements IVista{
 	public void setFocusListener(FocusListener f) {
 		this.ticketsEmpleadorLista.addFocusListener(f);
 	}
+	
 	public TicketBusquedaEmpleado getTicketSeleccionado() {
 		return (TicketBusquedaEmpleado)this.ticketsEmpleadorLista.getSelectedValue();
 	}
