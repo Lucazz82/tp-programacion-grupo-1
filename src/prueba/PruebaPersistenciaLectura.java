@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import excepciones.AgenciaInexistenteException;
+import excepciones.AgenciaYaExistenteException;
 import excepciones.TicketInexistenteException;
 import modelos.Agencia;
 import modelos.Empleador;
@@ -14,10 +16,18 @@ import persistencia.PersistenciaBIN;
 import persistencia.UtilDTO;
 
 public class PruebaPersistenciaLectura {
-	public static void main(String args[]) throws ClassNotFoundException, IOException, TicketInexistenteException {
+	public static void main(String args[]) throws ClassNotFoundException, IOException, TicketInexistenteException, AgenciaInexistenteException {
 		PersistenciaBIN<AgenciaDTO> persistencia = new PersistenciaBIN<>();
 		AgenciaDTO agenciaDTO = persistencia.recuperar("agencia.bin");
-		UtilDTO.agenciaFromAgenciaDTO(agenciaDTO);
+		try {
+			UtilDTO.agenciaFromAgenciaDTO(agenciaDTO);
+		} catch (AgenciaInexistenteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (AgenciaYaExistenteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		Agencia agencia = Agencia.getInstancia();
 
