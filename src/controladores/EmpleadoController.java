@@ -34,6 +34,10 @@ public class EmpleadoController extends Controller<EmpleadoVista> implements Foc
 		} else if(e.getActionCommand().equalsIgnoreCase("Ticket Simplificado")) {
 			
 		}
+		else if (e.getActionCommand().equalsIgnoreCase("Cerrar Sesión")) {
+			Sistema.getInstancia().cambiarController(new LoginController());
+			vista.setVisible(false);
+		}
 	}
 
 	@Override
