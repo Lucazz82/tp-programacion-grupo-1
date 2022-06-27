@@ -28,6 +28,7 @@ public class CoincidenciasVista extends JFrame implements IVista {
 	private JButton volverBoton;
 	private JList coincidenciasLista;
 	private JScrollPane coincidenciasListaScrollPane;
+	private JButton comisionesBoton;
 
 	/**
 	 * Create the frame.
@@ -56,6 +57,9 @@ public class CoincidenciasVista extends JFrame implements IVista {
 
 		volverBoton = new JButton("Volver");
 		volverPan.add(volverBoton);
+		
+		comisionesBoton = new JButton("Ver Comision");
+		volverPan.add(comisionesBoton);
 
 		setLocationRelativeTo(null);
 		setVisible(true);
@@ -64,6 +68,7 @@ public class CoincidenciasVista extends JFrame implements IVista {
 	@Override
 	public void setActionListener(ActionListener actionListener) {
 		this.volverBoton.addActionListener(actionListener);
+		this.comisionesBoton.addActionListener(actionListener);
 	}
 
 	public void setListaCoincidencias(ArrayList<Coincidencia> coincidencias) {
@@ -81,6 +86,10 @@ public class CoincidenciasVista extends JFrame implements IVista {
 	public void setWindowListener(WindowListener windowListener) {
 		this.addWindowListener(windowListener);
 
+	}
+	
+	public Coincidencia getCoincidencia() {
+		return (Coincidencia) this.coincidenciasLista.getSelectedValue();
 	}
 
 }
