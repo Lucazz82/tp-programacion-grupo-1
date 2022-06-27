@@ -62,6 +62,8 @@ public class LoginController extends Controller<Login> {
 		} else if (cmd.equalsIgnoreCase("Register")) {
 			Sistema.getInstancia().cambiarController(new Register1Controller());
 			vista.setVisible(false);
+		} else if (cmd.equalsIgnoreCase("")) {
+			this.vista.intercambiarContrasenia();
 		}
 	}
 }

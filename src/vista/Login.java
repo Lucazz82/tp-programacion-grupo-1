@@ -18,6 +18,8 @@ import java.awt.BorderLayout;
 import javax.swing.BoxLayout;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JToggleButton;
+import javax.swing.JRadioButton;
 
 public class Login extends JFrame implements IVista, ILogin {
 
@@ -40,6 +42,9 @@ public class Login extends JFrame implements IVista, ILogin {
 	private JPanel principal;
 	private JComboBox tipoUsuarioDesplegable;
 	private JPanel tipoUsuarioPanel;
+	private JRadioButton mostrarContraseniaBoton;
+	
+	private char defaultChar;
 
 	/**
 	 * Create the frame.
@@ -92,8 +97,12 @@ public class Login extends JFrame implements IVista, ILogin {
 		contrasenia.add(contraseniaTextPan);
 
 		contraseniaText = new JPasswordField();
+		this.defaultChar = this.contraseniaText.getEchoChar();
 		contraseniaText.setColumns(10);
 		contraseniaTextPan.add(contraseniaText);
+		
+		mostrarContraseniaBoton = new JRadioButton("");
+		contraseniaTextPan.add(mostrarContraseniaBoton);
 
 		tipoUsuarioPanel = new JPanel();
 		principal.add(tipoUsuarioPanel);
@@ -130,6 +139,7 @@ public class Login extends JFrame implements IVista, ILogin {
 	public void setActionListener(ActionListener actionListener) {
 		loginBoton.addActionListener(actionListener);
 		registerBoton.addActionListener(actionListener);
+		mostrarContraseniaBoton.addActionListener(actionListener);
 	}
 
 	@Override
@@ -144,5 +154,15 @@ public class Login extends JFrame implements IVista, ILogin {
 
 	public TiposUsuario getTipoUsuario() {
 		return (TiposUsuario) this.tipoUsuarioDesplegable.getSelectedItem();
+	}
+	
+	public void intercambiarContrasenia() {
+		boolean estado = mostrarContraseniaBoton.isSelected();
+		
+		if(estado) {
+			this.contraseniaText.setEchoChar((char) 0);
+		} else {
+			this.contraseniaText.setEchoChar(this.defaultChar);
+		}
 	}
 }
