@@ -169,4 +169,8 @@ public class EmpleadoVista extends JFrame implements IVista{
 	public void setWindowListener(WindowListener windowListener) {
 		this.addWindowListener(windowListener);
 	}
+	
+	public void setPuntaje(int puntaje) {
+		this.puntajeText.setText(Integer.toString(puntaje));
+	}
 }

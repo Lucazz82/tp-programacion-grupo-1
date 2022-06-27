@@ -15,6 +15,7 @@ public class EmpleadoController extends Controller<EmpleadoVista> implements Foc
 	public EmpleadoController(EmpleadoPretenso empleado) {
 		super(new EmpleadoVista());
 		this.empleado = empleado;
+		this.vista.setPuntaje(empleado.getPuntaje());
 	}
 
 	@Override

@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
@@ -37,6 +38,9 @@ public class Register1 extends JFrame implements IVista, IRegister {
 	private JPanel siguienteBotonPan;
 	private JButton volverBoton;
 	private JPanel volverBotonPan;
+	
+	private char defaultChar;
+	private JRadioButton mostrarContraseniaBoton;
 
 	/**
 	 * Create the frame.
@@ -84,8 +88,12 @@ public class Register1 extends JFrame implements IVista, IRegister {
 		contrasenia.add(contraseniaTextPan);
 
 		contraseniaText = new JPasswordField();
+		this.defaultChar = this.contraseniaText.getEchoChar();
 		contraseniaText.setColumns(10);
 		contraseniaTextPan.add(contraseniaText);
+		
+		mostrarContraseniaBoton = new JRadioButton("");
+		contraseniaTextPan.add(mostrarContraseniaBoton);
 
 		desplegable = new JPanel();
 		contentPane.add(desplegable);
@@ -120,6 +128,7 @@ public class Register1 extends JFrame implements IVista, IRegister {
 	public void setActionListener(ActionListener actionListener) {
 		siguienteBoton.addActionListener(actionListener);
 		volverBoton.addActionListener(actionListener);
+		mostrarContraseniaBoton.addActionListener(actionListener);
 	}
 
 	@Override
@@ -140,6 +149,15 @@ public class Register1 extends JFrame implements IVista, IRegister {
 	@Override
 	public void setWindowListener(WindowListener windowListener) {
 		this.addWindowListener(windowListener);		
+	}
+	
+	public void intercambiarContrasenia() {
+		boolean estado = mostrarContraseniaBoton.isSelected();
+		if(estado) {
+			this.contraseniaText.setEchoChar((char) 0);
+		} else {
+			this.contraseniaText.setEchoChar(this.defaultChar);
+		}
 	}
 
 }

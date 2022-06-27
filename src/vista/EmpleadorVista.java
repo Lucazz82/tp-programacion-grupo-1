@@ -24,6 +24,7 @@ import modelos.TicketBusquedaEmpleado;
 import modelos.TicketBusquedaEmpleo;
 import javax.swing.SwingConstants;
 import javax.swing.JScrollPane;
+import javax.swing.JTextPane;
 
 public class EmpleadorVista extends JFrame implements IVista {
 
@@ -53,6 +54,9 @@ public class EmpleadorVista extends JFrame implements IVista {
 	private JButton cerrarSesionBoton;
 	private JLabel ticketsLabel;
 	private JScrollPane listaTicketsScrollPan;
+	private JPanel puntajePan;
+	private JLabel puntajeLabel;
+	private JTextPane puntajeText;
 
 	/**
 	 * Create the frame.
@@ -71,7 +75,7 @@ public class EmpleadorVista extends JFrame implements IVista {
 		
 		botones = new JPanel();
 		principal.add(botones);
-		botones.setLayout(new GridLayout(6, 1, 0, 0));
+		botones.setLayout(new GridLayout(7, 1, 0, 0));
 		
 		agregarTicketBotonPan = new JPanel();
 		botones.add(agregarTicketBotonPan);
@@ -108,6 +112,16 @@ public class EmpleadorVista extends JFrame implements IVista {
 		
 		ticketSimplificadoBoton = new JButton("Ticket Simplificado");
 		ticketSimplificadoPan.add(ticketSimplificadoBoton);
+		
+		puntajePan = new JPanel();
+		botones.add(puntajePan);
+		
+		puntajeLabel = new JLabel("Puntaje:");
+		puntajePan.add(puntajeLabel);
+		
+		puntajeText = new JTextPane();
+		puntajeText.setEditable(false);
+		puntajePan.add(puntajeText);
 		
 		listaTicketsPan = new JPanel();
 		principal.add(listaTicketsPan);
@@ -208,5 +222,9 @@ public class EmpleadorVista extends JFrame implements IVista {
 	
 	public void limpiarListaTickets() {
 		this.listaTickets.clearSelection();
+	}
+	
+	public void setPuntaje(int puntaje) {
+		this.puntajeText.setText(Integer.toString(puntaje));
 	}
 }

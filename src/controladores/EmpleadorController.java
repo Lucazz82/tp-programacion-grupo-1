@@ -25,6 +25,7 @@ public class EmpleadorController extends Controller<EmpleadorVista> implements F
 		this.empleador = empleador;
 		this.setListaTickets();
 		this.vista.setFocusListener(this);
+		this.vista.setPuntaje(empleador.getPuntaje());
 	}
 
 
