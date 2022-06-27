@@ -3,18 +3,26 @@ package controladores;
 import java.awt.event.ActionEvent;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.JOptionPane;
 
+import excepciones.AgenciaInexistenteException;
+import modelos.Agencia;
 import modelos.EmpleadoPretenso;
 import vista.EmpleadoVista;
 
-public class EmpleadoController extends Controller<EmpleadoVista> implements FocusListener{
+public class EmpleadoController extends Controller<EmpleadoVista> implements FocusListener, Observer {
 	private EmpleadoPretenso empleado;
-
+	private ArrayList<Observable> observables = new ArrayList<Observable>();
+	
 	public EmpleadoController(EmpleadoPretenso empleado) {
 		super(new EmpleadoVista());
 		this.empleado = empleado;
+		this.observables.add(empleado);
+		empleado.addObserver(this);
 	}
 
 	@Override
@@ -34,7 +42,6 @@ public class EmpleadoController extends Controller<EmpleadoVista> implements Foc
 		} else if(e.getActionCommand().equalsIgnoreCase("Ticket Simplificado")) {
 			Thread h = new Thread(this.empleado);
 			h.start();
-			System.out.println("Hola rey");
 		}
 		else if (e.getActionCommand().equalsIgnoreCase("Cerrar Sesión")) {
 			Sistema.getInstancia().cambiarController(new LoginController());
@@ -52,6 +59,15 @@ public class EmpleadoController extends Controller<EmpleadoVista> implements Foc
 	public void focusLost(FocusEvent e) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	/***
+	 * <b>Pre:</b> el argumento es un string.
+	 */
+	@Override
+	public void update(Observable o, Object arg) {
+		if(this.observables.add(o))
+			JOptionPane.showMessageDialog(vista, (String) arg);		
 	}
 	
 	

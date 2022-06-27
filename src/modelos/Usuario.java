@@ -1,13 +1,18 @@
 package modelos;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
 import excepciones.ContrasenaIncorrectaException;
 
-public abstract class Usuario implements Logueable, Serializable {
+public abstract class Usuario extends Observable implements Logueable, Serializable, Observer {
 	private String nombreUsuario;
 	private String contrasena;
 	protected int puntaje;
+	
+	protected ArrayList<Observable> observables = new ArrayList<Observable>();
 
 	public Usuario(String nombreUsuario, String contrasena) {
 		this.nombreUsuario = nombreUsuario;
@@ -43,6 +48,19 @@ public abstract class Usuario implements Logueable, Serializable {
 
 	public int getPuntaje() {
 		return puntaje;
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		if(this.observables.contains(o)) {
+			System.out.println("Hola ->" + (String) arg);
+			this.setChanged();
+			this.notifyObservers(arg);
+		}
+	}
+	
+	public void agregarObservador(Observer o) {
+		this.addObserver(o);
 	}
 
 	@Override

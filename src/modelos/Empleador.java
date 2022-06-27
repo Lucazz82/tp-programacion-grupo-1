@@ -95,6 +95,8 @@ public class Empleador extends Usuario implements Runnable {
 		
 		try {
 			Agencia agencia = Agencia.getInstancia();
+			this.observables.add(agencia.getBolsaDeTrabajo());
+			agencia.getBolsaDeTrabajo().agregarObservador(this);
 			agencia.agregarTicketABolsa(ticketSimplificado);
 			System.out.println("Ticket agregado con exito");
 		} catch (AgenciaInexistenteException e) {}

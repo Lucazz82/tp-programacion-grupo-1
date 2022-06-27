@@ -5,6 +5,8 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.JOptionPane;
 
@@ -17,14 +19,17 @@ import modelos.TicketBusquedaEmpleo;
 import modelos.TicketOrdenable;
 import vista.EmpleadorVista;
 
-public class EmpleadorController extends Controller<EmpleadorVista> implements FocusListener {
+public class EmpleadorController extends Controller<EmpleadorVista> implements FocusListener, Observer {
 	private Empleador empleador;
+	private ArrayList<Observable> observables = new ArrayList<Observable>();
 	
 	public EmpleadorController(Empleador empleador) {
 		super(new EmpleadorVista());
 		this.empleador = empleador;
 		this.setListaTickets();
 		this.vista.setFocusListener(this);
+		this.observables.add(empleador);
+		empleador.addObserver(this);
 	}
 
 
@@ -99,5 +104,12 @@ public class EmpleadorController extends Controller<EmpleadorVista> implements F
 
 	@Override
 	public void focusLost(FocusEvent e) {
+	}
+
+
+	@Override
+	public void update(Observable o, Object arg) {
+		if(this.observables.add(o))
+			JOptionPane.showMessageDialog(vista, (String) arg);	
 	}
 }
