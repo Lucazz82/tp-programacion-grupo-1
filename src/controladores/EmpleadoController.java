@@ -31,7 +31,8 @@ public class EmpleadoController extends Controller<EmpleadoVista> implements Foc
 		} else if(e.getActionCommand().equalsIgnoreCase("Elegir")) {
 			this.vista.getTicketSeleccionado().setElegido(this.empleado.getTicket());
 		} else if(e.getActionCommand().equalsIgnoreCase("Ticket Simplificado")) {
-			
+			Thread h = new Thread(this.empleado);
+			h.start();
 		}
 	}
 
