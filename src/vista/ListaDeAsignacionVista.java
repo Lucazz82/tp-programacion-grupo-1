@@ -34,11 +34,6 @@ public class ListaDeAsignacionVista extends JFrame implements IVista{
 	private JPanel ticketBusquedaEmpleoPan;
 
 	/**
-	 * Launch the application.
-	 */
-
-
-	/**
 	 * Create the frame.
 	 */
 	public ListaDeAsignacionVista() {

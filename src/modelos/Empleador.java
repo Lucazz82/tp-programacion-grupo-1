@@ -15,6 +15,8 @@ public class Empleador extends Usuario implements Runnable {
 	private ITipoPersona tipoPersona;
 	private Rubro rubro;
 	private ArrayList<TicketBusquedaEmpleado> tickets = new ArrayList<TicketBusquedaEmpleado>();
+	
+	private TicketSimplificado ticketSimplificado = null;
 
 	public Empleador(String nombreUsuario, String contrasena, ITipoPersona tipoPersona, Rubro rubro) {
 		super(nombreUsuario, contrasena);
@@ -48,6 +50,10 @@ public class Empleador extends Usuario implements Runnable {
 	public Rubro getRubro() {
 		return rubro;
 	}
+	
+	public void agregarTicketSimplificado(TicketSimplificado ticketSimplificado) {
+		this.ticketSimplificado = ticketSimplificado;
+	}
 
 	@Override
 	public String toString() {
@@ -73,19 +79,25 @@ public class Empleador extends Usuario implements Runnable {
 	
 	@Override
 	public void run() {
-		Agencia agencia = null;
+//		Agencia agencia = null;
+//		try {
+//			agencia = Agencia.getInstancia();
+//		} catch (AgenciaInexistenteException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+////		agencia.agregarTicketABolsa(new TicketSimplificado(this, Locaciones.CUALQUIERA, Rubros.COMERCIO_INTERNACIONAL));
+//		agencia.agregarTicketABolsa(new TicketSimplificado(this, Locaciones.HOME_OFFICE, Rubros.SALUD));
+//		Util.espera();
+//		agencia.agregarTicketABolsa(new TicketSimplificado(this, Locaciones.CUALQUIERA, Rubros.SALUD));
+//		Util.espera();
+//		agencia.agregarTicketABolsa(new TicketSimplificado(this, Locaciones.PRESENCIAL, Rubros.COMERCIO_INTERNACIONAL));
+		
 		try {
-			agencia = Agencia.getInstancia();
-		} catch (AgenciaInexistenteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-//		agencia.agregarTicketABolsa(new TicketSimplificado(this, Locaciones.CUALQUIERA, Rubros.COMERCIO_INTERNACIONAL));
-		agencia.agregarTicketABolsa(new TicketSimplificado(this, Locaciones.HOME_OFFICE, Rubros.SALUD));
-		Util.espera();
-		agencia.agregarTicketABolsa(new TicketSimplificado(this, Locaciones.CUALQUIERA, Rubros.SALUD));
-		Util.espera();
-		agencia.agregarTicketABolsa(new TicketSimplificado(this, Locaciones.PRESENCIAL, Rubros.COMERCIO_INTERNACIONAL));
+			Agencia agencia = Agencia.getInstancia();
+			agencia.agregarTicketABolsa(ticketSimplificado);
+			System.out.println("Ticket agregado con exito");
+		} catch (AgenciaInexistenteException e) {}
 	}
 
 }

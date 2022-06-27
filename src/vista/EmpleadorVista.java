@@ -196,6 +196,10 @@ public class EmpleadorVista extends JFrame implements IVista {
 	public void setListaCandidatosVisible(boolean visible) {
 		this.listaCandidatos.setVisible(visible);
 	}
+	
+	public boolean isListaCandidatosVisible() {
+		return this.listaCandidatos.isVisible();
+	}
 
 	@Override
 	public void setWindowListener(WindowListener windowListener) {

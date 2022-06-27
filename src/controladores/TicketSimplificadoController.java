@@ -34,14 +34,17 @@ public class TicketSimplificadoController extends Controller<TicketSimplificadoV
 			this.locacion = this.vista.getLocacion();
 			
 			ticket= new TicketSimplificado(this.empleador, this.locacion, this.rubro);
-			
-			try {
-				Agencia.getInstancia().agregarTicketABolsa(ticket);
-				JOptionPane.showMessageDialog(vista, "Ticket creado éxito");
-			} catch (AgenciaInexistenteException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+//			
+//			try {
+//				Agencia.getInstancia().agregarTicketABolsa(ticket);
+//				JOptionPane.showMessageDialog(vista, "Ticket creado ï¿½xito");
+//			} catch (AgenciaInexistenteException e1) {
+//				// TODO Auto-generated catch block
+//				e1.printStackTrace();
+//			}
+			this.empleador.agregarTicketSimplificado(ticket);
+			Thread h = new Thread(this.empleador);
+			h.start();
 			
 		} else if(e.getActionCommand().equalsIgnoreCase("Volver")) {
 			Sistema.getInstancia().cambiarController(new EmpleadorController(this.empleador));

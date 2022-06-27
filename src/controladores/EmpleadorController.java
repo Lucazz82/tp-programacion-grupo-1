@@ -35,14 +35,18 @@ public class EmpleadorController extends Controller<EmpleadorVista> implements F
 		if (cmd.equalsIgnoreCase("Cambiar Ticket")) {
 			JOptionPane.showMessageDialog(vista, "Función no disponible por el momento");
 		} else if (cmd.equalsIgnoreCase("Elegir Ganador")) {
-			TicketBusquedaEmpleo ticketEmpleado = vista.getCandidatoSeleccionado();
-			TicketBusquedaEmpleado ticketEmpleador = vista.getTicketSeleccionado();
-			ticketEmpleador.setElegido(ticketEmpleado);
-			JOptionPane.showMessageDialog(vista, "Ticket seleccionado éxito");
+			if(this.vista.isListaCandidatosVisible()) {
+				TicketBusquedaEmpleo ticketEmpleado = vista.getCandidatoSeleccionado();
+				TicketBusquedaEmpleado ticketEmpleador = vista.getTicketSeleccionado();
+				ticketEmpleador.setElegido(ticketEmpleado);
+				JOptionPane.showMessageDialog(vista, "Ticket seleccionado con éxito");				
+			} else {
+				JOptionPane.showMessageDialog(vista, "Debe seleccionar un ticket");
+			}
 		} else if (cmd.equalsIgnoreCase("Activar Ticket")) {
 			TicketBusquedaEmpleado seleccionado = vista.getTicketSeleccionado();
-			JOptionPane.showMessageDialog(vista, "Ticket Activado");
 			seleccionado.setActivo();
+			JOptionPane.showMessageDialog(vista, "Ticket Activado");
 		}else if (cmd.equalsIgnoreCase("Suspender Ticket")) {
 			TicketBusquedaEmpleado seleccionado = vista.getTicketSeleccionado();
 			seleccionado.setSuspendido();

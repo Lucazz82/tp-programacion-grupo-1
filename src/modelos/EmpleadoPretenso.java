@@ -13,6 +13,7 @@ public class EmpleadoPretenso extends Usuario implements IComision, Runnable {
 	private TicketBusquedaEmpleo ticket = null;
 	
 	private TicketSimplificado ganador = null;
+	private int cantidadBusquedas = 0;
 
 	public EmpleadoPretenso(String nombreUsuario, String contrasena) {
 		super(nombreUsuario, contrasena);
@@ -106,22 +107,20 @@ public class EmpleadoPretenso extends Usuario implements IComision, Runnable {
 
 	@Override
 	public void run() {
-		Agencia agencia = null;
 		try {
-			agencia = Agencia.getInstancia();
-		} catch (AgenciaInexistenteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		for(int i = 0; i < 10; i++) {
-			Util.espera();
-			agencia.busquedaBolsa(this);
-			if (!ganador.getLocacion().mismaLocacion(this.ticket.getFormulario().getLocacion())) {
-				agencia.devuelveBolsa(ganador);
-				ganador = null;
-			} else {
-				break;
+			Agencia agencia = Agencia.getInstancia();
+			if(this.ganador != null && this.cantidadBusquedas < 10) {
+				agencia.busquedaBolsa(this);	
+				
+				if (!ganador.getLocacion().mismaLocacion(this.ticket.getFormulario().getLocacion())) {
+					agencia.devuelveBolsa(ganador);
+					ganador = null;
+				}
+				
+				this.cantidadBusquedas++;
 			}
-		}
+			
+		} catch (AgenciaInexistenteException e) {}
+		
 	}
 }
