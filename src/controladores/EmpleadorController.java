@@ -80,6 +80,7 @@ public class EmpleadorController extends Controller<EmpleadorVista> implements F
 				JOptionPane.showMessageDialog(vista, "Seleccione un ticket");
 			}
 		}
+		this.mostrarMensajes();
 	}
 
 	private void setListaTickets() {	

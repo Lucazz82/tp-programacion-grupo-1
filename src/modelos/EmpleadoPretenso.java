@@ -134,10 +134,4 @@ public class EmpleadoPretenso extends Usuario implements IComision, Runnable {
 		} catch (AgenciaInexistenteException e) {}
 		
 	}
-
-	@Override
-	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		
-	}
 }

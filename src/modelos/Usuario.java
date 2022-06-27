@@ -62,7 +62,6 @@ public abstract class Usuario implements Logueable, Serializable, Observer {
 	@Override
 	public void update(Observable o, Object arg) {
 		if(this.observables == o) {
-			System.out.println("Hola ->" + (String) arg);
 			this.mensajes.add((String) arg);
 		}
 	}

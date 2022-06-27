@@ -53,6 +53,7 @@ public class EmpleadoController extends Controller<EmpleadoVista> implements Foc
 			Sistema.getInstancia().cambiarController(new LoginController());
 			vista.setVisible(false);
 		}
+		this.mostrarMensajes();
 	}
 
 	@Override
