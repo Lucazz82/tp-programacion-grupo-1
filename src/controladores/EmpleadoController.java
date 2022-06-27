@@ -18,7 +18,7 @@ import vista.EmpleadoVista;
 
 public class EmpleadoController extends Controller<EmpleadoVista> implements FocusListener {
 	private EmpleadoPretenso empleado;
-
+	
 	public EmpleadoController(EmpleadoPretenso empleado) {
 		super(new EmpleadoVista());
 		this.empleado = empleado;
@@ -28,15 +28,25 @@ public class EmpleadoController extends Controller<EmpleadoVista> implements Foc
 		Iterator<TicketOrdenable> it = null;
 		try {
 			it = Agencia.getInstancia().getListaAsignacion(empleado.getTicket());
-		} catch (TicketInexistenteException | AgenciaInexistenteException e) {
-			e.printStackTrace();
+			while (it.hasNext()) {
+				tickets.add((TicketBusquedaEmpleado)it.next().getTicket());
+			}
+		} catch (AgenciaInexistenteException e) {
+		} catch (TicketInexistenteException e) {
+			JOptionPane.showMessageDialog(vista, "El ticket no tiene lista de asignacion");
 		}
 		
-		while (it.hasNext()) {
-			tickets.add((TicketBusquedaEmpleado)it.next().getTicket());
-		}
 		
 		this.vista.setListaEmpleadores(tickets);
+		this.mostrarMensajes();
+	}
+	
+	private void mostrarMensajes() {
+		for(String s : this.empleado.getMensajes()) {
+			JOptionPane.showMessageDialog(vista, s);	
+		}
+		
+		this.empleado.vaciarMensajes();
 	}
 
 	@Override
@@ -60,11 +70,12 @@ public class EmpleadoController extends Controller<EmpleadoVista> implements Foc
 		} else if (e.getActionCommand().equalsIgnoreCase("Ticket Simplificado")) {
 			Thread h = new Thread(this.empleado);
 			h.start();
-			
-		} else if (e.getActionCommand().equalsIgnoreCase("Cerrar Sesión")) {
+		}
+		else if (e.getActionCommand().equalsIgnoreCase("Cerrar Sesión")) {
 			Sistema.getInstancia().cambiarController(new LoginController());
 			vista.setVisible(false);
 		}
+		this.mostrarMensajes();
 	}
 
 	@Override
@@ -75,6 +86,6 @@ public class EmpleadoController extends Controller<EmpleadoVista> implements Foc
 	@Override
 	public void focusLost(FocusEvent e) {
 		// TODO Auto-generated method stub
-	}
+	}	
 
 }

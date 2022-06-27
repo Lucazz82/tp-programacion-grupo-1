@@ -5,6 +5,8 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
@@ -28,6 +30,16 @@ public class EmpleadorController extends Controller<EmpleadorVista> implements L
 		this.setListaTickets();
 		this.vista.addSelectionListener(this);
 		this.vista.setPuntaje(empleador.getPuntaje());
+		this.mostrarMensajes();
+	}
+
+
+	private void mostrarMensajes() {
+		for(String s : this.empleador.getMensajes()) {
+			JOptionPane.showMessageDialog(vista, s);	
+		}
+		
+		this.empleador.vaciarMensajes();
 	}
 
 	@Override
@@ -83,6 +95,7 @@ public class EmpleadorController extends Controller<EmpleadorVista> implements L
 				JOptionPane.showMessageDialog(vista, "Seleccione un ticket");
 			}
 		}
+		this.mostrarMensajes();
 	}
 
 	private void setListaTickets() {
@@ -106,8 +119,8 @@ public class EmpleadorController extends Controller<EmpleadorVista> implements L
 			vista.setListaCandidatos(candidatos);
 		} catch (AgenciaInexistenteException e1) {
 		} catch (TicketInexistenteException e1) {
-//			JOptionPane.showMessageDialog(vista, "El ticket no posee una lista de asignacion");
 			this.vista.limpiarListaTickets();
 		}
 	}
+
 }

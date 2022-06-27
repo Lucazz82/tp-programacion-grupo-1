@@ -78,25 +78,14 @@ public class Empleador extends Usuario implements Runnable {
 	}
 	
 	@Override
-	public void run() {
-//		Agencia agencia = null;
-//		try {
-//			agencia = Agencia.getInstancia();
-//		} catch (AgenciaInexistenteException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-////		agencia.agregarTicketABolsa(new TicketSimplificado(this, Locaciones.CUALQUIERA, Rubros.COMERCIO_INTERNACIONAL));
-//		agencia.agregarTicketABolsa(new TicketSimplificado(this, Locaciones.HOME_OFFICE, Rubros.SALUD));
-//		Util.espera();
-//		agencia.agregarTicketABolsa(new TicketSimplificado(this, Locaciones.CUALQUIERA, Rubros.SALUD));
-//		Util.espera();
-//		agencia.agregarTicketABolsa(new TicketSimplificado(this, Locaciones.PRESENCIAL, Rubros.COMERCIO_INTERNACIONAL));
-		
+	public void run() {		
 		try {
 			Agencia agencia = Agencia.getInstancia();
+			this.observables = agencia.getBolsaDeTrabajo();
+			agencia.getBolsaDeTrabajo().agregarObservador(this);
 			agencia.agregarTicketABolsa(ticketSimplificado);
-			System.out.println("Ticket agregado con exito");
+			agencia.getBolsaDeTrabajo().deleteObserver(this);
+			this.observables = null;
 		} catch (AgenciaInexistenteException e) {}
 	}
 

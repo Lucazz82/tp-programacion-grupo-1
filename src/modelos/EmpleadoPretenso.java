@@ -1,6 +1,7 @@
 package modelos;
 
 import java.util.Date;
+import java.util.Observable;
 
 import excepciones.AgenciaInexistenteException;
 import util.Util;
@@ -109,19 +110,27 @@ public class EmpleadoPretenso extends Usuario implements IComision, Runnable {
 	public void run() {
 		try {
 			Agencia agencia = Agencia.getInstancia();
+			this.observables = agencia.getBolsaDeTrabajo();
+			agencia.getBolsaDeTrabajo().addObserver(this);
 			if(this.ganador == null && this.cantidadBusquedas < 10) {
 				agencia.busquedaBolsa(this);	
 				
 				if (!ganador.getLocacion().mismaLocacion(this.ticket.getFormulario().getLocacion())) {
 					agencia.devuelveBolsa(ganador);
 					ganador = null;
+					this.mensajes.add("El ticket no coincide, se devuelve");
 				} else {
 					agencia.confirmarEleccion(ganador);
+					this.mensajes.add("El ticket coincide, finaliza simulacion");
 				}
 				
 				this.cantidadBusquedas++;
+			} else {
+				this.mensajes.add("Ya tiene un ticket simplificado");
 			}
 			
+			agencia.getBolsaDeTrabajo().deleteObserver(this);
+			this.observables = null;
 		} catch (AgenciaInexistenteException e) {}
 		
 	}
