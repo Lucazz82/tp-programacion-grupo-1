@@ -1,8 +1,6 @@
 package vista;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowListener;
@@ -19,8 +17,7 @@ import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
-import modelos.TicketBusquedaEmpleado;
-import modelos.Usuario;
+import modelos.TicketOrdenable;
 
 public class EmpleadoVista extends JFrame implements IVista {
 
@@ -140,17 +137,17 @@ public class EmpleadoVista extends JFrame implements IVista {
 		cerrarSesionBoton.addActionListener(actionListener);
 	}
 
-	public TicketBusquedaEmpleado getTicketSeleccionado() {
-		return (TicketBusquedaEmpleado) this.listaEmpleadores.getSelectedValue();
+	public TicketOrdenable getTicketSeleccionado() {
+		return (TicketOrdenable) this.listaEmpleadores.getSelectedValue();
 	}
 
-	public void setListaEmpleadores(ArrayList<TicketBusquedaEmpleado> tickets) {
-		DefaultListModel<TicketBusquedaEmpleado> listModel = new DefaultListModel<>();
+	public void setListaEmpleadores(ArrayList<TicketOrdenable> tickets) {
+		DefaultListModel<TicketOrdenable> listModel = new DefaultListModel<>();
 		this.listaEmpleadores = new JList<>(listModel);
 		this.listaEmpleadores.setBorder(new LineBorder(new Color(0, 0, 0), 1));
 		this.listaEmpleadoresPan.setViewportView(this.listaEmpleadores);
 
-		for (TicketBusquedaEmpleado ticket : tickets) {
+		for (TicketOrdenable ticket : tickets) {
 			listModel.addElement(ticket);
 		}
 	}

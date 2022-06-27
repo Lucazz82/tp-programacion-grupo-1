@@ -2,30 +2,28 @@ package vista;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusListener;
 import java.awt.event.WindowListener;
 import java.util.ArrayList;
 
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextPane;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.JLabel;
-import java.awt.GridLayout;
-import java.awt.Font;
-
-import javax.swing.DefaultListModel;
-import javax.swing.JButton;
-import javax.swing.JList;
 
 import modelos.TicketBusquedaEmpleado;
 import modelos.TicketBusquedaEmpleo;
-import javax.swing.SwingConstants;
-import javax.swing.JScrollPane;
-import javax.swing.JTextPane;
+import modelos.TicketOrdenable;
 
 public class EmpleadorVista extends JFrame implements IVista {
 
@@ -45,7 +43,7 @@ public class EmpleadorVista extends JFrame implements IVista {
 	private JPanel listaCandidatosPan;
 	private JButton elegirGanadorBoton;
 	private JPanel elegirGanadorBotonPan;
-	private JList<TicketBusquedaEmpleo> listaCandidatos;
+	private JList<TicketOrdenable> listaCandidatos;
 	private JButton btnSuspenderTicket;
 	private JPanel suspenderTicketBotonPan;
 	private JPanel sur;
@@ -62,6 +60,7 @@ public class EmpleadorVista extends JFrame implements IVista {
 	 * Create the frame.
 	 */
 	public EmpleadorVista() {
+		setTitle("Empleador");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 400);
 		contentPane = new JPanel();
@@ -187,12 +186,12 @@ public class EmpleadorVista extends JFrame implements IVista {
 		return (TicketBusquedaEmpleado) this.listaTickets.getSelectedValue();
 	}
 
-	public TicketBusquedaEmpleo getCandidatoSeleccionado() {
-		return (TicketBusquedaEmpleo) this.listaCandidatos.getSelectedValue();
+	public TicketOrdenable getCandidatoSeleccionado() {
+		return (TicketOrdenable) this.listaCandidatos.getSelectedValue();
 	}
 
-	public void setListaCandidatos(ArrayList<TicketBusquedaEmpleo> tickets) {
-		DefaultListModel<TicketBusquedaEmpleo> listModel = new DefaultListModel<>();
+	public void setListaCandidatos(ArrayList<TicketOrdenable> tickets) {
+		DefaultListModel<TicketOrdenable> listModel = new DefaultListModel<>();
 
 		for (int i = 0; i < tickets.size(); i++) {
 			listModel.add(i, tickets.get(i));

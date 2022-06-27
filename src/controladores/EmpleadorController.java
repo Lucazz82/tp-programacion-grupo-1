@@ -47,7 +47,7 @@ public class EmpleadorController extends Controller<EmpleadorVista> implements L
 
 		if (cmd.equalsIgnoreCase("Elegir Ganador")) {
 			if (this.vista.isListaCandidatosVisible()) {
-				TicketBusquedaEmpleo ticketEmpleado = vista.getCandidatoSeleccionado();
+				TicketBusquedaEmpleo ticketEmpleado = (TicketBusquedaEmpleo) vista.getCandidatoSeleccionado().getTicket();
 				TicketBusquedaEmpleado ticketEmpleador = vista.getTicketSeleccionado();
 				ticketEmpleador.setElegido(ticketEmpleado);
 				JOptionPane.showMessageDialog(vista, "Ticket seleccionado con éxito");
@@ -109,16 +109,17 @@ public class EmpleadorController extends Controller<EmpleadorVista> implements L
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
 		TicketBusquedaEmpleado ticket = vista.getTicketSeleccionado();
-		ArrayList<TicketBusquedaEmpleo> candidatos = new ArrayList<>();
+		ArrayList<TicketOrdenable> candidatos = new ArrayList<>();
 		try {
 			Iterator<TicketOrdenable> candidatosIt = Agencia.getInstancia().getListaAsignacion(ticket);
 			while (candidatosIt.hasNext()) {
-				candidatos.add((TicketBusquedaEmpleo) candidatosIt.next().getTicket());
+				candidatos.add(candidatosIt.next());
 			}
 			vista.setListaCandidatos(candidatos);
 		} catch (AgenciaInexistenteException e1) {
 		} catch (TicketInexistenteException e1) {
 			this.vista.limpiarListaTickets();
+			JOptionPane.showMessageDialog(vista, "El ticket no tiene una lista de asignacion");
 		}
 	}
 

@@ -24,12 +24,12 @@ public class EmpleadoController extends Controller<EmpleadoVista> implements Foc
 		this.empleado = empleado;
 		this.vista.setPuntaje(empleado.getPuntaje());
 
-		ArrayList<TicketBusquedaEmpleado> tickets = new ArrayList<>();
+		ArrayList<TicketOrdenable> tickets = new ArrayList<>();
 		Iterator<TicketOrdenable> it = null;
 		try {
 			it = Agencia.getInstancia().getListaAsignacion(empleado.getTicket());
 			while (it.hasNext()) {
-				tickets.add((TicketBusquedaEmpleado) it.next().getTicket());
+				tickets.add(it.next());
 			}
 		} catch (AgenciaInexistenteException e) {
 		} catch (TicketInexistenteException e) {
@@ -59,7 +59,7 @@ public class EmpleadoController extends Controller<EmpleadoVista> implements Foc
 			JOptionPane.showMessageDialog(vista, "Ticket activado con éxito");
 
 		} else if (e.getActionCommand().equalsIgnoreCase("Elegir")) {
-			this.empleado.getTicket().setElegido(this.vista.getTicketSeleccionado());
+			this.empleado.getTicket().setElegido((TicketBusquedaEmpleado) this.vista.getTicketSeleccionado().getTicket());
 			JOptionPane.showMessageDialog(vista, "Ticket elegido con éxito");
 
 		} else if (e.getActionCommand().equalsIgnoreCase("Mostrar Ticket")) {
