@@ -216,10 +216,6 @@ public class EmpleadorVista extends JFrame implements IVista {
 		this.addWindowListener(windowListener);
 	}
 
-	public void limpiarListaTickets() {
-		this.listaTickets.clearSelection();
-	}
-
 	public void setPuntaje(int puntaje) {
 		this.puntajeText.setText(Integer.toString(puntaje));
 	}

@@ -114,7 +114,6 @@ public class EmpleadorController extends Controller<EmpleadorVista> implements L
 			vista.setListaCandidatos(candidatos);
 		} catch (AgenciaInexistenteException e1) {
 		} catch (TicketInexistenteException e1) {
-			this.vista.limpiarListaTickets();
 			JOptionPane.showMessageDialog(vista, "El ticket no tiene una lista de asignacion");
 		}
 	}
